@@ -5,26 +5,49 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import { ApiDataProvider } from '../providers/api-data/api-data';
+import { AuthDataProvider } from '../providers/auth-data/auth-data';
+
+// importo AngularFire2 modules
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+// settings AF2
+export const firebaseConfig = {
+  apiKey: "AIzaSyA5Mq1opoK6B4WaP-_KhEZ_CZVNZrJBb1E",
+  authDomain: "repmant-ce7a5.firebaseapp.com",
+  databaseURL: "https://repmant-ce7a5.firebaseio.com",
+  projectId: "repmant-ce7a5",
+  storageBucket: "repmant-ce7a5.appspot.com",
+  messagingSenderId: "872720422739"
+};
+
+// 3eros
+import { GooglePlus } from '@ionic-native/google-plus';
 
 @NgModule({
   declarations: [
-    MyApp,
-    HomePage
+    MyApp
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    HomePage
+    MyApp
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    GooglePlus,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ApiDataProvider,
+    AuthDataProvider
   ]
 })
 export class AppModule {}
