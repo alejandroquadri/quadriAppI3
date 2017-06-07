@@ -1,16 +1,73 @@
 <ion-split-pane>
 
-  <ion-menu id="loggedOutMenu" [content]="content">
+  <ion-menu id="loggedInMenu" [content]="content" *ngIf="userProfile">
 
     <ion-header>
       <ion-toolbar>
-        <ion-title>Menu</ion-title>
+        <ion-item *ngIf="userProfile" no-lines class="user">
+          <ion-avatar item-left>
+            <img [src]="userProfile.photoURL">
+          </ion-avatar>
+          <h2>{{ userProfile.displayName }}</h2>
+          <h3>{{ userProfile.email }}</h3>
+        </ion-item>
       </ion-toolbar>
+
     </ion-header>
 
     <ion-content class="outer-content">
 
-      
+      <ion-list>
+        <ion-list-header>
+          Mantenimiento
+        </ion-list-header>
+        <button ion-item menuClose (click)="openPage('SparePartsPage')" icon-left>
+          <ion-icon name="list-box"></ion-icon>
+          Pedido repuestos
+        </button>
+        <button ion-item menuClose (click)="openPage('MachineLogPage')" icon-left>
+          <ion-icon name="list-box"></ion-icon>
+          Registro de maquinas
+        </button>
+      </ion-list>
+
+      <ion-list>
+        <ion-list-header>
+          Produccion
+        </ion-list-header>
+        <button ion-item menuClose icon-left>
+          <ion-icon name="list-box"></ion-icon>
+          Carga partes
+        </button>
+        <button ion-item menuClose icon-left>
+          <ion-icon name="list-box"></ion-icon>
+          Producto en proceso
+        </button>
+        <button ion-item menuClose icon-left>
+          <ion-icon name="stats"></ion-icon>
+          Metricas
+        </button>
+      </ion-list>
+
+      <ion-list>
+        <ion-list-header>
+          Ventas
+        </ion-list-header>
+        <button ion-item menuClose icon-left>
+          <ion-icon name="stats"></ion-icon>
+          Metricas
+        </button>
+      </ion-list>
+
+      <ion-list>
+        <ion-list-header>
+          Usuario
+        </ion-list-header>
+        <button ion-item menuClose icon-left>
+          <ion-icon name="log-out"></ion-icon>
+          Salir
+        </button>
+      </ion-list>
 
     </ion-content>
 
