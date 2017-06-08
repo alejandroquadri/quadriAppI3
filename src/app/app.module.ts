@@ -5,8 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { ApiDataProvider } from '../providers/api-data/api-data';
-import { AuthDataProvider } from '../providers/auth-data/auth-data';
 
 // importo AngularFire2 modules
 import { AngularFireModule } from 'angularfire2';
@@ -25,6 +23,12 @@ export const firebaseConfig = {
 
 // 3eros
 import { GooglePlus } from '@ionic-native/google-plus';
+import { ElasticModule } from 'angular2-elastic';
+
+// providers
+import { ApiDataProvider } from '../providers/api-data/api-data';
+import { AuthDataProvider } from '../providers/auth-data/auth-data';
+import { MachineLogDataProvider } from '../providers/machine-log-data/machine-log-data';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,8 @@ import { GooglePlus } from '@ionic-native/google-plus';
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    ElasticModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -47,7 +52,8 @@ import { GooglePlus } from '@ionic-native/google-plus';
     GooglePlus,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ApiDataProvider,
-    AuthDataProvider
+    AuthDataProvider,
+    MachineLogDataProvider
   ]
 })
 export class AppModule {}

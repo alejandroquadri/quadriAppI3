@@ -4,12 +4,113 @@
 	  <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>machine-log</ion-title>
+    <ion-title>Registro de maquinas</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="flexContainer">
 
+	<ion-grid fixed>
+
+		<form [formGroup]="machineForm" (ngSubmit)="onSubmit()">
+
+			<ion-list>
+				<ion-item *ngIf="platform.is('mobile')">
+				  <ion-label fixed>Fecha</ion-label>
+				  <ion-datetime formControlName="date" displayFormat="MM/DD/YYYY"></ion-datetime>
+				</ion-item>
+
+				<ion-item *ngIf="!platform.is('mobile')">
+			    <ion-label fixed>Fecha</ion-label>
+			    <ion-input formControlName="date" type="date"></ion-input>
+			  </ion-item>
+
+				<ion-item>
+			    <ion-label fixed>N° de orden</ion-label>
+			    <ion-input formControlName="orderNumber" type="number"></ion-input>
+			  </ion-item>
+				
+				<ion-item *ngIf="platform.is('mobile')">
+				  <ion-label>Maquina</ion-label>
+				  <ion-select formControlName="title" [interface]="popover">
+				    <ion-option value="1440">1440</ion-option>
+				    <ion-option value="650">650</ion-option>
+				    <ion-option value="Breton">Breton</ion-option>
+				  </ion-select>
+				</ion-item>
+
+				<ion-item *ngIf="!platform.is('mobile')">
+						<ion-label class="labelMachineSelect">Maquina</ion-label>					
+							<select item-content formControlName="title" class="selectMachine">
+						    <option value="1440">1440</option>
+						    <option value="650">650</option>
+						    <option value="Breton">Breton</option>
+						  </select>
+				</ion-item>
+
+			  <ion-item>
+			    <ion-label fixed>Descripcion</ion-label>
+			    <ion-textarea formControlName="description" fz-elastic></ion-textarea>
+			  </ion-item>
+
+			</ion-list>
+
+			<button ion-button outline block type="submit" [disabled]="!machineForm.valid">
+		    {{submitType === 'new' ? 'Enviar' : 'Actualizar '}}
+		  </button>
+
+	  </form>
+
+  </ion-grid>
+
+  <ion-grid>
+	  <ion-row class="headers" text-center>
+			<ion-col col-2>
+				<strong>Fecha</strong>
+			</ion-col>
+			<ion-col col-1>
+				<strong >{{ platform.is('mobile') ? 'n°' : 'n° orden' }}</strong>
+			</ion-col>
+			<ion-col col-3>
+				<strong>Maquina</strong>
+			</ion-col>
+			<ion-col col-4>
+				<strong>Descripcion</strong>
+			</ion-col>
+			<ion-col col-2>
+				<strong>Acciones</strong>
+			</ion-col>
+		</ion-row>
+  </ion-grid>
+
+  <div class="tableLog">
+
+		<ion-grid>
+			<ion-row *ngFor="let log of machineLogs | async">
+				<ion-col col-2>
+					{{ log.date }}
+				</ion-col>
+				<ion-col col-1>
+					{{ log.orderNumber }}
+				</ion-col>
+				<ion-col col-3>
+					{{ log.title }}
+				</ion-col>
+				<ion-col col-4>
+					{{ log.description }}
+				</ion-col>
+				<ion-col col-2 text-center>
+					<button ion-button icon-only clear color="dark" (click)="editLog(log)">
+						<ion-icon name="create"></ion-icon>
+					</button>
+					<button ion-button icon-only clear color="dark" (click)="deleteLog(log.$key)">
+						<ion-icon name="trash"></ion-icon>
+					</button>
+				</ion-col>
+			</ion-row>
+	  </ion-grid>
+
+	</div>
 </ion-content>

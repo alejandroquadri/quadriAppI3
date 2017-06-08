@@ -10,6 +10,10 @@ export class ApiDataProvider {
   	public db: AngularFireDatabase
 	) {}
 
+	getObject(path:string) {
+		return this.db.object(path);
+	}
+
 	setObject(path: string, form: any): firebase.Promise<void> {
 		return this.db.object(`${path}`).set(form);
 	}
@@ -20,6 +24,10 @@ export class ApiDataProvider {
 
 	deleteObject(path: string): firebase.Promise<void> {
 		return this.db.object(`${path}`).remove();
+	}
+
+	getList(path:string) {
+		return this.db.list(path);
 	}
 
 	push(path: string, form: any): firebase.Promise<void> {

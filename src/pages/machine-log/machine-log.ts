@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import * as moment from 'moment';
 
-/**
- * Generated class for the MachineLogPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { MachineLogDataProvider } from '../../providers';
+
+
 @IonicPage()
 @Component({
   selector: 'page-machine-log',
@@ -14,11 +13,84 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MachineLogPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+	machineForm: FormGroup;
+	machineLogs: any;
+	submitType: string = 'new';
+	updateKey:  string;
+
+  constructor(
+  	public navCtrl: NavController, 
+  	public navParams: NavParams,
+  	public platform: Platform,
+  	private machineLogData: MachineLogDataProvider,
+  	private fb: FormBuilder,
+	) {
+  	this.buildForm();
+  	this.machineLogs = this.machineLogData.machineLogs;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MachineLogPage');
+  }
+
+  buildForm() {
+    this.machineForm = this.fb.group({
+      date: ['', Validators.required ],
+      title: ['', Validators.required],
+      orderNumber: ['', Validators.required],
+      description: ['', Validators.required],
+    });
+  }
+
+  onSubmit() {
+  	// console.log('submit', this.machineForm.value);
+  	// console.log('submit', this.machineForm.valid);
+  	// let form = this.machineForm.value;
+  	// form['timestamp'] = moment().format();
+  	// this.machineLogData.pushMachineLog(form)
+  	// .then( ret => {
+  	// 	this.machineForm.reset();
+  	// })
+  	if (this.submitType === 'new') {
+  		this.pushNew();
+  	} else {
+  		this.update();
+  	}
+  }
+
+  pushNew() {
+  	let form = this.machineForm.value;
+  	form['timestamp'] = moment().format();
+  	this.machineLogData.pushMachineLog(form)
+  	.then( ret => {
+  		this.machineForm.reset();
+  	})
+  }
+
+  deleteLog(key) {
+  	this.machineLogData.deleteLog(key);
+  }
+
+  update() {
+  	let form = this.machineForm.value;
+  	this.machineLogData.updateLog(this.updateKey, form)
+  	.then( ret => {
+  		this.submitType = 'new';
+  		this.machineForm.reset();
+  	})
+  }
+
+  editLog(log) {
+  	console.log(log);
+  	this.submitType = 'edit'
+  	let form = {
+  		date: log.date,
+      title: log.title,
+      orderNumber: log.orderNumber,
+      description: log.description
+  	}
+  	this.updateKey = log.$key;
+  	this.machineForm.patchValue(form);
   }
 
 }

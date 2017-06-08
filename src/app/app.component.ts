@@ -21,7 +21,7 @@ export class MyApp {
     platform: Platform,
     statusBar: StatusBar,
     splashScreen: SplashScreen,
-    authData: AuthDataProvider
+    private authData: AuthDataProvider
   ) {
     authData.user.subscribe( user => {
       console.log(user);
@@ -42,6 +42,10 @@ export class MyApp {
 
   openPage (page: string, params?: any) {
     this.nav.setRoot(page, params);
+  }
+
+  logOut() {
+    this.authData.logout();
   }
 }
 

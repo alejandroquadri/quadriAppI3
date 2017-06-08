@@ -21,12 +21,12 @@
         <ion-list-header>
           Mantenimiento
         </ion-list-header>
-        <button ion-item menuClose (click)="openPage('SparePartsPage')" icon-left>
-          <ion-icon name="list-box"></ion-icon>
+        <button ion-item menuClose (click)="openPage('SparePartsPage')">
+          <ion-icon item-start name="list-box"></ion-icon>
           Pedido repuestos
         </button>
-        <button ion-item menuClose (click)="openPage('MachineLogPage')" icon-left>
-          <ion-icon name="list-box"></ion-icon>
+        <button ion-item menuClose (click)="openPage('MachineLogPage')">
+          <ion-icon item-start name="list-box"></ion-icon>
           Registro de maquinas
         </button>
       </ion-list>
@@ -35,16 +35,16 @@
         <ion-list-header>
           Produccion
         </ion-list-header>
-        <button ion-item menuClose icon-left>
-          <ion-icon name="list-box"></ion-icon>
+        <button ion-item menuClose>
+          <ion-icon item-start name="list-box"></ion-icon>
           Carga partes
         </button>
-        <button ion-item menuClose icon-left>
-          <ion-icon name="list-box"></ion-icon>
+        <button ion-item menuClose>
+          <ion-icon item-start name="list-box"></ion-icon>
           Producto en proceso
         </button>
-        <button ion-item menuClose icon-left>
-          <ion-icon name="stats"></ion-icon>
+        <button ion-item menuClose>
+          <ion-icon item-start name="stats"></ion-icon>
           Metricas
         </button>
       </ion-list>
@@ -53,8 +53,8 @@
         <ion-list-header>
           Ventas
         </ion-list-header>
-        <button ion-item menuClose icon-left>
-          <ion-icon name="stats"></ion-icon>
+        <button ion-item menuClose>
+          <ion-icon item-start name="stats"></ion-icon>
           Metricas
         </button>
       </ion-list>
@@ -63,8 +63,8 @@
         <ion-list-header>
           Usuario
         </ion-list-header>
-        <button ion-item menuClose icon-left>
-          <ion-icon name="log-out"></ion-icon>
+        <button ion-item menuClose (click)="logOut()">
+          <ion-icon item-start name="log-out"></ion-icon>
           Salir
         </button>
       </ion-list>
