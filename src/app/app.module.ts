@@ -32,7 +32,7 @@ import { MachineLogDataProvider } from '../providers/machine-log-data/machine-lo
 
 @NgModule({
   declarations: [
-    MyApp
+    MyApp,
   ],
   imports: [
     BrowserModule,

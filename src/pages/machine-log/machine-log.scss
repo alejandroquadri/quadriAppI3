@@ -5,6 +5,7 @@ page-machine-log {
 		flex-direction: column;
 	}
 
+	
 	.tableLog {
 		flex: 1;
 		overflow: auto;
@@ -14,6 +15,7 @@ page-machine-log {
     background-color: white;
     border: none;
     flex: 1;
+    -webkit-appearance: none;
 	}
 
 	.labelMachineSelect {

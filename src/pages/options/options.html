@@ -1,0 +1,16 @@
+<ion-list>
+  <ion-list-header>
+    Opciones
+  </ion-list-header>
+
+  <ion-item>
+    <ion-label>Formulario</ion-label>
+    <ion-toggle value="foo" checked="true" color="primary" [(ngModel)]="options.form" (click)="toggle()"></ion-toggle>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Datos</ion-label>
+    <ion-toggle color="primary" [(ngModel)]="options.data" (click)="toggle()"></ion-toggle>
+  </ion-item>
+
+</ion-list>

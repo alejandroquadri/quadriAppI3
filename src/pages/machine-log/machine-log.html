@@ -4,7 +4,12 @@
 	  <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Registro de maquinas</ion-title>
+    <ion-searchbar [(ngModel)]="searchInput" *ngIf="showData"></ion-searchbar>
+    <ion-buttons end>
+    	<button ion-button icon-only (click)="presentOptions($event)">
+	      <ion-icon name="options"></ion-icon>
+	    </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -12,7 +17,7 @@
 
 <ion-content padding class="flexContainer">
 
-	<ion-grid fixed>
+	<ion-grid fixed *ngIf="showForm">
 
 		<form [formGroup]="machineForm" (ngSubmit)="onSubmit()">
 
@@ -26,6 +31,11 @@
 			    <ion-label fixed>Fecha</ion-label>
 			    <ion-input formControlName="date" type="date"></ion-input>
 			  </ion-item>
+
+			  <!-- <ion-item *ngIf="!platform.is('mobile')">
+			    <ion-label fixed>Fecha</ion-label>
+			    <my-date-picker item-content formControlName="date" [options]="myDatePickerOptions"></my-date-picker>
+			  </ion-item> -->
 
 				<ion-item>
 			    <ion-label fixed>N° de orden</ion-label>
@@ -43,11 +53,11 @@
 
 				<ion-item *ngIf="!platform.is('mobile')">
 						<ion-label class="labelMachineSelect">Maquina</ion-label>					
-							<select item-content formControlName="title" class="selectMachine">
-						    <option value="1440">1440</option>
-						    <option value="650">650</option>
-						    <option value="Breton">Breton</option>
-						  </select>
+						<select item-content formControlName="title" class="selectMachine">
+					    <option value="1440">1440</option>
+					    <option value="650">650</option>
+					    <option value="Breton">Breton</option>
+					  </select>
 				</ion-item>
 
 			  <ion-item>
@@ -65,18 +75,23 @@
 
   </ion-grid>
 
-  <ion-grid>
+  <ion-grid *ngIf="showData">
+  	<!-- <ion-row>
+  		<ion-col>
+  			<ion-searchbar [(ngModel)]="searchInput"></ion-searchbar>
+  		</ion-col>
+  	</ion-row> -->
 	  <ion-row class="headers" text-center>
-			<ion-col col-2>
+			<ion-col col-1>
 				<strong>Fecha</strong>
 			</ion-col>
 			<ion-col col-1>
 				<strong >{{ platform.is('mobile') ? 'n°' : 'n° orden' }}</strong>
 			</ion-col>
-			<ion-col col-3>
+			<ion-col col-2>
 				<strong>Maquina</strong>
 			</ion-col>
-			<ion-col col-4>
+			<ion-col col-6>
 				<strong>Descripcion</strong>
 			</ion-col>
 			<ion-col col-2>
@@ -85,20 +100,20 @@
 		</ion-row>
   </ion-grid>
 
-  <div class="tableLog">
+  <div class="tableLog" *ngIf="showData">
 
 		<ion-grid>
-			<ion-row *ngFor="let log of machineLogs | async">
-				<ion-col col-2>
-					{{ log.date }}
+			<ion-row *ngFor="let log of machineLogs | async | filter:searchInput"><!--  | filter:'title':searchInput"> -->
+				<ion-col col-1 text-center>
+					{{ log.date | momentFormat:'D/M' }}
 				</ion-col>
-				<ion-col col-1>
+				<ion-col col-1 text-center>
 					{{ log.orderNumber }}
 				</ion-col>
-				<ion-col col-3>
+				<ion-col col-2 text-center>
 					{{ log.title }}
 				</ion-col>
-				<ion-col col-4>
+				<ion-col col-6>
 					{{ log.description }}
 				</ion-col>
 				<ion-col col-2 text-center>
