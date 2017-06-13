@@ -4,9 +4,9 @@
 	  <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-searchbar [(ngModel)]="searchInput" *ngIf="showData"></ion-searchbar>
-    <ion-buttons end>
-    	<button ion-button icon-only (click)="presentOptions($event)">
+    <ion-searchbar [(ngModel)]="searchInput" *ngIf="showDataFc()"></ion-searchbar>
+    <ion-buttons end hideWhen= "mobile">
+    	<button ion-button icon-only (click)="presentOptions($event)" [disabled]="!optionsEnabled">
 	      <ion-icon name="options"></ion-icon>
 	    </button>
     </ion-buttons>
@@ -17,7 +17,8 @@
 
 <ion-content padding class="flexContainer">
 
-	<ion-grid fixed *ngIf="showForm">
+	<!-- <ion-grid fixed *ngIf="showFormFc()" class="gridForm"> -->
+	<ion-grid fixed [ngClass]="{'hidden': !showFormFc()}" class="gridForm">
 
 		<form [formGroup]="machineForm" (ngSubmit)="onSubmit()">
 
@@ -67,20 +68,20 @@
 
 			</ion-list>
 
-			<button ion-button outline block type="submit" [disabled]="!machineForm.valid">
-		    {{submitType === 'new' ? 'Enviar' : 'Actualizar '}}
+			<button ion-button outline  type="submit" [disabled]="!machineForm.valid">
+		    {{submitType === 'new' ? 'Agregar' : 'Actualizar '}}
+		  </button>
+
+		  <button ion-button outline (click)="toNew()" *ngIf="submitType !== 'new'">
+		    Nuevo
 		  </button>
 
 	  </form>
 
   </ion-grid>
 
-  <ion-grid *ngIf="showData">
-  	<!-- <ion-row>
-  		<ion-col>
-  			<ion-searchbar [(ngModel)]="searchInput"></ion-searchbar>
-  		</ion-col>
-  	</ion-row> -->
+  <!-- <ion-grid *ngIf="showDataFc()"> -->
+  <ion-grid [ngClass]="{'hidden': !showDataFc()}">
 	  <ion-row class="headers" text-center>
 			<ion-col col-1>
 				<strong>Fecha</strong>
@@ -100,7 +101,8 @@
 		</ion-row>
   </ion-grid>
 
-  <div class="tableLog" *ngIf="showData">
+  <!-- <div class="tableLog" *ngIf="showDataFc()"> -->
+  <div class="tableLog" [ngClass]="{'hidden': !showDataFc()}">
 
 		<ion-grid>
 			<ion-row *ngFor="let log of machineLogs | async | filter:searchInput"><!--  | filter:'title':searchInput"> -->
@@ -117,10 +119,10 @@
 					{{ log.description }}
 				</ion-col>
 				<ion-col col-2 text-center>
-					<button ion-button icon-only clear color="dark" (click)="editLog(log)">
+					<button ion-button icon-only clear color="dark" small (click)="editLog(log)">
 						<ion-icon name="create"></ion-icon>
 					</button>
-					<button ion-button icon-only clear color="dark" (click)="deleteLog(log.$key)">
+					<button ion-button icon-only clear color="dark" small (click)="deleteLog(log.$key)">
 						<ion-icon name="trash"></ion-icon>
 					</button>
 				</ion-col>

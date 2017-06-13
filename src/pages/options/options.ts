@@ -21,16 +21,6 @@ export class OptionsPage {
     }
   }
 
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad OptionsPage');
-  }
-
-  dismiss(){
-  	let data = { 'foo': 'bar' };
-  	this.viewCtrl.dismiss(data)
-  }
-
   toggle() {
   	this.viewCtrl.dismiss(this.options);
   }

@@ -9,12 +9,16 @@ import { GooglePlus } from '@ionic-native/google-plus';
 export class AuthDataProvider {
 
 	user: Observable<firebase.User>;
+  uid: string;
 
   constructor(
   	public afAuth: AngularFireAuth,
   	private googlePlus: GooglePlus
 	) {
     this.user = afAuth.authState;
+    afAuth.authState.subscribe( user => {
+      this.uid = user.uid
+    })
   }
 
   login(email: string, password: string): firebase.Promise<any> {

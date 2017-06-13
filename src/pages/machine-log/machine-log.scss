@@ -5,6 +5,10 @@ page-machine-log {
 		flex-direction: column;
 	}
 
+	.gridForm {
+		margin-bottom: 30px;
+	}
+
 	
 	.tableLog {
 		flex: 1;
@@ -26,6 +30,10 @@ page-machine-log {
     width: 100px;
     min-width: 100px;
     max-width: 200px;
+	}
+
+	.hidden {
+		display: none;
 	}
 
 }
