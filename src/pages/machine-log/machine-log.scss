@@ -36,4 +36,18 @@ page-machine-log {
 		display: none;
 	}
 
+	.headers {
+		border-bottom: solid 3px map-get($colors, lightGreyQ);
+		font-size: 1.4rem;
+	}
+
+	.data {
+		font-size: 1.4rem;
+	}
+
+	.data:hover {
+		background-color: map-get($colors, light);
+	}
+
+
 }

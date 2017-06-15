@@ -1,19 +1,18 @@
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>Iniciar sesion</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
 <ion-content padding>
 
-	<img [src]="quadriImg">
+	<ion-grid>
+		<ion-row justify-content-center>
+			<img [src]="quadriImg">
+		</ion-row>
 
-  <button ion-button block outline icon-left (click)="login()">
-	  <ion-icon name="logo-googleplus"></ion-icon>
-	  Iniciar sesion
-	</button>
+		<ion-row justify-content-center padding>
+			<ion-col text-center>
+			  <button ion-button outline large icon-left (click)="login()">
+				  <ion-icon name="logo-googleplus"></ion-icon>
+				  Iniciar sesion
+				</button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
 
 </ion-content>
