@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonicPage, NavController, NavParams, Platform, PopoverController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, PopoverController, ToastController } from 'ionic-angular';
 import * as moment from 'moment';
 // import {IMyDpOptions} from 'mydatepicker';
 
@@ -36,6 +36,7 @@ export class MachineLogPage {
   	public navParams: NavParams,
   	public platform: Platform,
   	public popoverCtrl: PopoverController,
+    public toastCtrl: ToastController,
   	private machineLogData: MachineLogDataProvider,
   	private fb: FormBuilder,
 	) {
@@ -119,6 +120,15 @@ export class MachineLogPage {
   	}
   	this.updateKey = log.$key;
   	this.machineForm.patchValue(form);
+    if( this.platform.is('mobile')) { this.presentToast() }
+  }
+
+  presentToast() {
+    const toast = this.toastCtrl.create({
+      message: 'Enderezar el telefono para editar',
+      duration: 3000
+    });
+    toast.present();
   }
 
   presentOptions(myEvent) {

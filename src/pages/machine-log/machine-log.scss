@@ -38,11 +38,13 @@ page-machine-log {
 
 	.headers {
 		border-bottom: solid 3px map-get($colors, lightGreyQ);
-		font-size: 1.4rem;
 	}
 
 	.data {
-		font-size: 1.4rem;
+	}
+
+	.bigFont {
+		font-size: 1.6rem;
 	}
 
 	.data:hover {
