@@ -17,7 +17,7 @@
 
   <ion-toolbar>
 
-		  <ion-grid #dataHeaders [ngClass]="{'hidden': !showData()}">
+		  <ion-grid #dataHeaders>
 			  <ion-row class="headers" [ngClass]="{'bigFont': !platform.is('mobile')}" text-center>
 					<ion-col col-1>
 						<strong>Fecha</strong>
@@ -75,9 +75,12 @@
 					{{ part.muestra }}
 				</ion-col>
 				<ion-col col-2 text-center>
-					<span ion-button clear small class="statusButton">
+					<!-- <span ion-button clear small class="statusButton" (click)="changeStatus($event)>
 						{{ part.status }}
-					</span>
+					</span> -->
+					<ion-select (ionChange)="changeStatus()" class="statusButton" interface="popover">
+						<ion-option *ngFor="let option of statusOptions" [selected]="part.status===option? true: false">{{option}}</ion-option>
+					</ion-select>
 				</ion-col>
 				<ion-col col-1 text-center>
 					<button ion-button icon-only clear color="dark" small (click)="editPart(part)" class="actionButtons">
