@@ -1,0 +1,99 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{submitType === 'new' ? 'Nuevo repuesto' : 'Editar Repuesto '}}</ion-title>
+    <ion-buttons end>
+	    <button ion-button (click)="viewCtrl.dismiss()">
+	      Salir
+	    </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+	<ion-grid fixed #form class="gridForm">
+	  <form [formGroup]="spareForm" (ngSubmit)="onSubmit()">
+				<ion-list>
+					
+					<ion-item *ngIf="platform.is('mobile')">
+					  <ion-label>Tipo</ion-label>
+					  <ion-select formControlName="tipo" [interface]="popover">
+					    <ion-option>Mecanica</ion-option>
+					    <ion-option>Electricidad</ion-option>
+					    <ion-option>Hidraulica</ion-option>
+					  </ion-select>
+					</ion-item>
+
+					<ion-item *ngIf="!platform.is('mobile')">
+							<ion-label class="labelMachineSelect">Tipo</ion-label>					
+							<select item-content formControlName="tipo" class="selectMachine">
+						    <option>Mecanica</option>
+						    <option>Electricidad</option>
+						    <option>Hidraulica</option>
+						  </select>
+					</ion-item>
+
+					<ion-item *ngIf="platform.is('mobile')">
+					  <ion-label>Destino</ion-label>
+					  <ion-select formControlName="destino" [interface]="popover">
+					    <ion-option>1440</ion-option>
+					    <ion-option>650</ion-option>
+					    <ion-option>Breton</ion-option>
+					  </ion-select>
+					</ion-item>
+
+					<ion-item *ngIf="!platform.is('mobile')">
+							<ion-label class="labelMachineSelect">Destino</ion-label>					
+							<select item-content formControlName="destino" class="selectMachine">
+						    <option>1440</option>
+						    <option>650</option>
+						    <option>Breton</option>
+						  </select>
+					</ion-item>
+
+				  <ion-item>
+				    <ion-label fixed>Descripcion</ion-label>
+				    <ion-textarea formControlName="detalle" fz-elastic></ion-textarea>
+				  </ion-item>
+
+				  <ion-item>
+				    <ion-label fixed>Cantidad</ion-label>
+				    <ion-input formControlName="cantidad" type="number"></ion-input>
+				  </ion-item>
+
+				  <ion-item>
+					  <ion-label fixed class="labelMachineSelect">Unidad</ion-label>
+					  <ion-select *ngIf="platform.is('mobile')" formControlName="type" [interface]="popover" placeholder="unidad">
+					    <ion-option>unidad</ion-option>
+					    <ion-option>kg</ion-option>
+					    <ion-option>juego</ion-option>
+					  </ion-select>
+						<select *ngIf="!platform.is('mobile')" item-content formControlName="unidad" class="selectMachine">
+						    <option>unidad</option>
+						    <option>kg</option>
+						    <option>juego</option>
+					  </select>
+				  </ion-item>
+
+				  <ion-item>
+					  <ion-label>Muestra</ion-label>
+					  <ion-checkbox formControlName="muestra"></ion-checkbox>
+					</ion-item>
+
+				</ion-list>
+
+				<button ion-button outline  type="submit" [disabled]="!spareForm.valid">
+			    {{submitType === 'new' ? 'Agregar' : 'Actualizar '}}
+			  </button>
+
+			  <button ion-button outline (click)="toNew()" *ngIf="submitType !== 'new'">
+			    Nuevo
+			  </button>
+		  </form>
+  </ion-grid>
+
+</ion-content>

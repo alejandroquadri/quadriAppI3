@@ -93,9 +93,9 @@
 			<ion-col col-6>
 				<strong>Descripcion</strong>
 			</ion-col>
-			<ion-col col-2>
+			<!-- <ion-col col-2>
 				<strong>Acciones</strong>
-			</ion-col>
+			</ion-col> -->
 		</ion-row>
   </ion-grid>
 
@@ -103,7 +103,7 @@
 		<ion-grid>
 			<ion-row class="data" [ngClass]="{'bigFont': !platform.is('mobile')}" *ngFor="let log of machineLogs | async | filter:searchInput">
 				<ion-col col-1 text-center>
-					{{ log.date | momentFormat:'D/M' }}
+					{{ log.date | momentFormat:'D/M/YYYY' }}
 				</ion-col>
 				<ion-col col-1 text-center>
 					{{ log.orderNumber }}

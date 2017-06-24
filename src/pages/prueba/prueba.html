@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Virtual Scroll
+    </ion-title>
+  </ion-navbar>
+
+  <ion-toolbar color="secondary">
+   <ion-list>
+ 
+    <ion-item>
+      hola
+    </ion-item>
+    <ion-item>
+      hola
+    </ion-item>
+    <ion-item>
+      hola
+    </ion-item>
+    <ion-item>
+      hola
+    </ion-item>
+    <ion-item>
+      hola
+    </ion-item>
+ 
+  </ion-list>
+</ion-toolbar>
+
+</ion-header>
+ 
+<ion-content>
+ 
+  <ion-list [virtualScroll]="items">
+ 
+    <ion-item *virtualItem=" let item">
+      <ion-avatar item-left>
+        <ion-img [src]="item.avatarUrl"></ion-img>
+      </ion-avatar>
+ 
+      <h2>{{item.title}}</h2>
+ 
+      <p>{{item.body}}</p>
+ 
+    </ion-item>
+ 
+  </ion-list>
+ 
+</ion-content>

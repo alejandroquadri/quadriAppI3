@@ -4,22 +4,136 @@
 	  <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>spare-parts</ion-title>
+    <ion-searchbar [(ngModel)]="searchInput"></ion-searchbar>
+    <ion-buttons end>
+	    <button ion-button icon-only (click)="presentModal()">
+	      <ion-icon name="add"></ion-icon>
+	    </button>
+    	<button ion-button icon-only (click)="presentOptions($event)" [disabled]="!optionsEnabled">
+	      <ion-icon name="options"></ion-icon>
+	    </button>
+    </ion-buttons>
   </ion-navbar>
+
+  <ion-toolbar>
+
+		  <ion-grid #dataHeaders [ngClass]="{'hidden': !showData()}">
+			  <ion-row class="headers" [ngClass]="{'bigFont': !platform.is('mobile')}" text-center>
+					<ion-col col-1>
+						<strong>Fecha</strong>
+					</ion-col>
+					<ion-col col-2>
+						<strong >Tipo</strong>
+					</ion-col>
+					<ion-col col-3>
+						<strong>Descripcion</strong>
+					</ion-col>
+					<ion-col col-1>
+						<strong>Cantidad</strong>
+					</ion-col>
+					<ion-col col-1>
+						<strong>Destino</strong>
+					</ion-col>
+					<ion-col col-1>
+						<strong>Muestra</strong>
+					</ion-col>
+					<ion-col col-2>
+						<strong>Status</strong>
+					</ion-col>
+					<ion-col col-1>
+					</ion-col>
+				</ion-row>
+		  </ion-grid>
+
+	  </ion-toolbar>
+
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
 
-	<button ion-button outline (click)="signOut()">Logout</button>
-
-	<ion-item *ngIf="userProfile">
-	  <ion-avatar item-left>
-	    <img [src]="userProfile.photoURL">
-	  </ion-avatar>
-	  <h2>{{ userProfile.displayName }}</h2>
-	  <h3>{{ userProfile.email }}</h3>
-	</ion-item>
-
+	<div #data class="tableLog" *ngIf="spareParts">
+		<ion-grid>
+			<ion-row justify-content:start class="data" *ngFor="let part of spareParts | filter:searchInput">
+				<ion-col col-1 text-center>
+					{{ part.fecha | momentFormat:'D/M/YY' }}
+				</ion-col>
+				<ion-col col-2 text-center>
+					{{ part.tipo }}
+				</ion-col>
+				<ion-col col-3>
+					{{ part.detalle }}
+				</ion-col>
+				<ion-col col-1 text-center>
+					{{ part.cantidad }} {{ part.unidad }}
+				</ion-col>
+				<ion-col col-1 text-center>
+					{{ part.destino }}
+				</ion-col>
+				<ion-col col-1 text-center>
+					{{ part.muestra }}
+				</ion-col>
+				<ion-col col-2 text-center>
+					<span ion-button clear small class="statusButton">
+						{{ part.status }}
+					</span>
+				</ion-col>
+				<ion-col col-1 text-center>
+					<button ion-button icon-only clear color="dark" small (click)="editPart(part)" class="actionButtons">
+						<ion-icon name="create"></ion-icon>
+					</button>
+					<button ion-button icon-only clear color="dark" small (click)="deletepart(part.$key)" class="actionButtons">
+						<ion-icon name="trash"></ion-icon>
+					</button>
+				</ion-col>
+			</ion-row>
+	  </ion-grid>
+	</div>
+  
 </ion-content>
+
+ <!-- 
+	Esto es para usar el virtualScroll
+ <div #data class="tableLog" *ngIf="spareParts">
+	  <ion-list [virtualScroll]="spareParts.length ? spareParts : []" [approxItemHeight]="'45px'">
+		  <div *virtualItem="let part ;let i=index" style="width: 100%">
+				<ion-grid>
+					<ion-row class="data">
+						<ion-col col-1 text-center>
+							{{ part.fecha | momentFormat:'D/M/YYYY' }}
+						</ion-col>
+						<ion-col col-1 text-center>
+							{{ part.tipo }}
+						</ion-col>
+						<ion-col col-4 text-center>
+							{{ part.detalle }}
+						</ion-col>
+						<ion-col col-1>
+							{{ part.cantidad }}
+						</ion-col>
+						<ion-col col-1>
+							{{ part.unidad }}
+						</ion-col>
+						<ion-col col-1>
+							{{ part.destino }}
+						</ion-col>
+						<ion-col col-1>
+							{{ part.muestra }}
+						</ion-col>
+						<ion-col col-1>
+							{{ part.status }}
+						</ion-col>
+						<ion-col col-1 text-center>
+							<button ion-button icon-only clear color="dark" small (click)="editLog(part)">
+								<ion-icon name="create"></ion-icon>
+							</button>
+							<button ion-button icon-only clear color="dark" small (click)="deletepart(part.$key)">
+								<ion-icon name="trash"></ion-icon>
+							</button>
+						</ion-col>
+					</ion-row>
+			  </ion-grid>
+		  </div>
+	  </ion-list>
+	</div> -->

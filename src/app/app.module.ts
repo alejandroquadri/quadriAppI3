@@ -29,6 +29,8 @@ import { ElasticModule } from 'angular2-elastic';
 import { ApiDataProvider } from '../providers/api-data/api-data';
 import { AuthDataProvider } from '../providers/auth-data/auth-data';
 import { MachineLogDataProvider } from '../providers/machine-log-data/machine-log-data';
+import { SparePartsDataProvider } from '../providers/spare-parts-data/spare-parts-data';
+import { SettingsProvider } from '../providers/settings/settings';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,9 @@ import { MachineLogDataProvider } from '../providers/machine-log-data/machine-lo
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ApiDataProvider,
     AuthDataProvider,
-    MachineLogDataProvider
+    MachineLogDataProvider,
+    SparePartsDataProvider,
+    SettingsProvider
   ]
 })
 export class AppModule {}
