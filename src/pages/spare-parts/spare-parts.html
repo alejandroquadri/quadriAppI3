@@ -75,10 +75,10 @@
 					{{ part.muestra }}
 				</ion-col>
 				<ion-col col-2 text-center>
-					<!-- <span ion-button clear small class="statusButton" (click)="changeStatus($event)>
+					<!-- <span ion-button clear small class="statusButton" (click)="changeStatus($event, part.status)">
 						{{ part.status }}
 					</span> -->
-					<ion-select (ionChange)="changeStatus()" class="statusButton" interface="popover">
+					<ion-select #status (ionChange)="changeStatus(status.value, part.$key)" class="statusButton" interface="popover">
 						<ion-option *ngFor="let option of statusOptions" [selected]="part.status===option? true: false">{{option}}</ion-option>
 					</ion-select>
 				</ion-col>

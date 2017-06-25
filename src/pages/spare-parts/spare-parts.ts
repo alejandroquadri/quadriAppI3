@@ -16,7 +16,7 @@ export class SparePartsPage {
   updateKey:  string;
   searchInput: string = '';
   optionsEnabled: boolean = true;
-  statusOptions = ['Pendiente', 'Encargado', 'Completo', 'Suspendido']
+  statusOptions = ['Pendiente', 'Encargado', 'Completo', 'Suspendido'];
 
   constructor(
   	public navCtrl: NavController, 
@@ -65,8 +65,10 @@ export class SparePartsPage {
     });
   }
 
-  changeStatus() {
-    console.log('status change');
+  changeStatus(status: string, key: string) {
+    console.log('status changed', status);
+    this.spareData.updateSparePart(key, {status: status})
+    .then( () => console.log('status actualizado'));
   }
 
 }

@@ -24,12 +24,12 @@ export class SparePartsDataProvider {
   	return this.api.getList('repuestos2');
   }
 
-  deleteSparePart(key) {
+  deleteSparePart(key: string) {
   	return this.api.removeItemList('repuestos2', key);
   }
 
-  updateSparePart(key, form) {
-  	return this.api.updateList('repuestos2', key, form);
+  updateSparePart(key: string, form: any) {
+  	return this.api.updateList('repuestos22', key, form);
   }
 
   updateSettings(form: boolean, data: boolean) {
