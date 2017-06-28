@@ -1,15 +1,23 @@
 <ion-list>
 
   <ion-item>
-    <ion-label>Formulario</ion-label>
-    <!-- <ion-toggle value="foo" checked="true" color="primary" [(ngModel)]="!options.form" (click)="hideForm()"></ion-toggle> -->
-    <ion-toggle value="foo" checked="true" color="primary" [(ngModel)]="!options.form" (click)="changeView()"></ion-toggle>
+    <ion-label>Pendiente</ion-label>
+    <ion-toggle value="foo" checked="true" color="primary" [(ngModel)]="options.pendiente" (click)="updateFilters()"></ion-toggle>
   </ion-item>
 
   <ion-item>
-    <ion-label>Datos</ion-label>
-    <!-- <ion-toggle color="primary" [(ngModel)]="!options.data" (click)="hideData()"></ion-toggle> -->
-    <ion-toggle color="primary" [(ngModel)]="!options.data" (click)="changeView()"></ion-toggle>
+    <ion-label>Encargado</ion-label>
+    <ion-toggle color="primary" [(ngModel)]="options.encargado" (click)="updateFilters()"></ion-toggle>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Completo</ion-label>
+    <ion-toggle color="primary" [(ngModel)]="options.completo" (click)="updateFilters()"></ion-toggle>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Suspendido</ion-label>
+    <ion-toggle color="primary" [(ngModel)]="options.suspendido" (click)="updateFilters()"></ion-toggle>
   </ion-item>
     
 </ion-list>

@@ -4,12 +4,12 @@
 	  <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-searchbar [(ngModel)]="searchInput"></ion-searchbar>
+    <ion-searchbar [(ngModel)]="searchInput" (ngModelChange)="onChange($event)"></ion-searchbar>
     <ion-buttons end>
 	    <button ion-button icon-only (click)="presentModal()">
 	      <ion-icon name="add"></ion-icon>
 	    </button>
-    	<button ion-button icon-only (click)="presentOptions($event)" [disabled]="!optionsEnabled">
+    	<button ion-button icon-only (click)="presentOptions($event)">
 	      <ion-icon name="options"></ion-icon>
 	    </button>
     </ion-buttons>
@@ -55,7 +55,8 @@
 
 	<div #data class="tableLog" *ngIf="spareParts">
 		<ion-grid>
-			<ion-row justify-content:start class="data" *ngFor="let part of spareParts | filter:searchInput">
+<!-- 			<ion-row justify-content:start class="data" *ngFor="let part of spareParts | filter:searchInput"> -->
+			<ion-row justify-content:start class="data" *ngFor="let part of spareParts">
 				<ion-col col-1 text-center>
 					{{ part.fecha | momentFormat:'D/M/YY' }}
 				</ion-col>
@@ -78,7 +79,8 @@
 					<!-- <span ion-button clear small class="statusButton" (click)="changeStatus($event, part.status)">
 						{{ part.status }}
 					</span> -->
-					<ion-select #status (ionChange)="changeStatus(status.value, part.$key)" class="statusButton" interface="popover">
+					<ion-select #status (ionChange)="changeStatus(status.value, part.$key)" interface="popover" 
+					[ngClass]="{'pendiente': part.status === 'Pendiente','encargado': part.status === 'Encargado', 'suspendido': part.status === 'Suspendido','completo': part.status === 'Completo'}">
 						<ion-option *ngFor="let option of statusOptions" [selected]="part.status===option? true: false">{{option}}</ion-option>
 					</ion-select>
 				</ion-col>

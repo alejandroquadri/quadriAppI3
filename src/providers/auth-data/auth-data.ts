@@ -9,6 +9,7 @@ import { GooglePlus } from '@ionic-native/google-plus';
 export class AuthDataProvider {
 
 	user: Observable<firebase.User>;
+  current: any;
   uid: string;
 
   constructor(
@@ -18,6 +19,7 @@ export class AuthDataProvider {
     this.user = afAuth.authState;
     afAuth.authState.subscribe( user => {
       this.uid = user.uid
+      this.current = user;
     })
   }
 

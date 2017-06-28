@@ -1,10 +1,9 @@
 import { Component} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams, ViewController, Platform, PopoverController, ToastController } from 'ionic-angular';
-import * as moment from 'moment';
-// import {IMyDpOptions} from 'mydatepicker';
+import * as firebase from 'firebase';
 
-import { SparePartsDataProvider, SettingsProvider } from '../../providers';
+import { SparePartsDataProvider, SettingsProvider, AuthDataProvider } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -29,21 +28,19 @@ export class SparePartsFormPage {
     public toastCtrl: ToastController,
     private spareData: SparePartsDataProvider,
     private settingsData: SettingsProvider,
+    private authData: AuthDataProvider
     ) {
   	this.buildForm();
   	if (this.navParams.data.detalle) {
-    	console.log(this.navParams.data);
     	this.updateForm = this.navParams.data;
     	this.edit()
     }
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SparePartsFormPage');
   }
 
   ionViewDidEnter() {
-  	console.log('ionViewDidEnter SparePartsFormPage');
   }
 
   buildForm() {
@@ -93,16 +90,18 @@ export class SparePartsFormPage {
     }
     this.spareData.updateSparePart(this.updateForm.$key, form)
     .then( ret => {
-      // this.submitType = 'new';
-      // this.spareForm.reset();
     })
     this.viewCtrl.dismiss();
   }
 
   pushNew() {
     let form = this.spareForm.value;
-    form['fecha'] = moment().format();
-    form['status'] = 'Pendiente'
+    form['fecha'] = firebase.database.ServerValue.TIMESTAMP
+    form['status'] = 'Pendiente';
+    form['user'] = {
+      displayName: this.authData.current.displayName,
+      uid: this.authData.current.uid
+    }
     if (this.spareForm.value.muestra === true ) {
       form.muestra = 'si'
     } else {

@@ -34,9 +34,33 @@ page-spare-parts {
 		background-color: map-get($colors, light);
 	}
 
-	.statusButton {
-		padding: 0px;
-		margin: 0px;
+	ion-select {
+    max-width: 100%;
+    border-radius: 5px;
+	}
+
+	.select-md {
+    padding: 5px 8px 5px 16px;
+	}
+
+	.pendiente {
+		background-color: map-get($colors, warning);
+	}
+
+	.encargado {
+		background-color: map-get($colors, ionBlue);
+	}
+
+	.suspendido {
+		background-color: map-get($colors, danger);
+	}
+
+	.completo {
+		background-color: map-get($colors, secondary);
+	}
+
+	selectColor {
+
 	}
 
 	.actionButtons {

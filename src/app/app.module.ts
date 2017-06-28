@@ -25,6 +25,9 @@ export const firebaseConfig = {
 import { GooglePlus } from '@ionic-native/google-plus';
 import { ElasticModule } from 'angular2-elastic';
 
+//pipes
+import { FieldFilterPipe, SortPipe, FilterPipe } from '../pipes';
+
 // providers
 import { ApiDataProvider } from '../providers/api-data/api-data';
 import { AuthDataProvider } from '../providers/auth-data/auth-data';
@@ -34,7 +37,7 @@ import { SettingsProvider } from '../providers/settings/settings';
 
 @NgModule({
   declarations: [
-    MyApp,
+    MyApp
   ],
   imports: [
     BrowserModule,
@@ -57,7 +60,10 @@ import { SettingsProvider } from '../providers/settings/settings';
     AuthDataProvider,
     MachineLogDataProvider,
     SparePartsDataProvider,
-    SettingsProvider
+    SettingsProvider,
+    FieldFilterPipe,
+    SortPipe,
+    FilterPipe
   ]
 })
 export class AppModule {}

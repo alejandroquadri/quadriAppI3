@@ -12,10 +12,12 @@ import { SparePartsDataProvider, SettingsProvider } from '../../providers';
 export class SparePartsPage {
 
   spareParts: any;
-  submitType: string = 'new';
-  updateKey:  string;
+
+  // submitType: string = 'new';
+  // updateKey:  string;
+  // optionsEnabled: boolean = true;
+
   searchInput: string = '';
-  optionsEnabled: boolean = true;
   statusOptions = ['Pendiente', 'Encargado', 'Completo', 'Suspendido'];
 
   constructor(
@@ -28,13 +30,16 @@ export class SparePartsPage {
     private spareData: SparePartsDataProvider,
     private settingsData: SettingsProvider,
 	) {
-    this.spareData.getSpareParts().subscribe( spareParts => {
-      console.log(spareParts);
+  }
+
+  ionViewDidLoad() {
+    this.spareData.sparePartsObs.subscribe( spareParts => {
       this.spareParts = spareParts;  
     });
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
+    
   }
 
   deletepart(key) {
@@ -69,6 +74,11 @@ export class SparePartsPage {
     console.log('status changed', status);
     this.spareData.updateSparePart(key, {status: status})
     .then( () => console.log('status actualizado'));
+  }
+
+  onChange(event) {
+    this.spareData.searchInput = event;
+    this.spareData.filter();
   }
 
 }
