@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams, ViewController, Platform, PopoverController, ToastController } from 'ionic-angular';
 import * as firebase from 'firebase';
 
-import { SparePartsDataProvider, SettingsProvider, AuthDataProvider } from '../../providers';
+import { SparePartsDataProvider, SettingsProvider, AuthDataProvider, StaticDataProvider } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -28,7 +28,8 @@ export class SparePartsFormPage {
     public toastCtrl: ToastController,
     private spareData: SparePartsDataProvider,
     private settingsData: SettingsProvider,
-    private authData: AuthDataProvider
+    private authData: AuthDataProvider,
+    private staticData: StaticDataProvider
     ) {
   	this.buildForm();
   	if (this.navParams.data.detalle) {

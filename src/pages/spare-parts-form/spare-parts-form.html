@@ -22,36 +22,28 @@
 					<ion-item *ngIf="platform.is('mobile')">
 					  <ion-label>Tipo</ion-label>
 					  <ion-select formControlName="tipo" [interface]="popover">
-					    <ion-option>Mecanica</ion-option>
-					    <ion-option>Electricidad</ion-option>
-					    <ion-option>Hidraulica</ion-option>
+					    <ion-option *ngFor="let item of staticData.items">{{item}}</ion-option>
 					  </ion-select>
 					</ion-item>
 
 					<ion-item *ngIf="!platform.is('mobile')">
 							<ion-label class="labelMachineSelect">Tipo</ion-label>					
 							<select item-content formControlName="tipo" class="selectMachine">
-						    <option>Mecanica</option>
-						    <option>Electricidad</option>
-						    <option>Hidraulica</option>
+						    <option *ngFor="let item of staticData.items">{{item}}</option>
 						  </select>
 					</ion-item>
 
 					<ion-item *ngIf="platform.is('mobile')">
 					  <ion-label>Destino</ion-label>
 					  <ion-select formControlName="destino" [interface]="popover">
-					    <ion-option>1440</ion-option>
-					    <ion-option>650</ion-option>
-					    <ion-option>Breton</ion-option>
+					    <ion-option *ngFor="let maquina of staticData.maquinas">{{maquina}}</ion-option>
 					  </ion-select>
 					</ion-item>
 
 					<ion-item *ngIf="!platform.is('mobile')">
 							<ion-label class="labelMachineSelect">Destino</ion-label>					
 							<select item-content formControlName="destino" class="selectMachine">
-						    <option>1440</option>
-						    <option>650</option>
-						    <option>Breton</option>
+						    <option *ngFor="let maquina of staticData.maquinas">{{maquina}}</option>
 						  </select>
 					</ion-item>
 
@@ -68,14 +60,10 @@
 				  <ion-item>
 					  <ion-label fixed class="labelMachineSelect">Unidad</ion-label>
 					  <ion-select *ngIf="platform.is('mobile')" formControlName="unidad" [interface]="popover" placeholder="unidad">
-					    <ion-option>unidad</ion-option>
-					    <ion-option>kg</ion-option>
-					    <ion-option>juego</ion-option>
+					    <ion-option *ngFor="let unidad of staticData.unidades">{{unidad}}</ion-option>
 					  </ion-select>
 						<select *ngIf="!platform.is('mobile')" item-content formControlName="unidad" class="selectMachine">
-						    <option>unidad</option>
-						    <option>kg</option>
-						    <option>juego</option>
+						    <option *ngFor="let unidad of staticData.unidades">{{unidad}}</option>
 					  </select>
 				  </ion-item>
 

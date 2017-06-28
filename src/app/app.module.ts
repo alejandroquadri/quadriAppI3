@@ -34,6 +34,7 @@ import { AuthDataProvider } from '../providers/auth-data/auth-data';
 import { MachineLogDataProvider } from '../providers/machine-log-data/machine-log-data';
 import { SparePartsDataProvider } from '../providers/spare-parts-data/spare-parts-data';
 import { SettingsProvider } from '../providers/settings/settings';
+import { StaticDataProvider } from '../providers/static-data/static-data';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { SettingsProvider } from '../providers/settings/settings';
     SettingsProvider,
     FieldFilterPipe,
     SortPipe,
-    FilterPipe
+    FilterPipe,
+    StaticDataProvider
   ]
 })
 export class AppModule {}
