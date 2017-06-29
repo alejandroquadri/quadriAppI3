@@ -4,88 +4,23 @@
 	  <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-searchbar [(ngModel)]="searchInput" *ngIf="!showSearchBar()"></ion-searchbar>
-    <ion-buttons end hideWhen= "mobile">
-    	<button ion-button icon-only (click)="presentOptions($event)" [disabled]="!optionsEnabled">
-	      <ion-icon name="options"></ion-icon>
+    <ion-searchbar [(ngModel)]="searchInput" (ngModelChange)="onChange($event)"></ion-searchbar>
+    <ion-buttons end>
+    	<button ion-button icon-only (click)="presentModal()">
+	      <ion-icon name="add"></ion-icon>
 	    </button>
     </ion-buttons>
   </ion-navbar>
 
-</ion-header>
+  <ion-toolbar>
 
-
-<ion-content padding class="flexContainer">
-
-	<ion-grid fixed #form [ngClass]="{'hidden': !showForm()}" class="gridForm">
-
-		<form [formGroup]="machineForm" (ngSubmit)="onSubmit()">
-
-			<ion-list>
-				<ion-item *ngIf="platform.is('mobile')">
-				  <ion-label fixed>Fecha</ion-label>
-				  <ion-datetime formControlName="date" displayFormat="MM/DD/YYYY"></ion-datetime>
-				</ion-item>
-
-				<ion-item *ngIf="!platform.is('mobile')">
-			    <ion-label fixed>Fecha</ion-label>
-			    <ion-input formControlName="date" type="date"></ion-input>
-			  </ion-item>
-
-			  <!-- <ion-item *ngIf="!platform.is('mobile')">
-			    <ion-label fixed>Fecha</ion-label>
-			    <my-date-picker item-content formControlName="date" [options]="myDatePickerOptions"></my-date-picker>
-			  </ion-item> -->
-
-				<ion-item>
-			    <ion-label fixed>N° de orden</ion-label>
-			    <ion-input formControlName="orderNumber" type="number"></ion-input>
-			  </ion-item>
-				
-				<ion-item *ngIf="platform.is('mobile')">
-				  <ion-label>Maquina</ion-label>
-				  <ion-select formControlName="title" [interface]="popover">
-				    <ion-option value="1440">1440</ion-option>
-				    <ion-option value="650">650</ion-option>
-				    <ion-option value="Breton">Breton</ion-option>
-				  </ion-select>
-				</ion-item>
-
-				<ion-item *ngIf="!platform.is('mobile')">
-						<ion-label class="labelMachineSelect">Maquina</ion-label>					
-						<select item-content formControlName="title" class="selectMachine">
-					    <option value="1440">1440</option>
-					    <option value="650">650</option>
-					    <option value="Breton">Breton</option>
-					  </select>
-				</ion-item>
-
-			  <ion-item>
-			    <ion-label fixed>Descripcion</ion-label>
-			    <ion-textarea formControlName="description" fz-elastic></ion-textarea>
-			  </ion-item>
-
-			</ion-list>
-
-			<button ion-button outline  type="submit" [disabled]="!machineForm.valid">
-		    {{submitType === 'new' ? 'Agregar' : 'Actualizar '}}
-		  </button>
-
-		  <button ion-button outline (click)="toNew()" *ngIf="submitType !== 'new'">
-		    Nuevo
-		  </button>
-
-	  </form>
-
-  </ion-grid>
-
-	<ion-grid #dataHeaders [ngClass]="{'hidden': !showData()}">
-	  <ion-row class="headers" [ngClass]="{'bigFont': !platform.is('mobile')}" text-center>
+	<ion-grid #dataHeaders>
+	  <ion-row class="headers" text-center>
 			<ion-col col-1>
 				<strong>Fecha</strong>
 			</ion-col>
 			<ion-col col-1>
-				<strong >{{ platform.is('mobile') ? 'n°' : 'n° orden' }}</strong>
+				<strong >Orden</strong>
 			</ion-col>
 			<ion-col col-2>
 				<strong>Maquina</strong>
@@ -93,17 +28,21 @@
 			<ion-col col-6>
 				<strong>Descripcion</strong>
 			</ion-col>
-			<!-- <ion-col col-2>
-				<strong>Acciones</strong>
-			</ion-col> -->
+			<ion-col col-2>
+			</ion-col>
 		</ion-row>
   </ion-grid>
+	</ion-toolbar>
 
-  <div #data class="tableLog" [ngClass]="{'hidden': !showData()}">
+</ion-header>
+
+
+<ion-content>
+  <div #data>
 		<ion-grid>
-			<ion-row class="data" [ngClass]="{'bigFont': !platform.is('mobile')}" *ngFor="let log of machineLogs | async | filter:searchInput">
+			<ion-row class="data" *ngFor="let log of machineLogs | async">
 				<ion-col col-1 text-center>
-					{{ log.date | momentFormat:'D/M/YYYY' }}
+					{{ log.date | momentFormat:'D/M/YY' }}
 				</ion-col>
 				<ion-col col-1 text-center>
 					{{ log.orderNumber }}

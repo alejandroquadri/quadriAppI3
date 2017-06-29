@@ -1,8 +1,7 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonicPage, NavController, NavParams, Platform, PopoverController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, PopoverController, ModalController } from 'ionic-angular';
 import * as moment from 'moment';
-// import {IMyDpOptions} from 'mydatepicker';
 
 import { MachineLogDataProvider } from '../../providers';
 
@@ -21,31 +20,19 @@ export class MachineLogPage {
 	searchInput: string = '';
 	optionsEnabled: boolean = true;
 
-  @ViewChild('form', { read: ElementRef }) form: ElementRef;
-  @ViewChild('dataHeaders', { read: ElementRef }) dataHeaders: ElementRef;
-  @ViewChild('data', { read: ElementRef }) data: ElementRef;
-
-	// esto es lo del datepicker component para safari. No esta implementado
-	// private myDatePickerOptions: IMyDpOptions = {
- //    // other options...
- //    dateFormat: 'dd.mm.yyyy',
- //  };
-
   constructor(
   	public navCtrl: NavController, 
   	public navParams: NavParams,
   	public platform: Platform,
   	public popoverCtrl: PopoverController,
-    public toastCtrl: ToastController,
+    public modalCtrl: ModalController,
   	private machineLogData: MachineLogDataProvider,
   	private fb: FormBuilder,
 	) {
-  	this.buildForm();
-  	this.machineLogs = this.machineLogData.machineLogs;
   }
 
   ionViewDidLoad() {
-    this.getSettings();
+    this.machineLogs = this.machineLogData.machineLogsObs
   }
 
   buildForm() {
@@ -55,22 +42,6 @@ export class MachineLogPage {
       orderNumber: ['', Validators.required],
       description: ['', Validators.required],
     });
-  }
-
-   getSettings() {
-    this.machineLogData.getSettings().subscribe( settings => {
-      console.log(settings)
-      if (settings.$value) {
-        console.log('no hay settings');
-      } else {
-        if (!this.platform.is('mobile')){
-          console.log('no es mobile', settings.form, settings.data);
-          this.form.nativeElement.hidden = !settings.form;
-          this.dataHeaders.nativeElement.hidden = !settings.data;
-          this.data.nativeElement.hidden = !settings.data;
-        }
-      }
-    })
   }
 
   onSubmit() {
@@ -111,7 +82,6 @@ export class MachineLogPage {
   editLog(log) {
   	console.log(log);
   	this.submitType = 'edit'
-  	this.form.nativeElement.hidden = false;
   	let form = {
   		date: log.date,
       title: log.title,
@@ -120,63 +90,17 @@ export class MachineLogPage {
   	}
   	this.updateKey = log.$key;
   	this.machineForm.patchValue(form);
-    if( this.platform.is('mobile')) { this.presentToast() }
   }
 
-  presentToast() {
-    const toast = this.toastCtrl.create({
-      message: 'Enderezar el telefono para editar',
-      duration: 3000
-    });
-    toast.present();
+  presentModal(form?: any) {
+     let profileModal = this.modalCtrl.create('MachineLogFormPage', form);
+     profileModal.present();
   }
 
-  presentOptions(myEvent) {
-    // this.optionsEnabled = false
-    let popover = this.popoverCtrl.create('OptionsPage',{
-      form: this.form.nativeElement,
-      data: this.data.nativeElement,
-      dataHeaders: this.dataHeaders.nativeElement
-    });
-    popover.present({
-      ev: myEvent
-    });
+  onChange(event) {
+    this.machineLogData.searchInput = event;
+    this.machineLogData.filter();
   }
 
-  showForm() {
-  	// en desktop, tiene que verse si el usuario quiere
-  	// en mobile, tiene que verse si esta en portrait
-  	if (this.platform.is('mobile')) {
-  		if (this.platform.isPortrait()) {
-  			return true;
-  		} else {
-  			return false;
-  		}
-  	} else { return true; }
-  }
-
-  showData() {
-  	// en desktop, tiene que verse si el usuario quiere
-  	// en mobile, tiene que verse si esta no esta en lanscape landscape
-  	if (this.platform.is('mobile')) {
-  		if (this.platform.isLandscape()) {
-  			return true;
-  		} else {
-  			return false;
-  		}
-  	} else { return true; }
-  }
-
-  showSearchBar() {
-    if (this.platform.is('mobile')) {
-      if (this.platform.isLandscape()) {
-        return true;
-      } else {
-        return false;
-      }
-    } else { 
-      return this.data.nativeElement.hidden; 
-    }
-  }
 
 }

@@ -1,3 +1,19 @@
 page-mahcine-log-form {
 
+	.selectMachine {
+    background-color: white;
+    border: none;
+    flex: 1;
+	}
+
+	.labelMachineSelect {
+		color: #999;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 100px;
+    width: 100px;
+    min-width: 100px;
+    max-width: 200px;
+	}
+
 }

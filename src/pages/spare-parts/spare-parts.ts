@@ -51,9 +51,9 @@ export class SparePartsPage {
   }
 
   presentModal(form?: any) {
-   let profileModal = this.modalCtrl.create('SparePartsFormPage', form);
-   profileModal.present();
- }
+     let profileModal = this.modalCtrl.create('SparePartsFormPage', form);
+     profileModal.present();
+   }
 
   presentToast() {
     const toast = this.toastCtrl.create({
