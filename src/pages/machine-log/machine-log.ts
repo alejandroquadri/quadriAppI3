@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform, PopoverController, ModalController } from 'ionic-angular';
 
 
-import { MachineLogDataProvider } from '../../providers';
+import { MachineLogDataProvider, SplitShowProvider } from '../../providers';
 
 
 @IonicPage()
@@ -25,6 +25,7 @@ export class MachineLogPage {
   	public popoverCtrl: PopoverController,
     public modalCtrl: ModalController,
   	private machineLogData: MachineLogDataProvider,
+    private splitShow: SplitShowProvider
 	) {
   }
 
@@ -48,6 +49,15 @@ export class MachineLogPage {
   onChange(event) {
     this.machineLogData.searchInput = event;
     this.machineLogData.filter();
+  }
+
+  closeMenu() {
+    if (this.splitShow.show) {
+      this.splitShow.show = false;
+    } else {
+      this.splitShow.show = true;
+    }
+    
   }
 
 

@@ -35,6 +35,7 @@ import { MachineLogDataProvider } from '../providers/machine-log-data/machine-lo
 import { SparePartsDataProvider } from '../providers/spare-parts-data/spare-parts-data';
 import { SettingsProvider } from '../providers/settings/settings';
 import { StaticDataProvider } from '../providers/static-data/static-data';
+import { SplitShowProvider } from '../providers/split-show/split-show';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { StaticDataProvider } from '../providers/static-data/static-data';
     FieldFilterPipe,
     SortPipe,
     FilterPipe,
-    StaticDataProvider
+    StaticDataProvider,
+    SplitShowProvider
   ]
 })
 export class AppModule {}

@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-	  <button ion-button menuToggle>
+  	<button ion-button menuToggle (click)="menuToggle()">
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-searchbar [(ngModel)]="searchInput" (ngModelChange)="onChange($event)"></ion-searchbar>

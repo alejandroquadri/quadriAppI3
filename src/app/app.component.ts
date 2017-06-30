@@ -3,7 +3,7 @@ import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { AuthDataProvider } from '../providers/auth-data/auth-data';
+import { AuthDataProvider, SplitShowProvider } from '../providers';
 
 
 @Component({
@@ -18,9 +18,10 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   constructor(
-    platform: Platform,
-    statusBar: StatusBar,
-    splashScreen: SplashScreen,
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    private splitShow: SplitShowProvider,
     private authData: AuthDataProvider
   ) {
     authData.user.subscribe( user => {
@@ -38,6 +39,7 @@ export class MyApp {
         splashScreen.hide();
       });
     })
+    platform.width()
   }
 
   openPage (page: string, params?: any) {
@@ -46,6 +48,25 @@ export class MyApp {
 
   logOut() {
     this.authData.logout();
+  }
+
+  shouldShow() {
+    if ( this.splitShow.show ) {
+      if  (this.platform.width() > 768) {
+        console.log('show' , this.platform.width(), this.platform.width() > 768)
+        return true;
+      } else {
+        console.log('no show')
+        return false;
+      }
+    } else {
+      console.log('no show')
+      return false;
+    }
+  }
+
+  closeSplitPane() {
+    this.splitShow.show = false;
   }
 }
 

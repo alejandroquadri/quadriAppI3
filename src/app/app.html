@@ -1,4 +1,5 @@
-<ion-split-pane>
+<!-- <ion-split-pane [when]="shouldShow()"> -->
+<ion-split-pane when="lg">
 
   <ion-menu id="loggedInMenu" [content]="content" *ngIf="userProfile">
 
@@ -10,6 +11,9 @@
           </ion-avatar>
           <h2>{{ userProfile.displayName }}</h2>
           <h3>{{ userProfile.email }}</h3>
+          <!-- <button ion-button outline item-end icon-only (click)="closeSplitPane()">
+            <ion-icon name="close"></ion-icon>
+          </button> -->
         </ion-item>
       </ion-toolbar>
 
@@ -31,7 +35,7 @@
         </button>
       </ion-list>
 
-      <ion-list>
+      <!-- <ion-list>
         <ion-list-header>
           Produccion
         </ion-list-header>
@@ -67,7 +71,7 @@
           <ion-icon item-start name="log-out"></ion-icon>
           Salir
         </button>
-      </ion-list>
+      </ion-list> -->
 
     </ion-content>
 

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform, PopoverController, ToastController, ModalController } from 'ionic-angular';
 // import {IMyDpOptions} from 'mydatepicker';
 
-import { SparePartsDataProvider, SettingsProvider } from '../../providers';
+import { SparePartsDataProvider, SettingsProvider, SplitShowProvider } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -29,6 +29,7 @@ export class SparePartsPage {
     public modalCtrl: ModalController,
     private spareData: SparePartsDataProvider,
     private settingsData: SettingsProvider,
+    private splitShow: SplitShowProvider
 	) {
   }
 
@@ -79,6 +80,11 @@ export class SparePartsPage {
   onChange(event) {
     this.spareData.searchInput = event;
     this.spareData.filter();
+  }
+
+  menuToggle() {
+    console.log('menu');
+    this.splitShow.show = !this.splitShow.show;
   }
 
 }
