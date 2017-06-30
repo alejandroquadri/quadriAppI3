@@ -59,6 +59,7 @@ export class StaticDataProvider {
     	'',
       '995',
       '650',
+      'Autoelevadores',
       'Breton',
       'Lineal',
       'Taller',

@@ -4,8 +4,17 @@ page-machine-log {
 		font-size: 1.6rem;
 	}
 
+	.data {
+		border-bottom: solid map-get($colors, light) 1px;
+	}
+
 	.data:hover {
 		background-color: map-get($colors, light);
+	}
+
+	.description {
+    word-wrap: break-word;
+    white-space: pre-wrap;
 	}
 
 

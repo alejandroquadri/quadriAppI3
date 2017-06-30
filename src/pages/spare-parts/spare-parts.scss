@@ -30,6 +30,10 @@ page-spare-parts {
 		font-size: 1.6rem;
 	}
 
+	.data {
+		border-bottom: solid map-get($colors, light) 1px;
+	}
+
 	.data:hover {
 		background-color: map-get($colors, light);
 	}
@@ -37,6 +41,11 @@ page-spare-parts {
 	ion-select {
     max-width: 100%;
     border-radius: 5px;
+	}
+
+	.description {
+    word-wrap: break-word;
+    white-space: pre-wrap;
 	}
 
 	.select-md {
@@ -57,10 +66,6 @@ page-spare-parts {
 
 	.completo {
 		background-color: map-get($colors, secondary);
-	}
-
-	selectColor {
-
 	}
 
 	.actionButtons {

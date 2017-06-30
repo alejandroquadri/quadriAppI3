@@ -1,9 +1,9 @@
 import { Component} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IonicPage, NavController, NavParams, ViewController, Platform, PopoverController, ToastController } from 'ionic-angular';
+import { IonicPage, NavParams, ViewController, Platform} from 'ionic-angular';
 import * as firebase from 'firebase';
 
-import { SparePartsDataProvider, SettingsProvider, AuthDataProvider, StaticDataProvider } from '../../providers';
+import { SparePartsDataProvider, AuthDataProvider, StaticDataProvider } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -13,32 +13,28 @@ import { SparePartsDataProvider, SettingsProvider, AuthDataProvider, StaticDataP
 export class SparePartsFormPage {
 
 	spareForm: FormGroup;
-  spareParts: any;
+  // spareParts: any;
   submitType: string = 'new';
-  updateKey:  string;
+  // updateKey:  string;
   updateForm: any;
 
   constructor(
     private fb: FormBuilder,
-  	public navCtrl: NavController, 
     public navParams: NavParams,
     public platform: Platform,
     public viewCtrl: ViewController,
-    public popoverCtrl: PopoverController,
-    public toastCtrl: ToastController,
     private spareData: SparePartsDataProvider,
-    private settingsData: SettingsProvider,
     private authData: AuthDataProvider,
     private staticData: StaticDataProvider
     ) {
   	this.buildForm();
-  	if (this.navParams.data.detalle) {
-    	this.updateForm = this.navParams.data;
-    	this.edit()
-    }
   }
 
   ionViewDidLoad() {
+    if (this.navParams.data.detalle) {
+      this.updateForm = this.navParams.data;
+      this.edit()
+    }
   }
 
   ionViewDidEnter() {
@@ -56,6 +52,7 @@ export class SparePartsFormPage {
   }
 
   edit() {
+    console.log(this.updateForm);
   	this.submitType = 'edit';
     let muestra
     if (this.updateForm.muestra === 'si' ) {
@@ -71,7 +68,6 @@ export class SparePartsFormPage {
       unidad: this.updateForm.unidad,
       muestra: muestra
     })
-  	
   }
 
   onSubmit() {
