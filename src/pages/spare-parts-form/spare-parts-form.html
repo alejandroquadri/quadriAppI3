@@ -35,7 +35,7 @@
 
 					<ion-item *ngIf="platform.is('mobile')">
 					  <ion-label>Destino</ion-label>
-					  <ion-select formControlName="destino" [interface]="popover">
+					  <ion-select formControlName="destino" interface="popover">
 					    <ion-option *ngFor="let maquina of staticData.maquinas">{{maquina}}</ion-option>
 					  </ion-select>
 					</ion-item>
