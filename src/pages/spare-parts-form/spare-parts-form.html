@@ -48,12 +48,12 @@
 					</ion-item>
 
 				  <ion-item>
-				    <ion-label>Descripcion</ion-label>
+				    <ion-label fixed>Descripcion</ion-label>
 				    <ion-textarea formControlName="detalle" fz-elastic></ion-textarea>
 				  </ion-item>
 
 				  <ion-item>
-				    <ion-label>Cantidad</ion-label>
+				    <ion-label fixed>Cantidad</ion-label>
 				    <ion-input formControlName="cantidad" type="number"></ion-input>
 				  </ion-item>
 
@@ -69,6 +69,16 @@
 						<select item-content formControlName="unidad" class="selectMachine">
 						    <option *ngFor="let unidad of staticData.unidades">{{unidad}}</option>
 					  </select>
+				  </ion-item>
+
+					<ion-item>
+				    <ion-label fixed>Proveedor</ion-label>
+				    <ion-input formControlName="proveedor" type="text"></ion-input>
+				  </ion-item>
+
+				  <ion-item *ngIf="submitType === 'edit'">
+				    <ion-label fixed>Observacion</ion-label>
+				    <ion-textarea formControlName="observacion" fz-elastic></ion-textarea>
 				  </ion-item>
 
 				  <ion-item>

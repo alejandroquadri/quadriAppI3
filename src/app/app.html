@@ -1,5 +1,5 @@
 <!-- <ion-split-pane [when]="shouldShow()"> -->
-<ion-split-pane when="lg">
+<ion-split-pane when="xl">
 
   <ion-menu id="loggedInMenu" [content]="content" *ngIf="userProfile">
 
@@ -25,7 +25,7 @@
         <ion-list-header>
           Mantenimiento
         </ion-list-header>
-        <button ion-item menuClose (click)="openPage('SparePartsPage')">
+        <button ion-item menuClose (click)="platform.is('mobile')? openPage('SparePartsFormPage'): openPage('SparePartsPage')">
           <ion-icon item-start name="list-box"></ion-icon>
           Pedido repuestos
         </button>
@@ -61,7 +61,7 @@
           <ion-icon item-start name="stats"></ion-icon>
           Metricas
         </button>
-      </ion-list>
+      </ion-list> -->
 
       <ion-list>
         <ion-list-header>
@@ -71,7 +71,7 @@
           <ion-icon item-start name="log-out"></ion-icon>
           Salir
         </button>
-      </ion-list> -->
+      </ion-list>
 
     </ion-content>
 

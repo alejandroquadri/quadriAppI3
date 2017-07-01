@@ -13,9 +13,7 @@ import { SparePartsDataProvider, AuthDataProvider, StaticDataProvider } from '..
 export class SparePartsFormPage {
 
 	spareForm: FormGroup;
-  // spareParts: any;
   submitType: string = 'new';
-  // updateKey:  string;
   updateForm: any;
 
   constructor(
@@ -48,6 +46,8 @@ export class SparePartsFormPage {
       cantidad: ['', Validators.required],
       unidad: ['', Validators.required],
       muestra: [false, ],
+      proveedor: ['',],
+      observacion: ['',]
     });
   }
 
@@ -66,7 +66,9 @@ export class SparePartsFormPage {
       destino: this.updateForm.destino,
       cantidad: this.updateForm.cantidad,
       unidad: this.updateForm.unidad,
-      muestra: muestra
+      muestra: muestra,
+      proveedor: this.updateForm.proveedor || '',
+      observacion: this.updateForm.observacion || ''
     })
   }
 

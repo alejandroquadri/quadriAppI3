@@ -31,6 +31,7 @@ export class SparePartsPage {
     private settingsData: SettingsProvider,
     private splitShow: SplitShowProvider
 	) {
+
   }
 
   ionViewDidLoad() {
