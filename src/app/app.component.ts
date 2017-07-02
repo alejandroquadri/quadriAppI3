@@ -28,7 +28,7 @@ export class MyApp {
       console.log(user);
       this.userProfile = user;
       if (user) {
-        this.rootPage = 'SparePartsPage';
+        this.rootPage = this.setRoot();
       } else {
         this.rootPage = 'LoginPage'
       }
@@ -50,23 +50,17 @@ export class MyApp {
     this.authData.logout();
   }
 
-  shouldShow() {
-    if ( this.splitShow.show ) {
-      if  (this.platform.width() > 768) {
-        console.log('show' , this.platform.width(), this.platform.width() > 768)
-        return true;
-      } else {
-        console.log('no show')
-        return false;
-      }
+  shouldShow(){
+    return this.splitShow.show;
+  }
+
+  setRoot() {
+    if (this.platform.is('mobile')) {
+      return 'SparePartsFormPage'
     } else {
-      console.log('no show')
-      return false;
+      return 'SparePartsPage'
     }
   }
 
-  closeSplitPane() {
-    this.splitShow.show = false;
-  }
 }
 

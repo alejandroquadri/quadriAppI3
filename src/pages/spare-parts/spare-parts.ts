@@ -83,9 +83,4 @@ export class SparePartsPage {
     this.spareData.filter();
   }
 
-  menuToggle() {
-    console.log('menu');
-    this.splitShow.show = !this.splitShow.show;
-  }
-
 }

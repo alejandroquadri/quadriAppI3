@@ -2,8 +2,11 @@
 <ion-header>
 
   <ion-navbar>
+  	<button ion-button menuToggle *ngIf="platform.is('mobile')">
+	    <ion-icon name="menu"></ion-icon>
+	  </button>
     <ion-title>{{submitType === 'new' ? 'Nuevo repuesto' : 'Editar Repuesto '}}</ion-title>
-    <ion-buttons end>
+    <ion-buttons end *ngIf="!platform.is('mobile')">
 	    <button ion-button (click)="viewCtrl.dismiss()">
 	      Salir
 	    </button>
