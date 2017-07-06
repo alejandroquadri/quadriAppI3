@@ -177,7 +177,8 @@
 					    		<!-- <ion-label fixed>causa</ion-label> -->
 								  <ion-input ion-content formControlName="cause" type="text" placeholder="causa"></ion-input>
 					    	</ion-item>
-					    	<button ion-button outline block item-end icon-only small type="button" (click)="removeParada(i)"> <!-- *ngIf="(myForm.controls.paradas.controls.length>1)" -->
+					    	<button *ngIf="platform.is('mobile')" ion-button outline block item-end icon-only small type="button" (click)="removeParada(i)"> 
+					    	<!-- *ngIf="(myForm.controls.paradas.controls.length>1)" -->
 				            <ion-icon name="close"></ion-icon>
 			          </button>
 			    		</div>
