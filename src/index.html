@@ -2,26 +2,42 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8">
-  <title>Ionic App</title>
+  <title>Quadri</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
 
-  <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico">
+  <!-- <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico"> -->
+  <link rel="icon" href="assets/icon/faviconQuadri.ico">
   <link rel="manifest" href="manifest.json">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes"> <!-- hide browser UI -->
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-stranslucent"><!-- minimize status bar-->  
+  <meta name="application-name" content="Quadri">
+  <meta name="apple-mobile-web-app-title" content="Quadri">
+  <meta name="msapplication-starturl" content="index.html">
+
+  <link rel="apple-touch-startup-image" href="assets/images/quadri.jpg"> <!-- para el splach screen -->
+
+  <link rel="apple-touch-icon" href="apple-touch-icon-iphone.png"> <!-- icon -->
+  <link rel="apple-touch-icon" sizes="76x76" href="assets/icon/icon-76.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="assets/icon/icon-60@2x.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="assets/icon/icon-76@2x.png">
+
   <meta name="theme-color" content="#4e8ef7">
  
   <!-- cordova.js required for cordova apps -->
   <script src="cordova.js"></script>
 
-  <!-- un-comment this code to enable service worker
-  <script>
+   <!-- un-comment this code to enable service worker -->
+<!--   <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js')
         .then(() => console.log('service worker installed'))
         .catch(err => console.error('Error', err));
     }
-  </script>-->
+  </script> -->
 
   <link href="build/main.css" rel="stylesheet">
 

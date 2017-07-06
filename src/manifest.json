@@ -1,11 +1,11 @@
 {
-  "name": "Ionic",
-  "short_name": "Ionic",
+  "name": "Quadri",
+  "short_name": "Quadri",
+  "lang": "es-ES",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{
-    "src": "assets/imgs/logo.png",
-    "sizes": "512x512",
+    "src": "assets/icon/icon-72%402x.png",
     "type": "image/png"
   }],
   "background_color": "#4e8ef7",

@@ -4,7 +4,7 @@
   	<button ion-button menuToggle *ngIf="platform.is('mobile')">
 	    <ion-icon name="menu"></ion-icon>
 	  </button>
-		<ion-title>{{submitType === 'new' ? 'Nuevo' : 'Editar'}}</ion-title>
+		<ion-title>{{submitType === 'new' ? 'Nuevo registro' : 'Editar registro'}}</ion-title>
     <ion-buttons end *ngIf="!platform.is('mobile')">
 	    <button ion-button (click)="viewCtrl.dismiss()">
 	      Salir

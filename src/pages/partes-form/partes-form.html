@@ -1,0 +1,244 @@
+<ion-header>
+
+  <ion-navbar>
+	  <button ion-button menuToggle *ngIf="platform.is('mobile')">
+	    <ion-icon name="menu"></ion-icon>
+	  </button>
+    <ion-title>Parte produccion</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+	<ion-grid>
+		<form [formGroup]="myForm" novalidate (ngSubmit)="save()">
+
+			<ion-list>
+				<ion-item *ngIf="platform.is('mobile')">
+				  <ion-label fixed>Fecha</ion-label>
+				  <ion-datetime formControlName="date" displayFormat="MM/DD/YYYY"></ion-datetime>
+				</ion-item>
+
+				<ion-item *ngIf="!platform.is('mobile')">
+			    <ion-label fixed>Fecha</ion-label>
+			    <ion-input formControlName="date" type="date"></ion-input>
+			  </ion-item>
+
+			  <ion-item *ngIf="platform.is('mobile')">
+				  <ion-label>Maquina</ion-label>
+				  <ion-select formControlName="machine">
+				    <ion-option *ngFor="let maquina of staticData.maquinas">{{maquina}}</ion-option>
+				  </ion-select>
+				</ion-item>
+
+				<ion-item *ngIf="!platform.is('mobile')">
+						<ion-label class="labelMachineSelect">Maquina</ion-label>					
+					  <select item-content formControlName="machine" class="selectMachine">
+					    <option *ngFor="let maquina of staticData.maquinas">{{maquina}}</option>
+					  </select>
+				</ion-item>
+
+				<ion-item *ngIf="platform.is('mobile')">
+				  <ion-label>Color</ion-label>
+				  <ion-select formControlName="color">
+				    <ion-option *ngFor="let color of staticData.color">{{color}}</ion-option>
+				  </ion-select>
+				</ion-item>
+
+				<ion-item *ngIf="platform.is('mobile')">
+				  <ion-label>Dimension</ion-label>
+				  <ion-select formControlName="dim">
+				    <ion-option *ngFor="let dim of staticData.dim">{{dim}}</ion-option>
+				  </ion-select>
+				</ion-item>
+
+				<ion-item *ngIf="platform.is('mobile')">
+				  <ion-label>Dibujo</ion-label>
+				  <ion-select formControlName="drawing">
+				    <ion-option *ngFor="let drawing of staticData.drawing">{{drawing}}</ion-option>
+				  </ion-select>
+				</ion-item>
+
+				<ion-item *ngIf="!platform.is('mobile')">
+						<ion-label class="labelMachineSelect">Articulo</ion-label>
+						<div item-content class="labelColor">color</div>					
+					  <select item-content formControlName="color" class="selectMachine selectArt ">
+					    <option value="" disabled selected></option>
+					    <option *ngFor="let color of staticData.color">{{color}}</option>
+					  </select>
+					  <div item-content class="labelColor">dimension</div>
+					  <select item-content formControlName="dim" class="selectMachine selectArt">
+					    <option value="" disabled selected></option>
+					    <option *ngFor="let dim of staticData.dim">{{dim}}</option>
+					  </select>
+					  <div item-content class="labelColor">dibujo</div>
+					  <select item-content formControlName="drawing" class="selectMachine selectArt" style="margin-right: 0px;">
+					    <option value="" disabled selected></option>
+					    <option *ngFor="let drawing of staticData.drawing">{{drawing}}</option>
+					  </select>
+				</ion-item>
+
+				<ion-item>
+			    <ion-label fixed>N° Operarios</ion-label>
+			    <ion-input formControlName="mod" type="number"></ion-input>
+			  </ion-item>
+
+			  <ion-item *ngIf="platform.is('mobile')">
+				  <ion-label fixed>Hora inicio</ion-label>
+				  <ion-datetime ion-content formControlName="start" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+				</ion-item>
+
+				<ion-item *ngIf="platform.is('mobile')">
+				  <ion-label fixed>Hora fin</ion-label>
+				  <ion-datetime formControlName="end" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+				</ion-item>
+
+				<ion-item *ngIf="!platform.is('mobile')">
+			    <ion-label fixed>Hora</ion-label>
+			    <div item-content class="labelColor">inicio</div>
+			    <ion-input ion-content formControlName="start" type="time" text-center class="horaParada"></ion-input>
+			    <div item-content class="labelColor">fin</div>
+			    <ion-input ion-content formControlName="end" type="time" text-center class="horaParada"></ion-input>
+			  </ion-item>
+
+			  <ion-item *ngIf="!platform.is('mobile')">
+			    <ion-label fixed>Produccion</ion-label>
+			    <ion-input ion-content formControlName="prod" type="number" text-center></ion-input>
+		    	<div item-content *ngIf="isPulidora()" class="labelColor">Segunda</div>
+			    <ion-input *ngIf="isPulidora()" ion-content formControlName="seg" type="number" text-center></ion-input>
+			    <div item-content *ngIf="isPulidora()" class="labelColor">Rotos</div>
+			    <ion-input *ngIf="isPulidora()" ion-content formControlName="broken" type="number" text-center></ion-input>
+			    <div *ngIf="isPulidora()" item-content class="labelColor">Repaso</div>
+			    <ion-input *ngIf="isPulidora()" ion-content formControlName="rep" type="number" text-center></ion-input>
+			  </ion-item>
+
+			  <ion-item *ngIf="platform.is('mobile')">
+			    <ion-label fixed>Produccion</ion-label>
+			    <ion-input ion-content formControlName="prod" type="number" text-center></ion-input>
+			  </ion-item>
+			  <ion-item *ngIf="platform.is('mobile') && isPulidora()">
+		    	<ion-label item-content >Segunda</ion-label>
+			    <ion-input ion-content formControlName="seg" type="number" text-center></ion-input>
+			  </ion-item>
+			  <ion-item *ngIf="platform.is('mobile') && isPulidora()">
+			    <ion-label item-content >Rotos</ion-label>
+			    <ion-input ion-content formControlName="broken" type="number" text-center></ion-input>
+			  </ion-item>
+			  <ion-item *ngIf="platform.is('mobile') && isPulidora()">
+			    <ion-label item-content>Repaso</ion-label>
+			    <ion-input ion-content formControlName="rep" type="number" text-center></ion-input>
+			  </ion-item>
+			
+			</ion-list>
+			
+			<ion-card class="cardStyle">
+			
+			  <ion-card-header>
+			  	<ion-item>
+			  		<div ion-content>Paradas de maquina</div>
+			  		<button ion-button outline item-start icon-only small (click)="addParada()" type="button">
+	            <ion-icon name="add"></ion-icon>
+	          </button>
+			  	</ion-item>
+			    
+			  </ion-card-header>
+				
+			  <ion-card-content>
+			    <ion-list formArrayName="paradas" no-lines>
+
+			    	<div *ngFor="let parada of myForm.controls.paradas.controls; let i=index" class="">
+			    		<div [formGroupName]="i">
+			    			<ion-item  *ngIf="!platform.is('mobile')">
+					    		<div item-content class="labelColor">inicio</div>
+							    <ion-input ion-content formControlName="startP" type="time" text-center class="horaParada"></ion-input>
+							    <div item-content class="labelColor">fin</div>
+							    <ion-input ion-content formControlName="endP" type="time" text-center class="horaParada"></ion-input>
+							    <div item-content class="labelColor">Causa</div>
+							    <ion-input ion-content formControlName="cause" type="text"></ion-input>
+							    <button ion-button clear item-end icon-only small (click)="addParada()" type="button">
+				            <ion-icon name="add"></ion-icon>
+				          </button>
+				          <button ion-button clear item-end icon-only small type="button" (click)="removeParada(i)"> <!-- *ngIf="(myForm.controls.paradas.controls.length>1)" -->
+				            <ion-icon name="close"></ion-icon>
+				          </button>
+					    	</ion-item>
+
+					    	<ion-item *ngIf="platform.is('mobile')">
+					    		<ion-label fixed>inicio</ion-label>
+								  <ion-datetime formControlName="startP" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+					    	</ion-item>
+					    	<ion-item *ngIf="platform.is('mobile')">
+					    		<ion-label fixed>fin</ion-label>
+								  <ion-datetime formControlName="endP" displayFormat="HH:mm" pickerFormat="HH:mm"></ion-datetime>
+					    	</ion-item>
+					    	<ion-item *ngIf="platform.is('mobile')">
+					    		<!-- <ion-label fixed>causa</ion-label> -->
+								  <ion-input ion-content formControlName="cause" type="text" placeholder="causa"></ion-input>
+					    	</ion-item>
+					    	<button ion-button outline block item-end icon-only small type="button" (click)="removeParada(i)"> <!-- *ngIf="(myForm.controls.paradas.controls.length>1)" -->
+				            <ion-icon name="close"></ion-icon>
+			          </button>
+			    		</div>
+			    		
+			    	</div>
+			    
+			    </ion-list>
+			  </ion-card-content>
+			
+			</ion-card>
+
+			<button ion-button outline  type="submit" [disabled]="!myForm.valid">
+				Enviar
+			</button>
+			<button ion-button outline color="warning" type="button" (click)="reset()" [disabled]="myForm.pristine">
+				Reset
+			</button>
+			
+		</form>
+	</ion-grid>	
+
+</ion-content>
+
+<!-- 	<div>{{isPulidora()}}</div>
+  <div>myForm details:-</div>
+  <pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>
+  <pre>form value: <br>{{myForm.value | json}}</pre> -->
+
+      <!-- <form [formGroup]="myForm" novalidate (ngSubmit)="save()">
+
+          <label>Name</label>
+          <input type="text" class="form-control" formControlName="name">
+          <small *ngIf="!myForm.controls.name.valid" class="text-danger">
+              Name is required (minimum 5 characters).
+            </small>
+
+        <div formArrayName="addresses">
+          <div *ngFor="let address of myForm.controls.addresses.controls; let i=index" class="pep">
+              <span>Address {{i + 1}}</span>
+              <span class="glyphicon glyphicon-remove pull-right" 
+              *ngIf="(myForm.controls.addresses.controls.length>1)" 
+              (click)="removeAddress(i)">borrar</span>
+            <div [formGroupName]="i">
+              <label>street</label>
+              <input type="text" class="form-control" formControlName="street">
+              <small [hidden]="myForm.controls.addresses.controls[i].controls.street.valid" class="text-danger">
+                  Street is required
+              </small>
+              <label>postcode</label>
+              <input type="text" class="form-control" formControlName="postcode">
+            </div>
+          </div>
+        </div>
+
+        <div class="margin-20">
+          <a (click)="addAddress()" style="cursor: default">
+            Add another address +
+          </a>
+        </div>
+
+        <div class="margin-20">
+          <button type="submit" class="btn btn-primary pull-right" [disabled]="!myForm.valid">Submit</button>
+        </div>
+        <div class="clearfix"></div> -->

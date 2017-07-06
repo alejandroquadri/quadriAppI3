@@ -5,7 +5,7 @@
   	<button ion-button menuToggle *ngIf="platform.is('mobile')">
 	    <ion-icon name="menu"></ion-icon>
 	  </button>
-    <ion-title>{{submitType === 'new' ? 'Nuevo repuesto' : 'Editar Repuesto '}}</ion-title>
+    <ion-title>{{submitType === 'new' ? 'Nuevo repuesto' : 'Editar repuesto '}}</ion-title>
     <ion-buttons end *ngIf="!platform.is('mobile')">
 	    <button ion-button (click)="viewCtrl.dismiss()">
 	      Salir
@@ -18,7 +18,7 @@
 
 <ion-content padding>
 
-	<ion-grid fixed #form class="gridForm">
+	<ion-grid fixed #form>
 	  <form [formGroup]="spareForm" (ngSubmit)="onSubmit()">
 				<ion-list>
 					

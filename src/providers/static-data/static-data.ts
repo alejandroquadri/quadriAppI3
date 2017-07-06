@@ -86,6 +86,34 @@ export class StaticDataProvider {
 
     tipoStatus = ['Pendiente','Encargado','Completo','Suspendido'];
 
+    color = [
+      'Blanco',
+      'Botichino',
+      'Brechiato',
+      'Gris Perla',
+      'Verde Alpe',
+      'Sierra Chica'
+    ]
+
+    dim = [
+      '40x40',
+      '60x40',
+      '50x50',
+      '10x40',
+      '10x40',
+      '10x50',
+      '10x60'
+    ]
+
+    drawing = [
+      'liso',
+      'loseta',
+      '64 panes',
+      '64 tapones',
+      'tresbolillo',
+      'adoquin curvo'
+    ]
+
   constructor() {
     console.log('Hello StaticDataProvider Provider');
   }

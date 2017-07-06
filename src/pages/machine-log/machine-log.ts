@@ -52,12 +52,7 @@ export class MachineLogPage {
   }
 
   closeMenu() {
-    if (this.splitShow.show) {
-      this.splitShow.show = false;
-    } else {
-      this.splitShow.show = true;
-    }
-    
+    this.splitShow.show = !this.splitShow.show;    
   }
 
 
