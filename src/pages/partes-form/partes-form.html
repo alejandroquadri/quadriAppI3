@@ -138,7 +138,7 @@
 			  <ion-card-header>
 			  	<ion-item>
 			  		<div ion-content>Paradas de maquina</div>
-			  		<button ion-button outline item-start icon-only small (click)="addParada()" type="button">
+			  		<button ion-button outline item-start icon-only small (click)="addStop()" type="button">
 	            <ion-icon name="add"></ion-icon>
 	          </button>
 			  	</ion-item>
@@ -146,9 +146,9 @@
 			  </ion-card-header>
 				
 			  <ion-card-content>
-			    <ion-list formArrayName="paradas" no-lines>
+			    <ion-list formArrayName="stops" no-lines>
 
-			    	<div *ngFor="let parada of myForm.controls.paradas.controls; let i=index" class="">
+			    	<div *ngFor="let parada of myForm.controls.stops.controls; let i=index" class="">
 			    		<div [formGroupName]="i">
 			    			<ion-item  *ngIf="!platform.is('mobile')">
 					    		<div item-content class="labelColor">inicio</div>
@@ -157,10 +157,10 @@
 							    <ion-input ion-content formControlName="endP" type="time" text-center class="horaParada"></ion-input>
 							    <div item-content class="labelColor">Causa</div>
 							    <ion-input ion-content formControlName="cause" type="text"></ion-input>
-							    <button ion-button clear item-end icon-only small (click)="addParada()" type="button">
+							    <button ion-button clear item-end icon-only small (click)="addStop()" type="button">
 				            <ion-icon name="add"></ion-icon>
 				          </button>
-				          <button ion-button clear item-end icon-only small type="button" (click)="removeParada(i)"> <!-- *ngIf="(myForm.controls.paradas.controls.length>1)" -->
+				          <button ion-button clear item-end icon-only small type="button" (click)="removeStop(i)"> <!-- *ngIf="(myForm.controls.stops.controls.length>1)" -->
 				            <ion-icon name="close"></ion-icon>
 				          </button>
 					    	</ion-item>
@@ -177,8 +177,8 @@
 					    		<!-- <ion-label fixed>causa</ion-label> -->
 								  <ion-input ion-content formControlName="cause" type="text" placeholder="causa"></ion-input>
 					    	</ion-item>
-					    	<button *ngIf="platform.is('mobile')" ion-button outline block item-end icon-only small type="button" (click)="removeParada(i)"> 
-					    	<!-- *ngIf="(myForm.controls.paradas.controls.length>1)" -->
+					    	<button *ngIf="platform.is('mobile')" ion-button outline block item-end icon-only small type="button" (click)="removeStop(i)"> 
+					    	<!-- *ngIf="(myForm.controls.stops.controls.length>1)" -->
 				            <ion-icon name="close"></ion-icon>
 			          </button>
 			    		</div>
@@ -193,7 +193,7 @@
 			<button ion-button outline  type="submit" [disabled]="!myForm.valid">
 				Enviar
 			</button>
-			<button ion-button outline color="warning" type="button" (click)="reset()" [disabled]="myForm.pristine">
+			<button ion-button outline color="warning" type="button" (click)="myForm.reset()" [disabled]="myForm.pristine">
 				Reset
 			</button>
 			

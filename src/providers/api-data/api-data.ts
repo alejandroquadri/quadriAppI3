@@ -46,30 +46,35 @@ export class ApiDataProvider {
 		}
 	}
 
-	updateFan(form, paths: Array<any>): firebase.Promise<any> {
-		// este metodo usa el firebase JS SDK
-		// form es el objeto con la propiedad que quiero actrualizar
-		// paths es un array con los paths donde esta el objeto que quiero actualizar
-		// si fuera una lista el path deberia contener el id del del objeto en dicha lista
-		// abajo el ejemplo de lo como actualizaba el profile en la dietApp
-		// const paths = [
-    //   `userProfile/${this.authData.fireAuth.uid}`,
-    //   `coachPatients/${this.current.coach}/${this.authData.fireAuth.uid}`
-    // ] ;
-    const root = firebase.database().ref();
-    const updates = this.fanOutObject(form, paths )
-    return root.update(updates);
+	getNewKey() {
+		return firebase.database().ref().push().key;
+	}
+
+	timestamp() {
+		return firebase.database.ServerValue.TIMESTAMP;
+	}
+
+  fanUpdate(fanObject: any) {
+  	return firebase.database().ref().update(fanObject);
   }
 
-  private fanOutObject (updateForm: any, paths: Array<string>) {
+  fanOutObject (updateForm: any, paths: Array<string>, key: boolean) {
     const fanObject = {}
     const updateFormKeys = Object.keys(updateForm);
-    paths.forEach( path => {
-      updateFormKeys.forEach( updateKey => {
-        fanObject[`${path}/${updateKey}`] = updateForm[updateKey]
-      })
-    })
-    console.log(fanObject);
+    if (key) {
+    	const newKey = this.getNewKey();
+    	paths.forEach( path => {
+	      updateFormKeys.forEach( updateKey => {
+	        fanObject[`${path}/${newKey}/${updateKey}`] = updateForm[updateKey]
+	      })
+	    })
+    } else {
+    	paths.forEach( path => {
+	      updateFormKeys.forEach( updateKey => {
+	        fanObject[`${path}/${updateKey}`] = updateForm[updateKey]
+	      })
+	    })
+    }
     return fanObject;
   }
 	

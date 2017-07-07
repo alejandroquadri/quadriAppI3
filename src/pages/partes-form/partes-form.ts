@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 import { IonicPage, NavParams, ViewController, Platform} from 'ionic-angular';
-// import * as firebase from 'firebase';
+import * as firebase from 'firebase';
 
-import { AuthDataProvider, StaticDataProvider } from '../../providers';
+import { AuthDataProvider, StaticDataProvider, ProductionDataProvider } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -19,11 +19,20 @@ export class PartesFormPage implements OnInit {
 	    public platform: Platform,
 	    public viewCtrl: ViewController,
 	    private authData: AuthDataProvider,
-	    private staticData: StaticDataProvider
+	    private staticData: StaticDataProvider,
+	    private prodData: ProductionDataProvider
     ) { }
 
+    ionViewDidLoad() {
+    	
+    }
+
     ngOnInit() {
-      this.myForm = this._fb.group({
+      this.buildForm();
+    }
+
+    buildForm() {
+    	this.myForm = this._fb.group({
       	date: ['', Validators.required],
       	machine: ['',],
       	color: ['',],
@@ -37,7 +46,7 @@ export class PartesFormPage implements OnInit {
       	rep: ['',],
       	broken: ['',],
       	// paradas: this._fb.array([this.initParada()]), esto si quiero que arranque con uno detro del array
-      	paradas: this._fb.array([]),
+      	stops: this._fb.array([]),
 
         // name: ['', [Validators.required, Validators.minLength(5)]],
         // addresses: this._fb.array([
@@ -54,21 +63,40 @@ export class PartesFormPage implements OnInit {
       });
     }
 
-    addParada() {
-      const control = <FormArray>this.myForm.controls['paradas'];
+    addStop() {
+      const control = <FormArray>this.myForm.controls['stops'];
       control.push(this.initParada());
     }
 
-    removeParada(i: number) {
-      const control = <FormArray>this.myForm.controls['paradas'];
+    removeStop(i: number) {
+      const control = <FormArray>this.myForm.controls['stops'];
       control.removeAt(i);
+
+    }
+
+    clearStops(){
+      this.myForm.controls['stops'] = this._fb.array([]);
     }
 
     save() {
-      // call API to save
-      // ...
-      console.log(this.myForm.value);
-      console.log(this.myForm);
+      let prod = this.myForm.value;
+      let stops = this.myForm.value.stops;
+      console.log(stops);
+      delete prod.stops;
+
+      this.prodData.pushProduction(prod)
+      .then( (ret: any) => {
+      	console.log(ret.key);
+      	console.log(stops.length);
+      	if (stops.length > 0) {
+      		prod['$key'] = ret.key;
+	      	this.prodData.setProdStop(prod, stops);
+      	}
+      })
+      .then( () => {
+      	console.log('stops saved');
+      	this.buildForm();
+      });
       this.myForm.reset();
     }
 
@@ -78,10 +106,6 @@ export class PartesFormPage implements OnInit {
     	} else {
     		return false;
     	}
-    }
-
-    reset() {
-    	this.myForm.reset();
     }
 
 }

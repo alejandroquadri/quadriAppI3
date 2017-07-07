@@ -5,3 +5,4 @@ export * from './spare-parts-data/spare-parts-data';
 export * from './settings/settings';
 export * from './static-data/static-data';
 export * from './split-show/split-show';
+export * from './production-data/production-data';
