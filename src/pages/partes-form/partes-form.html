@@ -105,13 +105,13 @@
 
 			  <ion-item *ngIf="!platform.is('mobile')">
 			    <ion-label fixed>Produccion</ion-label>
-			    <ion-input ion-content formControlName="prod" type="number" text-center></ion-input>
+			    <ion-input ion-content formControlName="prod" type="number"></ion-input>
 		    	<div item-content *ngIf="isPulidora()" class="labelColor">Segunda</div>
-			    <ion-input *ngIf="isPulidora()" ion-content formControlName="seg" type="number" text-center></ion-input>
+			    <ion-input *ngIf="isPulidora()" ion-content formControlName="seg" type="number"></ion-input>
 			    <div item-content *ngIf="isPulidora()" class="labelColor">Rotos</div>
-			    <ion-input *ngIf="isPulidora()" ion-content formControlName="broken" type="number" text-center></ion-input>
+			    <ion-input *ngIf="isPulidora()" ion-content formControlName="broken" type="number"></ion-input>
 			    <div *ngIf="isPulidora()" item-content class="labelColor">Repaso</div>
-			    <ion-input *ngIf="isPulidora()" ion-content formControlName="rep" type="number" text-center></ion-input>
+			    <ion-input *ngIf="isPulidora()" ion-content formControlName="rep" type="number"></ion-input>
 			  </ion-item>
 
 			  <ion-item *ngIf="platform.is('mobile')">
@@ -129,6 +129,11 @@
 			  <ion-item *ngIf="platform.is('mobile') && isPulidora()">
 			    <ion-label item-content>Repaso</ion-label>
 			    <ion-input ion-content formControlName="rep" type="number" text-center></ion-input>
+			  </ion-item>
+
+			  <ion-item>
+			    <ion-label fixed>Observacion</ion-label>
+			    <ion-textarea formControlName="observaciones" fz-elastic></ion-textarea>
 			  </ion-item>
 			
 			</ion-list>

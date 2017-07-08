@@ -47,6 +47,7 @@ export class PartesFormPage implements OnInit {
     	seg: ['',],
     	rep: ['',],
     	broken: ['',],
+    	observaciones: [''],
     	stops: this._fb.array([]),
     });
   }
