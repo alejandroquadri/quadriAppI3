@@ -18,12 +18,12 @@
 			<ion-list>
 				<ion-item *ngIf="platform.is('mobile')">
 				  <ion-label fixed>Fecha</ion-label>
-				  <ion-datetime formControlName="date" displayFormat="MM/DD/YYYY"></ion-datetime>
+				  <ion-datetime #dateInput formControlName="date" displayFormat="MM/DD/YYYY"></ion-datetime>
 				</ion-item>
 
 				<ion-item *ngIf="!platform.is('mobile')">
 			    <ion-label fixed>Fecha</ion-label>
-			    <ion-input formControlName="date" type="date"></ion-input>
+			    <ion-input #dateInput formControlName="date" type="date"></ion-input>
 			  </ion-item>
 
 			  <ion-item *ngIf="platform.is('mobile')">
@@ -206,40 +206,3 @@
   <div>myForm details:-</div>
   <pre>Is myForm valid?: <br>{{myForm.valid | json}}</pre>
   <pre>form value: <br>{{myForm.value | json}}</pre> -->
-
-      <!-- <form [formGroup]="myForm" novalidate (ngSubmit)="save()">
-
-          <label>Name</label>
-          <input type="text" class="form-control" formControlName="name">
-          <small *ngIf="!myForm.controls.name.valid" class="text-danger">
-              Name is required (minimum 5 characters).
-            </small>
-
-        <div formArrayName="addresses">
-          <div *ngFor="let address of myForm.controls.addresses.controls; let i=index" class="pep">
-              <span>Address {{i + 1}}</span>
-              <span class="glyphicon glyphicon-remove pull-right" 
-              *ngIf="(myForm.controls.addresses.controls.length>1)" 
-              (click)="removeAddress(i)">borrar</span>
-            <div [formGroupName]="i">
-              <label>street</label>
-              <input type="text" class="form-control" formControlName="street">
-              <small [hidden]="myForm.controls.addresses.controls[i].controls.street.valid" class="text-danger">
-                  Street is required
-              </small>
-              <label>postcode</label>
-              <input type="text" class="form-control" formControlName="postcode">
-            </div>
-          </div>
-        </div>
-
-        <div class="margin-20">
-          <a (click)="addAddress()" style="cursor: default">
-            Add another address +
-          </a>
-        </div>
-
-        <div class="margin-20">
-          <button type="submit" class="btn btn-primary pull-right" [disabled]="!myForm.valid">Submit</button>
-        </div>
-        <div class="clearfix"></div> -->
