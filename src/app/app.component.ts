@@ -43,6 +43,7 @@ export class MyApp {
   }
 
   openPage (page: string, params?: any) {
+    console.log('open page');
     this.nav.setRoot(page, params);
   }
 

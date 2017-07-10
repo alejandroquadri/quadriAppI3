@@ -2,7 +2,7 @@ import { Component, ViewChild, Renderer, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 import { IonicPage, NavParams, ViewController, Platform} from 'ionic-angular';
 
-import { AuthDataProvider, StaticDataProvider, ProductionDataProvider } from '../../providers';
+import { StaticDataProvider, ProductionDataProvider } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -20,7 +20,6 @@ export class PartesFormPage implements OnInit {
   	public navParams: NavParams,
     public platform: Platform,
     public viewCtrl: ViewController,
-    private authData: AuthDataProvider,
     private staticData: StaticDataProvider,
     private prodData: ProductionDataProvider
   ) { }
