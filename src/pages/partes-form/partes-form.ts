@@ -68,7 +68,6 @@ export class PartesFormPage implements OnInit {
   removeStop(i: number) {
     const control = <FormArray>this.myForm.controls['stops'];
     control.removeAt(i);
-
   }
 
   clearStops(){
