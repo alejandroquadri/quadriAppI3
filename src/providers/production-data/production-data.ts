@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 import { ApiDataProvider } from '../api-data/api-data';
 import { AuthDataProvider } from '../auth-data/auth-data';
@@ -7,11 +8,18 @@ import { AuthDataProvider } from '../auth-data/auth-data';
 @Injectable()
 export class ProductionDataProvider {
 
+  production: any;
+
+  prodSubject = new ReplaySubject(1);
+  prodObs = this.prodSubject.asObservable();
+
   constructor(
   	private api: ApiDataProvider,
   	private authData: AuthDataProvider
   	) {
-    console.log('Hello ProductionDataProvider Provider');
+    this.getProduction().subscribe( prod => {
+      this.production = prod;
+    })
   }
 
   pushProduction(form: any) {

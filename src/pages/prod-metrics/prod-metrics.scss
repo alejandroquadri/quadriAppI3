@@ -1,3 +1,26 @@
 page-prod-metrics {
 
+	.paradaLabel {
+		color: #999;
+	}
+
+	.causaContent {
+		flex: 1;
+	}
+
+
+	.horaParada {
+    flex: 0.3;
+  }
+
+  .border {
+  	border: solid 1px #dedede;
+  }
+
+  .borderRow {
+  	border-bottom: solid 1px #dedede;
+  	border-left: solid 1px #dedede;
+  	border-right: solid 1px #dedede;
+  }
+
 }
