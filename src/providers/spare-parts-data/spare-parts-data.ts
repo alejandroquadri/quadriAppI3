@@ -67,7 +67,7 @@ export class SparePartsDataProvider {
 	}
 
   filter() {
-    const filteredField = this.fieldFilterPipe.transform(this.spareParts, 'status', this.changeFilters(this.filters));
+    const filteredField = this.fieldFilterPipe.transform(this.spareParts, ['status'], this.changeFilters(this.filters));
     const filtered = this.filterPipe.transform(filteredField, this.searchInput)
     const ordered = this.sortPipe.transform(filtered, this.field, this.asc);
     this.sparePartsSubject.next(ordered);

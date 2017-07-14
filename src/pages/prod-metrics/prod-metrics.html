@@ -2,7 +2,6 @@
 
   <ion-navbar>
     <ion-title>Metricas de produccion</ion-title>
-    
   </ion-navbar>
 
 </ion-header>
@@ -10,170 +9,17 @@
 
 <ion-content padding>
 
-<ion-grid>
-	<ion-row>
-		<ion-input #dateInput type="date"></ion-input>
-	</ion-row>
+	<ion-grid>
 
-  <h1>
-		Breton
-  </h1>
+		<ion-row>
+			<ion-col col-sm-6>
+				<canvas #prodChart></canvas>
+			</ion-col>
+			<ion-col col-sm-6>
+				<canvas #prodAcChart></canvas>
+			</ion-col>
+		</ion-row>
 
-	<h5>Brechiato Liso 40x40</h5>
-	<div>
-		<ion-row class="border">
-	 		<ion-col></ion-col>
-	 		<ion-col>Marcha</ion-col>
-	 		<ion-col>Vel</ion-col>
-	 		<ion-col>Produccion</ion-col>
-	 		<ion-col>Segunda</ion-col>
-				<ion-col>Repaso</ion-col>
-				<ion-col>Rotos</ion-col>
-				<ion-col>Total</ion-col>
-	 	</ion-row>
-
-	 	<ion-row class="borderRow">
-	 		<ion-col align-self-center>nominal</ion-col>
-	 		<ion-col>
-	 			<ion-row>
-	 				<ion-col>inicio: 8 hs</ion-col>
-	 			</ion-row>
-	 			<ion-row>
-	 				<ion-col>final: 17 hs</ion-col>
-	 			</ion-row>
-	 			<ion-row>
-	 				<ion-col>8 horas</ion-col>
-	 			</ion-row>
-	 		</ion-col>
-	 		<ion-col align-self-center>2.4 m/s</ion-col>
-	 		<ion-col>
-	   		<ion-row>
-	 				<ion-col>2812 u</ion-col>
-	 			</ion-row>
-	 			<ion-row>
-	 				<ion-col>450 m2</ion-col>
-	 			</ion-row>
-	 		</ion-col>
-	 		<ion-col></ion-col>
-				<ion-col></ion-col>
-				<ion-col></ion-col>
-				<ion-col></ion-col>
-	 	</ion-row>
-
-	 	<ion-row class="borderRow">
-	 		<ion-col align-self-center>11/07/2017</ion-col>
-	 		<ion-col align-self-center>
-	 			<ion-row>
-	 				<ion-col>inicio: 8 hs</ion-col>
-	 			</ion-row>
-	 			<ion-row>
-	 				<ion-col>final: 17 hs</ion-col>
-	 			</ion-row>
-	 			<ion-row>
-	 				<ion-col>8 horas</ion-col>
-	 			</ion-row>
-	 		</ion-col>
-	 		<ion-col align-self-center>2.4 m/s</ion-col>
-	 		<ion-col align-self-center>
-	   		<ion-row>
-	 				<ion-col>2812 u</ion-col>
-	 			</ion-row>
-	 			<ion-row>
-	 				<ion-col>450 m2</ion-col>
-	 			</ion-row>
-	 		</ion-col>
-	 		<ion-col>
-	 			<ion-row>
-	 				<ion-col>26 u</ion-col>
-	 			</ion-row>
-	 			<ion-row>
-	 				<ion-col>4.16 m2</ion-col>
-	 			</ion-row>
-	 			<ion-row>
-	 				<ion-col>0.9 %</ion-col>
-	 			</ion-row>
-	 		</ion-col>
-				<ion-col>
-					<ion-row>
-	 				<ion-col>26 u</ion-col>
-	 			</ion-row>
-	 			<ion-row>
-	 				<ion-col>4.16 m2</ion-col>
-	 			</ion-row>
-	 			<ion-row>
-	 				<ion-col>0.9 %</ion-col>
-	 			</ion-row>
-				</ion-col>
-				<ion-col>
-					<ion-row>
-	 				<ion-col>26 u</ion-col>
-	 			</ion-row>
-	 			<ion-row>
-	 				<ion-col>4.16 m2</ion-col>
-	 			</ion-row>
-	 			<ion-row>
-	 				<ion-col>0.9 %</ion-col>
-	 			</ion-row>
-				</ion-col>
-				<ion-col>
-					<ion-row>
-	 				<ion-col>26 u</ion-col>
-	 			</ion-row>
-	 			<ion-row>
-	 				<ion-col>4.16 m2</ion-col>
-	 			</ion-row>
-	 			<ion-row>
-	 				<ion-col>0.9 %</ion-col>
-	 			</ion-row>
-				</ion-col>
-	 	</ion-row>
-	</div>
- 	
-
-<!-- 	<ion-row>
-		<ion-col> -->
-			<ion-card>
-			
-			  <ion-card-header>
-			   Paradas
-			  </ion-card-header>
-			
-			  <ion-card-content>
-
-			    		<ion-row>
-				    		<ion-col col-auto><span class="paradaLabel">inicio: </span>10:21</ion-col>
-				    		<ion-col col-auto><span class="paradaLabel">fin: </span>11:00</ion-col>
-				    		<ion-col col-auto><span class="paradaLabel">Causa:</span></ion-col>
-				    		<ion-col col-auto class="causaContent">Palacios no cargo la maquina porque no se le canto el quinto forro del orto. Estaba de mal humor porque habian perdido los bosteros</ion-col>
-			    		</ion-row>
-
-			    		<ion-row>
-				    		<ion-col col-auto><span class="paradaLabel">inicio: </span>10:21</ion-col>
-				    		<ion-col col-auto><span class="paradaLabel">fin: </span>11:00</ion-col>
-				    		<ion-col col-auto><span class="paradaLabel">Causa:</span></ion-col>
-				    		<ion-col col-auto class="causaContent">Palacios no cargo la maquina porque no se le canto el quinto forro del orto. Estaba de mal humor porque habian perdido los bosteros</ion-col>
-			    		</ion-row>
-
-			    		<ion-row>
-				    		<ion-col col-auto><span class="paradaLabel">inicio: </span>10:21</ion-col>
-				    		<ion-col col-auto><span class="paradaLabel">fin: </span>11:00</ion-col>
-				    		<ion-col col-auto><span class="paradaLabel">Causa:</span></ion-col>
-				    		<ion-col col-auto class="causaContent">Palacios no cargo la maquina porque no se le canto el quinto forro del orto. Estaba de mal humor porque habian perdido los bosteros</ion-col>
-			    		</ion-row>
-
-			  </ion-card-content>
-			
-			</ion-card>
-<!-- 		</ion-col>
-	</ion-row> -->
-	<ion-row>
-		<ion-col col-sm-6>
-			<canvas #prodChart></canvas>
-		</ion-col>
-		<ion-col col-sm-6>
-			<canvas #prodAcChart></canvas>
-		</ion-col>
-	</ion-row>
-</ion-grid>
+	</ion-grid>
 
 </ion-content>

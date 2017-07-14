@@ -2,6 +2,7 @@ import { Component, ViewChild} from '@angular/core';
 import { IonicPage, NavParams, ViewController, Platform} from 'ionic-angular';
 
 import { StaticDataProvider, ProductionDataProvider } from '../../providers';
+import { FieldFilterPipe } from '../../pipes';
 
 import Chart from 'chart.js';
 import * as moment from 'moment';
@@ -16,40 +17,46 @@ export class ProdMetricsPage {
 	@ViewChild('prodChart') prodChartEl;
 	@ViewChild('prodAcChart') prodAcChartEl;
 
+	production: any;
+
   constructor(
   	public navParams: NavParams,
     public platform: Platform,
     public viewCtrl: ViewController,
     private staticData: StaticDataProvider,
-    private prodData: ProductionDataProvider
-  ) {
-  }
+    private prodData: ProductionDataProvider,
+    private fieldFilterPipe: FieldFilterPipe
+  ) {}
 
   ionViewDidLoad() {
+  	this.prodData.getProduction().subscribe( prod => {
+  		this.production = prod;
+  	});
+
     console.log('ionViewDidLoad ProdMetricsPage');
-    const data = [400, 434, 402, 450, 460];
+    const data1 = [400, 434, 402, 450, 460];
+    const data2 = [23,30,16,15,50];
+    const data3 = [0,20,40,60,80];
     const labels = ['lun', 'mar', 'mier', 'jue', 'vier'];
-    this.buildProdChart(data, labels);
-    this.buildProdAcChart(data, labels);
+    this.buildChart(labels, this.prodChartEl.nativeElement, data1, data2)
+    this.buildChart(labels, this.prodAcChartEl.nativeElement, data1, data3);
   }
 
-  buildProdChart(data, labels) {
+  buildChart(labels: Array<any>, element, data: Array<any>, data2?: Array<any>, data3?: Array<any>, data4?: Array<any>, data5?: Array<any>) {
   	if( data.length && labels.length ) {
-  		const chart = new Chart(this.prodChartEl.nativeElement, 
-			  this.chartOpts(labels, [this.chartData(data), this.chartData([23,30,16,15,50])])
+  		const chart = new Chart(element, 
+			  this.chartOpts(labels, [
+			  	this.chartData(data), 
+			  	this.chartData(data2), 
+			  	this.chartData(data3), 
+			  	this.chartData(data4), 
+			  	this.chartData(data5)
+			  	])
 		    );
   	}
   }
 
-  buildProdAcChart(data, labels) {
-  	if( data.length && labels.length ) {
-  		const chart = new Chart(this.prodAcChartEl.nativeElement, 
-			  this.chartOpts(labels, [this.chartData(data), this.chartData([0,20,40,60,80])])
-		    );
-  	}
-  }
-
-  chartOpts(labels, data: Array<any>) {
+  chartOpts(labels: Array<any>, data: Array<any>) {
   	let opts = {
 	      type: 'line',
 	      data: {
@@ -65,7 +72,7 @@ export class ProdMetricsPage {
     return opts;
   }
 
-  chartData(data) {
+  chartData(data: Array<any>) {
   	let dataset = {	
     	// label: "Log de peso",
       fill: true,

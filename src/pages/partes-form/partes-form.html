@@ -29,35 +29,35 @@
 			  <ion-item *ngIf="platform.is('mobile')">
 				  <ion-label>Maquina</ion-label>
 				  <ion-select formControlName="machine">
-				    <ion-option *ngFor="let maquina of staticData.maquinas">{{maquina}}</ion-option>
+				    <ion-option *ngFor="let maquina of staticData.maquinasProd | sort:'':true">{{maquina}}</ion-option>
 				  </ion-select>
 				</ion-item>
 
 				<ion-item *ngIf="!platform.is('mobile')">
 						<ion-label class="labelMachineSelect">Maquina</ion-label>					
 					  <select item-content formControlName="machine" class="selectMachine">
-					    <option *ngFor="let maquina of staticData.maquinas">{{maquina}}</option>
+					    <option *ngFor="let maquina of staticData.maquinasProd | sort:'':true">{{maquina}}</option>
 					  </select>
 				</ion-item>
 
 				<ion-item *ngIf="platform.is('mobile')">
 				  <ion-label>Color</ion-label>
 				  <ion-select formControlName="color">
-				    <ion-option *ngFor="let color of staticData.color">{{color}}</ion-option>
+				    <ion-option *ngFor="let color of staticData.color | sort:'':true">{{color}}</ion-option>
 				  </ion-select>
 				</ion-item>
 
 				<ion-item *ngIf="platform.is('mobile')">
 				  <ion-label>Dimension</ion-label>
 				  <ion-select formControlName="dim">
-				    <ion-option *ngFor="let dim of staticData.dim">{{dim}}</ion-option>
+				    <ion-option *ngFor="let dim of staticData.dim | sort:'':true">{{dim}}</ion-option>
 				  </ion-select>
 				</ion-item>
 
 				<ion-item *ngIf="platform.is('mobile')">
 				  <ion-label>Dibujo</ion-label>
 				  <ion-select formControlName="drawing">
-				    <ion-option *ngFor="let drawing of staticData.drawing">{{drawing}}</ion-option>
+				    <ion-option *ngFor="let drawing of staticData.drawing | sort:'':true">{{drawing}}</ion-option>
 				  </ion-select>
 				</ion-item>
 
@@ -66,17 +66,17 @@
 						<div item-content class="labelColor">color</div>					
 					  <select item-content formControlName="color" class="selectMachine selectArt ">
 					    <option value="" disabled selected></option>
-					    <option *ngFor="let color of staticData.color">{{color}}</option>
+					    <option *ngFor="let color of staticData.color | sort:'':true">{{color}}</option>
 					  </select>
 					  <div item-content class="labelColor">dimension</div>
 					  <select item-content formControlName="dim" class="selectMachine selectArt">
 					    <option value="" disabled selected></option>
-					    <option *ngFor="let dim of staticData.dim">{{dim}}</option>
+					    <option *ngFor="let dim of staticData.dim | sort:'':true">{{dim}}</option>
 					  </select>
 					  <div item-content class="labelColor">dibujo</div>
 					  <select item-content formControlName="drawing" class="selectMachine selectArt" style="margin-right: 0px;">
 					    <option value="" disabled selected></option>
-					    <option *ngFor="let drawing of staticData.drawing">{{drawing}}</option>
+					    <option *ngFor="let drawing of staticData.drawing | sort:'':true">{{drawing}}</option>
 					  </select>
 				</ion-item>
 

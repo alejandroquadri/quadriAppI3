@@ -65,13 +65,31 @@ export class StaticDataProvider {
       'Taller',
       'Centrifuga',
       'Biseladora',
+      'Biseladora zocalos',
       'Elba',
       'Desbañadora',
       'Cortadora',
       'Otro',
       'Cargador',
       'Granalladora',
-      'Cintas'
+      'Cintas',
+      'Moldes',
+    ];
+
+    maquinasProd = [
+      '',
+      '995',
+      '650',
+      'Breton',
+      'Lineal',
+      'Biseladora',
+      'Desbañadora',
+      'Cortadora',
+      'Granalladora',
+      'Llenado moldes',
+      'Desmolde',
+      'Pasado tablas',
+      'Biseladora zocalos',
     ];
 
     unidades = [
@@ -92,7 +110,9 @@ export class StaticDataProvider {
       'Brechiato',
       'Gris Perla',
       'Verde Alpe',
-      'Sierra Chica'
+      'Sierra Chica',
+      'Ocre',
+      'Cemento'
     ]
 
     dim = [
@@ -100,10 +120,16 @@ export class StaticDataProvider {
       '60x40',
       '50x50',
       '10x40',
-      '10x40',
-      '10x50',
-      '10x60'
+      '10x50'
     ]
+
+    equivalences = {
+      '40x40': {conv:0.16, unit:'m2'},
+      '60x40': {conv:0.24, unit:'m2'},
+      '50x50': {conv:0.25, unit:'m2'},
+      '10x40': {conv:0.4, unit:'ml'},
+      '10x50': {conv:0.5, unit:'ml'}
+    }
 
     drawing = [
       'liso',
@@ -111,7 +137,9 @@ export class StaticDataProvider {
       '64 panes',
       '64 tapones',
       'tresbolillo',
-      'adoquin curvo'
+      'adoquin curvo',
+      'pileta',
+      'rusticato'
     ]
 
   constructor() {

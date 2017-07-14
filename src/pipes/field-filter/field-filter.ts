@@ -5,12 +5,14 @@ import { Pipe, PipeTransform, Injectable } from '@angular/core';
   name: 'fieldFilter',
 })
 export class FieldFilterPipe implements PipeTransform {
-  transform(array: any[], field: string, terms: any[]) {
+  transform(array: any[], fields: any[], terms: any[]) {
       if (array) {
         return array.filter( item => {
-          for (let i=0;  i < terms.length ; i++) {
-            if (item[field].toLowerCase() === terms[i].toLowerCase()) {
-              return true;
+          for (let i=0, m = terms.length ; i<m; i++) {
+            for (let j=0, n = fields.length; j < n; j++) {
+              if (item[fields[j]].toLowerCase() === terms[i].toLowerCase()) {
+                return true;
+              }
             }
           }
         });

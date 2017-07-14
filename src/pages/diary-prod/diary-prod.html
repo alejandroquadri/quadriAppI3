@@ -1,0 +1,206 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Metricas de produccion</ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+  	<p style="margin: 0px;"><ion-input #dateInput [(ngModel)]="date" (ngModelChange)="dailyProdObj()" type="date"></ion-input></p>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+	<ion-grid>
+		
+		<div *ngIf="dailyProd">
+			<div  *ngFor="let mach of dailyProd | objNgfor ; let f = first" class="machine">
+				
+				<div *ngIf="f !== true"><hr></div>
+			  <h1>{{ mach }}</h1>
+			
+				<div *ngFor="let article of dailyProd[mach].logs ; let f = first; let l = last" class="">
+
+						<h5 class="articleTitle">{{ article.color }} {{ article.drawing }} {{ article.dim }}</h5>
+
+						<ion-row class="border data">
+						 		<ion-col>Marcha</ion-col>
+						 		<ion-col>Produccion</ion-col>
+						 		<ion-col>Segunda</ion-col>
+								<ion-col>Repaso</ion-col>
+								<ion-col>Rotos</ion-col>
+								<ion-col>Total</ion-col>
+					 	</ion-row>
+
+					 	<ion-row class="borderRow data">
+
+						 		<ion-col align-self-center>
+						 			<ion-row>
+						 				<ion-col>inicio: {{ article.start }} hs</ion-col>
+						 			</ion-row>
+						 			<ion-row>
+						 				<ion-col>final: {{ article.end }} hs</ion-col>
+						 			</ion-row>
+						 			<ion-row>
+						 				<ion-col>{{ timeDiff(article.start, article.end) }} horas</ion-col>
+						 			</ion-row>
+						 		</ion-col>
+
+						 		<ion-col align-self-center>
+						   		<ion-row>
+						 				<ion-col>{{ article.prod }} u</ion-col>
+						 			</ion-row>
+						 			<ion-row>
+						 				<ion-col>{{ toSalesUnit([article.prod], article.dim)}}</ion-col>
+						 			</ion-row>
+						 		</ion-col>
+
+						 		<ion-col>
+						 			<ion-row>
+						 				<ion-col>{{ article.seg }} u</ion-col>
+						 			</ion-row>
+						 			<ion-row>
+						 				<ion-col>{{ toSalesUnit([article.seg], article.dim) }}</ion-col>
+						 			</ion-row>
+						 			<ion-row>
+						 				<ion-col>{{ (+article.seg) / (+article.prod) * 100 | number : '1.0-2' }} %</ion-col>
+						 			</ion-row>
+						 		</ion-col>
+
+								<ion-col>
+									<ion-row>
+					 				<ion-col>{{ article.rep }} u</ion-col>
+					 			</ion-row>
+					 			<ion-row>
+					 				<ion-col>{{ toSalesUnit([article.rep], article.dim) }}</ion-col>
+					 			</ion-row>
+					 			<ion-row>
+					 				<ion-col>{{ (+article.rep) / (+article.prod) * 100 | number : '1.0-2' }} %</ion-col>
+					 			</ion-row>
+								</ion-col>
+
+								<ion-col>
+									<ion-row>
+						 				<ion-col>{{ article.broken }} u</ion-col>
+						 			</ion-row>
+						 			<ion-row>
+						 				<ion-col>{{ toSalesUnit([article.broken], article.dim) }}</ion-col>
+						 			</ion-row>
+						 			<ion-row>
+						 				<ion-col>{{ (+article.broken) / (+article.prod) * 100 | number : '1.0-2' }} %</ion-col>
+						 			</ion-row>
+								</ion-col>
+
+								<ion-col>
+									<ion-row>
+						 				<ion-col>{{ totalSec(article.seg, article.rep, article.broken) }} u</ion-col>
+						 			</ion-row>
+						 			<ion-row>
+						 				<ion-col>{{ toSalesUnit([article.seg, article.rep, article.broken], article.dim) }}</ion-col>
+						 			</ion-row>
+						 			<ion-row>
+						 				<ion-col>{{ totalSec(article.seg, article.rep, article.broken) / (+article.prod) * 100 | number : '1.0-2' }} %</ion-col>
+						 			</ion-row>
+								</ion-col>
+
+					 	</ion-row> 	
+
+						<ion-card *ngIf="article.stops">
+							
+						  <ion-card-header>
+						   Paradas
+						  </ion-card-header>
+							
+						  <ion-card-content>
+
+				    		<ion-row *ngFor="let stop of article.stops | objNgfor">
+					    		<ion-col col-auto><span class="paradaLabel">inicio: </span>{{ article.stops[stop].startP }}</ion-col>
+					    		<ion-col col-auto><span class="paradaLabel">fin: </span>{{ article.stops[stop].endP }}</ion-col>
+					    		<ion-col col-auto><span class="paradaLabel">Causa:</span></ion-col>
+					    		<ion-col col-auto class="causaContent">{{ article.stops[stop].cause }}</ion-col>
+				    		</ion-row>
+
+						  </ion-card-content>
+						</ion-card>
+
+						<div *ngIf="l === true && f !== true">
+
+							<h5 class="articleTitle">Total</h5>
+
+							<ion-row class="border data">
+						 		<ion-col>Produccion</ion-col>
+						 		<ion-col>Segunda</ion-col>
+								<ion-col>Repaso</ion-col>
+								<ion-col>Rotos</ion-col>
+								<ion-col>Total</ion-col>
+						 	</ion-row>
+
+						 	<ion-row class="borderRow data">
+
+							 	<ion-col align-self-center>
+						   		<ion-row>
+						 				<ion-col>{{ dailyProd[mach].total.prod }} u</ion-col>
+						 			</ion-row>
+						 			<ion-row>
+						 				<ion-col>{{ toSalesUnit([dailyProd[mach].total.prod], article.dim)}}</ion-col>
+						 			</ion-row>
+						 		</ion-col>
+
+						 		<ion-col>
+						 			<ion-row>
+						 				<ion-col>{{ dailyProd[mach].total.seg }} u</ion-col>
+						 			</ion-row>
+						 			<ion-row>
+						 				<ion-col>{{ toSalesUnit([dailyProd[mach].total.seg], article.dim) }}</ion-col>
+						 			</ion-row>
+						 			<ion-row>
+						 				<ion-col>{{ (+dailyProd[mach].total.seg) / (+dailyProd[mach].total.prod) * 100 | number : '1.0-2' }} %</ion-col>
+						 			</ion-row>
+						 		</ion-col>
+
+								<ion-col>
+									<ion-row>
+						 				<ion-col>{{ dailyProd[mach].total.rep }} u</ion-col>
+						 			</ion-row>
+						 			<ion-row>
+						 				<ion-col>{{ toSalesUnit([dailyProd[mach].total.rep], article.dim) }}</ion-col>
+						 			</ion-row>
+						 			<ion-row>
+						 				<ion-col>{{ (+dailyProd[mach].total.rep) / (+dailyProd[mach].total.prod) * 100 | number : '1.0-2' }} %</ion-col>
+						 			</ion-row>
+								</ion-col>
+
+								<ion-col>
+									<ion-row>
+						 				<ion-col>{{ dailyProd[mach].total.broken }} u</ion-col>
+						 			</ion-row>
+						 			<ion-row>
+						 				<ion-col>{{ toSalesUnit([dailyProd[mach].total.broken], article.dim) }}</ion-col>
+						 			</ion-row>
+						 			<ion-row>
+						 				<ion-col>{{ (+dailyProd[mach].total.broken) / (+dailyProd[mach].total.prod) * 100 | number : '1.0-2' }} %</ion-col>
+						 			</ion-row>
+								</ion-col>
+
+								<ion-col>
+									<ion-row>
+						 				<ion-col>{{ totalSec(dailyProd[mach].total.seg, dailyProd[mach].total.rep, dailyProd[mach].total.broken) }} u</ion-col>
+						 			</ion-row>
+						 			<ion-row>
+						 				<ion-col>{{ toSalesUnit([dailyProd[mach].total.seg, dailyProd[mach].total.rep, dailyProd[mach].total.broken], article.dim) }}</ion-col>
+						 			</ion-row>
+						 			<ion-row>
+						 				<ion-col>{{ totalSec(dailyProd[mach].total.seg, dailyProd[mach].total.rep, dailyProd[mach].total.broken) / (+dailyProd[mach].total.prod) * 100 | number : '1.0-2' }} %</ion-col>
+						 			</ion-row>
+								</ion-col>
+						 	</ion-row> 
+						</div>
+
+				</div>
+			</div>
+		</div>	
+
+	</ion-grid>
+
+</ion-content>

@@ -35,14 +35,14 @@ export class PartesFormPage implements OnInit {
   buildForm() {
   	this.myForm = this._fb.group({
     	date: ['', Validators.required],
-    	machine: ['',],
-    	color: ['',],
-    	dim: ['',],
-    	drawing: ['',],
-    	mod: ['',],
-    	start: ['',],
-    	end: ['',],
-    	prod: ['',],
+    	machine: ['',Validators.required],
+    	color: ['',Validators.required],
+    	dim: ['',Validators.required],
+    	drawing: ['',Validators.required],
+    	mod: ['',Validators.required],
+    	start: ['',Validators.required],
+    	end: ['',Validators.required],
+    	prod: ['',Validators.required],
     	seg: ['',],
     	rep: ['',],
     	broken: ['',],
@@ -97,7 +97,10 @@ export class PartesFormPage implements OnInit {
   }
 
   isPulidora() {
-  	if (this.myForm.value.machine === 'Breton' || this.myForm.value.machine === 'Lineal') {
+  	if (this.myForm.value.machine === 'Breton' 
+      || this.myForm.value.machine === 'Lineal'
+      || this.myForm.value.machine === 'Pasado tablas'
+      || this.myForm.value.machine === 'Granalladora') {
   		return true;
   	} else {
   		return false;

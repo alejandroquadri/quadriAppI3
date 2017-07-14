@@ -3,6 +3,7 @@ import { IonicPageModule } from 'ionic-angular';
 import { PartesFormPage } from './partes-form';
 
 import { ElasticModule } from 'angular2-elastic';
+import { PipesModule } from '../../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +11,8 @@ import { ElasticModule } from 'angular2-elastic';
   ],
   imports: [
     IonicPageModule.forChild(PartesFormPage),
-    ElasticModule
+    ElasticModule,
+    PipesModule
   ],
   exports: [
     PartesFormPage

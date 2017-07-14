@@ -40,7 +40,7 @@ import { ProductionDataProvider } from '../providers/production-data/production-
 
 @NgModule({
   declarations: [
-    MyApp
+    MyApp,
   ],
   imports: [
     BrowserModule,
