@@ -32,4 +32,12 @@ export class ProdLogPage {
   	this.prodData.filter();
   }
 
+  deleteLog(key) {
+  	this.prodData.deleteProduction(key);
+  }
+
+  editLog(log) {
+   this.navCtrl.push('PartesFormPage', log);
+  }
+
 }

@@ -76,6 +76,14 @@ export class ProductionDataProvider {
   	return this.api.fanUpdate(stopForm);
   }
 
+  // updateProdStop (prod: any, stops: Array<any>, key: string) {
+  //   let stopForm = {};
+  //   stops.forEach( item => {
+  //     let fanObj = this.api.fanOutObject(stop, [`production/${prod.$key}/stops`,'stops'], false);
+  //     Object.assign(stopForm, fanObj);
+  //   })
+  // }
+
   filter() {
     const filtered = this.filterPipe.transform(this.production, this.searchInput)
     const ordered = this.sortPipe.transform(filtered, this.field, this.asc);

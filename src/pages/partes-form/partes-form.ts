@@ -13,6 +13,8 @@ export class PartesFormPage implements OnInit {
 
   public myForm: FormGroup;
   @ViewChild("dateInput") dateInput;
+  updateForm: any
+  editBtn = false;
 
   constructor(
   	private _fb: FormBuilder,
@@ -25,6 +27,11 @@ export class PartesFormPage implements OnInit {
   ) { }
 
 	ionViewDidLoad() {
+    if (this.navParams.data) {
+      this.updateForm = this.navParams.data;
+      console.log(this.updateForm);
+      this.buildEdit();
+    }
 		this.focusDate();
 	}
 
@@ -51,11 +58,50 @@ export class PartesFormPage implements OnInit {
     });
   }
 
+  buildEdit() {
+    this.myForm.patchValue({
+      date: this.updateForm.date,
+      machine: this.updateForm.machine,
+      color: this.updateForm.color,
+      dim: this.updateForm.dim,
+      drawing: this.updateForm.drawing,
+      mod: this.updateForm.mod,
+      start: this.updateForm.start,
+      end: this.updateForm.end,
+      prod: this.updateForm.prod,
+      seg: this.updateForm.seg,
+      rep: this.updateForm.rep,
+      broken: this.updateForm.broken,
+      observaciones: this.updateForm.observaciones,
+    })
+
+    if (this.updateForm.stops){
+      console.log('hay paradas');
+      const control = <FormArray>this.myForm.controls['stops'];
+      const stopArr = Object.keys(this.updateForm.stops);
+      stopArr.forEach( stop => {
+        control.push(this.initEditParada(
+          this.updateForm.stops[stop].startP, 
+          this.updateForm.stops[stop].endP, 
+          this.updateForm.stops[stop].cause)
+        );
+      })
+    }
+  }
+
   initParada() {
     return this._fb.group({
       startP: ['', Validators.required],
       endP: ['', Validators.required],
       cause:['', Validators.required]
+    });
+  }
+
+  initEditParada(start, end, cause) {
+    return this._fb.group({
+      startP: [start, Validators.required],
+      endP: [end, Validators.required],
+      cause:[cause, Validators.required]
     });
   }
 
@@ -71,6 +117,14 @@ export class PartesFormPage implements OnInit {
 
   clearStops(){
     this.myForm.controls['stops'] = this._fb.array([]);
+  }
+
+  submit() {
+    if (!this.editBtn) {
+      this.save();
+    } else {
+      this.edit();
+    }
   }
 
   save() {
@@ -94,6 +148,10 @@ export class PartesFormPage implements OnInit {
     });
     this.myForm.reset();
     this.focusDate();
+  }
+
+  edit() {
+
   }
 
   isPulidora() {

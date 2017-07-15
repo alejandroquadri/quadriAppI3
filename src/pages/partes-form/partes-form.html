@@ -13,7 +13,7 @@
 <ion-content padding>
 
 	<ion-grid>
-		<form [formGroup]="myForm" novalidate (ngSubmit)="save()">
+		<form [formGroup]="myForm" novalidate (ngSubmit)="submit()">
 
 			<ion-list>
 				<ion-item *ngIf="platform.is('mobile')">
@@ -195,8 +195,11 @@
 			
 			</ion-card>
 
-			<button ion-button outline  type="submit" [disabled]="!myForm.valid">
+			<button ion-button outline  type="submit" [disabled]="!myForm.valid" *ngIf="!editBtn">
 				Enviar
+			</button>
+			<button ion-button outline  type="submit" [disabled]="!myForm.valid" *ngIf="editBtn">
+				Actualizar
 			</button>
 			<button ion-button outline color="warning" type="button" (click)="myForm.reset()" [disabled]="myForm.pristine">
 				Reset

@@ -23,7 +23,10 @@
 				<ion-col>
 					<strong>Fecha</strong>
 				</ion-col>
-				<ion-col col-3>
+				<ion-col col-2>
+					<strong>Maquina</strong>
+				</ion-col>
+				<ion-col col-2>
 					<strong>Articulo</strong>
 				</ion-col>
 				<ion-col>
@@ -60,7 +63,10 @@
 			<ion-col>
 				{{ log.date | momentFormat:'D/M/YY'}}
 			</ion-col>
-			<ion-col col-3>
+			<ion-col col-2>
+				{{ log.machine }}
+			</ion-col>
+			<ion-col col-2>
 				{{ log.drawing }} {{ log.color }} {{ log.dim }}
 			</ion-col>
 			<ion-col text-center>
