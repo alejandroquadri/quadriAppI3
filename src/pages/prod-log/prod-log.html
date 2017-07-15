@@ -1,0 +1,95 @@
+<ion-header>
+
+	<ion-navbar>
+	  <button ion-button menuToggle>
+	    <ion-icon name="menu"></ion-icon>
+	  </button>
+    <!-- <ion-buttons left>
+	    <button ion-button icon-only (click)="splitShow.show = !splitShow.show">
+	      <ion-icon name="menu"></ion-icon>
+	    </button>
+	  </ion-buttons> -->
+    <ion-searchbar [(ngModel)]="searchInput" (ngModelChange)="onChange($event)"></ion-searchbar>
+    <ion-buttons end>
+    	<button ion-button icon-only (click)="presentModal()">
+	      <ion-icon name="add"></ion-icon>
+	    </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <ion-toolbar>
+		<ion-grid>
+		  <ion-row text-center>
+				<ion-col>
+					<strong>Fecha</strong>
+				</ion-col>
+				<ion-col col-3>
+					<strong>Articulo</strong>
+				</ion-col>
+				<ion-col>
+					<strong>N° Op</strong>
+				</ion-col>
+				<ion-col col-2>
+					<strong>Inicio - Fin</strong>
+				</ion-col>
+				<ion-col>
+					<strong>Prod</strong>
+				</ion-col>
+				<ion-col>
+					<strong>Seg</strong>
+				</ion-col>
+				<ion-col>
+					<strong>Rotos</strong>
+				</ion-col>
+				<ion-col>
+					<strong>Repaso</strong>
+				</ion-col>
+				<ion-col col-2>
+				</ion-col>
+			</ion-row>
+	  </ion-grid>
+	</ion-toolbar>
+
+</ion-header>
+
+
+<ion-content>
+
+	<ion-grid>
+	  <ion-row class="data" *ngFor="let log of prodLogs | async">
+			<ion-col>
+				{{ log.date | momentFormat:'D/M/YY'}}
+			</ion-col>
+			<ion-col col-3>
+				{{ log.drawing }} {{ log.color }} {{ log.dim }}
+			</ion-col>
+			<ion-col text-center>
+				{{ log.mod }}
+			</ion-col>
+			<ion-col col-2 text-center> 
+				{{ log.start }} a {{ log.end }}
+			</ion-col>
+			<ion-col text-center>
+				{{ log.prod }}
+			</ion-col>
+			<ion-col text-center>
+				{{ log.seg }}
+			</ion-col>
+			<ion-col text-center>
+				{{ log.broken }}
+			</ion-col>
+			<ion-col text-center>
+				{{ log.rep }}
+			</ion-col>
+			<ion-col col-2 text-center>
+				<button ion-button icon-only clear color="dark" small (click)="editLog(log)">
+					<ion-icon name="create"></ion-icon>
+				</button>
+				<button ion-button icon-only clear color="dark" small (click)="deleteLog(log.$key)">
+					<ion-icon name="trash"></ion-icon>
+				</button>
+			</ion-col>
+		</ion-row>
+  </ion-grid>
+
+</ion-content>
