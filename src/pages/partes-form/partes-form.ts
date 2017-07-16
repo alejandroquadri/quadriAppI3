@@ -1,6 +1,6 @@
 import { Component, ViewChild, Renderer, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
-import { IonicPage, NavParams, ViewController, Platform} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, Platform} from 'ionic-angular';
 
 import { StaticDataProvider, ProductionDataProvider } from '../../providers';
 
@@ -19,6 +19,7 @@ export class PartesFormPage implements OnInit {
   constructor(
   	private _fb: FormBuilder,
   	private renderer: Renderer,
+    public navCtrl: NavController,
   	public navParams: NavParams,
     public platform: Platform,
     public viewCtrl: ViewController,
@@ -28,6 +29,7 @@ export class PartesFormPage implements OnInit {
 
 	ionViewDidLoad() {
     if (this.navParams.data) {
+      this.editBtn = true;
       this.updateForm = this.navParams.data;
       console.log(this.updateForm);
       this.buildEdit();
@@ -151,7 +153,15 @@ export class PartesFormPage implements OnInit {
   }
 
   edit() {
+    let prod = this.myForm.value;
+    let stops = this.myForm.value.stops;
+    console.log(stops);
+    delete prod.stops;
 
+    this.prodData.updateProduction(this.updateForm['$key'],prod)
+    .then( () => {
+      this.navCtrl.pop();
+    })
   }
 
   isPulidora() {

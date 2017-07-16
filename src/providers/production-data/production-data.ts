@@ -72,17 +72,18 @@ export class ProductionDataProvider {
       }
       let fanObj = this.api.fanOutObject(stop, [`production/${prod.$key}/stops`,'stops'], true);
       Object.assign(stopForm, fanObj);
-  	})
+  	});
   	return this.api.fanUpdate(stopForm);
   }
 
-  // updateProdStop (prod: any, stops: Array<any>, key: string) {
-  //   let stopForm = {};
-  //   stops.forEach( item => {
-  //     let fanObj = this.api.fanOutObject(stop, [`production/${prod.$key}/stops`,'stops'], false);
-  //     Object.assign(stopForm, fanObj);
-  //   })
-  // }
+  updateProdStop (prod: any, stops: Array<any>, key: string) {
+    let stopForm = {};
+    stops.forEach( item => {
+      let fanObj = this.api.fanOutObject(stop, [`production/${prod.$key}/stops/${key}`,`stops/${key}`], false);
+      Object.assign(stopForm, fanObj);
+    });
+    return this.api.fanUpdate(stopForm);
+  }
 
   filter() {
     const filtered = this.filterPipe.transform(this.production, this.searchInput)
