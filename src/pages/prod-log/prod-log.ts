@@ -32,8 +32,14 @@ export class ProdLogPage {
   	this.prodData.filter();
   }
 
-  deleteLog(key) {
-  	this.prodData.deleteProduction(key);
+  deleteLog(log) {
+  	this.prodData.deleteProduction(log.$key)
+  	.then ( () => {
+  		if (log.stops) {
+	  		let stopKeys = Object.keys(log.stops);
+		  	this.prodData.removeProdStop(stopKeys);
+	  	}
+  	})
   }
 
   editLog(log) {

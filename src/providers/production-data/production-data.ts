@@ -90,6 +90,15 @@ export class ProductionDataProvider {
     return this.api.fanUpdate(stopForm);
   }
 
+  removeProdStop (keys: Array<string>) {
+    let removeObject = {};
+    keys.forEach( key => {
+      removeObject[`stops/${key}`] = null
+    });
+    console.log(removeObject);
+    return this.api.fanUpdate(removeObject);
+  }
+
   filter() {
     const filtered = this.filterPipe.transform(this.production, this.searchInput)
     const ordered = this.sortPipe.transform(filtered, this.field, this.asc);
