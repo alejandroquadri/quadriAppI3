@@ -52,7 +52,7 @@ export class ProductionDataProvider {
   	return this.api.updateList('production', key, form);
   }
 
-  setProdStop(prod: any, stops: Array<any>) {
+  setProdStop(prodKey: string, prod: any, stops: Array<any>) {
   	let stopForm = {};
   	stops.forEach( item => {
   		let stop = {
@@ -70,16 +70,21 @@ export class ProductionDataProvider {
         endP: item.endP,
         cause: item.cause
       }
-      let fanObj = this.api.fanOutObject(stop, [`production/${prod.$key}/stops`,'stops'], true);
+      let fanObj = this.api.fanOutObject(stop, [`production/${prodKey}/stops`,'stops'], true);
       Object.assign(stopForm, fanObj);
   	});
   	return this.api.fanUpdate(stopForm);
   }
 
-  updateProdStop (prod: any, stops: Array<any>, key: string) {
+  updateProdStop (prodKey: string, prod: any, stops: Array<any>, keys: Array<string>) {
     let stopForm = {};
-    stops.forEach( item => {
-      let fanObj = this.api.fanOutObject(stop, [`production/${prod.$key}/stops/${key}`,`stops/${key}`], false);
+    stops.forEach( (item, index) => {
+      let stop = {
+        startP: item.startP,
+        endP: item.endP,
+        cause: item.cause
+      }
+      let fanObj = this.api.fanOutObject(stop, [`production/${prodKey}/stops/${keys[index]}`,`stops/${keys[index]}`], false);
       Object.assign(stopForm, fanObj);
     });
     return this.api.fanUpdate(stopForm);

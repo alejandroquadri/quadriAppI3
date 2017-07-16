@@ -28,7 +28,7 @@ export class PartesFormPage implements OnInit {
   ) { }
 
 	ionViewDidLoad() {
-    if (this.navParams.data) {
+    if (this.navParams.data.date) {
       this.editBtn = true;
       this.updateForm = this.navParams.data;
       console.log(this.updateForm);
@@ -137,11 +137,8 @@ export class PartesFormPage implements OnInit {
 
     this.prodData.pushProduction(prod)
     .then( (ret: any) => {
-    	console.log(ret.key);
-    	console.log(stops.length);
     	if (stops.length > 0) {
-    		prod['$key'] = ret.key;
-      	this.prodData.setProdStop(prod, stops);
+      	this.prodData.setProdStop(ret.key, prod, stops);
     	}
     })
     .then( () => {
@@ -155,9 +152,14 @@ export class PartesFormPage implements OnInit {
   edit() {
     let prod = this.myForm.value;
     let stops = this.myForm.value.stops;
-    console.log(stops);
     delete prod.stops;
 
+    if(stops.length > 0) {
+      let stopKeys = Object.keys(this.updateForm.stops);
+      console.log(stopKeys);
+      this.prodData.updateProdStop(this.updateForm['$key'], prod, stops, stopKeys)
+      .then( () => console.log('terminado update stops'));
+    }
     this.prodData.updateProduction(this.updateForm['$key'],prod)
     .then( () => {
       this.navCtrl.pop();
