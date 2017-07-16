@@ -19,6 +19,6 @@ import { ObjNgforPipe } from './obj-ngfor/obj-ngfor';
 	  FieldFilterPipe,
 	  SortPipe,
 	  ObjNgforPipe
-   ]
+  ]
 })
 export class PipesModule {}

@@ -1,5 +1,16 @@
 page-diary-prod {
 
+  .date {
+    background-color: #f8f8f8;
+    border-bottom-color: transparent !important; 
+    -webkit-box-shadow: none !important; 
+    box-shadow: none !important; 
+  }
+
+  .dateInput {
+    flex: 0.2;
+  }
+
 	.machine {
 		margin-bottom: 30px;
 	}

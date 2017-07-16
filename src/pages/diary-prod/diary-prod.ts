@@ -3,6 +3,8 @@ import { IonicPage, NavParams, ViewController, Platform} from 'ionic-angular';
 
 import { StaticDataProvider, ProductionDataProvider } from '../../providers';
 import { FieldFilterPipe } from '../../pipes';
+import { DecimalPipe } from '@angular/common';
+
 
 import * as moment from 'moment';
 
@@ -26,7 +28,8 @@ export class DiaryProdPage {
     public viewCtrl: ViewController,
     private staticData: StaticDataProvider,
     private prodData: ProductionDataProvider,
-    private fieldFilterPipe: FieldFilterPipe
+    private fieldFilterPipe: FieldFilterPipe,
+    private number: DecimalPipe
   ) {
   }
 
@@ -78,7 +81,8 @@ export class DiaryProdPage {
 	  		let itemN = +item;
 	  		total += itemN * eq.conv;
 	  	})
-	  	return `${total} ${eq.unit}`;
+      let total2Deacimal = this.number.transform(total, '1.0-2')
+	  	return `${total2Deacimal} ${eq.unit}`;
   	}
   }
 

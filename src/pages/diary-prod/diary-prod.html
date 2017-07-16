@@ -1,10 +1,12 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Metricas de produccion</ion-title>
-  </ion-navbar>
   <ion-toolbar>
-  	<p style="margin: 0px;"><ion-input #dateInput [(ngModel)]="date" (ngModelChange)="dailyProdObj()" type="date"></ion-input></p>
+  	<ion-list>
+  		<ion-item class="date" >
+  			<ion-label>Produccion del</ion-label>
+		  	<ion-input class="dateInput" [(ngModel)]="date" (ngModelChange)="dailyProdObj()" type="date"></ion-input>
+  		</ion-item>
+  	</ion-list>
   </ion-toolbar>
 
 </ion-header>

@@ -27,6 +27,9 @@ import { ElasticModule } from 'angular2-elastic';
 
 //pipes
 import { FieldFilterPipe, SortPipe, FilterPipe } from '../pipes';
+import { DecimalPipe } from '@angular/common';
+
+
 
 // providers
 import { ApiDataProvider } from '../providers/api-data/api-data';
@@ -67,6 +70,7 @@ import { ProductionDataProvider } from '../providers/production-data/production-
     FieldFilterPipe,
     SortPipe,
     FilterPipe,
+    DecimalPipe,
     StaticDataProvider,
     SplitShowProvider,
     ProductionDataProvider
