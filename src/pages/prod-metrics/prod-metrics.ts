@@ -5,7 +5,7 @@ import { StaticDataProvider, ProductionDataProvider } from '../../providers';
 import { FieldFilterPipe } from '../../pipes';
 
 import Chart from 'chart.js';
-import * as moment from 'moment';
+// import * as moment from 'moment';
 
 @IonicPage()
 @Component({
@@ -44,7 +44,7 @@ export class ProdMetricsPage {
 
   buildChart(labels: Array<any>, element, data: Array<any>, data2?: Array<any>, data3?: Array<any>, data4?: Array<any>, data5?: Array<any>) {
   	if( data.length && labels.length ) {
-  		const chart = new Chart(element, 
+  		new Chart(element, 
 			  this.chartOpts(labels, [
 			  	this.chartData(data), 
 			  	this.chartData(data2), 
