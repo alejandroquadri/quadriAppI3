@@ -5,6 +5,8 @@
   		<ion-item class="date" >
   			<ion-label>Produccion del</ion-label>
 		  	<ion-input class="dateInput" [(ngModel)]="date" (ngModelChange)="dailyProdObj()" type="date"></ion-input>
+		  	<button ion-button outline item-start icon-only (click)="back()"><ion-icon name="arrow-back"></ion-icon></button>
+		    <button ion-button outline item-end icon-only (click)="forward()"><ion-icon name="arrow-forward"></ion-icon></button>
   		</ion-item>
   	</ion-list>
   </ion-toolbar>
@@ -29,10 +31,10 @@
 						<ion-row class="border data">
 						 		<ion-col>Marcha</ion-col>
 						 		<ion-col>Produccion</ion-col>
-						 		<ion-col>Segunda</ion-col>
-								<ion-col>Repaso</ion-col>
-								<ion-col>Rotos</ion-col>
-								<ion-col>Total</ion-col>
+						 		<ion-col *ngIf="article.seg">Segunda</ion-col>
+								<ion-col *ngIf="article.rep">Repaso</ion-col>
+								<ion-col *ngIf="article.broken">Rotos</ion-col>
+								<ion-col *ngIf="article.seg || article.broken || article.rep">Total</ion-col>
 					 	</ion-row>
 
 					 	<ion-row class="borderRow data">
@@ -58,7 +60,7 @@
 						 			</ion-row>
 						 		</ion-col>
 
-						 		<ion-col>
+						 		<ion-col *ngIf="article.seg">
 						 			<ion-row>
 						 				<ion-col>{{ article.seg }} u</ion-col>
 						 			</ion-row>
@@ -70,7 +72,7 @@
 						 			</ion-row>
 						 		</ion-col>
 
-								<ion-col>
+								<ion-col *ngIf="article.rep">
 									<ion-row>
 					 				<ion-col>{{ article.rep }} u</ion-col>
 					 			</ion-row>
@@ -82,7 +84,7 @@
 					 			</ion-row>
 								</ion-col>
 
-								<ion-col>
+								<ion-col *ngIf="article.broken">
 									<ion-row>
 						 				<ion-col>{{ article.broken }} u</ion-col>
 						 			</ion-row>
@@ -94,7 +96,7 @@
 						 			</ion-row>
 								</ion-col>
 
-								<ion-col>
+								<ion-col *ngIf="article.seg || article.broken || article.rep">
 									<ion-row>
 						 				<ion-col>{{ totalSec(article.seg, article.rep, article.broken) }} u</ion-col>
 						 			</ion-row>

@@ -40,6 +40,18 @@ export class DiaryProdPage {
   	});
   }
 
+  back() {
+    this.date = moment(this.date).add(-1, 'days').format('YYYY-MM-DD');
+    this.dailyProdObj();
+  }
+
+  forward() {
+    this.date = moment(this.date).add(1, 'days').format('YYYY-MM-DD');
+    this.dailyProdObj();
+  }
+
+
+
   dailyProdObj() {
   	const filteredArray = this.fieldFilterPipe.transform(this.production, ['date'], [this.date]);
 		let obj = {};
