@@ -10,15 +10,71 @@
 <ion-content padding>
 
 	<ion-grid>
-
 		<ion-row>
-			<ion-col col-sm-6>
+			<ion-col col-xl-6>
+
+				<ion-row>
+					<ion-col col-auto>
+						<ion-item no-lines class="month">
+							<button item-start ion-button icon-only outline (click)= "subMonth()">
+								<ion-icon name="arrow-back"></ion-icon>
+							</button>
+								<span ion-content text-center>{{ date.format('MMMM') }}</span>
+							<button item-end ion-button icon-only outline (click)= "addMonth()">
+								<ion-icon name="arrow-forward"></ion-icon>
+							</button>
+						</ion-item>
+					</ion-col>
+					<ion-col>
+						<ion-item no-lines class="unit">
+							<select [(ngModel)]="unit" (ngModelChange)="finishedProdData()" class="selectItem">
+								<option>m2</option>
+								<option>ml</option>
+							</select>
+						</ion-item>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<canvas #prodAcChart></canvas>
+				</ion-row>
+			
+			</ion-col>
+
+			<ion-col col-xl-6>
 				<canvas #prodChart></canvas>
 			</ion-col>
-			<ion-col col-sm-6>
-				<canvas #prodAcChart></canvas>
-			</ion-col>
-		</ion-row>
+
+	</ion-row>
+<!-- 		
+			</ion-row>
+				<ion-row>
+					<ion-col col-auto>
+						<ion-item no-lines class="month">
+							<button item-start ion-button icon-only outline (click)= "subMonth()">
+								<ion-icon name="arrow-back"></ion-icon>
+							</button>
+								<span ion-content text-center>{{ date.format('MMMM') }}</span>
+							<button item-end ion-button icon-only outline (click)= "addMonth()">
+								<ion-icon name="arrow-forward"></ion-icon>
+							</button>
+						</ion-item>
+					</ion-col>
+
+					<ion-col>
+						<ion-item no-lines class="unit">
+							<select [(ngModel)]="unit" (ngModelChange)="finishedProdData()" class="selectItem">
+								<option>m2</option>
+								<option>ml</option>
+							</select>
+						</ion-item>
+					</ion-col>
+				</ion-row>
+				<ion-row>
+					<canvas #prodAcChart></canvas>
+				</ion-row>
+				<ion-row>
+					<canvas #prodChart></canvas>
+				</ion-row> -->
 
 	</ion-grid>
 

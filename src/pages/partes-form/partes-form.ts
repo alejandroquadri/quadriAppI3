@@ -170,7 +170,8 @@ export class PartesFormPage implements OnInit {
   	if (this.myForm.value.machine === 'Breton' 
       || this.myForm.value.machine === 'Lineal'
       || this.myForm.value.machine === 'Pasado tablas'
-      || this.myForm.value.machine === 'Granalladora') {
+      || this.myForm.value.machine === 'Granalladora'
+      || this.myForm.value.machine === 'Desmolde') {
   		return true;
   	} else {
   		return false;
