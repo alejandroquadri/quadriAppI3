@@ -178,8 +178,8 @@ export class ProdMetricsPage {
     this.finishedProdData();
   }
 
-  pushPrint() {
-    this.navCtrl.push('ProdSignPage', {production: this.production});
-  }
+  // pushPrint() {
+  //   this.navCtrl.push('ProdSignPage', {production: this.production});
+  // }
 
 }

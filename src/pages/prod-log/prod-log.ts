@@ -46,4 +46,8 @@ export class ProdLogPage {
    this.navCtrl.push('PartesFormPage', log);
   }
 
+  pushPrint() {
+    this.navCtrl.push('ProdSignPage');
+  }
+
 }

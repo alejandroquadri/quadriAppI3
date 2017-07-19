@@ -32,11 +32,11 @@
         </ion-list-header>
         <button ion-item menuClose (click)="platform.is('mobile')? openPage('SparePartsFormPage'): openPage('SparePartsPage')">
           <ion-icon item-start name="list-box"></ion-icon>
-          Pedido repuestos
+          Repuestos
         </button>
         <button ion-item menuClose (click)="platform.is('mobile')? openPage('MachineLogFormPage'): openPage('MachineLogPage')">
           <ion-icon item-start name="list-box"></ion-icon>
-          Arreglos
+          Registro
         </button>
       </ion-list>
 
@@ -46,19 +46,19 @@
         </ion-list-header>
         <button ion-item menuClose (click)="openPage('PartesFormPage')">
           <ion-icon item-start name="list-box"></ion-icon>
-          Carga partes
-        </button>
-        <button ion-item menuClose>
-          <ion-icon item-start name="list-box"></ion-icon>
-          Producto en proceso
+          Carga
         </button>
         <button ion-item menuClose (click)="openPage('ProdLogPage')">
           <ion-icon item-start name="list-box"></ion-icon>
-          Registros produccion
+          Registros
         </button>
+        <!-- <button ion-item menuClose>
+          <ion-icon item-start name="list-box"></ion-icon>
+          Producto en proceso
+        </button> -->
         <button ion-item menuClose (click)="openPage('DiaryProdPage')">
           <ion-icon item-start name="stats"></ion-icon>
-          Produccion diaria
+          Informe diario
         </button>
         <button ion-item menuClose (click)="openPage('ProdMetricsPage')">
           <ion-icon item-start name="stats"></ion-icon>
