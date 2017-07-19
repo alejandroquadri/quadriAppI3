@@ -1,5 +1,5 @@
 import { Component, ViewChild} from '@angular/core';
-import { IonicPage, NavParams, ViewController, Platform} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, Platform} from 'ionic-angular';
 
 import { StaticDataProvider, ProductionDataProvider } from '../../providers';
 import { FieldFilterPipe, SortPipe } from '../../pipes';
@@ -24,7 +24,8 @@ export class ProdMetricsPage {
   unit = 'm2';
 
   constructor(
-  	public navParams: NavParams,
+  	public navCtrl: NavController,
+    public navParams: NavParams,
     public platform: Platform,
     public viewCtrl: ViewController,
     private staticData: StaticDataProvider,
@@ -175,6 +176,10 @@ export class ProdMetricsPage {
   subMonth() {
     this.date = moment(this.date).subtract(1, 'months')
     this.finishedProdData();
+  }
+
+  pushPrint() {
+    this.navCtrl.push('ProdSignPage', {production: this.production});
   }
 
 }

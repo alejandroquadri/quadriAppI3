@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { MachineLogPage } from './machine-log';
 
-import { PipesModule } from '../../pipes/pipes.module'
+import { PipesModule } from '../../pipes/pipes.module';
 import { MyDatePickerModule } from 'mydatepicker';
 
 @NgModule({

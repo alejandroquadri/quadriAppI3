@@ -142,6 +142,11 @@ export class StaticDataProvider {
       'rusticato'
     ]
 
+    premioProd = {
+      factorM2: 12,
+      factorMl: 2.4
+    }
+
   constructor() {
     console.log('Hello StaticDataProvider Provider');
   }
