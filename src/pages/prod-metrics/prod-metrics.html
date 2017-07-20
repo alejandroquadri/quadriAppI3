@@ -19,17 +19,17 @@
 
 	<ion-grid>
 		<ion-row>
-			<ion-col col-xl-6>
+			<ion-col>
 
 				<ion-row>
 					<ion-col col-auto>
 						<ion-item no-lines class="month">
-							<button item-start ion-button icon-only outline (click)= "subMonth()">
-								<ion-icon name="arrow-back"></ion-icon>
+							<button item-end ion-button icon-only outline small (click)= "subMonth()">
+								<ion-icon name="ios-arrow-back"></ion-icon>
 							</button>
-								<span ion-content text-center>{{ date.format('MMMM') }}</span>
-							<button item-end ion-button icon-only outline (click)= "addMonth()">
-								<ion-icon name="arrow-forward"></ion-icon>
+								{{ date.format('MMMM') }}
+							<button item-end ion-button icon-only outline small (click)= "addMonth()">
+								<ion-icon name="ios-arrow-forward"></ion-icon>
 							</button>
 						</ion-item>
 					</ion-col>
@@ -47,8 +47,9 @@
 				</ion-row>
 			
 			</ion-col>
-
-			<ion-col col-xl-6>
+			</ion-row>
+	<ion-row>
+			<ion-col>
 				<canvas #prodChart></canvas>
 			</ion-col>
 

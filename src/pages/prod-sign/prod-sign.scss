@@ -2,9 +2,14 @@ page-prod-sign {
 
 	@media print {
 
+    body {
+      overflow: hidden;
+    }
+
 		@page {
 		margin: 0.5cm;
 		}
+    
    	ion-header {
    		display: none;
    	}

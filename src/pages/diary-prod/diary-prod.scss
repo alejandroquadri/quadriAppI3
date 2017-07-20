@@ -2,10 +2,13 @@ page-diary-prod {
 
   .date {
     background-color: #f8f8f8;
+    width: 500px;
+  }
+
+  .item-inner {
     border-bottom-color: transparent !important; 
     -webkit-box-shadow: none !important; 
     box-shadow: none !important; 
-    width: 500px;
   }
 
   .dateInput {
