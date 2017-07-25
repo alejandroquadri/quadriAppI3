@@ -1,9 +1,10 @@
-import { Component, ViewChild} from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, Platform} from 'ionic-angular';
-
-import { StaticDataProvider, ProductionDataProvider } from '../../providers';
-import { FieldFilterPipe, SortPipe } from '../../pipes';
+import { Component, ViewChild, ViewContainerRef, ComponentFactoryResolver} from '@angular/core';
+import { IonicPage, Content, NavController, NavParams, ViewController, Platform} from 'ionic-angular';
 import { DecimalPipe } from '@angular/common';
+
+import { StaticDataProvider, ProductionDataProvider, ChartBuilderProvider } from '../../providers';
+import { FieldFilterPipe, SortPipe } from '../../pipes';
+import { AcChartComponent, ProdChartComponent } from '../../components';
 
 import Chart from 'chart.js';
 import * as moment from 'moment';
@@ -15,82 +16,53 @@ import * as moment from 'moment';
 })
 export class ProdMetricsPage {
 
-	@ViewChild('prodChart') prodChartEl;
-	@ViewChild('prodAcChart') prodAcChartEl;
+  @ViewChild(Content) content: Content;
+
+  @ViewChild('prodAcChart', {read: ViewContainerRef}) prodAcChartEl: ViewContainerRef;
+  @ViewChild('prodChart', {read: ViewContainerRef}) prodChartEl: ViewContainerRef;
 
 	production: Array<any>;
   date = moment();
   prodMonthObj: number = 8000;
   unit = 'm2';
+  rangeDate:any = {lower: 33, upper: 60};
+
+  machFilter;
+  colorFilter;
+  dimFilter;
+  drawingFilter;
+  typeFilter = 'PT';
+  unit2 = 'm2';
+
+  acChart: any;
+  prodChart: any;
 
   constructor(
   	public navCtrl: NavController,
     public navParams: NavParams,
     public platform: Platform,
     public viewCtrl: ViewController,
+    private componentFactoryResolver: ComponentFactoryResolver,
     private staticData: StaticDataProvider,
     private prodData: ProductionDataProvider,
+    private chartBuilder: ChartBuilderProvider,
     private fieldFilterPipe: FieldFilterPipe,
     private sortPipe: SortPipe,
     private number: DecimalPipe
   ) {
+    
   }
 
   ionViewDidLoad() {
+    this.chartBuilder.contentWidth = this.content._elementRef.nativeElement.clientWidth;
   	this.prodData.getProduction().subscribe( prod => {
   		this.production = prod;
-      this.finishedProdData();
+      this.acProdData();
+      this.filteredProdData();
   	});
-
-    console.log('ionViewDidLoad ProdMetricsPage');
-    const data1 = [400, 434, 402, 450, 460];
-    const data2 = [23,30,16,15,50];
-    const data3 = [0,20,40,60,80];
-    const labels = ['lun', 'mar', 'mier', 'jue', 'vier'];
-    let datasets = [this.datasets(data1), this.datasets(data2)];
-    this.buildChart(this.prodChartEl.nativeElement, 'line', labels, datasets)
   }
 
-  buildChart(element, chartType: string, labels: Array<any>, datasets: Array<any>) {
-    new Chart(element, {
-        type: chartType,
-        data: {
-          labels: labels,
-          datasets: datasets
-        }
-      }
-    );
-
-  }
-
-  datasets(data: Array<any>, label?: string, color?: string, backgroundColor?: string) {
-  	let dataset = {	
-    	label: label || null,
-      fill: true,
-      // lineTension: 0.1,
-      backgroundColor: backgroundColor || "rgba(75,192,192,0.4)",
-      borderColor: color || "rgba(75,192,192,1)",
-      borderCapStyle: 'butt',
-      borderDash: [],
-      borderDashOffset: 0.0,
-      borderJoinStyle: 'miter',
-      pointBorderColor: color || "rgba(75,192,192,1)",
-      pointBackgroundColor: "#fff",
-      pointBorderWidth: 1,
-      pointHoverRadius: 5,
-      pointHoverBackgroundColor: color || "rgba(75,192,192,1)",
-      pointHoverBorderColor: "rgba(220,220,220,1)",
-      pointHoverBorderWidth: 2,
-      pointRadius: 1,
-      pointHitRadius: 10,
-      data: data,
-      spanGaps: false,
-    } 
-    return dataset;
-  }
-
-  finishedProdData() {
-    // let filtered: Array<any>;
+  acProdData() {
     let labels: Array<any> = [];
     let finishedProd: Array<any> = [];
     let second: Array<any> = [];
@@ -98,38 +70,14 @@ export class ProdMetricsPage {
     let month = this.date.format('M');
     let monthsDays = this.date.daysInMonth();
     let dailyProdObj = this.prodMonthObj/monthsDays;
-    let filteredObj = {};
 
     let filtered = this.production.filter( log => {
-      if ( moment(log.date).format('M') === month &&
-        (log.machine == 'Breton' ||
-        log.machine == 'Lineal' ||
-        log.machine == 'Pasado tablas' ||
-        log.machine == 'Biseladora zocalos' ||
-        log.machine == 'Desmolde' ||
-        log.machine == 'Granalladora' ||
-        log.machine == 'Biseladora') &&
-        this.staticData.equivalences[log.dim].unit === this.unit
-        ) {
-        return true;
-      }
+      return (moment(log.date).format('M') === month &&
+        this.isFinished(log) &&
+        this.staticData.equivalences[log.dim].unit === this.unit)
     });
 
-    filtered.forEach( log => {
-      let prod = this.toSalesUnit(log.prod, log.dim);
-      let seg = this.toSalesUnit(log.seg, log.dim);
-      let broken = this.toSalesUnit(log.broken, log.dim);
-      let rep = +this.toSalesUnit(log.rep, log.dim);
-      if (!filteredObj[log.date]) {
-        filteredObj[log.date] = {
-          prod: prod,
-          seg: seg + broken + rep
-        }
-      } else {
-        filteredObj[log.date].prod += prod;
-        filteredObj[log.date].seg += seg + broken + rep;
-      }
-    })
+    let filteredObj = this.buildFilteredObj(filtered);
 
     let totalProd = 0;
     let totalseg = 0;
@@ -149,12 +97,57 @@ export class ProdMetricsPage {
     }
 
     let datasets = [
-      this.datasets(finishedProd, 'produccion', 'rgba(0, 128, 0, 1)', 'rgba(0, 128, 0, 0.2)'), 
-      this.datasets(second, 'segunda',  'rgba(220, 57, 18, 1)', 'rgba(220, 57, 18, 0.2)'), 
-      this.datasets(objLine , 'objetivo', 'rgba(51, 102, 204, 1)', 'rgba(51, 102, 204, 0.2)')
+      this.chartBuilder.buildDatasets(finishedProd, 'produccion', 'rgba(0, 128, 0, 1)', 'rgba(0, 128, 0, 0.2)'), 
+      this.chartBuilder.buildDatasets(second, 'segunda',  'rgba(220, 57, 18, 1)', 'rgba(220, 57, 18, 0.2)'), 
+      this.chartBuilder.buildDatasets(objLine , 'objetivo', 'rgba(51, 102, 204, 1)', 'rgba(51, 102, 204, 0.2)')
     ];
 
-    this.buildChart(this.prodAcChartEl.nativeElement, 'line', labels, datasets );
+    this.chartBuilder.chartsData['acChart'] = {
+      chartType: 'line',
+      labels: labels,
+      datasets: datasets
+    }
+
+    this.buildAcChart();
+  }
+
+  filteredProdData() {
+    let labels: Array<any> = [];
+    let prod: Array<any> = [];
+    let second: Array<any> = [];
+
+    let filtered = this.production.filter( log => {
+      return ( 
+        this.addFilter(this.machFilter, log.machine) &&
+        this.addFilter(this.colorFilter, log.color) &&
+        this.addFilter(this.dimFilter, log.dim) &&
+        this.addFilter(this.drawingFilter, log.drawing) &&
+        this.typeFilterRet(this.typeFilter, log)  &&
+        this.staticData.equivalences[log.dim].unit === this.unit2
+      )
+    });
+
+    let filteredObj = this.buildFilteredObj(filtered);
+    let filObjKeys = this.sortPipe.transform(Object.keys(filteredObj),'',true);
+
+    filObjKeys.forEach( key => {
+      labels.push(moment(key).format('D/M/YY'));
+      prod.push(filteredObj[key].prod);
+      second.push(filteredObj[key].seg);
+    })
+
+    let datasets = [
+      this.chartBuilder.buildDatasets(prod, 'produccion', 'rgba(0, 128, 0, 1)', 'rgba(0, 128, 0, 0.2)'), 
+      this.chartBuilder.buildDatasets(second, 'segunda',  'rgba(220, 57, 18, 1)', 'rgba(220, 57, 18, 0.2)')
+    ];
+
+    this.chartBuilder.chartsData['prodChart'] = {
+      chartType: 'line',
+      labels: labels,
+      datasets: datasets
+    }
+
+    this.buildProdChart();
   }
 
   toSalesUnit(unit: string, dim) {
@@ -164,22 +157,88 @@ export class ProdMetricsPage {
     let itemN = +unit;
     total += itemN * eq.conv;
 
-    // let total2Deacimal = this.number.transform(total, '1.0-2')
     return total;
   }
 
   addMonth() {
     this.date = moment(this.date).add(1, 'months')
-    this.finishedProdData();
+    this.acProdData();
   }
 
   subMonth() {
     this.date = moment(this.date).subtract(1, 'months')
-    this.finishedProdData();
+    this.acProdData();
   }
 
-  // pushPrint() {
-  //   this.navCtrl.push('ProdSignPage', {production: this.production});
-  // }
+  isFinished(log: any) {
+    if (log.machine == 'Breton' ||
+        log.machine == 'Lineal' ||
+        log.machine == 'Pasado tablas' ||
+        log.machine == 'Biseladora zocalos' ||
+        log.machine == 'Desmolde' ||
+        log.machine == 'Granalladora' ||
+        log.machine == 'Biseladora') {
+      return true;
+    } else { return false; }
+  }
+
+  addFilter(filter, log) {
+    if (!filter || filter === '') {
+      return true;
+    } else {
+      if( log === filter) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+
+  typeFilterRet(type, log) {
+    if (!type || type === '') {
+      return true;
+    } else if (type === 'PT') {
+      return this.isFinished(log) ? true: false;
+    } else {
+      return this.isFinished(log) ? false: true;
+    }
+  }
+
+  buildFilteredObj (filteredArray: Array<any>) {
+    let filteredObj = {};
+
+    filteredArray.forEach( log => {
+      let prod = this.toSalesUnit(log.prod, log.dim);
+      let seg = this.toSalesUnit(log.seg, log.dim);
+      let broken = this.toSalesUnit(log.broken, log.dim);
+      let rep = +this.toSalesUnit(log.rep, log.dim);
+      if (!filteredObj[log.date]) {
+        filteredObj[log.date] = {
+          prod: prod,
+          seg: seg + broken + rep
+        }
+      } else {
+        filteredObj[log.date].prod += prod;
+        filteredObj[log.date].seg += seg + broken + rep;
+      }
+    })
+    return filteredObj;
+  }
+
+  onResize(event) {
+    this.chartBuilder.contentWidth = this.content._elementRef.nativeElement.clientWidth;
+  }
+
+  buildAcChart() {
+    const childComponent = this.componentFactoryResolver.resolveComponentFactory(AcChartComponent);
+    if (this.acChart) { this.acChart.destroy() }
+    this.acChart = this.prodAcChartEl.createComponent(childComponent);
+  }
+
+  buildProdChart() {
+    const childComponent = this.componentFactoryResolver.resolveComponentFactory(ProdChartComponent);
+    if (this.prodChart) { this.prodChart.destroy() }
+    this.prodChart = this.prodChartEl.createComponent(childComponent);
+  }
 
 }

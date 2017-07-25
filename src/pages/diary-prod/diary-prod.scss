@@ -11,9 +11,13 @@ page-diary-prod {
     box-shadow: none !important; 
   }
 
-  .dateInput {
-    flex: 0.2;
+  .input-wrapper {
+    flex: initial;
   }
+
+  // .dateInput {
+  //   flex: 0.2;
+  // }
 
 	.machine {
 		margin-bottom: 30px;

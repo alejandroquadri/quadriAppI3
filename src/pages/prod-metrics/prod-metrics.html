@@ -5,85 +5,118 @@
 	    <ion-icon name="menu"></ion-icon>
 	  </button>
     <ion-title>Metricas de produccion</ion-title>
-    <!-- <ion-buttons end>
-    	<button ion-button icon-only (click)="pushPrint()">
-	      <ion-icon name="print"></ion-icon>
-	    </button>
-    </ion-buttons> -->
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content #contenido padding (window:resize)="onResize($event)">
 
 	<ion-grid>
-		<ion-row>
-			<ion-col>
 
-				<ion-row>
-					<ion-col col-auto>
-						<ion-item no-lines class="month">
-							<button item-end ion-button icon-only outline small (click)= "subMonth()">
-								<ion-icon name="ios-arrow-back"></ion-icon>
-							</button>
-								{{ date.format('MMMM') }}
-							<button item-end ion-button icon-only outline small (click)= "addMonth()">
-								<ion-icon name="ios-arrow-forward"></ion-icon>
-							</button>
-						</ion-item>
-					</ion-col>
-					<ion-col>
-						<ion-item no-lines class="unit">
-							<select [(ngModel)]="unit" (ngModelChange)="finishedProdData()" class="selectItem">
-								<option>m2</option>
-								<option>ml</option>
-							</select>
-						</ion-item>
-					</ion-col>
-				</ion-row>
-				<ion-row>
-					<canvas #prodAcChart></canvas>
-				</ion-row>
+		<div class="acChart">
+			<ion-row>
+				<ion-col col-auto>
+					<ion-item no-lines class="month">
+						<button item-end ion-button icon-only outline small (click)= "subMonth()">
+							<ion-icon name="ios-arrow-back"></ion-icon>
+						</button>
+							{{ date.format('MMMM') }}
+						<button item-end ion-button icon-only outline small (click)= "addMonth()">
+							<ion-icon name="ios-arrow-forward"></ion-icon>
+						</button>
+					</ion-item>
+				</ion-col>
+				<ion-col>
+					<ion-item no-lines class="unit">
+						<select [(ngModel)]="unit" (ngModelChange)="acProdData()" class="selectItem">
+							<option>m2</option>
+							<option>ml</option>
+						</select>
+					</ion-item>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<!-- <canvas #prodAcChart></canvas> -->
+				<div #prodAcChart class="chart"></div>
+			</ion-row>
+		</div>
+		
+		<div><hr></div>
+		
+		<!-- <ion-row>
+			<ion-col>
+				<ion-item no-lines>
+		      <ion-label>
+		      	Rango
+		      </ion-label>
+		      <ion-badge item-end color="dark">{{rangeDate.lower}}</ion-badge>
+		      <ion-badge item-end color="dark">{{rangeDate.upper}}</ion-badge>
+		    </ion-item>
+		    <ion-item no-lines>
+		      <ion-range dualKnobs="true" pin="true" [(ngModel)]=	"rangeDate" (ionChange)="onChange($event)" color="dark">
+		        <ion-label range-left>0</ion-label>
+		        <ion-label range-right>100</ion-label>
+		      </ion-range>
+		    </ion-item>
+			</ion-col>
+		</ion-row> -->
+
+		<div class="prodChart">
+			<ion-row >
+				<!-- <ion-col> -->
+					<ion-item no-lines>
+						<ion-label class="labelMachineSelect">Maquina</ion-label>
+						<select item-content class="selectMachine selectArt" [(ngModel)]="machFilter" (ngModelChange)="filteredProdData()">
+					    <option *ngFor="let maquina of staticData.maquinasProd | sort:'':true">{{maquina}}</option>
+					  </select>
+					  <div item-content class="labelColor">Color</div>
+					  <select item-content class="selectMachine selectArt" [(ngModel)]="colorFilter" (ngModelChange)="filteredProdData()">
+					    <option value="" selected></option>
+					    <option *ngFor="let color of staticData.color | sort:'':true">{{color}}</option>
+					  </select>
+					  <div item-content class="labelColor">Dimension</div>
+						<select item-content class="selectMachine selectArt" [(ngModel)]="dimFilter" (ngModelChange)="filteredProdData()">
+					    <option value="" selected></option>
+					    <option *ngFor="let dim of staticData.dim | sort:'':true">{{dim}}</option>
+					  </select>
+					  <div item-content class="labelColor">Dibujo</div>
+					  <select item-content class="selectMachine selectArt" [(ngModel)]="drawingFilter" (ngModelChange)="filteredProdData()">
+					    <option value="" selected></option>
+					    <option *ngFor="let drawing of staticData.drawing | sort:'':true">{{drawing}}</option>
+					  </select>
+
+					</ion-item>
+				<!-- </ion-col> -->
 			
-			</ion-col>
 			</ion-row>
-	<ion-row>
-			<ion-col>
-				<canvas #prodChart></canvas>
-			</ion-col>
 
-	</ion-row>
-<!-- 		
+			<ion-row>
+				<!-- <ion-col> -->
+
+					<ion-item no-lines>
+						<ion-label class="labelMachineSelect">Unidad</ion-label>
+						<select item-content [(ngModel)]="unit2" (ngModelChange)="filteredProdData()" class="selectMachine selectArt">
+							<option>m2</option>
+							<option>ml</option>
+						</select>
+						
+						<div item-content class="labelColor">Tipo</div>
+					  <select item-content class="selectMachine selectArt" [(ngModel)]="typeFilter" (ngModelChange)="filteredProdData()">
+					    <option value="" selected></option>
+					    <option>PT</option>
+							<option>PP</option>
+					  </select>
+
+					</ion-item>
+
+				<!-- </ion-col> -->
 			</ion-row>
-				<ion-row>
-					<ion-col col-auto>
-						<ion-item no-lines class="month">
-							<button item-start ion-button icon-only outline (click)= "subMonth()">
-								<ion-icon name="arrow-back"></ion-icon>
-							</button>
-								<span ion-content text-center>{{ date.format('MMMM') }}</span>
-							<button item-end ion-button icon-only outline (click)= "addMonth()">
-								<ion-icon name="arrow-forward"></ion-icon>
-							</button>
-						</ion-item>
-					</ion-col>
 
-					<ion-col>
-						<ion-item no-lines class="unit">
-							<select [(ngModel)]="unit" (ngModelChange)="finishedProdData()" class="selectItem">
-								<option>m2</option>
-								<option>ml</option>
-							</select>
-						</ion-item>
-					</ion-col>
-				</ion-row>
-				<ion-row>
-					<canvas #prodAcChart></canvas>
-				</ion-row>
-				<ion-row>
-					<canvas #prodChart></canvas>
-				</ion-row> -->
+			<ion-row>
+				<div #prodChart></div>
+			</ion-row>
+		</div>
 
 	</ion-grid>
 

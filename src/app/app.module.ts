@@ -40,6 +40,7 @@ import { SettingsProvider } from '../providers/settings/settings';
 import { StaticDataProvider } from '../providers/static-data/static-data';
 import { SplitShowProvider } from '../providers/split-show/split-show';
 import { ProductionDataProvider } from '../providers/production-data/production-data';
+import { ChartBuilderProvider } from '../providers/chart-builder/chart-builder';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { ProductionDataProvider } from '../providers/production-data/production-
     DecimalPipe,
     StaticDataProvider,
     SplitShowProvider,
-    ProductionDataProvider
+    ProductionDataProvider,
+    ChartBuilderProvider
   ]
 })
 export class AppModule {}

@@ -1,5 +1,13 @@
 page-prod-metrics {
 
+  .acChart {
+    margin-bottom: 30px;
+  }
+
+  .prodChart {
+
+  }
+
 	.selectItem {
     background-color:rgba(244, 244, 244, 0.29);
     border: none;
@@ -10,6 +18,26 @@ page-prod-metrics {
   .unit {
     width: 150px;
   }
+
+	.labelMachineSelect {
+  	color: #999;
+  	flex: initial;
+	}
+
+	.selectArt {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .labelColor {
+    color: #999;
+  }
+
+	.selectMachine {
+    background-color:rgba(244, 244, 244, 0.29);
+    border: none;
+    flex: 1;
+	}
 
 
 
