@@ -1,4 +1,4 @@
-import { Component, ViewChild, Renderer, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 import { IonicPage, NavController, NavParams, ViewController, Platform} from 'ionic-angular';
 
@@ -18,13 +18,12 @@ export class PartesFormPage implements OnInit {
 
   constructor(
   	private _fb: FormBuilder,
-  	private renderer: Renderer,
     public navCtrl: NavController,
   	public navParams: NavParams,
     public platform: Platform,
     public viewCtrl: ViewController,
-    private staticData: StaticDataProvider,
-    private prodData: ProductionDataProvider
+    private prodData: ProductionDataProvider,
+    private staticData: StaticDataProvider
   ) { }
 
 	ionViewDidLoad() {

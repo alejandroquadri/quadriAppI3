@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, /*ViewController */} from 'ionic-angular';
 
-import { MachineLogDataProvider, SettingsProvider, SparePartsDataProvider } from '../../providers';
+import { SparePartsDataProvider } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -16,8 +16,6 @@ export class OptionsPage {
   	public navCtrl: NavController,
   	public navParams: NavParams,
   	// public viewCtrl: ViewController,
-    private machineLogData: MachineLogDataProvider,
-    private settingsData: SettingsProvider,
     private sparePartsData: SparePartsDataProvider
 	) {
     // if (this.navParams.data) {

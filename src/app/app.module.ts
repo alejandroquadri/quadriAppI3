@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { HttpModule } from '@angular/http';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
@@ -41,6 +42,7 @@ import { StaticDataProvider } from '../providers/static-data/static-data';
 import { SplitShowProvider } from '../providers/split-show/split-show';
 import { ProductionDataProvider } from '../providers/production-data/production-data';
 import { ChartBuilderProvider } from '../providers/chart-builder/chart-builder';
+import { HttpApiProvider } from '../providers/http-api/http-api';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { ChartBuilderProvider } from '../providers/chart-builder/chart-builder';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
@@ -75,7 +78,8 @@ import { ChartBuilderProvider } from '../providers/chart-builder/chart-builder';
     StaticDataProvider,
     SplitShowProvider,
     ProductionDataProvider,
-    ChartBuilderProvider
+    ChartBuilderProvider,
+    HttpApiProvider
   ]
 })
 export class AppModule {}

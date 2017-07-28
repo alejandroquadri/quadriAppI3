@@ -24,7 +24,7 @@ export class ProdLogPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProdLogPage');
-    this.prodLogs = this.prodData.prodObs;
+    this.prodLogs = this.prodData.filteredProdObs;
   }
 
   onChange(event) {

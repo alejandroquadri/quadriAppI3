@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage} from 'ionic-angular';
+import 'rxjs/add/operator/map';
 
-/**
- * Generated class for the PruebaPage page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { HttpApiProvider } from '../../providers';
+
+
 @IonicPage()
 @Component({
   selector: 'page-prueba',
@@ -16,21 +14,17 @@ export class PruebaPage {
 
   items: any;
  
-constructor() {
- 
-  this.items = [];
- 
-  for(let i = 0; i < 2000; i++){
- 
-    let item = {
-      title: 'Title',
-      body: 'body',
-      avatarUrl: 'https://avatars.io/facebook/random'+i
-    };
- 
-    this.items.push(item);
+  constructor(
+    private httpApi: HttpApiProvider,
+  ) {}
+
+  sales() {
+    this.httpApi.get('facturaVenta')
+    .map(res => res.json())
+    .subscribe(data => {
+      console.log(data);
+      this.items = data.data;
+    })
   }
- 
-}
 
 }

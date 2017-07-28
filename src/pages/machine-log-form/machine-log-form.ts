@@ -24,7 +24,8 @@ export class MachineLogFormPage {
     public viewCtrl: ViewController,
     private machineLogData: MachineLogDataProvider,
     private authData: AuthDataProvider,
-    private staticData: StaticDataProvider) 
+    private staticData: StaticDataProvider
+    ) 
   {
   	this.buildForm();
   }

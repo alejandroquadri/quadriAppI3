@@ -4,7 +4,7 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { ApiDataProvider } from '../api-data/api-data';
 import { AuthDataProvider } from '../auth-data/auth-data';
 
-import { FieldFilterPipe, FilterPipe, SortPipe } from '../../pipes';
+import { FilterPipe, SortPipe } from '../../pipes';
 
 
 @Injectable()
@@ -18,15 +18,18 @@ export class ProductionDataProvider {
   prodSubject = new ReplaySubject(1);
   prodObs = this.prodSubject.asObservable();
 
+  filteredProdSubject = new ReplaySubject(1);
+  filteredProdObs = this.filteredProdSubject.asObservable();
+
   constructor(
   	private api: ApiDataProvider,
   	private authData: AuthDataProvider,
-    private fieldFilterPipe: FieldFilterPipe,
     private filterPipe: FilterPipe,
     private sortPipe: SortPipe
   	) {
     this.getProduction().subscribe( prod => {
       this.production = prod;
+      this.prodSubject.next(prod);
       this.filter();
     })
   }
@@ -102,6 +105,6 @@ export class ProductionDataProvider {
   filter() {
     const filtered = this.filterPipe.transform(this.production, this.searchInput)
     const ordered = this.sortPipe.transform(filtered, this.field, this.asc);
-    this.prodSubject.next(ordered);
+    this.filteredProdSubject.next(ordered);
   }
 }

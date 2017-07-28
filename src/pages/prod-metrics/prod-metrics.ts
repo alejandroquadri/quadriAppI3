@@ -55,7 +55,7 @@ export class ProdMetricsPage {
 
   ionViewDidLoad() {
     this.chartBuilder.contentWidth = this.content._elementRef.nativeElement.clientWidth;
-  	this.prodData.getProduction().subscribe( prod => {
+  	this.prodData.prodObs.subscribe( (prod: Array<any>) => {
   		this.production = prod;
       this.acProdData();
       this.filteredProdData();
