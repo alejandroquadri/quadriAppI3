@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform, PopoverController, ModalController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Platform, PopoverController, ModalController, Content } from 'ionic-angular';
 
 
 import { MachineLogDataProvider, SplitShowProvider } from '../../providers';
@@ -25,7 +25,7 @@ export class MachineLogPage {
   	public popoverCtrl: PopoverController,
     public modalCtrl: ModalController,
   	private machineLogData: MachineLogDataProvider,
-    private splitShow: SplitShowProvider
+    private splitShow: SplitShowProvider,
 	) {
   }
 

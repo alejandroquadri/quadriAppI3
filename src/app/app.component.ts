@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav } from 'ionic-angular';
+import { Platform, Nav, Content } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -16,13 +16,14 @@ export class MyApp {
   // the root nav is a child of the root app component
   // @ViewChild(Nav) gets a reference to the app's root nav
   @ViewChild(Nav) nav: Nav;
+  @ViewChild(Content) content: Content;
 
   constructor(
     public platform: Platform,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     private splitShow: SplitShowProvider,
-    private authData: AuthDataProvider
+    private authData: AuthDataProvider,
   ) {
     authData.user.subscribe( user => {
       console.log(user);
@@ -34,14 +35,14 @@ export class MyApp {
       }
       platform.ready().then(() => {
         // Okay, so the platform is ready and our plugins are available.
-        // Here you can do any higher level native things you might need.
+        // Here you can do any higher level native things you might need.console.log('did load');
         statusBar.styleDefault();
         splashScreen.hide();
       });
     })
     platform.width()
   }
-
+  
   openPage (page: string, params?: any) {
     console.log('open page');
     this.nav.setRoot(page, params);
@@ -62,6 +63,7 @@ export class MyApp {
       return 'SparePartsPage'
     }
   }
+
 
 }
 

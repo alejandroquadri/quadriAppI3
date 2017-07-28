@@ -1,22 +1,19 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { ProdMetricsPage } from './prod-metrics';
-import { PipesModule } from '../../pipes/pipes.module';
-import { AcChartComponent, ProdChartComponent } from '../../components';
+import { AcChartComponentModule } from '../../components/acChart/acChart.module';
+import { ProdChartComponentModule } from '../../components/prodChart/prodChart.module';
 
 @NgModule({
   declarations: [
     ProdMetricsPage,
-    AcChartComponent,
-    ProdChartComponent
   ],
   imports: [
     IonicPageModule.forChild(ProdMetricsPage),
-    PipesModule
+    AcChartComponentModule,
+    ProdChartComponentModule
   ],
   entryComponents: [
-    AcChartComponent,
-    ProdChartComponent
   ],
   exports: [
     ProdMetricsPage

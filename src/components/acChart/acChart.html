@@ -1,5 +1,32 @@
-<div class="chart" (window:resize)="setChartSize()">
-  <canvas #chart></canvas>
-</div>
+
+<ion-grid>
+
+	<ion-row>
+		<ion-col col-auto>
+			<ion-item no-lines class="month">
+				<button item-end ion-button icon-only outline small (click)= "subMonth()">
+					<ion-icon name="ios-arrow-back"></ion-icon>
+				</button>
+					{{ date.format('MMMM') }}
+				<button item-end ion-button icon-only outline small (click)= "addMonth()">
+					<ion-icon name="ios-arrow-forward"></ion-icon>
+				</button>
+			</ion-item>
+		</ion-col>
+		<ion-col>
+			<ion-item no-lines class="unit">
+				<select [(ngModel)]="unit" (ngModelChange)="acProdData()" class="selectItem">
+					<option>m2</option>
+					<option>ml</option>
+				</select>
+			</ion-item>
+		</ion-col>
+	</ion-row>
+	<ion-row>
+		<div #prodAcChart class="chart"></div>
+	</ion-row>
+
+</ion-grid>
+	
 
 

@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform, PopoverController, ToastController, ModalController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Platform, PopoverController, ToastController, ModalController, Content } from 'ionic-angular';
 // import {IMyDpOptions} from 'mydatepicker';
 
-import { SparePartsDataProvider, SettingsProvider, SplitShowProvider } from '../../providers';
+import { SparePartsDataProvider, SettingsProvider, SplitShowProvider, ChartBuilderProvider } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -12,10 +12,7 @@ import { SparePartsDataProvider, SettingsProvider, SplitShowProvider } from '../
 export class SparePartsPage {
 
   spareParts: any;
-
-  // submitType: string = 'new';
-  // updateKey:  string;
-  // optionsEnabled: boolean = true;
+  @ViewChild(Content) content: Content;
 
   searchInput: string = '';
   statusOptions = ['Pendiente', 'Encargado', 'Completo', 'Suspendido'];
@@ -29,12 +26,17 @@ export class SparePartsPage {
     public modalCtrl: ModalController,
     private spareData: SparePartsDataProvider,
     private settingsData: SettingsProvider,
-    private splitShow: SplitShowProvider
+    private splitShow: SplitShowProvider,
+    private chartBuilder: ChartBuilderProvider
 	) {
 
   }
 
   ionViewDidLoad() {
+    this.chartBuilder.contentWidth = this.content._elementRef.nativeElement.clientWidth;
+    // la linea de arriba es porque esta es la landing page
+    // necesito que ni bien se carga esta pagina se determine el ancho del ion-content
+    // para que los graficos tomen correcto ancho
     this.spareData.sparePartsObs.subscribe( spareParts => {
       this.spareParts = spareParts;  
     });
