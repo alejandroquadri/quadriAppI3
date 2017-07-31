@@ -23,7 +23,26 @@
 			<div  *ngFor="let mach of dailyProd | objNgfor ; let f = first" class="machine">
 				
 				<div *ngIf="f !== true"><hr></div>
-			  <h1>{{ mach }}</h1>
+			  <h1 class="machineTitle">{{ mach }}</h1>
+			  <span *ngIf="prodNominal[mach]">
+			  	<ion-note class="nominal">Nominal 
+			  		<span #nominal>{{ staticData.nominalCalc(mach, dailyProd[mach].logs[0].dim, vel.value, turno.value, almuerzo.value, paradas.value) | number : '1.0-2'}}</span> m2
+			  	</ion-note>
+				  <ion-note class="nominal">Turno 
+						<input #turno class="nominalInput" text-center size="{{prodNominal[mach].turno.toString().length || 1}}" type="" name="" [(ngModel)]="prodNominal[mach].turno">
+				    h</ion-note>
+				  <ion-note class="nominal">Paradas 
+				  <input #paradas class="nominalInput" text-center size="{{prodNominal[mach].paradas.toString().length || 1}}" type="" name="" [(ngModel)]="prodNominal[mach].paradas">
+				   min</ion-note>
+				  <ion-note class="nominal">Almuerzo 
+				  <input #almuerzo class="nominalInput" text-center size="{{prodNominal[mach].almuerzo.toString().length || 1}}" type="" name="" [(ngModel)]="prodNominal[mach].almuerzo">
+				   min</ion-note>
+				   <ion-note class="nominal">Velocidad 
+				   <input #vel class="nominalInput" text-center size="{{prodNominal[mach].vel[dailyProd[mach].logs[0].dim].toString().length || 1}}" type="" name="" [(ngModel)]="prodNominal[mach].vel[dailyProd[mach].logs[0].dim]">
+				    {{ prodNominal[mach].u_vel }}
+				   </ion-note>
+			  </span>
+			  
 			
 				<div *ngFor="let article of dailyProd[mach].logs ; let f = first; let l = last" class="">
 

@@ -21,6 +21,7 @@ export class DiaryProdPage {
 	production: any;
 	date: string = moment().add(-1, 'days').format('YYYY-MM-DD');
 	dailyProd: any = {};
+  prodNominal: any;
 
   constructor(
   	public navParams: NavParams,
@@ -31,6 +32,7 @@ export class DiaryProdPage {
     private fieldFilterPipe: FieldFilterPipe,
     private number: DecimalPipe
   ) {
+    this.prodNominal = this.staticData.prodNominal;
   }
 
   ionViewDidLoad() {
@@ -49,8 +51,6 @@ export class DiaryProdPage {
     this.date = moment(this.date).add(1, 'days').format('YYYY-MM-DD');
     this.dailyProdObj();
   }
-
-
 
   dailyProdObj() {
   	const filteredArray = this.fieldFilterPipe.transform(this.production, ['date'], [this.date]);
