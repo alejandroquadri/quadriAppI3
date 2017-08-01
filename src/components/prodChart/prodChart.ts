@@ -13,6 +13,7 @@ import * as moment from 'moment';
 export class ProdChartComponent implements OnInit {
 
   @ViewChild('prodChart', {read: ViewContainerRef}) prodChartEl: ViewContainerRef;
+  @ViewChild('chartContainer') chartContainer;
 
   production: any;
   prodChart: any;
@@ -42,6 +43,10 @@ export class ProdChartComponent implements OnInit {
       this.filteredProdData();
     });
 	}
+
+  setWidth() {
+    this.chartBuilder.chartsData.prodChart.width = this.chartContainer.nativeElement.clientWidth;
+  }
 
   filteredProdData() {
     let labels: Array<any> = [];
@@ -76,10 +81,17 @@ export class ProdChartComponent implements OnInit {
     this.chartBuilder.chartsData['prodChart'] = {
       chartType: 'line',
       labels: labels,
-      datasets: datasets
+      datasets: datasets,
+      width: this.chartContainer.nativeElement.clientWidth
     }
-
-    this.buildProdChart();
+    let size = new Promise( (resolve, reject) => {
+      this.setWidth();
+      resolve();
+    });
+    size.then( () => {
+      this.buildProdChart();
+    })
+    
   }
 
   buildProdChart() {
@@ -143,7 +155,7 @@ export class ProdChartHelperComponent implements OnInit {
   }
 
   setChartSize() {
-    this.renderer.setElementStyle(this.chartEl.nativeElement, 'width', `${this.chartBuilder.contentWidth-52}px`);
+    this.renderer.setElementStyle(this.chartEl.nativeElement, 'width', `${this.chartBuilder.chartsData.prodChart.width}px`);
   }
 
 }

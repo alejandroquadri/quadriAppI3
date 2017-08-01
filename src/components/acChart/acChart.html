@@ -22,7 +22,7 @@
 			</ion-item>
 		</ion-col>
 	</ion-row>
-	<ion-row>
+	<ion-row #chartContainer (window:resize)="setWidth()">
 		<div #prodAcChart class="chart"></div>
 	</ion-row>
 

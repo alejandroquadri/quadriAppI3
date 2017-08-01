@@ -16,7 +16,7 @@ import { ProdChartComponentModule } from '../../components/prodChart/prodChart.m
   entryComponents: [
   ],
   exports: [
-    ProdMetricsPage
+    ProdMetricsPage,
   ]
 })
 export class ProdMetricsPageModule {}

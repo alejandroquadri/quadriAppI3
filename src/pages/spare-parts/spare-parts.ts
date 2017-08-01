@@ -33,10 +33,6 @@ export class SparePartsPage {
   }
 
   ionViewDidLoad() {
-    this.chartBuilder.contentWidth = this.content._elementRef.nativeElement.clientWidth;
-    // la linea de arriba es porque esta es la landing page
-    // necesito que ni bien se carga esta pagina se determine el ancho del ion-content
-    // para que los graficos tomen correcto ancho
     this.spareData.sparePartsObs.subscribe( spareParts => {
       this.spareParts = spareParts;  
     });

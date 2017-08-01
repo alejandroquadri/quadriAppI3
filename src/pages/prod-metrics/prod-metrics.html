@@ -10,14 +10,14 @@
 </ion-header>
 
 
-<ion-content #contenido padding (window:resize)="onResize($event)">
+<ion-content padding>
+	
+	<div class="acChart">
+		<acChart></acChart>
+	</div>
 
-		<div class="acChart">
-			<acChart></acChart>
-		</div>
-		
-		<div><hr></div>
+	<div><hr></div>
 
-		<prodChart></prodChart>
+	<prodChart></prodChart>
 
 </ion-content>

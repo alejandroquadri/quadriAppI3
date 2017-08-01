@@ -47,7 +47,7 @@
 
 	</ion-row>
 
-	<ion-row>
+	<ion-row #chartContainer (window:resize)="setWidth()">
 		<div #prodChart></div>
 	</ion-row>
 

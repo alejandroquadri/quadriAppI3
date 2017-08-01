@@ -20,6 +20,7 @@ export class AcChartComponent implements OnInit {
   rangeDate:any = {lower: 33, upper: 60};
 
   @ViewChild('prodAcChart', {read: ViewContainerRef}) prodAcChartEl: ViewContainerRef;
+  @ViewChild('chartContainer') chartContainer;
 
   constructor(
   	private chartBuilder: ChartBuilderProvider,
@@ -31,13 +32,16 @@ export class AcChartComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.chartBuilder.contentWidth = this.content._elementRef.nativeElement.clientWidth;
     this.prodData.prodObs.subscribe( (prod: Array<any>) => {
       this.production = prod;
       this.acProdData();
     });
 
 	}
+
+  setWidth() {
+    this.chartBuilder.chartsData.acChart.width = this.chartContainer.nativeElement.clientWidth;
+  }
 
   acProdData() {
     let labels: Array<any> = [];
@@ -82,10 +86,18 @@ export class AcChartComponent implements OnInit {
     this.chartBuilder.chartsData['acChart'] = {
       chartType: 'line',
       labels: labels,
-      datasets: datasets
+      datasets: datasets,
+      width: this.chartContainer.nativeElement.clientWidth
     }
 
-    this.buildAcChart();
+    let size = new Promise( (resolve, reject) => {
+      this.setWidth();
+      resolve();
+    });
+    size.then( () => {
+      this.buildAcChart();
+    })
+
   }
 
   addMonth() {
@@ -108,7 +120,7 @@ export class AcChartComponent implements OnInit {
 }
 
 @Component({
-  selector: 'acChart',
+  selector: 'acChartGraph',
   template: 
   `
   <div class="chart" (window:resize)="setChartSize()">
@@ -129,18 +141,24 @@ export class AcChartHelperComponent implements OnInit {
 
   ngOnInit() {
     console.log('Init');
-    this.setChartSize();
-    this.chartBuilder.buildChart(
-      this.chartEl.nativeElement, 
-      this.chartBuilder.chartsData.acChart.chartType, 
-      this.chartBuilder.chartsData.acChart.labels, 
-      this.chartBuilder.chartsData.acChart.datasets
-    );
+    let size = new Promise( (resolve, reject) => {
+      this.setChartSize();
+      resolve();
+    });
+    size.then( () => {
+      this.chartBuilder.buildChart(
+        this.chartEl.nativeElement, 
+        this.chartBuilder.chartsData.acChart.chartType, 
+        this.chartBuilder.chartsData.acChart.labels, 
+        this.chartBuilder.chartsData.acChart.datasets
+      );
+    })
   }
 
   setChartSize() {
-    console.log(this.chartBuilder.contentWidth);
-    this.renderer.setElementStyle(this.chartEl.nativeElement, 'width', `${this.chartBuilder.contentWidth-52}px`);
+    // console.log(this.chartBuilder.contentWidth);
+    // this.renderer.setElementStyle(this.chartEl.nativeElement, 'width', `${this.chartBuilder.contentWidth-52}px`);
+    this.renderer.setElementStyle(this.chartEl.nativeElement, 'width', `${this.chartBuilder.chartsData.acChart.width}px`);
   }
 
 }

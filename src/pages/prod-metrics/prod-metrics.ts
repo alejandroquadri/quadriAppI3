@@ -1,8 +1,5 @@
-import { Component, ViewChild} from '@angular/core';
-import { IonicPage, Content} from 'ionic-angular';
-import { DecimalPipe } from '@angular/common';
-
-import { ChartBuilderProvider } from '../../providers';
+import { Component} from '@angular/core';
+import { IonicPage} from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -11,19 +8,7 @@ import { ChartBuilderProvider } from '../../providers';
 })
 export class ProdMetricsPage {
 
-  @ViewChild(Content) content: Content;
-
   constructor(
-    private chartBuilder: ChartBuilderProvider,
   ) {}
-
-  ionViewDidLoad() {
-    this.chartBuilder.contentWidth = this.content._elementRef.nativeElement.clientWidth;
-  }
-
-  onResize(event) {
-    console.log(this.chartBuilder.contentWidth);
-    this.chartBuilder.contentWidth = this.content._elementRef.nativeElement.clientWidth;
-  }
 
 }
