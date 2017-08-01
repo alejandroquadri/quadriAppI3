@@ -44,11 +44,13 @@ export class DiaryProdPage {
 
   back() {
     this.date = moment(this.date).add(-1, 'days').format('YYYY-MM-DD');
+    this.prodNominal = this.staticData.prodNominal;
     this.dailyProdObj();
   }
 
   forward() {
     this.date = moment(this.date).add(1, 'days').format('YYYY-MM-DD');
+    this.prodNominal = this.staticData.prodNominal;
     this.dailyProdObj();
   }
 

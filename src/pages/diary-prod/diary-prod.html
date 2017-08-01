@@ -26,7 +26,7 @@
 			  <h1 class="machineTitle">{{ mach }}</h1>
 			  <span *ngIf="prodNominal[mach]">
 			  	<ion-note class="nominal">Nominal 
-			  		<span #nominal>{{ staticData.nominalCalc(mach, dailyProd[mach].logs[0].dim, vel.value, turno.value, almuerzo.value, paradas.value) | number : '1.0-2'}}</span> m2
+			  		<span #nominal>{{ staticData.nominalCalc(mach, dailyProd[mach].logs[0].dim, vel.value, turno.value, almuerzo.value, paradas.value) | number : '1.0-0'}}</span> m2
 			  	</ion-note>
 				  <ion-note class="nominal">Turno 
 						<input #turno class="nominalInput" text-center size="{{prodNominal[mach].turno.toString().length || 1}}" type="" name="" [(ngModel)]="prodNominal[mach].turno">
@@ -54,7 +54,7 @@
 						 		<ion-col *ngIf="article.seg">Segunda</ion-col>
 								<ion-col *ngIf="article.rep">Repaso</ion-col>
 								<ion-col *ngIf="article.broken">Rotos</ion-col>
-								<ion-col *ngIf="article.seg || article.broken || article.rep">Total</ion-col>
+								<ion-col *ngIf="article.seg || article.broken || article.rep">Total segunda</ion-col>
 					 	</ion-row>
 
 					 	<ion-row class="borderRow data">
@@ -67,7 +67,7 @@
 						 				<ion-col>final: {{ article.end }} hs</ion-col>
 						 			</ion-row>
 						 			<ion-row>
-						 				<ion-col>{{ timeDiff(article.start, article.end) }} horas</ion-col>
+						 				<ion-col>{{ timeDiff(article.start, article.end) | number : '1.0-1'}} horas</ion-col>
 						 			</ion-row>
 						 		</ion-col>
 
@@ -88,7 +88,9 @@
 						 				<ion-col>{{ toSalesUnit([article.seg], article.dim) }}</ion-col>
 						 			</ion-row>
 						 			<ion-row>
-						 				<ion-col>{{ (+article.seg) / (+article.prod) * 100 | number : '1.0-2' }} %</ion-col>
+						 				<ion-col [ngClass] = "{ alert: ((+article.seg) / (+article.prod) * 100) > 2 }">
+							 				{{ (+article.seg) / (+article.prod) * 100 | number : '1.0-2' }} %
+						 				</ion-col>
 						 			</ion-row>
 						 		</ion-col>
 
@@ -100,7 +102,9 @@
 					 				<ion-col>{{ toSalesUnit([article.rep], article.dim) }}</ion-col>
 					 			</ion-row>
 					 			<ion-row>
-					 				<ion-col>{{ (+article.rep) / (+article.prod) * 100 | number : '1.0-2' }} %</ion-col>
+					 				<ion-col [ngClass] = "{ alert: ((+article.rep) / (+article.prod) * 100) > 2 }">
+						 				{{ (+article.rep) / (+article.prod) * 100 | number : '1.0-2' }} %
+					 				</ion-col>
 					 			</ion-row>
 								</ion-col>
 
@@ -112,7 +116,9 @@
 						 				<ion-col>{{ toSalesUnit([article.broken], article.dim) }}</ion-col>
 						 			</ion-row>
 						 			<ion-row>
-						 				<ion-col>{{ (+article.broken) / (+article.prod) * 100 | number : '1.0-2' }} %</ion-col>
+						 				<ion-col [ngClass] = "{ alert: ((+article.broken) / (+article.prod) * 100) > 2 }">
+						 					{{ (+article.broken) / (+article.prod) * 100 | number : '1.0-2' }} %
+					 					</ion-col>
 						 			</ion-row>
 								</ion-col>
 
@@ -124,7 +130,9 @@
 						 				<ion-col>{{ toSalesUnit([article.seg, article.rep, article.broken], article.dim) }}</ion-col>
 						 			</ion-row>
 						 			<ion-row>
-						 				<ion-col>{{ totalSec(article.seg, article.rep, article.broken) / (+article.prod) * 100 | number : '1.0-2' }} %</ion-col>
+						 				<ion-col [ngClass] = "{ alert: (totalSec(article.seg, article.rep, article.broken) / (+article.prod) * 100) > 2 }">
+						 					{{ totalSec(article.seg, article.rep, article.broken) / (+article.prod) * 100 | number : '1.0-2' }} %
+					 					</ion-col>
 						 			</ion-row>
 								</ion-col>
 
@@ -191,7 +199,9 @@
 						 				<ion-col>{{ toSalesUnit([dailyProd[mach].total.rep], article.dim) }}</ion-col>
 						 			</ion-row>
 						 			<ion-row>
-						 				<ion-col>{{ (+dailyProd[mach].total.rep) / (+dailyProd[mach].total.prod) * 100 | number : '1.0-2' }} %</ion-col>
+						 				<ion-col [ngClass] = "{ alert: ((+dailyProd[mach].total.rep) / (+dailyProd[mach].total.prod) * 100) > 2 }">
+						 					{{ (+dailyProd[mach].total.rep) / (+dailyProd[mach].total.prod) * 100 | number : '1.0-2' }} %
+					 					</ion-col>
 						 			</ion-row>
 								</ion-col>
 
@@ -203,7 +213,9 @@
 						 				<ion-col>{{ toSalesUnit([dailyProd[mach].total.broken], article.dim) }}</ion-col>
 						 			</ion-row>
 						 			<ion-row>
-						 				<ion-col>{{ (+dailyProd[mach].total.broken) / (+dailyProd[mach].total.prod) * 100 | number : '1.0-2' }} %</ion-col>
+						 				<ion-col [ngClass] = "{ alert: ((+dailyProd[mach].total.broken) / (+dailyProd[mach].total.prod) * 100) > 2 }">
+						 					{{ (+dailyProd[mach].total.broken) / (+dailyProd[mach].total.prod) * 100 | number : '1.0-2' }} %
+					 					</ion-col>
 						 			</ion-row>
 								</ion-col>
 
@@ -215,7 +227,9 @@
 						 				<ion-col>{{ toSalesUnit([dailyProd[mach].total.seg, dailyProd[mach].total.rep, dailyProd[mach].total.broken], article.dim) }}</ion-col>
 						 			</ion-row>
 						 			<ion-row>
-						 				<ion-col>{{ totalSec(dailyProd[mach].total.seg, dailyProd[mach].total.rep, dailyProd[mach].total.broken) / (+dailyProd[mach].total.prod) * 100 | number : '1.0-2' }} %</ion-col>
+						 				<ion-col [ngClass] = "{ alert: (totalSec(dailyProd[mach].total.seg, dailyProd[mach].total.rep, dailyProd[mach].total.broken) / (+dailyProd[mach].total.prod) * 100) > 2 }">
+						 					{{ totalSec(dailyProd[mach].total.seg, dailyProd[mach].total.rep, dailyProd[mach].total.broken) / (+dailyProd[mach].total.prod) * 100 | number : '1.0-2' }} %
+					 					</ion-col>
 						 			</ion-row>
 								</ion-col>
 						 	</ion-row> 
