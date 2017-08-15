@@ -3,6 +3,7 @@ import { IonicModule } from 'ionic-angular';
 import { PipesModule } from '../../pipes/pipes.module';
 
 import { ChartDrawComponent } from '../chart-draw/chart-draw';
+import { ChartDrawComponentModule } from '../chart-draw/chart-draw.module';
 import { ProdChartComponent } from './prodChart';
 
 @NgModule({
@@ -11,7 +12,8 @@ import { ProdChartComponent } from './prodChart';
   ],
   imports: [
     IonicModule,
-    PipesModule
+    PipesModule,
+    ChartDrawComponentModule
   ],
   entryComponents: [
   ChartDrawComponent,

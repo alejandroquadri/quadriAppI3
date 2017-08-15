@@ -3,6 +3,7 @@ import { IonicPageModule } from 'ionic-angular';
 import { ProdMetricsPage } from './prod-metrics';
 import { AcChartComponentModule } from '../../components/acChart/acChart.module';
 import { ProdChartComponentModule } from '../../components/prodChart/prodChart.module';
+import { AcSalesChartComponentModule } from '../../components/ac-sales-chart/ac-sales-chart.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { ProdChartComponentModule } from '../../components/prodChart/prodChart.m
   imports: [
     IonicPageModule.forChild(ProdMetricsPage),
     AcChartComponentModule,
-    ProdChartComponentModule
+    ProdChartComponentModule,
+    AcSalesChartComponentModule
   ],
   entryComponents: [
   ],
