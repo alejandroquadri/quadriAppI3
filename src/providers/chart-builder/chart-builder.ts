@@ -62,7 +62,7 @@ export class ChartBuilderProvider {
     } else { return false; }
   }
 
-  buildFilteredObj (filteredArray: Array<any>) {
+  buildFilteredProdObj (filteredArray: Array<any>) {
     let filteredObj = {};
 
     filteredArray.forEach( log => {

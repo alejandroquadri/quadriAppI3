@@ -1,4 +1,29 @@
-<!-- Generated template for the AcSalesChartComponent component -->
-<div>
-  {{ sales | json }}
-</div>
+<ion-grid>
+
+	<ion-row>
+		<ion-col col-auto>
+			<ion-item no-lines class="month">
+				<button item-end ion-button icon-only outline small (click)= "subMonth()">
+					<ion-icon name="ios-arrow-back"></ion-icon>
+				</button>
+					{{ date.format('MMMM') }}
+				<button item-end ion-button icon-only outline small (click)= "addMonth()">
+					<ion-icon name="ios-arrow-forward"></ion-icon>
+				</button>
+			</ion-item>
+		</ion-col>
+		<ion-col>
+			<ion-item no-lines class="salesMan">
+				<select [(ngModel)]="salesMan" (ngModelChange)="salesDataFilter()" class="selectItem">
+					<option></option>
+					<option>Alejandra Roldan</option>
+					<option>Alberto Tarruella</option>
+				</select>
+			</ion-item>
+		</ion-col>
+	</ion-row>
+	<ion-row #chartContainer (window:resize)="setWidth()">
+		<div #salesAcChart class="chart"></div>
+	</ion-row>
+
+</ion-grid>

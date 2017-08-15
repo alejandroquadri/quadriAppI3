@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, Renderer, ViewContainerRef, ComponentFactoryResolver, Input } from '@angular/core';
+import { Component, ViewChild, OnInit, ViewContainerRef, ComponentFactoryResolver, Input } from '@angular/core';
 import { StaticDataProvider, ProductionDataProvider, ChartBuilderProvider } from '../../providers';
 
 import { ChartDrawComponent } from '../chart-draw/chart-draw';
@@ -28,7 +28,6 @@ export class AcChartComponent implements OnInit {
   	private chartBuilder: ChartBuilderProvider,
     private prodData: ProductionDataProvider,
     private staticData: StaticDataProvider,
-  	private renderer: Renderer,
     private componentFactoryResolver: ComponentFactoryResolver,
   ) {
   }
@@ -56,7 +55,7 @@ export class AcChartComponent implements OnInit {
         this.staticData.equivalences[log.dim].unit === this.unit)
     });
 
-    let filteredObj = this.chartBuilder.buildFilteredObj(filtered);
+    let filteredObj = this.chartBuilder.buildFilteredProdObj(filtered);
 
     let totalProd = 0;
     let totalseg = 0;
