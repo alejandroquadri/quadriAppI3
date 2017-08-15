@@ -11,14 +11,14 @@ import { ObjNgforPipe } from './obj-ngfor/obj-ngfor';
 	  MomentFormatPipe,
 	  FieldFilterPipe,
 	  SortPipe,
-	  ObjNgforPipe
+	  ObjNgforPipe,
   ],
   exports: [
 	  FilterPipe,
 	  MomentFormatPipe,
 	  FieldFilterPipe,
 	  SortPipe,
-	  ObjNgforPipe
+	  ObjNgforPipe,
   ]
 })
-export class PipesModule {}
+export class PipesModule {} 

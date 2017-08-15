@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { IonicModule } from 'ionic-angular';
 
-import { AcChartComponent } from './acChart';
-import { ChartDrawComponent } from '../chart-draw/chart-draw';
+import { AcSalesChartComponent, AcSalesChartHelperComponent} from './ac-sales-chart';
 
 @NgModule({
   declarations: [
-	  AcChartComponent,
+    AcSalesChartComponent,
+    AcSalesChartHelperComponent,
   ],
   imports: [IonicModule],
   entryComponents: [
-    ChartDrawComponent
+    AcSalesChartHelperComponent,
   ],
   exports: [
-	  AcChartComponent
+    AcSalesChartComponent
   ]
 })
 export class AcChartComponentModule {}

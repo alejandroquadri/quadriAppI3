@@ -43,6 +43,7 @@ import { SplitShowProvider } from '../providers/split-show/split-show';
 import { ProductionDataProvider } from '../providers/production-data/production-data';
 import { ChartBuilderProvider } from '../providers/chart-builder/chart-builder';
 import { HttpApiProvider } from '../providers/http-api/http-api';
+import { SalesDataProvider } from '../providers/sales-data/sales-data';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { HttpApiProvider } from '../providers/http-api/http-api';
     SplitShowProvider,
     ProductionDataProvider,
     ChartBuilderProvider,
-    HttpApiProvider
+    HttpApiProvider,
+    SalesDataProvider
   ]
 })
 export class AppModule {}

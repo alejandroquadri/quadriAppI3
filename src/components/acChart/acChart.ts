@@ -1,5 +1,7 @@
-import { Component, ViewChild, OnInit, Renderer, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
+import { Component, ViewChild, OnInit, Renderer, ViewContainerRef, ComponentFactoryResolver, Input } from '@angular/core';
 import { StaticDataProvider, ProductionDataProvider, ChartBuilderProvider } from '../../providers';
+
+import { ChartDrawComponent } from '../chart-draw/chart-draw';
 
 import Chart from 'chart.js';
 import * as moment from 'moment';
@@ -38,10 +40,6 @@ export class AcChartComponent implements OnInit {
     });
 
 	}
-
-  setWidth() {
-    this.chartBuilder.chartsData.acChart.width = this.chartContainer.nativeElement.clientWidth;
-  }
 
   acProdData() {
     let labels: Array<any> = [];
@@ -83,20 +81,7 @@ export class AcChartComponent implements OnInit {
       this.chartBuilder.buildDatasets(objLine , 'objetivo', 'rgba(51, 102, 204, 1)', 'rgba(51, 102, 204, 0.2)')
     ];
 
-    this.chartBuilder.chartsData['acChart'] = {
-      chartType: 'line',
-      labels: labels,
-      datasets: datasets,
-      width: this.chartContainer.nativeElement.clientWidth
-    }
-
-    let size = new Promise( (resolve, reject) => {
-      this.setWidth();
-      resolve();
-    });
-    size.then( () => {
-      this.buildAcChart();
-    })
+    this.buildAcChart(labels, datasets);
 
   }
 
@@ -110,55 +95,64 @@ export class AcChartComponent implements OnInit {
     this.acProdData();
   }
 
-  buildAcChart() {
-    const childComponent = this.componentFactoryResolver.resolveComponentFactory(AcChartHelperComponent);
+  buildAcChart(labels, datasets) {
+    const childComponent = this.componentFactoryResolver.resolveComponentFactory(ChartDrawComponent);
     if (this.acChart) { this.acChart.destroy() }
-    this.acChart = this.prodAcChartEl.createComponent(childComponent);
+    this.acChart = this.prodAcChartEl.createComponent(childComponent)
+    this.acChart.instance.width = this.chartContainer.nativeElement.clientWidth;
+    this.acChart.instance.chartType = 'line';
+    this.acChart.instance.labels = labels;
+    this.acChart.instance.datasets = datasets;
   }
 
-
-}
-
-@Component({
-  selector: 'acChartGraph',
-  template: 
-  `
-  <div class="chart" (window:resize)="setChartSize()">
-    <canvas #chart></canvas>
-  </div>
-  `
-})
-export class AcChartHelperComponent implements OnInit {
-
-  text: string;
-  @ViewChild('chart') chartEl;
-
-  constructor(
-    private chartBuilder: ChartBuilderProvider,
-    private renderer: Renderer
-  ) {
-  }
-
-  ngOnInit() {
-    console.log('Init');
-    let size = new Promise( (resolve, reject) => {
-      this.setChartSize();
-      resolve();
-    });
-    size.then( () => {
-      this.chartBuilder.buildChart(
-        this.chartEl.nativeElement, 
-        this.chartBuilder.chartsData.acChart.chartType, 
-        this.chartBuilder.chartsData.acChart.labels, 
-        this.chartBuilder.chartsData.acChart.datasets
-      );
-    })
-  }
-
-  setChartSize() {
-    // console.log(this.chartBuilder.contentWidth);
-    // this.renderer.setElementStyle(this.chartEl.nativeElement, 'width', `${this.chartBuilder.contentWidth-52}px`);
-    this.renderer.setElementStyle(this.chartEl.nativeElement, 'width', `${this.chartBuilder.chartsData.acChart.width}px`);
+  setWidth() {
+    if (this.acChart) { 
+      this.acChart.instance.width = this.chartContainer.nativeElement.clientWidth; 
+    }
   }
 
 }
+
+// @Component({
+//   selector: 'acChartGraph',
+//   template: 
+//   `
+//     <div class="chart" (window:resize)="setChartSize()">
+//       <canvas #chart></canvas>
+//     </div>
+//   `
+// })
+// export class AcChartHelperComponent implements OnInit {
+
+//   @Input() width: number;
+//   @Input() chartType: string
+//   @Input() labels: Array<any>
+//   @Input() datasets: Array<any>
+//   @ViewChild('chart') chartEl;
+
+//   constructor(
+//     private chartBuilder: ChartBuilderProvider,
+//     private renderer: Renderer
+//   ) {
+//   }
+
+//   ngOnInit() {
+//     let size = new Promise( (resolve, reject) => {
+//       this.setChartSize();
+//       resolve();
+//     });
+//     size.then( () => {
+//       this.chartBuilder.buildChart(
+//         this.chartEl.nativeElement, 
+//         this.chartType, 
+//         this.labels, 
+//         this.datasets
+//       );
+//     })
+//   }
+
+//   setChartSize() {
+//     this.renderer.setElementStyle(this.chartEl.nativeElement, 'width', `${this.width}px`);
+//   }
+
+// }

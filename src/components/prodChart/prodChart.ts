@@ -3,6 +3,8 @@ import { StaticDataProvider, ProductionDataProvider, ChartBuilderProvider } from
 
 import { FieldFilterPipe, SortPipe } from '../../pipes';
 
+import { ChartDrawComponent } from '../chart-draw/chart-draw';
+
 import Chart from 'chart.js';
 import * as moment from 'moment';
 
@@ -25,8 +27,6 @@ export class ProdChartComponent implements OnInit {
   typeFilter = 'PT';
   unit2 = 'm2';
 
-  
-
   constructor(
   	private chartBuilder: ChartBuilderProvider,
     private prodData: ProductionDataProvider,
@@ -43,10 +43,6 @@ export class ProdChartComponent implements OnInit {
       this.filteredProdData();
     });
 	}
-
-  setWidth() {
-    this.chartBuilder.chartsData.prodChart.width = this.chartContainer.nativeElement.clientWidth;
-  }
 
   filteredProdData() {
     let labels: Array<any> = [];
@@ -84,20 +80,24 @@ export class ProdChartComponent implements OnInit {
       datasets: datasets,
       width: this.chartContainer.nativeElement.clientWidth
     }
-    let size = new Promise( (resolve, reject) => {
-      this.setWidth();
-      resolve();
-    });
-    size.then( () => {
-      this.buildProdChart();
-    })
-    
+      this.buildProdChart(labels, datasets);    
   }
 
-  buildProdChart() {
-    const childComponent = this.componentFactoryResolver.resolveComponentFactory(ProdChartHelperComponent);
+  buildProdChart(labels, datasets) {
+    const childComponent = this.componentFactoryResolver.resolveComponentFactory(ChartDrawComponent);
     if (this.prodChart) { this.prodChart.destroy() }
     this.prodChart = this.prodChartEl.createComponent(childComponent);
+    this.prodChart.instance.width = this.chartContainer.nativeElement.clientWidth;
+    this.prodChart.instance.chartType = 'line';
+    this.prodChart.instance.labels = labels;
+    this.prodChart.instance.datasets = datasets;
+  }
+
+
+  setWidth() {
+    if (this.prodChart) {
+      this.prodChart.instance.width = this.chartContainer.nativeElement.clientWidth;
+    }
   }
 
   addFilter(filter, log) {
@@ -120,42 +120,6 @@ export class ProdChartComponent implements OnInit {
     } else {
       return this.chartBuilder.isFinished(log) ? false: true;
     }
-  }
-
-}
-
-@Component({
-  selector: 'prodChart',
-  template: 
-  `
-  <div class="chart" (window:resize)="setChartSize()">
-    <canvas #chart></canvas>
-  </div>
-  `
-})
-export class ProdChartHelperComponent implements OnInit {
-
-  @ViewChild('chart') chartEl;
-
-  constructor(
-    private chartBuilder: ChartBuilderProvider,
-    private renderer: Renderer
-  ) {
-  }
-
-  ngOnInit() {
-    console.log('Init');
-    this.setChartSize();
-    this.chartBuilder.buildChart(
-      this.chartEl.nativeElement, 
-      this.chartBuilder.chartsData.prodChart.chartType, 
-      this.chartBuilder.chartsData.prodChart.labels, 
-      this.chartBuilder.chartsData.prodChart.datasets
-    );
-  }
-
-  setChartSize() {
-    this.renderer.setElementStyle(this.chartEl.nativeElement, 'width', `${this.chartBuilder.chartsData.prodChart.width}px`);
   }
 
 }

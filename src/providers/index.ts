@@ -7,4 +7,5 @@ export * from './static-data/static-data';
 export * from './split-show/split-show';
 export * from './production-data/production-data';
 export * from './chart-builder/chart-builder';
-export * from './http-api/http-api'
+export * from './http-api/http-api';
+export * from './sales-data/sales-data'

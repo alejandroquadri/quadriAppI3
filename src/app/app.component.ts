@@ -33,6 +33,7 @@ export class MyApp {
       } else {
         this.rootPage = 'LoginPage'
       }
+
       platform.ready().then(() => {
         // Okay, so the platform is ready and our plugins are available.
         // Here you can do any higher level native things you might need.console.log('did load');
@@ -44,7 +45,6 @@ export class MyApp {
   }
   
   openPage (page: string, params?: any) {
-    console.log('open page');
     this.nav.setRoot(page, params);
   }
 

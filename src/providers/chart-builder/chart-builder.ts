@@ -14,7 +14,7 @@ export class ChartBuilderProvider {
   }
 
   buildChart(element, chartType: string, labels: Array<any>, datasets: Array<any>) {
-    new Chart(element, {
+    return new Chart(element, {
         type: chartType,
         data: {
           labels: labels,

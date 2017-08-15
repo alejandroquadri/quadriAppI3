@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform, PopoverController, ToastController, ModalController, Content } from 'ionic-angular';
 // import {IMyDpOptions} from 'mydatepicker';
 
-import { SparePartsDataProvider, SettingsProvider, SplitShowProvider, ChartBuilderProvider } from '../../providers';
+import { SparePartsDataProvider, SettingsProvider, SplitShowProvider } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -27,7 +27,6 @@ export class SparePartsPage {
     private spareData: SparePartsDataProvider,
     private settingsData: SettingsProvider,
     private splitShow: SplitShowProvider,
-    private chartBuilder: ChartBuilderProvider
 	) {
 
   }

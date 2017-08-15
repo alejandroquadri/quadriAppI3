@@ -2,19 +2,19 @@ import { NgModule } from '@angular/core';
 import { IonicModule } from 'ionic-angular';
 import { PipesModule } from '../../pipes/pipes.module';
 
-import { ProdChartComponent, ProdChartHelperComponent} from './prodChart';
+import { ChartDrawComponent } from '../chart-draw/chart-draw';
+import { ProdChartComponent } from './prodChart';
 
 @NgModule({
   declarations: [
 	  ProdChartComponent,
-	  ProdChartHelperComponent,
   ],
   imports: [
     IonicModule,
     PipesModule
   ],
   entryComponents: [
-    ProdChartHelperComponent,
+  ChartDrawComponent,
   ],
   exports: [
 	  ProdChartComponent
