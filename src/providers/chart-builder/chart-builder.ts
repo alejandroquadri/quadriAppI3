@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { StaticDataProvider } from '../static-data/static-data';
 import Chart from 'chart.js';
+import * as moment from 'moment';
 
 @Injectable()
 export class ChartBuilderProvider {
@@ -80,6 +81,29 @@ export class ChartBuilderProvider {
         filteredObj[log.date].seg += seg + broken + rep;
       }
     })
+    return filteredObj;
+  }
+
+  buildSalesObj(filteredArray: Array<any>, monthly?: boolean) {
+    let filteredObj = {};
+
+    filteredArray.forEach( sale => {
+      let total = + sale.total_importe
+      let date;
+      if (monthly) {
+        date = moment(sale.fecha_documento).format('YYYY-MM');
+      } else {
+        date = moment(sale.fecha_documento).format('YYYY-MM-DD');
+      }
+      if (!filteredObj[date]) {
+        filteredObj[date] = {
+          total: total,
+        }
+      } else {
+        filteredObj[date].total += total;
+      }
+    })
+
     return filteredObj;
   }
 

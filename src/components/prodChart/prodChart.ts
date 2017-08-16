@@ -1,11 +1,10 @@
-import { Component, ViewChild, OnInit, Renderer, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
+import { Component, ViewChild, OnInit, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { StaticDataProvider, ProductionDataProvider, ChartBuilderProvider } from '../../providers';
 
-import { FieldFilterPipe, SortPipe } from '../../pipes';
+import { SortPipe } from '../../pipes';
 
 import { ChartDrawComponent } from '../chart-draw/chart-draw';
 
-import Chart from 'chart.js';
 import * as moment from 'moment';
 
 @Component({
@@ -31,7 +30,6 @@ export class ProdChartComponent implements OnInit {
   	private chartBuilder: ChartBuilderProvider,
     private prodData: ProductionDataProvider,
     private staticData: StaticDataProvider,
-    private renderer: Renderer,
     private componentFactoryResolver: ComponentFactoryResolver,
     private sortPipe: SortPipe,
   ) {

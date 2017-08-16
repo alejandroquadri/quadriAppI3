@@ -1,9 +1,8 @@
-import { Component, ViewChild, OnInit, ViewContainerRef, ComponentFactoryResolver, Input } from '@angular/core';
+import { Component, ViewChild, OnInit, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { StaticDataProvider, ProductionDataProvider, ChartBuilderProvider } from '../../providers';
 
 import { ChartDrawComponent } from '../chart-draw/chart-draw';
 
-import Chart from 'chart.js';
 import * as moment from 'moment';
 
 @Component({

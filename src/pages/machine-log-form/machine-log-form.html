@@ -45,14 +45,14 @@
 				<ion-item *ngIf="platform.is('mobile')">
 				  <ion-label>Maquina</ion-label>
 				  <ion-select formControlName="title" interface="popover">
-				    <ion-option *ngFor="let maquina of staticData.maquinas | sort:'':true">{{maquina}}</ion-option>
+				    <ion-option *ngFor="let maquina of machines | sort:'':true">{{maquina}}</ion-option>
 				  </ion-select>
 				</ion-item>
 
 				<ion-item *ngIf="!platform.is('mobile')">
 						<ion-label class="labelMachineSelect">Maquina</ion-label>					
 					  <select item-content formControlName="title" class="selectMachine">
-					    <option *ngFor="let maquina of staticData.maquinas | sort:'':true">{{maquina}}</option>
+					    <option *ngFor="let maquina of machines | sort:'':true">{{maquina}}</option>
 					  </select>
 				</ion-item>
 

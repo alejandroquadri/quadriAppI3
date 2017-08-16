@@ -1,6 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform, PopoverController, ModalController, Content } from 'ionic-angular';
-
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams, Platform, PopoverController, ModalController } from 'ionic-angular';
 
 import { MachineLogDataProvider, SplitShowProvider } from '../../providers';
 

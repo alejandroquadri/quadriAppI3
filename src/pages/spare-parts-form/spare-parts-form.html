@@ -25,28 +25,28 @@
 					<ion-item *ngIf="platform.is('mobile')">
 					  <ion-label>Tipo</ion-label>
 					  <ion-select formControlName="tipo" interface="popover">
-					    <ion-option *ngFor="let item of staticData.items | sort:'':true">{{item}}</ion-option>
+					    <ion-option *ngFor="let item of data.items | sort:'':true">{{item}}</ion-option>
 					  </ion-select>
 					</ion-item>
 
 					<ion-item *ngIf="!platform.is('mobile')">
 							<ion-label class="labelMachineSelect">Tipo</ion-label>					
 							<select item-content formControlName="tipo" class="selectMachine">
-						    <option *ngFor="let item of staticData.items | sort:'':true">{{item}}</option>
+						    <option *ngFor="let item of data.items | sort:'':true">{{item}}</option>
 						  </select>
 					</ion-item>
 
 					<ion-item *ngIf="platform.is('mobile')">
 					  <ion-label>Destino</ion-label>
 					  <ion-select formControlName="destino" interface="popover">
-					    <ion-option *ngFor="let maquina of staticData.maquinas | sort:'':true">{{maquina}}</ion-option>
+					    <ion-option *ngFor="let maquina of data.maquinas | sort:'':true">{{maquina}}</ion-option>
 					  </ion-select>
 					</ion-item>
 
 					<ion-item *ngIf="!platform.is('mobile')">
 							<ion-label class="labelMachineSelect">Destino</ion-label>					
 							<select item-content formControlName="destino" class="selectMachine">
-						    <option *ngFor="let maquina of staticData.maquinas | sort:'':true">{{maquina}}</option>
+						    <option *ngFor="let maquina of data.maquinas | sort:'':true">{{maquina}}</option>
 						  </select>
 					</ion-item>
 
@@ -63,14 +63,14 @@
 				  <ion-item *ngIf="platform.is('mobile')">
 					  <ion-label >Unidad</ion-label>
 					  <ion-select formControlName="unidad" interface="popover">
-					    <ion-option *ngFor="let unidad of staticData.unidades | sort:'':true">{{unidad}}</ion-option>
+					    <ion-option *ngFor="let unidad of data.unidades | sort:'':true">{{unidad}}</ion-option>
 					  </ion-select>				
 				  </ion-item>
 
 				  <ion-item *ngIf="!platform.is('mobile')">
 					  <ion-label class="labelMachineSelect">Unidad</ion-label>
 						<select item-content formControlName="unidad" class="selectMachine">
-						    <option *ngFor="let unidad of staticData.unidades | sort:'':true">{{unidad}}</option>
+						    <option *ngFor="let unidad of data.unidades | sort:'':true">{{unidad}}</option>
 					  </select>
 				  </ion-item>
 

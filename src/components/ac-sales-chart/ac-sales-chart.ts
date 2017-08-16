@@ -1,10 +1,9 @@
 import { Component, ViewChild, OnInit, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
-import { StaticDataProvider, SalesDataProvider, ChartBuilderProvider } from '../../providers';
+import { SalesDataProvider, ChartBuilderProvider } from '../../providers';
 import 'rxjs/add/operator/map';
 
 import { ChartDrawComponent } from '../chart-draw/chart-draw';
 
-import Chart from 'chart.js';
 import * as moment from 'moment';
 
 @Component({
@@ -18,7 +17,8 @@ export class AcSalesChartComponent implements OnInit {
   date = moment();
 
   salesMan = '';
-  obj = 1600000;
+  eq = 1600000;
+  obj = this.eq * 1.1;
 
   @ViewChild('salesAcChart', {read: ViewContainerRef}) salesAcChartEl: ViewContainerRef;
   @ViewChild('chartContainer') chartContainer;
@@ -26,7 +26,6 @@ export class AcSalesChartComponent implements OnInit {
   constructor(
   	private chartBuilder: ChartBuilderProvider,
     private salesData: SalesDataProvider,
-    private staticData: StaticDataProvider,
     private componentFactoryResolver: ComponentFactoryResolver,
   ) {
   }
@@ -53,13 +52,54 @@ export class AcSalesChartComponent implements OnInit {
 
   salesDataFilter() {
     if (this.sales) {
-      let month = this.date.format('M');
+      let labels: Array<any> = [];
+      let finishedSales: Array<any> = [];
+      let objLine: Array<any> = [];
+      let eqLine: Array<any> = [];
+      let month = this.date.format('MM/YY');
+      let monthDays = this.date.daysInMonth();
+      let eq = this.eq;
+      let salesObj = this.obj
+      if (this.salesMan !== '') {
+        eq = eq/2;
+        salesObj = salesObj/2
+      }
+      let dailyEqSales = this.eq / monthDays
+      let dailyObjSales = this.obj / monthDays;
+      let totalSales = 0;
+      let totalObjSales = 0;
+      let totalEqSales = 0
 
       let filtered = this.sales.filter( sale => {
-        return (moment(sale.fecha_documento).format('M') === month && 
+        return (moment(sale.fecha_documento).format('MM/YY') === month && 
           this.salesManFilter(sale.nombreoriginantetr))
       })
       console.log(filtered);
+
+      let obj = this.chartBuilder.buildSalesObj(filtered);
+      console.log(obj);
+
+      for (let i=1, n= monthDays ; i <= n; i++) {
+        let date = this.date.date(i).format('YYYY-MM-DD');
+        labels.push(i);
+        if (obj[date]) {
+          totalSales += obj[date].total;
+        }
+        totalObjSales += dailyObjSales;
+        totalEqSales += dailyEqSales;
+        finishedSales.push(totalSales);
+        objLine.push(totalObjSales);
+        eqLine.push(totalEqSales);
+      }
+
+      console.log(labels, finishedSales);
+      let datasets = [
+        this.chartBuilder.buildDatasets(finishedSales, 'ventas', 'rgba(0, 128, 0, 1)', 'rgba(0, 128, 0, 0.2)'), 
+        this.chartBuilder.buildDatasets(eqLine, 'equilibrio',  'rgba(220, 57, 18, 1)', 'rgba(220, 57, 18, 0.2)'), 
+        this.chartBuilder.buildDatasets(objLine , 'objetivo', 'rgba(51, 102, 204, 1)', 'rgba(51, 102, 204, 0.2)')
+      ];
+      console.log(datasets);
+      this.buildAcChart(labels, datasets);
     }
     
   }

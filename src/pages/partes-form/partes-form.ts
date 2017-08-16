@@ -15,6 +15,7 @@ export class PartesFormPage implements OnInit {
   @ViewChild("dateInput") dateInput;
   updateForm: any
   editBtn = false;
+  data: any
 
   constructor(
   	private _fb: FormBuilder,
@@ -24,7 +25,9 @@ export class PartesFormPage implements OnInit {
     public viewCtrl: ViewController,
     private prodData: ProductionDataProvider,
     private staticData: StaticDataProvider
-  ) { }
+  ) { 
+    this.data = this.staticData;
+  }
 
 	ionViewDidLoad() {
     if (this.navParams.data.date) {

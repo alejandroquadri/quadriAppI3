@@ -15,6 +15,7 @@ export class SparePartsFormPage {
 	spareForm: FormGroup;
   submitType: string = 'new';
   updateForm: any;
+  data: any
 
   constructor(
     private fb: FormBuilder,
@@ -25,7 +26,8 @@ export class SparePartsFormPage {
     private authData: AuthDataProvider,
     private staticData: StaticDataProvider
     ) {
-  	this.buildForm();
+  	this.data = this.staticData;
+    this.buildForm();
   }
 
   ionViewDidLoad() {

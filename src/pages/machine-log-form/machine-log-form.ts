@@ -2,7 +2,6 @@ import { Component} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavParams, ViewController, Platform} from 'ionic-angular';
 import * as firebase from 'firebase';
-// import * as moment from 'moment';
 
 import { MachineLogDataProvider, AuthDataProvider, StaticDataProvider } from '../../providers';
 
@@ -16,6 +15,7 @@ export class MachineLogFormPage {
 	machineForm: FormGroup;
 	submitType: string = 'new';
 	updateForm: any;
+  machines: any
 
   constructor(
   	private fb: FormBuilder,
@@ -28,6 +28,7 @@ export class MachineLogFormPage {
     ) 
   {
   	this.buildForm();
+    this.machines = this.staticData.maquinas;
   }
 
   ionViewDidLoad() {
