@@ -1,7 +1,7 @@
 import { Component, ViewChild} from '@angular/core';
 import { IonicPage, NavParams, ViewController, Platform} from 'ionic-angular';
 
-import { StaticDataProvider, ProductionDataProvider } from '../../providers';
+import { StaticDataProvider, ProductionDataProvider, SplitShowProvider } from '../../providers';
 import { FieldFilterPipe } from '../../pipes';
 import { DecimalPipe } from '@angular/common';
 
@@ -29,6 +29,7 @@ export class DiaryProdPage {
     public viewCtrl: ViewController,
     private staticData: StaticDataProvider,
     private prodData: ProductionDataProvider,
+    private splitShow: SplitShowProvider,
     private fieldFilterPipe: FieldFilterPipe,
     private number: DecimalPipe
   ) {

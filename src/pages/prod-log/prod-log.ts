@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 
-import { ProductionDataProvider } from '../../providers';
+import { ProductionDataProvider, SplitShowProvider } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -17,7 +17,8 @@ export class ProdLogPage {
   	public navCtrl: NavController,
   	public navParams: NavParams,
     public platform: Platform,
-    private prodData: ProductionDataProvider
+    private prodData: ProductionDataProvider,
+    private splitShow: SplitShowProvider
     ) {
   }
 

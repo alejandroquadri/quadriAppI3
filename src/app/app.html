@@ -11,13 +11,9 @@
           </ion-avatar>
           <h2>{{ userProfile.displayName }}</h2>
           <h3>{{ userProfile.email }}</h3>
-          <button ion-button clear item-end icon-only (click)="splitShow.showChange()" *ngIf="splitShow.show">
+          <button ion-button clear item-end icon-only (click)="splitShow.showChange()" *ngIf="!splitShow.showMenuToggle()">
             <ion-icon name="close"></ion-icon>
           </button>
-          <!-- <button ion-button outline item-end icon-only (click)="splitShow.show = !splitShow.show"
-          *ngIf="!splitShow.show">
-            <ion-icon name="checkmark"></ion-icon>
-          </button> -->
         </ion-item>
       </ion-toolbar>
 

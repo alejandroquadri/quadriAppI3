@@ -12,7 +12,7 @@ import { PipesModule } from '../../pipes/pipes.module';
   imports: [
     IonicPageModule.forChild(SparePartsPage),
     ElasticModule,
-    PipesModule
+    PipesModule,
   ],
   exports: [
     SparePartsPage

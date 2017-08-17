@@ -1,10 +1,15 @@
 <ion-header>
 
   <ion-navbar>
-	  <button ion-button menuToggle>
+	  <button ion-button menuToggle *ngIf="splitShow.showMenuToggle()">
 	    <ion-icon name="menu"></ion-icon>
 	  </button>
-    <ion-title>Metricas de produccion</ion-title>
+    <ion-buttons left>
+	    <button ion-button icon-only small (click)="splitShow.showChange()" *ngIf="!splitShow.show && !splitShow.showMenuToggle()">
+	      <ion-icon name="ios-menu"></ion-icon>
+	    </button>
+	  </ion-buttons>
+    <ion-title>Metricas</ion-title>
   </ion-navbar>
 
 </ion-header>
