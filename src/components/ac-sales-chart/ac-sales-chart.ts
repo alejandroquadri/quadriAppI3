@@ -35,7 +35,6 @@ export class AcSalesChartComponent implements OnInit {
   	.map( res => res.json())
   	.subscribe( data => {
   		this.sales = data.data;
-      console.log(this.sales);
       this.salesDataFilter();
   	})
   }
@@ -64,8 +63,8 @@ export class AcSalesChartComponent implements OnInit {
         eq = eq/2;
         salesObj = salesObj/2
       }
-      let dailyEqSales = this.eq / monthDays
-      let dailyObjSales = this.obj / monthDays;
+      let dailyEqSales = eq / monthDays
+      let dailyObjSales = salesObj / monthDays;
       let totalSales = 0;
       let totalObjSales = 0;
       let totalEqSales = 0
@@ -74,10 +73,8 @@ export class AcSalesChartComponent implements OnInit {
         return (moment(sale.fecha_documento).format('MM/YY') === month && 
           this.salesManFilter(sale.nombreoriginantetr))
       })
-      console.log(filtered);
 
       let obj = this.chartBuilder.buildSalesObj(filtered);
-      console.log(obj);
 
       for (let i=1, n= monthDays ; i <= n; i++) {
         let date = this.date.date(i).format('YYYY-MM-DD');
@@ -91,14 +88,11 @@ export class AcSalesChartComponent implements OnInit {
         objLine.push(totalObjSales);
         eqLine.push(totalEqSales);
       }
-
-      console.log(labels, finishedSales);
       let datasets = [
         this.chartBuilder.buildDatasets(finishedSales, 'ventas', 'rgba(0, 128, 0, 1)', 'rgba(0, 128, 0, 0.2)'), 
         this.chartBuilder.buildDatasets(eqLine, 'equilibrio',  'rgba(220, 57, 18, 1)', 'rgba(220, 57, 18, 0.2)'), 
         this.chartBuilder.buildDatasets(objLine , 'objetivo', 'rgba(51, 102, 204, 1)', 'rgba(51, 102, 204, 0.2)')
       ];
-      console.log(datasets);
       this.buildAcChart(labels, datasets);
     }
     

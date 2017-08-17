@@ -41,7 +41,6 @@ export class MyApp {
         splashScreen.hide();
       });
     })
-    platform.width()
   }
   
   openPage (page: string, params?: any) {
@@ -52,8 +51,8 @@ export class MyApp {
     this.authData.logout();
   }
 
-  shouldShow(){
-    return this.splitShow.show;
+  shouldShow() {
+    return this.splitShow.shouldShow();
   }
 
   setRoot() {

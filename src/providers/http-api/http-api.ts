@@ -7,8 +7,8 @@ import 'rxjs/add/operator/map';
  */
 @Injectable()
 export class HttpApiProvider {
-  // url: string = 'http://quadri.ddns.net:3000/api';
-  url: string = 'http://localhost:3100/api';
+  url: string = 'http://quadri.ddns.net:3100/api';
+  // url: string = 'http://localhost:3100/api';
 
   constructor(public http: Http) {
   }
