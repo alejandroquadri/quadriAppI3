@@ -5,9 +5,6 @@ import { ChartBuilderProvider } from '../../providers';
   selector: 'chart-draw',
   template: 
   `
-    <button ion-button (click)="setParentSize()">
-      Size
-    </button>
     <div #container class="chart">
       <canvas #chart></canvas>
     </div>
@@ -46,7 +43,6 @@ export class ChartDrawComponent implements OnInit {
   }
 
   ngAfterViewChecked() {
-    console.log('viewchecked en chart-draw', this.width);
     this.setSize();
   }
 
