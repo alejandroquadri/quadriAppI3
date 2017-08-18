@@ -36,8 +36,11 @@ export class AcChartComponent implements OnInit {
       this.production = prod;
       this.acProdData();
     });
-
 	}
+
+  ngAfterViewChecked() {
+    this.setWidth();
+  }
 
   acProdData() {
     let labels: Array<any> = [];

@@ -39,6 +39,10 @@ export class AcSalesChartComponent implements OnInit {
   	})
   }
 
+  ngAfterViewChecked() {
+    this.setWidth();
+  }
+
   addMonth() {
     this.date = moment(this.date).add(1, 'months')
     this.salesDataFilter();

@@ -42,6 +42,10 @@ export class ProdChartComponent implements OnInit {
     });
 	}
 
+  ngAfterViewChecked() {
+    this.setWidth();
+  }
+
   filteredProdData() {
     let labels: Array<any> = [];
     let prod: Array<any> = [];

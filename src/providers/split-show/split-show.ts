@@ -21,7 +21,6 @@ export class SplitShowProvider {
     } else {
       width = false;
     }
-    console.log(this.platform.width(), width, this.show, width && this.show);
     return width && this.show;
   }
 
