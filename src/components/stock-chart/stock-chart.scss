@@ -1,0 +1,27 @@
+stock-chart {
+
+	.prodType {
+		width: 250px;
+	}
+
+	.labelSelect {
+  	color: #999;
+  	flex: initial;
+	}
+
+	.selectArt {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .labelColor {
+    color: #999;
+  }
+
+	.select {
+    background-color:rgba(244, 244, 244, 0.29);
+    border: none;
+    flex: 1;
+	}
+
+}

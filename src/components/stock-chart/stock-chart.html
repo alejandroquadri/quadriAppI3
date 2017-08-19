@@ -1,0 +1,18 @@
+<ion-grid>
+	<ion-row>
+		<ion-item no-lines class="prodType">
+			<ion-label class="labelSelect">Tipo</ion-label>
+			<select item-content class="select selectArt" [(ngModel)]="type" (ngModelChange)="stockFilter()">
+		    <option>PT m2</option>
+		    <option>PT ml</option>
+		    <option>PT unidades</option>
+		    <option>MP ton</option>
+		    <option>MP unidades</option>
+		  </select>
+		</ion-item>
+	</ion-row>
+
+	<ion-row #chartContainer (window:resize)="setWidth()">
+		<div #stockChart class="chart"></div>
+	</ion-row>
+</ion-grid>

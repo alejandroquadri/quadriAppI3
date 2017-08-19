@@ -16,7 +16,7 @@ import { ProdChartComponent } from './prodChart';
     ChartDrawComponentModule
   ],
   entryComponents: [
-  ChartDrawComponent,
+    ChartDrawComponent,
   ],
   exports: [
 	  ProdChartComponent

@@ -13,4 +13,8 @@ export class SalesDataProvider {
   	return this.httpApi.get('ventas')
   }
 
+  getStock() {
+  	return this.httpApi.get('stock');
+  }
+
 }

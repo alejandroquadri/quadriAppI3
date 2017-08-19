@@ -4,6 +4,7 @@ import { ProdMetricsPage } from './prod-metrics';
 import { AcChartComponentModule } from '../../components/acChart/acChart.module';
 import { ProdChartComponentModule } from '../../components/prodChart/prodChart.module';
 import { AcSalesChartComponentModule } from '../../components/ac-sales-chart/ac-sales-chart.module';
+import { StockChartComponentModule } from '../../components/stock-chart/stock-chart.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { AcSalesChartComponentModule } from '../../components/ac-sales-chart/ac-
     IonicPageModule.forChild(ProdMetricsPage),
     AcChartComponentModule,
     ProdChartComponentModule,
-    AcSalesChartComponentModule
+    AcSalesChartComponentModule,
+    StockChartComponentModule
   ],
   entryComponents: [
   ],
