@@ -17,7 +17,7 @@ export class AuthDataProvider {
   	private googlePlus: GooglePlus
 	) {
     this.user = afAuth.authState;
-    afAuth.authState.subscribe( user => {
+    this.user.subscribe( user => {
       this.uid = user.uid
       this.current = user;
     })

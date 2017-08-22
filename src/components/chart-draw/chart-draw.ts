@@ -18,6 +18,8 @@ export class ChartDrawComponent implements OnInit {
   @Input() chartType: string
   @Input() labels: Array<any>
   @Input() datasets: Array<any>
+  @Input() xStacked: boolean = false;
+  @Input() yStacked: boolean = false;
   @ViewChild('chart') chart;
   @ViewChild('container') container;
 
@@ -37,7 +39,9 @@ export class ChartDrawComponent implements OnInit {
         this.chart.nativeElement, 
         this.chartType, 
         this.labels, 
-        this.datasets
+        this.datasets,
+        this.xStacked,
+        this.yStacked
       );
     })
   }
@@ -48,7 +52,6 @@ export class ChartDrawComponent implements OnInit {
 
   setSize() {
     let height = this.width * 0.5;
-    console.log(this.width, height);
     this.renderer.setElementStyle(this.container.nativeElement, 'position', 'relative');
     this.renderer.setElementStyle(this.container.nativeElement, 'width', `${this.width}px`);
     this.renderer.setElementStyle(this.container.nativeElement, 'height', `${height}px`);

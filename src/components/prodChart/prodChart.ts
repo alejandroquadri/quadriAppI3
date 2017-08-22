@@ -76,13 +76,7 @@ export class ProdChartComponent implements OnInit {
       this.chartBuilder.buildDatasets(second, 'segunda',  'rgba(220, 57, 18, 1)', 'rgba(220, 57, 18, 0.2)')
     ];
 
-    this.chartBuilder.chartsData['prodChart'] = {
-      chartType: 'line',
-      labels: labels,
-      datasets: datasets,
-      width: this.chartContainer.nativeElement.clientWidth
-    }
-      this.buildProdChart(labels, datasets);    
+    this.buildProdChart(labels, datasets);    
   }
 
   buildProdChart(labels, datasets) {

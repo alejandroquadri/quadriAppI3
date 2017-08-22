@@ -14,12 +14,22 @@ export class ChartBuilderProvider {
   ) {
   }
 
-  buildChart(element, chartType: string, labels: Array<any>, datasets: Array<any>) {
+  buildChart(element, chartType: string, labels: Array<any>, datasets: Array<any>, xStacked?: boolean, yStacked?: boolean) {
     return new Chart(element, {
         type: chartType,
         data: {
           labels: labels,
           datasets: datasets
+        },
+        options: {
+        scales: {
+          xAxes: [{
+                stacked: xStacked || false
+            }],
+          yAxes: [{
+                stacked: yStacked || false
+            }]
+          }
         }
       }
     );
