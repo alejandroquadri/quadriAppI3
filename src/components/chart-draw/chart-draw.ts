@@ -11,10 +11,10 @@ import { ChartBuilderProvider } from '../../providers';
   `
 })
 
-// <div class="chart" (window:resize)="setChartSize()">
 export class ChartDrawComponent implements OnInit {
 
   @Input() width: number;
+  @Input() height: number;
   @Input() chartType: string
   @Input() labels: Array<any>
   @Input() datasets: Array<any>
@@ -41,7 +41,7 @@ export class ChartDrawComponent implements OnInit {
         this.labels, 
         this.datasets,
         this.xStacked,
-        this.yStacked
+        this.yStacked 
       );
     })
   }
@@ -50,10 +50,24 @@ export class ChartDrawComponent implements OnInit {
     this.setSize();
   }
 
+  setHeight() {
+    if (this.height) {
+      console.log(this.height);
+      this.renderer.setElementStyle(this.container.nativeElement, 'position', 'relative');
+      this.renderer.setElementStyle(this.container.nativeElement, 'height', `${this.height}px`);
+      this.renderer.setElementStyle(this.container.nativeElement, 'width', `${this.width}px`);
+    }
+  }
+
   setSize() {
-    let height = this.width * 0.5;
+    let height;
     this.renderer.setElementStyle(this.container.nativeElement, 'position', 'relative');
     this.renderer.setElementStyle(this.container.nativeElement, 'width', `${this.width}px`);
+    if (this.height) {
+      this.height < 80 ? height = 80 : height = this.height;
+    } else {
+      height = this.width / 2;
+    }
     this.renderer.setElementStyle(this.container.nativeElement, 'height', `${height}px`);
   }
 

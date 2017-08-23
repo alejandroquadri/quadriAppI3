@@ -1,9 +1,14 @@
 <ion-grid>
 	<ion-row>
+		<h4>Stock</h4>
+	</ion-row>
+	<ion-row>
 		<ion-item no-lines class="prodType">
 			<ion-label class="labelSelect">Tipo</ion-label>
 			<select item-content class="select selectArt" [(ngModel)]="type" (ngModelChange)="stockFilter()">
-		    <option>PT m2</option>
+		    <option>40x40 PT m2</option>
+		    <option>60x40 PT m2</option>
+		    <option>otros PT m2</option>
 		    <option>PT ml</option>
 		    <option>PT unidades</option>
 		  </select>

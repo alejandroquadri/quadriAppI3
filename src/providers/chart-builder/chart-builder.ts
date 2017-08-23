@@ -22,14 +22,16 @@ export class ChartBuilderProvider {
           datasets: datasets
         },
         options: {
-        scales: {
-          xAxes: [{
-                stacked: xStacked || false
-            }],
-          yAxes: [{
-                stacked: yStacked || false
-            }]
-          }
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            xAxes: [{
+                  stacked: xStacked || false
+              }],
+            yAxes: [{
+                  stacked: yStacked || false
+              }]
+            }
         }
       }
     );

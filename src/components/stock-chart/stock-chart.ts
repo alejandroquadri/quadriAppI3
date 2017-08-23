@@ -11,7 +11,7 @@ import { ChartDrawComponent } from '../chart-draw/chart-draw';
 export class StockChartComponent {
 
   stock: any;
-  type = 'PT m2';
+  type = '40x40 PT m2';
   stockChart: any;
 
   @ViewChild('stockChart', {read: ViewContainerRef}) stockChartEl: ViewContainerRef;
@@ -53,25 +53,37 @@ export class StockChartComponent {
     })
 
     let datasets = [
-      this.chartBuilder.buildDatasets(general, 'stock', 'rgba(0, 128, 0, 1)', 'rgba(0, 128, 0, 0.2)'), 
-      this.chartBuilder.buildDatasets(reserved, 'reservado',  'rgba(220, 57, 18, 1)', 'rgba(220, 57, 18, 0.2)'),
-      this.chartBuilder.buildDatasets(bloqueado , 'bloqueado', 'rgba(51, 102, 204, 1)', 'rgba(51, 102, 204, 0.2)')
+      this.chartBuilder.buildDatasets(general, 'stock', 'rgba(0, 128, 0, 1)', 'rgba(0, 128, 0, 0.8)'), 
+      this.chartBuilder.buildDatasets(reserved, 'reservado',  'rgba(220, 57, 18, 1)', 'rgba(220, 57, 18, 0.8)'),
+      this.chartBuilder.buildDatasets(bloqueado , 'bloqueado', 'rgba(255, 153, 0, 1)', 'rgba(255, 153, 0, 0.8)')
     ];
 
-    this.buildStockChart(labels, datasets); 
+    this.buildStockChart(labels, datasets, labels.length);
 
   }
 
   prodTypeFilter(dim) {
   	let result
     switch (this.type) {
-    	case 'PT m2':
-    		if (dim === '20 x 20' ||
-						dim === '40 x 40'||
-						dim === '40 x 40 durella' ||
-						dim === '50 x 50' ||
-						dim === '60 x 40' ||
-						dim === '60 x 60' ) {
+    	case '40x40 PT m2':
+    		if (dim === '40 x 40'||
+						dim === '40 x 40 durella') {
+          result = true;
+        } else {
+          result = false;
+        }
+      break;
+      case '60x40 PT m2':
+        if (dim === '60 x 60' ) {
+          result = true;
+        } else {
+          result = false;
+        }
+      break;
+      case 'otros PT m2':
+        if (dim === '20 x 20' ||
+            dim === '50 x 50' ||
+            dim === '60 x 60' ) {
           result = true;
         } else {
           result = false;
@@ -110,12 +122,15 @@ export class StockChartComponent {
     }
   }
 
-  buildStockChart(labels, datasets) {
+  buildStockChart(labels, datasets, nArts: number) {
+    console.log()
     const childComponent = this.componentFactoryResolver.resolveComponentFactory(ChartDrawComponent);
     if (this.stockChart) { this.stockChart.destroy() }
     this.stockChart = this.stockChartEl.createComponent(childComponent);
     this.stockChart.instance.yStacked = true;
+    this.stockChart.instance.xStacked = true;
     this.stockChart.instance.width = this.chartContainer.nativeElement.clientWidth;
+    this.stockChart.instance.height = nArts * 20;
     this.stockChart.instance.chartType = 'horizontalBar';
     this.stockChart.instance.labels = labels;
     this.stockChart.instance.datasets = datasets;
