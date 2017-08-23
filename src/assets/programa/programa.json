@@ -1,0 +1,5993 @@
+{
+
+    "20160725" : {
+      "1440" : {
+        "-KNYlWBHbHttACBq1KPo" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KNYlWBJspnqRj2_GLRt" : {
+          "codigo" : "1111S   4040",
+          "descripcion" : "Mosaico Blanco",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160726" : {
+      "1440" : {
+        "-KNYnhiwnsJhVhRnxtq5" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KNYnhiywFQEx_AB30Fu" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160727" : {
+      "1440" : {
+        "-KNYnt_nNHfkRD5tgr4t" : {
+          "codigo" : "1716S   4040",
+          "descripcion" : "Mosaico Verde Alpe",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KNYnt_riPN32sBfv1-d" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160728" : {
+      "650" : {
+        "-KNcIh9Bmc2OB00RhDVQ" : {
+          "codigo" : "83RUS10 4040",
+          "descripcion" : "Rustico Gris",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KNcIh9HH1JzmTY-qiN2" : {
+          "codigo" : "83RUS16 4040",
+          "descripcion" : "Rustico Negro",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KNYpcAdTGk9LVBNqOMm" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160729" : {
+      "1440" : {
+        "-KNcF92NVtq2Zpm0ioE-" : {
+          "codigo" : "1111S   4040",
+          "descripcion" : "Mosaico Blanco",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KNYoW1GMBLyWRlPk0vn" : {
+          "codigo" : "1716S   4040",
+          "descripcion" : "Mosaico Verde Alpe",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160801" : {
+      "1440" : {
+        "-KNrLEFlUO2V0EpbZ7tC" : {
+          "codigo" : "1111S   4040",
+          "descripcion" : "Mosaico Blanco",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KNrPsnOhUWDFUCPCGdP" : {
+          "codigo" : "1111S   4040",
+          "descripcion" : "Mosaico Blanco",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KNrPsnQJpx2NZ1kN1-w" : {
+          "codigo" : "1716S   4040",
+          "descripcion" : "Mosaico Verde Alpe",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Escalera" : {
+        "-KNrRL4ERyqH7OIn9AK0" : {
+          "codigo" : "1111S   4040",
+          "descripcion" : "Mosaico Blanco",
+          "fabricado" : false,
+          "unidad" : "m2",
+          "valor" : "3"
+        }
+      },
+      "Molde" : {
+        "-KNrNuijMfAZn03r7egr" : {
+          "codigo" : "9J1010K3030",
+          "descripcion" : "Bloque jardin",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KNrP8A1TOvurShni5MX" : {
+          "codigo" : "9BP1017P5050",
+          "descripcion" : "Placa pileta",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160802" : {
+      "1440" : {
+        "-KNrLWUwLESQjnkIvzVy" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Desbañadora" : {
+        "-KNxLJheFsXbJ7u4D_91" : {
+          "codigo" : "1111S   4040",
+          "descripcion" : "Mosaico Blanco",
+          "fabricado" : false,
+          "unidad" : "unidad",
+          "valor" : "510"
+        }
+      },
+      "Granalladora" : {
+        "-KNrMPO0svh5OeWRQpwy" : {
+          "codigo" : "1111S   4040",
+          "descripcion" : "Mosaico Blanco",
+          "fabricado" : false,
+          "unidad" : "m2",
+          "valor" : "25"
+        },
+        "-KNrMPO5eYqfdxcDXoLB" : {
+          "codigo" : "1716S   4040",
+          "descripcion" : "Mosaico Verde Alpe",
+          "fabricado" : false,
+          "unidad" : "m2",
+          "valor" : "88"
+        }
+      },
+      "Molde" : {
+        "-KNrPEfRm7vRulAgiYME" : {
+          "codigo" : "9J1010K3030",
+          "descripcion" : "Bloque jardin",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KNrPEfUmlVCeL__cOa1" : {
+          "codigo" : "9BP1017P5050",
+          "descripcion" : "Placa pileta",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160803" : {
+      "1440" : {
+        "-KNrLZmLwzNg6QnVnbXA" : {
+          "codigo" : "1716S   4040",
+          "descripcion" : "Mosaico Verde Alpe",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KNrQ2llQEpDO-MTW3FI" : {
+          "codigo" : "1111S   4040",
+          "descripcion" : "Mosaico Blanco",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Molde" : {
+        "-KNrPLLo3MKumR7bgld-" : {
+          "codigo" : "9J1010K3030",
+          "descripcion" : "Bloque jardin",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KNrPPtwmQO2p3wYrOVu" : {
+          "codigo" : "9BP1017P5050",
+          "descripcion" : "Placa pileta",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160804" : {
+      "650" : {
+        "-KNrLdsbmVk4hHrTenhy" : {
+          "codigo" : "803210SS6040",
+          "descripcion" : "Loseta Brechiato 60",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KNrQ6XaTQMZpCZ_CzWQ" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Molde" : {
+        "-KNrPWKLGXh_ie5UPwS9" : {
+          "codigo" : "9BP1017P5050",
+          "descripcion" : "Placa pileta",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KNrPWKNsVmDuVUxGo8N" : {
+          "codigo" : "9J1010K3030",
+          "descripcion" : "Bloque jardin",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160805" : {
+      "650" : {
+        "-KNrLhZad4FIHB8s8IfJ" : {
+          "codigo" : "801010SL6040",
+          "descripcion" : "Loseta Gris Perla 60",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "1440" : {
+        "-KOG5gJXZ73GfX6pmHKj" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Molde" : {
+        "-KNrPeQdCurDDOitVH-o" : {
+          "codigo" : "9BP1017P5050",
+          "descripcion" : "Placa pileta",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KNrPeQhvC9zVCeYk6I-" : {
+          "codigo" : "9J1010K3030",
+          "descripcion" : "Bloque jardin",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160808" : {
+      "1440" : {
+        "-KOQk4lzw2jF05A6ictp" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Lineal" : {
+        "-KOQinvnfUgEdnQW57vv" : {
+          "codigo" : "803210SS6040",
+          "descripcion" : "Loseta Brechiato 60",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Molde" : {
+        "-KOG64NDzRshmaWtzRI8" : {
+          "codigo" : "9J1010K3030",
+          "descripcion" : "Bloque jardin",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160809" : {
+      "1440" : {
+        "-KOG7-yxQ6HT3hhCYlvX" : {
+          "codigo" : "83ADRP104040",
+          "descripcion" : "64 P Gris Perla",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Lineal" : {
+        "-KOQj2cT4hvJ6MIviWTf" : {
+          "codigo" : "803210SS6040",
+          "descripcion" : "Loseta Brechiato 60",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KOQj2cUagsT1IZHh4jP" : {
+          "codigo" : "801010SL6040",
+          "descripcion" : "Loseta Gris Perla 60",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Molde" : {
+        "-KOPX5c3riVImdW2QW2r" : {
+          "codigo" : "9J1010K3030",
+          "descripcion" : "Bloque jardin",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160810" : {
+      "650" : {
+        "-KOjMAAQWWIe5KZX0JaL" : {
+          "codigo" : "801716S6040",
+          "descripcion" : "Loseta Verde Alpe 60",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Lineal" : {
+        "-KOQl4t3pgUWJnBnsBpd" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Molde" : {
+        "-KOQiJuXl2wKDdHS3EEp" : {
+          "codigo" : "9J1010K3030",
+          "descripcion" : "Bloque jardin",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160811" : {
+      "650" : {
+        "-KOoVjDqkT3Ml3-g2aJ7" : {
+          "codigo" : "803210SS6040",
+          "descripcion" : "Loseta Brechiato 60",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KOQlA0bNAgDjobCmDgj" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Molde" : {
+        "-KOQiMWQQXpP5ZxN-TGz" : {
+          "codigo" : "9J1010K3030",
+          "descripcion" : "Bloque jardin",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160812" : {
+      "Breton" : {
+        "-KOQlNJR-q7ENqGwoYQX" : {
+          "codigo" : "83ADRP104040",
+          "descripcion" : "64 P Gris Perla",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Molde" : {
+        "-KOQiOtCAlN8MvL94Vju" : {
+          "codigo" : "9J1010K3030",
+          "descripcion" : "Bloque jardin",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KOubXzJogUFioM5KrB9" : {
+          "codigo" : "9BP1017P5050",
+          "descripcion" : "Placa pileta",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160816" : {
+      "650" : {
+        "-KOzZzzQolkHNeIgnQyX" : {
+          "codigo" : "801010KL4040",
+          "descripcion" : "Loseta cemento 40",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160817" : {
+      "650" : {
+        "-KPNbU1ZgP4SGLiE0_rh" : {
+          "codigo" : "801010KL4040",
+          "descripcion" : "Loseta cemento 40",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Lineal" : {
+        "-KPNdA1N_pS_bzHrfSV5" : {
+          "codigo" : "803210SS6040",
+          "descripcion" : "Loseta Brechiato 60",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Molde" : {
+        "-KPNeM36TSv3NVdgotaj" : {
+          "codigo" : "9J1010K3030",
+          "descripcion" : "Bloque jardin",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160818" : {
+      "1440" : {
+        "-KPNcrcrA7SM-lxPJFBK" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Lineal" : {
+        "-KPNdDA0x_PrF9NbDpjg" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Molde" : {
+        "-KPNePnU57FRbXc4Dq_Q" : {
+          "codigo" : "9J1010K3030",
+          "descripcion" : "Bloque jardin",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160819" : {
+      "1440" : {
+        "-KPNe2KoBgbxvWvLNp6P" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Lineal" : {
+        "-KPNdG2T3O7N0Zxo_3Gj" : {
+          "codigo" : "1716S   4040",
+          "descripcion" : "Mosaico Verde Alpe",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Molde" : {
+        "-KPNeRyXnPGqhZOMvfHx" : {
+          "codigo" : "9J1010K3030",
+          "descripcion" : "Bloque jardin",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160822" : {
+      "1440" : {
+        "-KPNeCjpi77D2yvCxxId" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Lineal" : {
+        "-KPNeFf1S5sz_TdR2da1" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160823" : {
+      "1440" : {
+        "-KPZOp5ZiWqy19malngG" : {
+          "codigo" : "2615S   4040",
+          "descripcion" : "Mosaico Napoleon",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Lineal" : {
+        "-KPmrzh4huhtKbn7pksa" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Molde" : {
+        "-KPms0lmkk5100NLaNbX" : {
+          "codigo" : "9J1010K3030",
+          "descripcion" : "Bloque jardin",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160824" : {
+      "1440" : {
+        "-KPZOrIfYD5QhblVK2Xi" : {
+          "codigo" : "2717S   4040",
+          "descripcion" : "Mosaico Botichino",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Granalladora" : {
+        "-KPms3SFPlgxZzxJZ6JQ" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Pastinas" : {
+        "-KPms6WVW03lpKm2Ukgf" : {
+          "codigo" : "0020    10",
+          "descripcion" : "Pastina Gris",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160825" : {
+      "1440" : {
+        "-KPwecqy-YPOBCTFT4lJ" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Cortadora" : {
+        "-KPwo-No0XN2e8vIVxyD" : {
+          "codigo" : "1111SB  1040",
+          "descripcion" : "Zocalos Blanco",
+          "fabricado" : false,
+          "unidad" : "ml",
+          "valor" : "50"
+        }
+      },
+      "Desbañadora" : {
+        "-KPwnqJ0bpdBZxoN0Iac" : {
+          "codigo" : "1111S   4040",
+          "descripcion" : "Mosaico Blanco",
+          "fabricado" : false,
+          "unidad" : "unidad",
+          "valor" : "40"
+        }
+      },
+      "Lineal" : {
+        "-KPwrASn82CnCGiZo1Mz" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KPwrASof8wJhS_-bq4J" : {
+          "codigo" : "2615S   4040",
+          "descripcion" : "Mosaico Napoleon",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160826" : {
+      "1440" : {
+        "-KPwjzLQ8E597BqhqIgO" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KPwrHGYWBkQmwd7aXd4" : {
+          "codigo" : "801716S6040",
+          "descripcion" : "Loseta Verde Alpe 60",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160829" : {
+      "650" : {
+        "-KQ66Z5RTYPLFZZUoUad" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KQ11mriBgdVmJ7FGcPZ" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160830" : {
+      "650" : {
+        "-KQQX4vU05Bat5q-25VU" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KPwr_NWZRjrNycewEhX" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160831" : {
+      "1440" : {
+        "-KQQN4Zh1qfAXUtWeBRJ" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KQ12DjiwQlFrVRuzFyv" : {
+          "codigo" : "2717S   4040",
+          "descripcion" : "Mosaico Botichino",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160901" : {
+      "1440" : {
+        "-KQWtrZ73C-tsfkDF0ec" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KQWpQLcbOccqvR9ycZ-" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160902" : {
+      "1440" : {
+        "-KQWuD7r90lJpsCW-RGI" : {
+          "codigo" : "801010KL4040",
+          "descripcion" : "Loseta cemento 40",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KQQO6FyiTwydb6HrWJz" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160905" : {
+      "1440" : {
+        "-KQWsVuANT8hM--cRfDm" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KQWsVuCLYcPUO48sF9o" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160906" : {
+      "1440" : {
+        "-KQWs_thstTmCfkJzRp8" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KQWs_tkI6UceAzyXzrk" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Pastinas" : {
+        "-KQun88Yw9waUlJy-mru" : {
+          "codigo" : "0020    10",
+          "descripcion" : "Pastina Gris",
+          "fabricado" : false,
+          "unidad" : "bolsa",
+          "valor" : "30"
+        }
+      }
+    },
+    "20160907" : {
+      "650" : {
+        "-KQunv7jdNKNuZgzho36" : {
+          "codigo" : "Mosaico 50x50",
+          "descripcion" : "Mosaico 50x50",
+          "fabricado" : false,
+          "unidad" : "m2",
+          "valor" : "160"
+        }
+      },
+      "Breton" : {
+        "-KR3WrJNMxPdMAQ4vYHh" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160908" : {
+      "1440" : {
+        "-KQWuFtqhkij-690pSRF" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KR3XNwYqcjwzsdDP-jd" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160909" : {
+      "1440" : {
+        "-KQWvbKP6nVS9Eks3_2w" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Lineal" : {
+        "-KR3YTmX2tOv_sQv86As" : {
+          "codigo" : "Mosaico 50x50",
+          "descripcion" : "Mosaico 50x50",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160912" : {
+      "650" : {
+        "-KRJGEs3XTr_YZ8aJnVa" : {
+          "codigo" : "803210SS6040",
+          "descripcion" : "Loseta Brechiato 60",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KRECeV0M4XbhinxF61C" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160913" : {
+      "650" : {
+        "-KRJGHHvsOrKhozmD58u" : {
+          "codigo" : "803210SS6040",
+          "descripcion" : "Loseta Brechiato 60",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KRJE4iPxlbxzDiADeGf" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160914" : {
+      "1440" : {
+        "-KR_EuskVSEkxRCHqjn5" : {
+          "codigo" : "83ADRP104040",
+          "descripcion" : "64 P Gris Perla",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KRECxSE_qmnDRf4qsNw" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Desbañadora" : {
+        "-KReLgh58Tw-q994Mk0z" : {
+          "codigo" : "3210SB  1040",
+          "descripcion" : "Zocalos Brechiato",
+          "fabricado" : false,
+          "unidad" : "ml",
+          "valor" : "300"
+        }
+      },
+      "Granalladora" : {
+        "-KRTLyhu_52_n-WUnGsp" : {
+          "codigo" : "803210SS6040",
+          "descripcion" : "Loseta Brechiato 60",
+          "fabricado" : false,
+          "unidad" : "m2",
+          "valor" : "65"
+        }
+      }
+    },
+    "20160915" : {
+      "1440" : {
+        "-KRJGRc0b8nCeSwgewOA" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KRJGZ-0F8ieqwjhzdB5" : {
+          "codigo" : "803210SS6040",
+          "descripcion" : "Loseta Brechiato 60",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160916" : {
+      "1440" : {
+        "-KRJGU7-oLkpIPkXtwd6" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KRe9DX4HxcPaanXavI-" : {
+          "codigo" : "83ADRP104040",
+          "descripcion" : "64 P Gris Perla",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160919" : {
+      "Breton" : {
+        "-KRnXgsCRNx7N5qZMbOt" : {
+          "codigo" : "83ADRP104040",
+          "descripcion" : "64 P Gris Perla",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KRnXgsEKvgnnqNJKrTX" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Lineal" : {
+        "-KRnX56RcGM08WGizJAg" : {
+          "codigo" : "803210SS6040",
+          "descripcion" : "Loseta Brechiato 60",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160920" : {
+      "1440" : {
+        "-KRnWscJM1Gd-lm6ksTX" : {
+          "codigo" : "83ADRP114040",
+          "descripcion" : "64 P Blanco",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KRmuEjOvZPUzmta_k7U" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Cortadora" : {
+        "-KReD2t6Yp4d8u6u-cuL" : {
+          "codigo" : "3210SB  1040",
+          "descripcion" : "Zocalos Brechiato",
+          "fabricado" : false,
+          "unidad" : "ml",
+          "valor" : "226"
+        }
+      }
+    },
+    "20160921" : {
+      "1440" : {
+        "-KRnWweK5WftGhhk3idP" : {
+          "codigo" : "83ADRP174040",
+          "descripcion" : "64 P Verde Alpe",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Biseladora" : {
+        "-KRnXvl9-xCyqMrC3_iQ" : {
+          "codigo" : "803210SS6040",
+          "descripcion" : "Loseta Brechiato 60",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KRnXomcMckz1UpK_xOI" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160922" : {
+      "1440" : {
+        "-KSCN32fh3SwkgQf59Zr" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KRnY1WxhcVg9W0Ooggw" : {
+          "codigo" : "83ADRP114040",
+          "descripcion" : "64 P Blanco",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160923" : {
+      "1440" : {
+        "-KSCN5ZgvHmOFkghXPUA" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KRnY7yB5Nt5IQePm2aX" : {
+          "codigo" : "83ADRP174040",
+          "descripcion" : "64 P Verde Alpe",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KSCMPpGaq6gKfjXTyZk" : {
+          "codigo" : "83ADRP114040",
+          "descripcion" : "64 P Blanco",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160926" : {
+      "Breton" : {
+        "-KSCOrsasOe_LPMknRRg" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160927" : {
+      "1440" : {
+        "-KSCPr2oEU0CoLTOlxsl" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KSCOxPR7q7Orb3_BhW8" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160928" : {
+      "1440" : {
+        "-KSgSrAN4xmekSm7luAV" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KSCP4brcA5L0a_BJL6g" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160929" : {
+      "1440" : {
+        "-KSgSzmmo0JeA9i-pmyV" : {
+          "codigo" : "801010KL4040",
+          "descripcion" : "Loseta cemento 40",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KSCP8b42OHh89J377qd" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20160930" : {
+      "1440" : {
+        "-KSCQEDfXKLhGG9uOvXv" : {
+          "codigo" : "1111S   4040",
+          "descripcion" : "Mosaico Blanco",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KSCQ1Y_L3iGCIaYGq9G" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Otro" : {
+        "-KSgT6_ZXlEdIRUFfC8u" : {
+          "codigo" : "801010KL4040",
+          "descripcion" : "Loseta cemento 40",
+          "fabricado" : false,
+          "unidad" : "m2",
+          "valor" : "150"
+        }
+      }
+    },
+    "20161003" : {
+      "1440" : {
+        "-KSlR5hYBbdqlgXExAgu" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KSvEuWGA4IievJtwD4A" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KSvEuWQ2_GRg3VItUly" : {
+          "codigo" : "1111S   4040",
+          "descripcion" : "Mosaico Blanco",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161004" : {
+      "1440" : {
+        "-KSlR8hQiv75xHgaAFhM" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Biseladora" : {
+        "-KT9P3n8dmL5n88r77nH" : {
+          "codigo" : "2717SB  1040",
+          "descripcion" : "Zocalos Botichino",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KSlR_lj_xbG68qFiBk7" : {
+          "codigo" : "1111S   4040",
+          "descripcion" : "Mosaico Blanco",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161005" : {
+      "1440" : {
+        "-KSlS2-EIh07IT66g443" : {
+          "codigo" : "83ADRP114040",
+          "descripcion" : "64 P Blanco",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KSlRCzSpo5KoSnP3MCA" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161006" : {
+      "1440" : {
+        "-KSlS5j1TI3Wg1R1l3AO" : {
+          "codigo" : "83ADRP724040",
+          "descripcion" : "64 P Blanco Espuma",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KSlRG3KFHfLYmNoV2XL" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161007" : {
+      "1440" : {
+        "-KTLNngc3IuCoK2JsHSg" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KTLPGCRVn6itC_LZGR1" : {
+          "codigo" : "3210S   4040",
+          "descripcion" : "Mosaico Brechiato",
+          "fabricado" : false,
+          "observacion" : "",
+          "unidad" : "m2",
+          "valor" : ""
+        }
+      }
+    },
+    "20161011" : {
+      "650" : {
+        "-KTLPRvP1EBTpImZVrV8" : {
+          "codigo" : "801010SL6040",
+          "descripcion" : "Loseta Gris Perla 60",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KTLPVRfu0T4ytnlriYN" : {
+          "codigo" : "83ADRP114040",
+          "descripcion" : "64 P Blanco",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Desbañadora" : {
+        "-KUwNReomb64d3uXj0mc" : {
+          "codigo" : "2717S   4040",
+          "descripcion" : "Mosaico Botichino",
+          "observacion" : "",
+          "unidad" : "unidad",
+          "valor" : "15"
+        }
+      }
+    },
+    "20161012" : {
+      "650" : {
+        "-KTt_KedQsr8rn4bC9Vr" : {
+          "codigo" : "803210SS6040",
+          "descripcion" : "Loseta Brechiato 60",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KTLPg5jQoemmOBzQ7DN" : {
+          "codigo" : "83ADRP724040",
+          "descripcion" : "64 P Blanco Espuma",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161013" : {
+      "1440" : {
+        "-KTtZxd7y6Fi1CMZU-Kv" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Lineal" : {
+        "-KTtm1nw9Jm-yPhdAHSk" : {
+          "codigo" : "801010SL6040",
+          "descripcion" : "Loseta Gris Perla 60",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161014" : {
+      "1440" : {
+        "-KTtaWnW70yaR3nCKPx-" : {
+          "codigo" : "83ADRP104040",
+          "descripcion" : "64 P Gris Perla",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Lineal" : {
+        "-KTtm5JxiZ3ZPMV2lF_d" : {
+          "codigo" : "803210SS6040",
+          "descripcion" : "Loseta Brechiato 60",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161017" : {
+      "1440" : {
+        "-KTt_7hdYYkN68AhUM1B" : {
+          "codigo" : "801010KL4040",
+          "descripcion" : "Loseta cemento 40",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Lineal" : {
+        "-KTtm8z-TL91O4LwKNGO" : {
+          "codigo" : "803210SS6040",
+          "descripcion" : "Loseta Brechiato 60",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161018" : {
+      "1440" : {
+        "-KUIGLcNoT72M6ZOvM57" : {
+          "codigo" : "83ADRP104040",
+          "descripcion" : "64 P Gris Perla",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Lineal" : {
+        "-KUIGuwGEwKskvxqdIxs" : {
+          "codigo" : "803210SS6040",
+          "descripcion" : "Loseta Brechiato 60",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161019" : {
+      "1440" : {
+        "-KUIGVbhBEREzPWozR0p" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Lineal" : {
+        "-KUIHsuWxG2rVQQwuLVl" : {
+          "codigo" : "803210SS6040",
+          "descripcion" : "Loseta Brechiato 60",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Otro" : {
+        "-KUIHxUGGr-WzBTx9Yee" : {
+          "codigo" : "801010KL4040",
+          "descripcion" : "Loseta cemento 40",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161020" : {
+      "1440" : {
+        "-KUSS3gsvtN0wsbivdyu" : {
+          "codigo" : "83ADRP104040",
+          "descripcion" : "64 P Gris Perla",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KUIIzoz2ziORweDe-pS" : {
+          "codigo" : "83ADRP104040",
+          "descripcion" : "64 P Gris Perla",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161021" : {
+      "1440" : {
+        "-KUSS95D4EbXyGKCsimK" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KUSUzitLyUFvlfltu1L" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161024" : {
+      "650" : {
+        "-KUiWVoeXj4Rq2HRKsWG" : {
+          "codigo" : "801716S6040",
+          "descripcion" : "Loseta Verde Alpe 60",
+          "observacion" : "sin bisel",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KUSV2qUK-psOE7YZG2q" : {
+          "codigo" : "83ADRP104040",
+          "descripcion" : "64 P Gris Perla",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161025" : {
+      "650" : {
+        "-KUiV5lT0WFrQutULRQ2" : {
+          "codigo" : "801716S6040",
+          "descripcion" : "Loseta Verde Alpe 60",
+          "observacion" : "sin bisel",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KUSV5R6NnESx8y2pR7Y" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161026" : {
+      "1440" : {
+        "-KUxD99nHC86imjtVELL" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Lineal" : {
+        "-KUYaL91w6YJznwHUgfr" : {
+          "codigo" : "801716S6040",
+          "observacion" : "sin bisel",
+          "unidad" : "m2",
+          "valor" : "549"
+        }
+      }
+    },
+    "20161027" : {
+      "1440" : {
+        "-KV1Tc1OVtH9B-AGpECj" : {
+          "codigo" : "83ADRP104040",
+          "descripcion" : "64 P Gris Perla",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Lineal" : {
+        "-KUSVE75Ng-5nWuCcnLu" : {
+          "codigo" : "801716S6040",
+          "descripcion" : "Loseta Verde Alpe 60",
+          "fabricado" : false,
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161028" : {
+      "1440" : {
+        "-KV6G70hJvCYPdRQym3W" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KUxC_I_-SZ5NSDGsOyW" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161031" : {
+      "650" : {
+        "-KV6rOD7ojxpjAUw-fHl" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "con fondos de goma de 50x50",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KV6r6gEupUh4K4XvlJG" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161101" : {
+      "650" : {
+        "-KV6rJ69KjYI9XGUFcB_" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Granalladora" : {
+        "-KV1Uy3hnu0cpjxQgiQa" : {
+          "codigo" : "1111S   4040",
+          "descripcion" : "Mosaico Blanco",
+          "observacion" : "lo sacamos de stock",
+          "unidad" : "m2",
+          "valor" : "5"
+        },
+        "-KV1VXJ0TRbtKcngSFAp" : {
+          "codigo" : "801716S6040",
+          "descripcion" : "Loseta Verde Alpe 60",
+          "observacion" : "",
+          "unidad" : "m2",
+          "valor" : "15"
+        }
+      }
+    },
+    "20161102" : {
+      "650" : {
+        "-KV69NswdGszW0eIb2si" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KV6s85mgp2XRYQrIdkZ" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Cortadora" : {
+        "-KV1W2XMIJWe7tLSEzGo" : {
+          "codigo" : "1111S   4040",
+          "descripcion" : "Mosaico Blanco",
+          "observacion" : "",
+          "unidad" : "ml",
+          "valor" : "50"
+        },
+        "-KV1W7ti-3yxJTwEcN8A" : {
+          "codigo" : "2717SB  1040",
+          "descripcion" : "Zocalos Botichino",
+          "observacion" : "",
+          "unidad" : "ml",
+          "valor" : "45"
+        },
+        "-KV1WA3jxjuoG1XqoTCj" : {
+          "codigo" : "3210SB  1040",
+          "descripcion" : "Zocalos Brechiato",
+          "observacion" : "",
+          "unidad" : "ml",
+          "valor" : "20"
+        },
+        "-KV1WCqR8U-AcnKMrzoa" : {
+          "codigo" : "1733WB  1040",
+          "descripcion" : "Zocalos Sierra Chica",
+          "observacion" : "",
+          "unidad" : "ml",
+          "valor" : "48"
+        }
+      }
+    },
+    "20161103" : {
+      "650" : {
+        "-KV_XC898L14pTPFHTi1" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KV6ASA6nb2TFYu7AjrH" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161104" : {
+      "650" : {
+        "-KV_XGnAT9BF8NLOW3e7" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KV6AppUwAsY5pctjKWU" : {
+          "codigo" : "83ADRP324040",
+          "descripcion" : "64 P Brechiato",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161107" : {
+      "650" : {
+        "-KV_XWa_PhxCXDaMMBQ6" : {
+          "codigo" : "Mosaico 50x50",
+          "observacion" : "Blanco biselado",
+          "unidad" : "m2",
+          "valor" : "350"
+        }
+      },
+      "Breton" : {
+        "-KV_YSiLxHx0vBfV1rfq" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161108" : {
+      "650" : {
+        "-KV_XYroYpPTL5QKBstD" : {
+          "codigo" : "Mosaico 50x50",
+          "observacion" : "Blanco biselado",
+          "unidad" : "m2",
+          "valor" : "350"
+        }
+      },
+      "Breton" : {
+        "-KV_YTSNgQSGNX9SDyqd" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161109" : {
+      "650" : {
+        "-KV_YILB-SW2eogEs-ST" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KV_YXIvpXwfhOkcNgH3" : {
+          "codigo" : "Mosaico 50x50",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161110" : {
+      "650" : {
+        "-KV_YOmE6dIrOEklNYj0" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KV_YXux4JnzIrkPZsZp" : {
+          "codigo" : "Mosaico 50x50",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161111" : {
+      "650" : {
+        "-KVaTATj-u6lwJK1iBBB" : {
+          "codigo" : "1716S   4040",
+          "observacion" : "123 m2 son para granallar",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KVzqVR1BKCGVVS4Bypo" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "para escalera rusticato",
+          "unidad" : "unidad",
+          "valor" : "20"
+        }
+      },
+      "Breton" : {
+        "-KV_Yb0Ppry9jUYBmUJd" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161114" : {
+      "650" : {
+        "-KW9QIGRCIQ3KIsLp3OX" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KV_YckfJKgpBQnqmnOd" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Granalladora" : {
+        "-KW9Qk5WV2EvZTxoY9dd" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "rusticato escalera",
+          "unidad" : "unidad",
+          "valor" : "20"
+        }
+      }
+    },
+    "20161115" : {
+      "650" : {
+        "-KW9QJ52oAwNFXiHVMsW" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KW9RnFipjvOIG8-2oMq" : {
+          "codigo" : "1716S   4040",
+          "observacion" : "lo que sobra del granallado",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Granalladora" : {
+        "-KW9RgKG0ffKWrCjKcAB" : {
+          "codigo" : "1716S   4040",
+          "observacion" : "granallado",
+          "unidad" : "m2",
+          "valor" : "123"
+        }
+      }
+    },
+    "20161116" : {
+      "650" : {
+        "-KWcNdt88M-7TmYKyPUj" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KW9RqebfGFDljZqcgKa" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Pastinas" : {
+        "-KWhGwwHk9nSV6VNmARf" : {
+          "codigo" : "0020    12",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161117" : {
+      "650" : {
+        "-KW9QMOOvwBT6shU_Hci" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KW9RukKljK8JPzDyR2X" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Pastinas" : {
+        "-KWhH4hHSANC4YruEbFN" : {
+          "codigo" : "0020    10",
+          "observacion" : "",
+          "unidad" : "bolsa",
+          "valor" : "50"
+        }
+      }
+    },
+    "20161118" : {
+      "650" : {
+        "-KW9QNYZ-_ZzyB7-yqM8" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KWcONZFFmSVcitoffAH" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161121" : {
+      "650" : {
+        "-KWcNrMT1mtZyFs6SfSn" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KWhHVX04-SP8EjLU6vr" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161122" : {
+      "650" : {
+        "-KWs4RXtPcdYuK_CB5qs" : {
+          "codigo" : "801010KL4040",
+          "observacion" : "armadas 59 m2",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KWhHWp5w_mXVqiZqnHe" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161123" : {
+      "650" : {
+        "-KWJnQtp1DrvFX0aJDq9" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Otro" : {
+        "-KXG8Te6fXnrx3lnPiWt" : {
+          "codigo" : "801010KL4040",
+          "observacion" : "pasar tablas armadas",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161124" : {
+      "650" : {
+        "-KWJnSY9sk1lr9ZnObcf" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KXG8RrH8O9mARHIIx-V" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161125" : {
+      "650" : {
+        "-KWJnUSHI-rq6MyCqL_O" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KWhHg1s7778xLTEpD6B" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161129" : {
+      "650" : {
+        "-KXGYjNFyjyd9i_8YQqC" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KXHLrG6TnBlttPnsf-J" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "Escaleras Brechiato",
+          "unidad" : "unidad",
+          "valor" : "340"
+        }
+      },
+      "Breton" : {
+        "-KWhHmS6uvO3cZB93SkB" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161130" : {
+      "650" : {
+        "-KXG8LE3pGW48Nrj3rIH" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KXG8nGobAm_Cf0JKh-B" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161201" : {
+      "650" : {
+        "-KXG8MGDkpIiIzW180rY" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KXGYyTrkvQ9rKlchuwb" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161202" : {
+      "650" : {
+        "-KXl5bIS6rVBY3-4Xqlg" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "Sí, otra vez liso. Nico, no preguntes es necesario",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KXG8pUF0-S0ANIK8I6d" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161205" : {
+      "650" : {
+        "-KWiNiSZN5L623XL3EbR" : {
+          "codigo" : "2717S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KXpZwEMh-0IGOl7ZEWS" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161206" : {
+      "650" : {
+        "-KYFOIox7ufj_gF-0ttR" : {
+          "codigo" : "83ADRP104040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KXp_1QnwR20DlXVo9qp" : {
+          "codigo" : "2717S   4040",
+          "observacion" : "sí, es de un día para otro (es urgente)",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161207" : {
+      "650" : {
+        "-KXl5W6YP93gKbakNmrN" : {
+          "codigo" : "801010KL6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KXpaKkqOO3tKVm5Q-46" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161208" : {
+      "650" : {
+        "-KYFOFQTl-7oCnQayYne" : {
+          "codigo" : "801010KL6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161212" : {
+      "650" : {
+        "-KYKPjKmG8mV4IGXQtNb" : {
+          "codigo" : "801010KL6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KYKR-RSxDUIZ7jQmf0T" : {
+          "codigo" : "83ADRP104040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161213" : {
+      "650" : {
+        "-KYKPn1aIRS6XRDaPxPu" : {
+          "codigo" : "803210SS6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Granalladora" : {
+        "-KYKRmlg0kdVrTkOuChU" : {
+          "codigo" : "1716S   4040",
+          "observacion" : "",
+          "unidad" : "m2",
+          "valor" : "112"
+        }
+      },
+      "Otro" : {
+        "-KYKR8up_mCj09UEro1c" : {
+          "codigo" : "801010KL6040",
+          "observacion" : "pasar a tablas",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161214" : {
+      "650" : {
+        "-KYKQUk3kwiPbGYNVOP0" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Granalladora" : {
+        "-KYKQPCezif6TZynUI01" : {
+          "codigo" : "1716S   4040",
+          "observacion" : "sacamos de stock",
+          "unidad" : "m2",
+          "valor" : "112"
+        }
+      }
+    },
+    "20161215" : {
+      "650" : {
+        "-KYshBL1Rg6rg89dj2p1" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KYKRwMXP-nBs-yUVHoV" : {
+          "codigo" : "803210SS6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161216" : {
+      "Breton" : {
+        "-KYKS-InYLd0jeLXuDjK" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161219" : {
+      "650" : {
+        "-KYKQZOCafYrhfatlqaM" : {
+          "codigo" : "1733W   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KYyTrmLIV_PnydJzqn3" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161220" : {
+      "650" : {
+        "-KZ1ki4ChYij6yXfNqxb" : {
+          "codigo" : "1733W   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KYyTtox4HolJ9r1kmRg" : {
+          "codigo" : "1733W   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161221" : {
+      "650" : {
+        "-KZCCEAN1OlDSiIxiMhj" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KZCEdAIK9aQJcjSJveE" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Granalladora" : {
+        "-KZCGQQ3DhNvDTTai5rm" : {
+          "codigo" : "2717S   4040",
+          "observacion" : "",
+          "unidad" : "m2",
+          "valor" : "100"
+        }
+      }
+    },
+    "20161222" : {
+      "650" : {
+        "-KZCGDX71c2uA8nnpG-Y" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KZCEbb1bjFINi__jM15" : {
+          "codigo" : "1733W   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161223" : {
+      "650" : {
+        "-KZb3P_TZATLPWWsYS94" : {
+          "codigo" : "83ADRP724040",
+          "observacion" : "",
+          "unidad" : "m2",
+          "valor" : "50"
+        },
+        "-KZb3XNdoIFi3Gpti0xN" : {
+          "codigo" : "83ADRP104040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KZCGkXw6e3soXmiSI7A" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161224" : {
+      "650" : {
+        "-KZb386xpzJ5j7-EMLVw" : {
+          "codigo" : "1733W   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161226" : {
+      "650" : {
+        "-KZl2g8G7LbiE8p4mcVe" : {
+          "codigo" : "1733W   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KZCHpGKOROhDt5ZZBx2" : {
+          "codigo" : "83ADRP724040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KZb4VDcI9p3fahSOrIo" : {
+          "codigo" : "83ADRP104040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161227" : {
+      "650" : {
+        "-KZl2i3jXRxl6IQXGWcJ" : {
+          "codigo" : "803210SS6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KZb4S2Y-BqaiJ1CEA40" : {
+          "codigo" : "1733W   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161228" : {
+      "650" : {
+        "-KZb46mKHyL4DrKFcXfy" : {
+          "codigo" : "801010KL4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KZl2ndnBsxBChcAXJnB" : {
+          "codigo" : "1733W   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161229" : {
+      "650" : {
+        "-KZb497zjwGedAp7wokD" : {
+          "codigo" : "801010KL4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KZl2m0i7u2uBTWhmgfe" : {
+          "codigo" : "803210SS6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Otro" : {
+        "-KZb4ZYPDU5TEf9NkLku" : {
+          "codigo" : "801010KL4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20161230" : {
+      "650" : {
+        "-K_B6uHK_5Z1zvzsFWL8" : {
+          "codigo" : "801010KL4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Otro" : {
+        "-KZb4cCwpzd6uI24v84v" : {
+          "codigo" : "801010KL4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170102" : {
+      "650" : {
+        "-KZvczuREgRYMW3AmePy" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Biseladora" : {
+        "-K_UWlb1rwVa0_OPphKV" : {
+          "codigo" : "803210SS6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-K_UWo7GOs3yTsER9qJG" : {
+          "codigo" : "803210SS6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170103" : {
+      "650" : {
+        "-K_UXJQOLDowNErUAQlV" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "armados con malla electrosoldada",
+          "unidad" : "m2",
+          "valor" : "200"
+        }
+      },
+      "Breton" : {
+        "-K_UWsKxUsxXkxVQJhDN" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170104" : {
+      "650" : {
+        "-KZvdAAkAKSjsbGCEnbz" : {
+          "codigo" : "801010KL4040",
+          "observacion" : "Armadas",
+          "unidad" : "m2",
+          "valor" : "309"
+        }
+      },
+      "Breton" : {
+        "-K_UWxUY4eDutTQ-RZJI" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170105" : {
+      "650" : {
+        "-KZvdWaL05Qf5PlbtLVr" : {
+          "codigo" : "801010KL4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-K_idLo6vfJqHAO5C5z8" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170106" : {
+      "650" : {
+        "-KZvegyT7f4eImL9nYQw" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-K_idRIFOMekRzyPJ2dX" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170107" : {
+      "Biseladora" : {
+        "-K_if668nw0VGdY7pdRu" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170109" : {
+      "650" : {
+        "-K_iopfDtvpxdjHG9RlI" : {
+          "codigo" : "801010KL6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-K_iorfW_FLPD_bidLvD" : {
+          "codigo" : "801010SL6040",
+          "observacion" : "Gris Perla",
+          "unidad" : "m2",
+          "valor" : "50"
+        }
+      },
+      "Breton" : {
+        "-K_id_89UXql9YNHWyq8" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170110" : {
+      "650" : {
+        "-K_iovt71HNBqZi_wZS0" : {
+          "codigo" : "83ADRP104040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-K_ig4faQgqzj1wKLJUe" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170111" : {
+      "650" : {
+        "-K_ip0qbHXrASB2BouN0" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Biseladora" : {
+        "-K_ip2iMokmysXVYj3Y_" : {
+          "codigo" : "801010SL6040",
+          "observacion" : "",
+          "unidad" : "m2",
+          "valor" : "50"
+        }
+      },
+      "Breton" : {
+        "-K_ip45GMeohvs-GnQ_P" : {
+          "codigo" : "801010SL6040",
+          "observacion" : "",
+          "unidad" : "m2",
+          "valor" : "50"
+        },
+        "-K_ip6YT3G8gzKe-T3FY" : {
+          "codigo" : "83ADRP104040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170112" : {
+      "Breton" : {
+        "-K_ipX-qJaHgEjnL4Udz" : {
+          "codigo" : "83ADRP104040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170113" : {
+      "Breton" : {
+        "-K_ipi-WbWNy_kRn_208" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170130" : {
+      "650" : {
+        "-KbUo-rrAJnShMn7nG5H" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KbL-tnu-D7Y7WULIqkA" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "esto lo pulimos sin centrifuga",
+          "unidad" : "m2",
+          "valor" : "117"
+        }
+      }
+    },
+    "20170131" : {
+      "650" : {
+        "-KbKx6FecDZ8Jo8x-SKB" : {
+          "codigo" : "2615S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Otro" : {
+        "-KbKysgfC7BS_3tvryM1" : {
+          "codigo" : "801010KL4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KbKz0g1uOE_iNrQ7mpY" : {
+          "codigo" : "801010KL6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170201" : {
+      "650" : {
+        "-KbPq7FMa6t-vukfV07R" : {
+          "codigo" : "Mosaico 50x50",
+          "observacion" : "loseta cemento armada",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KbKxr9ppLgbYGI9c4rt" : {
+          "codigo" : "803210SS6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170202" : {
+      "650" : {
+        "-KbKw6ZZ9o6xdy07auW8" : {
+          "codigo" : "Mosaico 50x50",
+          "observacion" : "loseta cemento armada",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170203" : {
+      "650" : {
+        "-KbKw7f2JK0-scw8yS2D" : {
+          "codigo" : "Mosaico 50x50",
+          "observacion" : "loseta cemento armada",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170204" : {
+      "650" : {
+        "-KdSDWJXmR8ZMi7bRD1x" : {
+          "codigo" : "0020    11",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170206" : {
+      "650" : {
+        "-KbyrNT6m5ssnKqeeVcA" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Otro" : {
+        "-KbyuXjmmCuS9Pwny0Hj" : {
+          "codigo" : "801010KL6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-Kbyu_wjKEYb7HmIX-zL" : {
+          "codigo" : "Mosaico 50x50",
+          "observacion" : "loseta cemento armada",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170207" : {
+      "Breton" : {
+        "-KbyuNV_CJQ8UxbsO7KB" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KbyuRnF_JGyutNTxu-a" : {
+          "codigo" : "2615S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170208" : {
+      "650" : {
+        "-KcP27Jd9GDrfIazpAtF" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KbyuTfGl25NWVJ5rt5w" : {
+          "codigo" : "2615S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170209" : {
+      "650" : {
+        "-KbyrcBN603izGTi2fbk" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KbyudhNu0XPoc7gnDTZ" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170210" : {
+      "650" : {
+        "-KcP2SgS9MDy0QP2QRJc" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KcP2Zq9NmtJZsy2VDAv" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KcYV0WryZKXNaUIrEzZ" : {
+          "codigo" : "801010SL6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170211" : {
+      "650" : {
+        "-KcP3dRpwjzKsjVWTiP3" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170213" : {
+      "650" : {
+        "-KcYV9AF61GhoSBv07wU" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KcP4r3PRg1BWDeONGdn" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170214" : {
+      "650" : {
+        "-KcYTzUz_7zLVk_vnuJy" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KcP50P80iKm5G5D_Vy_" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170215" : {
+      "650" : {
+        "-KcYU4S2Jf5pvLI99XGW" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KcrVOq4EjqAr8Z7gCZz" : {
+          "codigo" : "83CEK35 4040.48",
+          "observacion" : "24 m2",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KcYUxrMsuVGe1bQC3Ce" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170216" : {
+      "650" : {
+        "-KcP4QcT74XpyhvZRAH6" : {
+          "codigo" : "801010KL6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-Kd1pZFRttAmXJjgJajH" : {
+          "codigo" : "801010KL6040",
+          "observacion" : "Armadas",
+          "unidad" : "unidad",
+          "valor" : "37"
+        }
+      },
+      "Breton" : {
+        "-Kd1wheJzjA0V90_x9FN" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Otro" : {
+        "-KcrVTsT5xG5uAotEYu0" : {
+          "codigo" : "83CEK35 4040.48",
+          "observacion" : "tablas",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170217" : {
+      "650" : {
+        "-KcP4RjXLhdURUKcQ5Kp" : {
+          "codigo" : "801010KL6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Kd1wciu0ja4LUwF_Apa" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170218" : {
+      "650" : {
+        "-KcP4UOf3weKSbvt0IJc" : {
+          "codigo" : "803210SS6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170220" : {
+      "Breton" : {
+        "-KdC52E0nN7--YK9U9uR" : {
+          "codigo" : "803210SS6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Otro" : {
+        "-Kd1x6vJbqyKRXUIJ1ew" : {
+          "codigo" : "801010KL6040",
+          "observacion" : "Tablas",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170221" : {
+      "650" : {
+        "-KcxA3UHOWYIaZ-a0C5-" : {
+          "codigo" : "801010KL4040",
+          "observacion" : "ARMADAS (1463 unidades)",
+          "unidad" : "m2",
+          "valor" : "234"
+        }
+      },
+      "Breton" : {
+        "-Kd1xgNts1f_PQWQlbRC" : {
+          "codigo" : "803210SS6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170222" : {
+      "650" : {
+        "-KcxAMy81xNrcA6Us-p6" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KdW7GJ_wO52jmQipyxP" : {
+          "codigo" : "83ADRP124040",
+          "observacion" : "",
+          "unidad" : "m2",
+          "valor" : "24"
+        },
+        "-KdW7KVAw9fran__oORh" : {
+          "codigo" : "83ADRP174040",
+          "observacion" : "",
+          "unidad" : "m2",
+          "valor" : "27"
+        }
+      },
+      "Breton" : {
+        "-Kd1woZRDjCME8Ddyf8e" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170223" : {
+      "650" : {
+        "-KcxAQ49dleS-Emn1KcY" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170224" : {
+      "650" : {
+        "-KcxAX-2vC6q0k3_9Vw6" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KdVsXBfGpoRC-8lvwuv" : {
+          "codigo" : "83ADRP124040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : "24"
+        },
+        "-KdVs_oGe-JLi4CdbGuK" : {
+          "codigo" : "83ADRP174040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : "27"
+        },
+        "-KdVscRo6xW1f6p8-W_A" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170301" : {
+      "650" : {
+        "-KdW6baoW0wxTQ256RoE" : {
+          "codigo" : "Mosaico 50x50",
+          "observacion" : "Blanco",
+          "unidad" : "m2",
+          "valor" : "200"
+        },
+        "-KdW6dJyyVISiMRsHOjZ" : {
+          "codigo" : "Mosaico 50x50",
+          "observacion" : "Napoleon",
+          "unidad" : "m2",
+          "valor" : "200"
+        }
+      },
+      "Breton" : {
+        "-KdW6s7VShWlNBqzBlt0" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170302" : {
+      "650" : {
+        "-KeDweIR2QNFxkeGFbYl" : {
+          "codigo" : "Mosaico 50x50",
+          "observacion" : "loseta cemento armada",
+          "unidad" : "m2",
+          "valor" : "670"
+        }
+      },
+      "Biseladora" : {
+        "-Ke989VfC34Q-5Fcsj3l" : {
+          "codigo" : "1733WB  1040",
+          "observacion" : "",
+          "unidad" : "unidad",
+          "valor" : "55"
+        }
+      },
+      "Breton" : {
+        "-KdW6qaP27ZlLkKCU-KE" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Cortadora" : {
+        "-Ke987IQ5hqagQAeKYlV" : {
+          "codigo" : "1733WB  1040",
+          "observacion" : "",
+          "unidad" : "unidad",
+          "valor" : "55"
+        }
+      },
+      "Desbañadora" : {
+        "-Ke96kfgEXYY9l2oESjI" : {
+          "codigo" : "1733WB  1040",
+          "observacion" : "",
+          "unidad" : "unidad",
+          "valor" : "55"
+        }
+      },
+      "Granalladora" : {
+        "-Ke9VIGEuu66B94ZC0Yn" : {
+          "codigo" : "1733W   4040",
+          "observacion" : "",
+          "unidad" : "m2",
+          "valor" : "100"
+        }
+      }
+    },
+    "20170303" : {
+      "650" : {
+        "-KeABUGCDvisxNrzs_nk" : {
+          "codigo" : "Mosaico 50x50",
+          "observacion" : "loseta cemento armada",
+          "unidad" : "m2",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Ke9VJlagSQ0RnRb76Nj" : {
+          "codigo" : "",
+          "observacion" : "Mosaico 50x50 blanco",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170306" : {
+      "650" : {
+        "-Ke93fh7MUWOYPOYCXcD" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170307" : {
+      "650" : {
+        "-Ke8yn5xouWMhOTGronC" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Ke94UInftKa2NjbDidG" : {
+          "codigo" : "",
+          "observacion" : "Mosaico 50x50 Napoleon",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170308" : {
+      "650" : {
+        "-Ke93jgvpkf-rEPPhg3t" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Ke93yBvOkyIm73SPYJa" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170309" : {
+      "650" : {
+        "-Ke93eIVfVJmI698GHUs" : {
+          "codigo" : "801010KL4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Ke942JSE_8yUluBKYFr" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170310" : {
+      "650" : {
+        "-KedvVbeZcrUYBaL-A0Q" : {
+          "codigo" : "801010KL4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Ke946We8K4Zr2bUSPvn" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Otro" : {
+        "-KeJaEgbFHtygszJhjIJ" : {
+          "codigo" : "801010KL4040",
+          "observacion" : "Pasar a tablas",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170311" : {
+      "650" : {
+        "-Ke93oImfaQ1DaA_gv-o" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170313" : {
+      "650" : {
+        "-Kf7mQySFl-O446aORrh" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "mosaico blanco espuma (aparte 265,20 ml zolalos), 57 unidades pedadas",
+          "unidad" : "m2",
+          "valor" : "388"
+        }
+      }
+    },
+    "20170314" : {
+      "650" : {
+        "-Kf7mhmdo3GDUDawP6rU" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170315" : {
+      "650" : {
+        "-KfRFAqARlC7pecarTYV" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170316" : {
+      "650" : {
+        "-KfRFJgjNE9ZL2wvXb78" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170317" : {
+      "650" : {
+        "-Kf7ms21wwuDUIeS6Opc" : {
+          "codigo" : "83ADRP104040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170318" : {
+      "650" : {
+        "-KfRF8y8qKnPFsCH-CZA" : {
+          "codigo" : "83ADRP114040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170320" : {
+      "650" : {
+        "-KfRGNIudkA-GEjgdbmJ" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KfggDvwqM24OlDZeXxn" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170321" : {
+      "650" : {
+        "-KeiYWNOI77dwWg1xoL9" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KfggIPHscNt-JVrV9_V" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170322" : {
+      "650" : {
+        "-KfRGPk1eqWzfK0shGCp" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Kfgg_D_TUEq6TGyHipd" : {
+          "codigo" : "83ADRP104040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Desbañadora" : {
+        "-KfpujOgux2fGBC7oYFH" : {
+          "codigo" : "1111SB  1040",
+          "observacion" : "",
+          "unidad" : "unidad",
+          "valor" : "1900"
+        }
+      }
+    },
+    "20170323" : {
+      "650" : {
+        "-KeiYhOPEB41JDnzuqdF" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Kfgoc6mN44M77c6fswc" : {
+          "codigo" : "83ADRP114040",
+          "observacion" : "Lunes se entregan 120 m2",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KfqBdOvTCPPdoK2ViXi" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "seguir el resto del día con esto (8 pallets entrega lunes x la mañana)",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170327" : {
+      "650" : {
+        "-KflJLgB0orRBqYH4lPS" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KflJPburYIpGfyHuHXy" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KfqBYsgN8tPGGNaNmX0" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "8 pallets se entregan el martes a la mañana",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170328" : {
+      "650" : {
+        "-KgFrOIEQqMam5FrcTKQ" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KflJOZxY5eT6YtRgX-X" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170329" : {
+      "650" : {
+        "-KflMrvxjQ7tcSPcMjcP" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KflMG5zoUII9uA-OTJ9" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170330" : {
+      "650" : {
+        "-KflMtKgXx4OqJP-X7_d" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KflMHl_OXfXsr0NuwwC" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170331" : {
+      "650" : {
+        "-KgPgYoYua_43P-mFwjH" : {
+          "codigo" : "83ADRP104040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KflM0na-ATnNZXnZYH2" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170401" : {
+      "650" : {
+        "-KgPgkJ782UBFzreodC0" : {
+          "codigo" : "83ADRP104040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170403" : {
+      "650" : {
+        "-KgPganGNVEhXDXpnK_u" : {
+          "codigo" : "801011SS6040",
+          "observacion" : "habría que hacer 80 m2",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KgPghx9TSRjTEjQTd6b" : {
+          "codigo" : "803210SS6040",
+          "observacion" : "el resto del dia",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KgZNRbLMyZkUM3Pl6UR" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170404" : {
+      "650" : {
+        "-KgPgn1vxMcvgKds4Emu" : {
+          "codigo" : "801010KL6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Kg_MUlIbQYww9y1ao7o" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-Kgu2F2CwoZzh_27_TfX" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170405" : {
+      "650" : {
+        "-KgPi1BrjDITX1Sc1eSA" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KgPi2dqmhB0ccRLslbJ" : {
+          "codigo" : "2717S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Kgu2J_haMc1Rlr5BlsE" : {
+          "codigo" : "83ADRP104040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Otro" : {
+        "-Kgu69nornGiGoP6mysa" : {
+          "codigo" : "801010KL6040",
+          "observacion" : "Pasar a tablas 4 pallets entrega jueves",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170406" : {
+      "650" : {
+        "-KgyQCzbV6LyTLP0ZRSr" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KgzUoNTBf80oAjsupC4" : {
+          "codigo" : "801011SS6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KgzUreyc-RDQrd9BiUF" : {
+          "codigo" : "803210SS6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170407" : {
+      "650" : {
+        "-KgPiYaWW0JIJd6K8g97" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Kgu3_nelfOgpgmL2Cy1" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-Kgzo7xSNIzpGdT94hFi" : {
+          "codigo" : "2717S   4040",
+          "observacion" : "ojo!!!! que una parte va granallada",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Granalladora" : {
+        "-Kgu3oMOafrfYOuQSWji" : {
+          "codigo" : "2717S   4040",
+          "observacion" : "",
+          "unidad" : "unidad",
+          "valor" : "170"
+        }
+      }
+    },
+    "20170408" : {
+      "650" : {
+        "-KgPicLkhPHeD_UM-59t" : {
+          "codigo" : "83CEK35 4040.48",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170410" : {
+      "650" : {
+        "-KgyQBYWqdLVIhIBuKby" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KgoMPYF8OdTpp6XPwXv" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170411" : {
+      "650" : {
+        "-KgyQpd-Syhgv7AVveE2" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Kh8oy2nwtSDUR0ziWlI" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "miercoles se entregan 6 pallets",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Otro" : {
+        "-Kh8pMp3Vlupzw6xqeUd" : {
+          "codigo" : "83CEK35 4040.48",
+          "observacion" : "miercoles al mediodia se entregan 7 tablas",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170412" : {
+      "650" : {
+        "-Kh7ywswtsIcKtvUk0aS" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KhT1YBhoqo2TmmilQfl" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170413" : {
+      "650" : {
+        "-KhN6aytyYdstkvv4FQ0" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KhNKQDACgMjVs5HJaV9" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170417" : {
+      "650" : {
+        "-KhNs6TR1w8Bh1lctGRO" : {
+          "codigo" : "83ADRP174040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KhOF_jn1i9TfubTiI7U" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170418" : {
+      "650" : {
+        "-KhSHqj19-bPvZilTU2w" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KhOFibJEvtZFcCbl38T" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170419" : {
+      "650" : {
+        "-Ki075Nh9L0c5ySDTDMZ" : {
+          "codigo" : "83CEK35 4040.48",
+          "observacion" : "",
+          "unidad" : "m2",
+          "valor" : "160"
+        }
+      },
+      "Breton" : {
+        "-KhOFpkJawUZQFQ7c5Us" : {
+          "codigo" : "83ADRP174040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170420" : {
+      "650" : {
+        "-KhSK5sCqCaunKKfwDRD" : {
+          "codigo" : "1733W   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KhwEbjlp1-xc55rQbcf" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170421" : {
+      "650" : {
+        "-KhSXmPJb-41AYod3P6_" : {
+          "codigo" : "1733W   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KhwEZWYnW7rgCZjrP2F" : {
+          "codigo" : "83ADRP104040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170422" : {
+      "650" : {
+        "-KhSHbOxun9MERHYrp26" : {
+          "codigo" : "Mosaico 50x50",
+          "observacion" : "napoleon",
+          "unidad" : "m2",
+          "valor" : "91"
+        },
+        "-KhbcZlO9wEwtJSaC-iZ" : {
+          "codigo" : "Mosaico 50x50",
+          "observacion" : "losetas armadas cemento",
+          "unidad" : "m2",
+          "valor" : "85"
+        }
+      }
+    },
+    "20170424" : {
+      "650" : {
+        "-Ki0LM5is4wM2h5R4TYY" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Ki0OG00qmdfaZFYqUv3" : {
+          "codigo" : "1733W   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170425" : {
+      "650" : {
+        "-KiG3rEQG4E_CL93MlwW" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "m2",
+          "valor" : "192"
+        }
+      },
+      "Breton" : {
+        "-Ki0OPhRKZE3SZREia6l" : {
+          "codigo" : "1733W   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170426" : {
+      "650" : {
+        "-KiG3vMtCQIn0Vjdg6d4" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KiG34Ipd5pIde836G4M" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170427" : {
+      "650" : {
+        "-KiG3tCSzncIjmZo4Sm7" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Ki0EecUFrK5IfPbaI2Z" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170428" : {
+      "650" : {
+        "-Ki_YH45vqwULlAfIZFM" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Ki0Hs1uLZTOvYbCms4c" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "Sabado 29 se entregan 6 pallets",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170502" : {
+      "650" : {
+        "-Ki6V4kMaW70nMKsv5sN" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Ki_YPD35FV_1cGDIAaN" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170503" : {
+      "650" : {
+        "-Ki__1MQrGJHCjOeCidj" : {
+          "codigo" : "1733W   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Ki_YUUterF5Q9JogjNL" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170504" : {
+      "650" : {
+        "-Ki__36_DzlHn_ducS4b" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Ki_YYoSB7IbPNfKIr0b" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170505" : {
+      "650" : {
+        "-KiUuayYjqjGuElX_zJ3" : {
+          "codigo" : "2615S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KjNZOFwEU6OOucIdw2n" : {
+          "codigo" : "1733W   4040",
+          "observacion" : "60m2 van granallados (a realizar el dia martes)",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Pastinas" : {
+        "-KjEmXTpcSEx1T_x-VI8" : {
+          "codigo" : "0020    15",
+          "observacion" : "8 bolsas",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KjEmZmoekT667csqWhC" : {
+          "codigo" : "0020    12",
+          "observacion" : "20 bolsas",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170506" : {
+      "650" : {
+        "-Ki_YDrM8NTWbnTMSsg9" : {
+          "codigo" : "801010KL4040",
+          "observacion" : "",
+          "unidad" : "m2",
+          "valor" : "120"
+        }
+      }
+    },
+    "20170508" : {
+      "650" : {
+        "-Kj9GF30hOTNFdYa9Q7t" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KjOvkMiAhEJmQ2xaQzO" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "7 pallets se entregan el martes",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Otro" : {
+        "-KjIqj1tMnoIjcib3ygP" : {
+          "codigo" : "801010KL4040",
+          "observacion" : "5 tablas tendriamos q entregar al mediodia",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170509" : {
+      "650" : {
+        "-Kj9Uac9Vsvxg3SDvI-M" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KjOxszx4JFcZmaLmwqN" : {
+          "codigo" : "1733W   4040",
+          "observacion" : "necesito 215 unidades para completar un pedido",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Granalladora" : {
+        "-KjIqtuPN-XFWtXi-JMI" : {
+          "codigo" : "1733W   4040",
+          "observacion" : "375 unidades",
+          "unidad" : "m2",
+          "valor" : "60"
+        },
+        "-KjIqw5tEdtQTMDZp6ug" : {
+          "codigo" : "2615S   4040",
+          "observacion" : "1000 unidades",
+          "unidad" : "m2",
+          "valor" : "160"
+        }
+      }
+    },
+    "20170510" : {
+      "650" : {
+        "-Kj9UbqPb9bA3BFJH_Bj" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KjDDyb7sEx4fUmKYgOI" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KjmELXaCv-CR1XM9dDW" : {
+          "codigo" : "2615S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170511" : {
+      "650" : {
+        "-Kj9WY4H4jxBAvGCbCNr" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KjmJvSTJn0tsHwBh6so" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "5 pallets para entregar viernes",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KjmK_qmcGSCqExZmdds" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "6 pallets entrega mediodia",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170512" : {
+      "650" : {
+        "-Kj9WZT6DJCjTBzIcrc9" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KjDE2-ddB1A453Fl9EH" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170513" : {
+      "650" : {
+        "-Kj9WaXuvtuufLT3sO7c" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170515" : {
+      "650" : {
+        "-KjmZSSx8MTP7lWoO0LK" : {
+          "codigo" : "83ADRP114040",
+          "observacion" : "",
+          "unidad" : "m2",
+          "valor" : "80"
+        },
+        "-KjmZUaS_aVv67AApR_H" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KjcWkscRxiqJnQLXPGb" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170516" : {
+      "650" : {
+        "-KkG3h5jWCRaMbAGoPCd" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KjcWh1dA7oIP8SH4M0-" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170517" : {
+      "650" : {
+        "-KkG3f_tQDvW3OjZBCQt" : {
+          "codigo" : "83ADRP174040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KjsUni4PYQrTFy9mqO_" : {
+          "codigo" : "83ADRP114040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KkBD5vXA0zekC3NAJ_q" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170518" : {
+      "650" : {
+        "-KjmXje4hilaSFAoJDGz" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KkGZHtGqPdVcfhzfvYm" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170519" : {
+      "650" : {
+        "-KkBj4524TBYOyBrBPAx" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Kjsg22sBl_0Q18mf7nu" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KkMry_352XsRxcOmnxh" : {
+          "codigo" : "83ADRP174040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170522" : {
+      "650" : {
+        "-KjwWbmta3T-oFPDSLi4" : {
+          "codigo" : "803210SS6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KkGZNxNpUs5QeCsL3TH" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170523" : {
+      "650" : {
+        "-KjsxlYBYujLatb71kxp" : {
+          "codigo" : "801010SL6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170524" : {
+      "650" : {
+        "-KkMq9uWmqomFYhJqLJe" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170526" : {
+      "650" : {
+        "-KkR5eAxSaNFkbvfwKba" : {
+          "codigo" : "83ADRP724040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KkvdNvY9DUF72Rs6YFU" : {
+          "codigo" : "801010SL6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170527" : {
+      "650" : {
+        "-KkkQ4LbjzzBtsRJWwR2" : {
+          "codigo" : "83ADRP724040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170529" : {
+      "650" : {
+        "-KkMpLxLqqlic_1a51Uv" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "m2",
+          "valor" : "144"
+        },
+        "-KkMpP5Kc4PdFRZJAh18" : {
+          "codigo" : "2717S   4040",
+          "observacion" : "",
+          "unidad" : "m2",
+          "valor" : "50"
+        },
+        "-KkMpX6jBtKKVQr9KeQJ" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "!! escalones !! para el 02/06",
+          "unidad" : "unidad",
+          "valor" : "780"
+        }
+      },
+      "Breton" : {
+        "-KkvdICweZpMWO7pwOn7" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170530" : {
+      "650" : {
+        "-KkGWSlaildC0Jk5SBxi" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "hay que hacer 130 escalones para el 02/06",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KkkYXYmHBrMU1lugQob" : {
+          "codigo" : "83ADRP724040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170531" : {
+      "650" : {
+        "-KkkY16IFh7uZuEvkGB_" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KlPeXEmOhFuWXeaWNnS" : {
+          "codigo" : "83ADRP724040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KlPeYltAA-QICF77yRU" : {
+          "codigo" : "1111S   4040",
+          "observacion" : ".",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170601" : {
+      "650" : {
+        "-KkkY38curbxTf1KxIz2" : {
+          "codigo" : "83ADRP104040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KlYt_OiaHwLojA0d6Pa" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KlYtc3bqcZiKiDjItfd" : {
+          "codigo" : "3210S   4040",
+          "observacion" : ".",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170602" : {
+      "650" : {
+        "-KlOmGN5HFVf2pOappw1" : {
+          "codigo" : "83ADRP124040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KlcgfLBNwTnp8tJt0Rc" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KlcglCe4kcQjwpby1iR" : {
+          "codigo" : "2717S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170605" : {
+      "650" : {
+        "-KlUWpT9jlmg5CUZ8h-P" : {
+          "codigo" : "Mosaico 50x50",
+          "observacion" : "losetas armadas cemento",
+          "unidad" : "m2",
+          "valor" : "200"
+        }
+      },
+      "Breton" : {
+        "-KlcgchU0dCT9cmSWqlZ" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170606" : {
+      "650" : {
+        "-KlUWrv4V_8iYujG9IiG" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KlxMXQHTMob51zCvpIW" : {
+          "codigo" : "1716S   4040",
+          "observacion" : "600 unidades",
+          "unidad" : "m2",
+          "valor" : "90"
+        }
+      },
+      "Biseladora" : {
+        "-KlsiYerBGPvsMTF_NO3" : {
+          "codigo" : "801010SL6040",
+          "observacion" : "Se entregan el miercoles",
+          "unidad" : "unidad",
+          "valor" : "125"
+        }
+      },
+      "Breton" : {
+        "-Klcg_qS1TCxUdkOlluW" : {
+          "codigo" : "83ADRP124040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170607" : {
+      "650" : {
+        "-KlJhIKbJi7tjQ0bYASi" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KlcgqItfvomAyd-_pUb" : {
+          "codigo" : "83ADRP104040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Otro" : {
+        "-KltDr3mZn9A7dUXwi9n" : {
+          "codigo" : "Mosaico 50x50",
+          "observacion" : "Tablas",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170608" : {
+      "650" : {
+        "-KlJhFBV1Ch64DB-VJK5" : {
+          "codigo" : "83ADRP174040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KlcgsgBGwb1GUOpaTll" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KlcgztJJaUD7s1XsLtn" : {
+          "codigo" : "1716S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170609" : {
+      "650" : {
+        "-KlJhGi9wktVXc-_h4mC" : {
+          "codigo" : "83ADRP124040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KlOnE6PcVKJMMk9nn1Z" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170612" : {
+      "650" : {
+        "-Klxsjf17X7EF3Zi-2Yi" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Km1fhyTo6vC7Q9CxQiJ" : {
+          "codigo" : "83ADRP174040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170613" : {
+      "650" : {
+        "-Klxsg4ePvixlBhHtGi8" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Km1fl4VnLyErO8FL-li" : {
+          "codigo" : "83ADRP124040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170614" : {
+      "650" : {
+        "-KlxsrH1v_kKsuhxCvws" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Km1fp0Qk9Qb7nWKunj2" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170615" : {
+      "650" : {
+        "-Km1_8gv8pd1t98re0LX" : {
+          "codigo" : "1733W   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Km1fruruCMo0AwwO1R1" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170616" : {
+      "650" : {
+        "-KmaWMR7RlZ3figtdtGc" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Km1fu_-G6FUtYRp8-We" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KmhAVSwnbt1SZ_r-V8M" : {
+          "codigo" : "1733W   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170619" : {
+      "650" : {
+        "-KmSlt_FLXxLstI6vk5q" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KmhAa6q8e76aNdqhohf" : {
+          "codigo" : "1733W   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KmhAe8MUTxCf6VikqZN" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : ".",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170620" : {
+      "Otro" : {
+        "-KmSoCSteWf2QkuNJ9bL" : {
+          "codigo" : "",
+          "observacion" : "FERIADO",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170621" : {
+      "650" : {
+        "-KmlzfUfLbGTlzbXvABq" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KmhAiG95e_dFaPl066K" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170622" : {
+      "650" : {
+        "-Kmlzbgvd7KMIWztCBTY" : {
+          "codigo" : "83ADRP124040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Kn9tTU3aM24f9VI2TP0" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170623" : {
+      "650" : {
+        "-Kmlz_cuA_7G-cb1fhgh" : {
+          "codigo" : "83ADRP174040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KnGSju0MlJCRpJc8zAP" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KnGSp1fJurwFY6zriGE" : {
+          "codigo" : "83ADRP124040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170624" : {
+      "650" : {
+        "-KmlzZ51etLlJvbEH_YH" : {
+          "codigo" : "801010KL6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170626" : {
+      "650" : {
+        "-KnF9Jyas-mST9A4G6_0" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KnF9u1daIXvE1Cg9rSt" : {
+          "codigo" : "83ADRP174040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KnZGhMQMKuDetvbgtL4" : {
+          "codigo" : "83ADRP124040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Otro" : {
+        "-KmfrvPzxDzBTEKwfRQB" : {
+          "codigo" : "801010KL6040",
+          "observacion" : "Pasar a tablas",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170627" : {
+      "650" : {
+        "-KnF9aRl3Ki0xqD2Xd0s" : {
+          "codigo" : "83ADRP104040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KnZGmMF-Wy54JFrU6Lj" : {
+          "codigo" : "83ADRP174040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KnZGr4dhrKP9gZq-XUR" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170628" : {
+      "650" : {
+        "-KnF9bcdxZAFube3ivdA" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Kna9IfPr-gToKl_PX9L" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170629" : {
+      "650" : {
+        "-Kn9YeP-6uJ7O154LhFU" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170630" : {
+      "650" : {
+        "-Kn9YjIoAvb1eqa45oAO" : {
+          "codigo" : "801010KL4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KneeMt3VyIkhqjUf-xX" : {
+          "codigo" : "83ADRP104040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KntQP7i41nPboRWA4lt" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170701" : {
+      "Otro" : {
+        "-Kn_Cq73VtdQG9mr35-D" : {
+          "codigo" : "",
+          "observacion" : "prueba durella",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170703" : {
+      "650" : {
+        "-KnuiHnrhp4qLKu1h-hi" : {
+          "codigo" : "801010KL4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Kna9VueP6H5dsAKS5M6" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Otro" : {
+        "-Kna9ZlTo3GjF22PfqAi" : {
+          "codigo" : "801010KL4040",
+          "observacion" : "Pasar a tablas",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170704" : {
+      "650" : {
+        "-KnuiESyO1wgSBf_Nvws" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KneeSY64CaAoc9He2aV" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170705" : {
+      "650" : {
+        "-Kne3IwfF8ADJAP1LHUn" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Otro" : {
+        "-Ko8Th0xKbopjnuaaSpt" : {
+          "codigo" : "801010KL4040",
+          "observacion" : "Tablas",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170706" : {
+      "650" : {
+        "-KnjudyzmEpPXoH0Lt3s" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Ko8TcwVUR1hTb0U79oY" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170707" : {
+      "650" : {
+        "-KnjuagAbbkGVG1VoQpU" : {
+          "codigo" : "83ADRP174040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KntQf1KfyTxQS_teGcE" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170708" : {
+      "650" : {
+        "-Kne3_nYDS3CgjiOabKo" : {
+          "codigo" : "83CEK35 4040.48",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170710" : {
+      "650" : {
+        "-KoCeFn4GxbYfv4IutvN" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KoCdWwFlDuBVtvfM708" : {
+          "codigo" : "83ADRP174040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Otro" : {
+        "-KntQraR7XNl7Qjc4I7h" : {
+          "codigo" : "83CEK35 4040.48",
+          "observacion" : "Tablas",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170711" : {
+      "650" : {
+        "-KoChqJZTymdqYPU0LVE" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Otro" : {
+        "-KogYjo_r3mykWYJe6on" : {
+          "codigo" : "801010KL4040",
+          "observacion" : "Pasar a tablas",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170712" : {
+      "650" : {
+        "-KoCdd5gIpXAv7cVlDul" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KoChlw_v2U8XD__aFRs" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170713" : {
+      "650" : {
+        "-KoCeO7qHelAm2nYz7EJ" : {
+          "codigo" : "83ADRP104040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KoChw2RdSacOHBi8MK5" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170714" : {
+      "650" : {
+        "-KoCeVu_-51DY0AvaSju" : {
+          "codigo" : "83ADRP174040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KoCi-n_z74SHLHRdmiW" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170717" : {
+      "650" : {
+        "-Kom2gJBXVExOufslLvP" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KoCi37aCSAgnGg7zVaq" : {
+          "codigo" : "83ADRP104040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170718" : {
+      "650" : {
+        "-KpLgteCPugvUhKmpxlc" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KoCiAS4fhbzNKJva7EG" : {
+          "codigo" : "83ADRP174040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170719" : {
+      "650" : {
+        "-Kom6Vurk6L_5osijDb4" : {
+          "codigo" : "83ADRP174040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-Kom6XwCww7f0Ym8aUH5" : {
+          "codigo" : "83ADRP124040",
+          "observacion" : "Se necesitan 10m2",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Kom7PKPwwMgBS1yy3KM" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170720" : {
+      "650" : {
+        "-Kom6U6xTm6EHUFgBqVq" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-Kom7GMzehv0kKyUeNjY" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "Blanco espuma 344 unidades + 175 unidades para zocalos",
+          "unidad" : "m2",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KpLgq65FfQt_dAA7dnQ" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170721" : {
+      "650" : {
+        "-KpG4l4kMwlOP5_HtjUc" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Kom7WjoSeUm6bCYHYCd" : {
+          "codigo" : "83ADRP174040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-Kom7Zz2dLWRUvYdxkB9" : {
+          "codigo" : "83ADRP124040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170722" : {
+      "650" : {
+        "-Kpz0JoldYXcVVnMi-Na" : {
+          "codigo" : "83ADCP324040",
+          "observacion" : "64 TAPONES",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170724" : {
+      "650" : {
+        "-KpREXspTpKyn4zg00kS" : {
+          "codigo" : "83ADRP104040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Kom7dywSQzMEdoregwg" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Granalladora" : {
+        "-KpVZrgrRj5yZPX36avm" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "425 unidades",
+          "unidad" : "m2",
+          "valor" : "68"
+        }
+      }
+    },
+    "20170725" : {
+      "650" : {
+        "-KpREZesnAX3smX9wNRd" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KpG4sCa3s9jHCqY6GDy" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KppbmhPIEDxArDE92Y_" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "Blanco Espuma",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170726" : {
+      "650" : {
+        "-KpG7ePUiheBozS7R-Gw" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Kpz0MmaakJj8wc_xf1H" : {
+          "codigo" : "83ADCP324040",
+          "observacion" : "64 TAPONES",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-Kpz0T8mb4gcKCFKkXE-" : {
+          "codigo" : "83ADRP104040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170727" : {
+      "650" : {
+        "-Kpu5yp0NVYs4JZU3bPp" : {
+          "codigo" : "803210SS6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Kpz-ZOiNm5ngL9qVRxM" : {
+          "codigo" : "83ADRP104040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-Kpz0mn8COJbT3UDXn91" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170728" : {
+      "650" : {
+        "-Kpu66PxAAG9EMR4WCd_" : {
+          "codigo" : "801010KL6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KpG975tAAtWcZnNME34" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170731" : {
+      "650" : {
+        "-Kq8a_TmtO680dFnR_Rn" : {
+          "codigo" : "83ADRP114040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Kq9dCItnHZQTV2a7Ipz" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Otro" : {
+        "-KqPLLk3qUJGwRRnmyKM" : {
+          "codigo" : "801010KL6040",
+          "observacion" : "Tablas",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170801" : {
+      "650" : {
+        "-Kq8aTGnMSCop5cnJCTx" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KqSeDwj9jf3KQWGpnln" : {
+          "codigo" : "83ADRP114040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Granalladora" : {
+        "-Kpyl-MYz4bZcwpa_v8P" : {
+          "codigo" : "1733W   4040",
+          "observacion" : "Sacar material de stock",
+          "unidad" : "unidad",
+          "valor" : "50"
+        }
+      }
+    },
+    "20170802" : {
+      "650" : {
+        "-Kq8aQFX4ELMt3JoWwt0" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KqSeFLiKwdp1qu5Dqm9" : {
+          "codigo" : "803210SS6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170803" : {
+      "650" : {
+        "-KqZ0WASJRfBiJM-l6yn" : {
+          "codigo" : "1716S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Kq8ajLxEyM7tUPUQoxc" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170804" : {
+      "650" : {
+        "-KqZ0XgaiJ_PVxhVtaSr" : {
+          "codigo" : "2615S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Kq8aocoFoXXXdazqBvV" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170805" : {
+      "650" : {
+        "-Kq3Q8ygyKK8DAS9098r" : {
+          "codigo" : "83ADCP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170807" : {
+      "650" : {
+        "-KqTD3e5n6mO146DPAuu" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Kq8fMg3q9tywDIcytQZ" : {
+          "codigo" : "1716S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170808" : {
+      "650" : {
+        "-KqTD6GRqVgPJ9WifrwH" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KqwZH3EgUIXBHDS9gef" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-Kr2PiOc_Qe3hDVzFeDn" : {
+          "codigo" : "83ADCP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Granalladora" : {
+        "-KqhiJbc058Wcd7jfiWc" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "",
+          "unidad" : "unidad",
+          "valor" : "94"
+        },
+        "-Kr2STt0RwHLjFmWs_Hw" : {
+          "codigo" : "2615S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170809" : {
+      "650" : {
+        "-KqTDAEYxsVja77RjY62" : {
+          "codigo" : "2717S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KqTDRDJehCv9UQ20j0K" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Granalladora" : {
+        "-Kr2PfH22GHCUeCf6F5Y" : {
+          "codigo" : "2615S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170810" : {
+      "650" : {
+        "-KqTDCJfPrL5lNTDwo34" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KqTDTk2aZ2OfPAw3KGa" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170811" : {
+      "Breton" : {
+        "-KrHkXxn-kerjXe0XEpl" : {
+          "codigo" : "2717S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170814" : {
+      "650" : {
+        "-KrGuqs4s3x3hJ3oofFk" : {
+          "codigo" : "1716S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KqTDsZI734-Yo5bRxme" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Granalladora" : {
+        "-KrXJX2dKB-XhhXasXYB" : {
+          "codigo" : "2717S   4040",
+          "observacion" : "",
+          "unidad" : "unidad",
+          "valor" : "500"
+        }
+      }
+    },
+    "20170815" : {
+      "650" : {
+        "-Kr1CRDvt99BTQKHJ-Uc" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Kr19Dm68c6Uo9uyh6uP" : {
+          "codigo" : "1716S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Otro" : {
+        "-KrX3A7lKjwJBK4SRrz8" : {
+          "codigo" : "1010SB  1040",
+          "observacion" : "Zocalos gris perla",
+          "unidad" : "unidad",
+          "valor" : "355"
+        },
+        "-KrX3E98cvQ7RTogXQHX" : {
+          "codigo" : "1111SB  1040",
+          "observacion" : "Zocalos blancos",
+          "unidad" : "unidad",
+          "valor" : "50"
+        }
+      }
+    },
+    "20170816" : {
+      "650" : {
+        "-KrXDb2omAYk1bBMQ8xM" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KrX0Pv2HTWcORY2Su3q" : {
+          "codigo" : "1716S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170817" : {
+      "650" : {
+        "-KrXDeCEJxLHj5HAObBL" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-Kr1Ck0ugD9m7lO4NF0M" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170818" : {
+      "Breton" : {
+        "-KrXDodyHcwDQbwaC9Fb" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170819" : {
+      "650" : {
+        "-Kr1DTdEuKfpjQReiN-X" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "Ver si se puede prensar x feriado del lunes",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170821" : {
+      "Otro" : {
+        "-Kr2TRX2CSL7qHfAHSHd" : {
+          "codigo" : "",
+          "observacion" : "FERIADO",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170822" : {
+      "650" : {
+        "-KrBdnOkP67MjIHAmlrz" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KrXDrCTJ6jGQAxyn7Xg" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170823" : {
+      "650" : {
+        "-KrGvIAu97Q3HQBL5vkY" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KrXDycTiYYv76tZZExx" : {
+          "codigo" : "1111S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170824" : {
+      "650" : {
+        "-KrbaZZkUKZgERQX20mT" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KrXE1UuSMjITcJnmIqY" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170825" : {
+      "650" : {
+        "-KrbaaVt2e-Jib6EDSYJ" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      },
+      "Breton" : {
+        "-KrXE3gvO1NjPhUzHzjJ" : {
+          "codigo" : "1010S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170826" : {
+      "650" : {
+        "-KrfZBcAqBZJwJiQm9sR" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170827" : {
+      "650" : {
+        "-KsADPM3XevHvVPQzXc5" : {
+          "codigo" : "801010SL6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KsADR0WM4bHe6uPRCcE" : {
+          "codigo" : "801011SS6040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        },
+        "-KsAEgo5KOlSJ1fTGoAR" : {
+          "codigo" : "83ADRP724040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170828" : {
+      "650" : {
+        "-Ks9QxcKqsXFPzylHXge" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170829" : {
+      "650" : {
+        "-Ks9SG2omijKNIpyGY-L" : {
+          "codigo" : "3210S   4040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170830" : {
+      "650" : {
+        "-KsADL9Ja-vl8ci7asOi" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170831" : {
+      "650" : {
+        "-KsADNY3QMurQyu91Oqe" : {
+          "codigo" : "83ADRP324040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170901" : {
+      "650" : {
+        "-KsAEOi46-Ga7RMZKIsK" : {
+          "codigo" : "83ADRP104040",
+          "observacion" : "",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    },
+    "20170902" : {
+      "650" : {
+        "-KsAEachHwrqi38iQeCC" : {
+          "codigo" : "83RUS10 4040",
+          "observacion" : "Ver con Ale",
+          "unidad" : "m2",
+          "valor" : "35,04"
+        }
+      }
+    },
+    "20170904" : {
+      "650" : {
+        "-KsA9bti3qfquogdG9Rd" : {
+          "codigo" : "2717S   4040",
+          "observacion" : "DURELLA BOTICHINO",
+          "unidad" : "",
+          "valor" : ""
+        }
+      }
+    }
+}

@@ -33,6 +33,10 @@ export class StockChartComponent {
   	})
   }
 
+  ngAfterViewChecked() {
+    this.setWidth();
+  }
+
   stockFilter() {
     let labels: Array<any> = [];
     let general: Array<any> = [];
