@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
 import { StaticDataProvider } from '../static-data/static-data';
 import Chart from 'chart.js';
 import * as moment from 'moment';
@@ -10,7 +11,8 @@ export class ChartBuilderProvider {
 	chartsData: any = {};
 
   constructor(
-    private staticData: StaticDataProvider
+    private staticData: StaticDataProvider,
+    public number: DecimalPipe
   ) {
   }
 
@@ -29,9 +31,21 @@ export class ChartBuilderProvider {
                   stacked: xStacked || false
               }],
             yAxes: [{
-                  stacked: yStacked || false
+                  stacked: yStacked || false,
+                  ticks: {
+                    callback: (value, index, values) => {
+                        return this.number.transform(value, '1.0');
+                    }
+                  }
               }]
+          },
+          tooltips: {
+            callbacks: {
+              label: (tooltipItem) => {
+                return this.number.transform(tooltipItem.yLabel, '1.0-2'); 
+              }
             }
+          }
         }
       }
     );
