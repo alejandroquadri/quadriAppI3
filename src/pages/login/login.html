@@ -5,14 +5,54 @@
 			<img [src]="quadriImg">
 		</ion-row>
 
-		<ion-row justify-content-center padding>
-			<ion-col text-center>
-			  <button ion-button outline large icon-left (click)="login()">
-				  <ion-icon name="logo-googleplus"></ion-icon>
-				  Iniciar sesion
-				</button>
-			</ion-col>
+		<ion-row justify-content-center>
+			
+			<form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+
+		    <ion-item>
+		      <ion-label>Email</ion-label>
+		      <ion-input #email formControlName="email" type="email" (change)="elementChanged(email)"
+		        [class.invalid]="!loginForm.controls.email.valid &&
+		          (emailChanged || submitAttempt)"></ion-input>
+		    </ion-item>
+		    <ion-item class="error-message" *ngIf="!loginForm.controls.email.valid  &&
+		      (emailChanged || submitAttempt)">
+		      <p>Por favor ingresa un email valido</p>
+		    </ion-item>
+
+		    <ion-item>
+		      <ion-label>Constraseña</ion-label>
+		      <ion-input #password formControlName="password" type="password"
+		        (change)="elementChanged(password)"
+		        [class.invalid]="!loginForm.controls.password.valid &&
+		          (passwordChanged || submitAttempt)"></ion-input>
+		    </ion-item>
+		    <ion-item class="error-message" *ngIf="!loginForm.controls.password.valid  &&
+		      (passwordChanged || submitAttempt)">
+		      <p>Tu contraseña debe contener al menos 6 caracteres</p>
+		    </ion-item>
+
+		    <button ion-button block clear padding type="submit">
+		      Iniciar sesion
+		    </button>
+
+		  </form>
+
 		</ion-row>
+
+		<ion-row justify-content-center>
+			<button ion-button block clear padding icon-left (click)="loginGoogle()">
+			  <ion-icon name="logo-googleplus"></ion-icon>
+			  Google
+			</button>
+		</ion-row>
+
+	<!-- 	<ion-row justify-content-center>
+			<button ion-button block clear padding (click)="logOut2()">
+			  logout
+			</button>
+		</ion-row> -->
+		
 	</ion-grid>
 
 </ion-content>

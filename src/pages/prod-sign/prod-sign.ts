@@ -12,6 +12,7 @@ import * as moment from 'moment';
 })
 export class ProdSignPage {
 
+  prodSubs:any;
 	production: any;
 	date = moment();
 	prodObj: any;
@@ -34,6 +35,12 @@ export class ProdSignPage {
   		this.production = prod;
       this.fileterProd();
   	});
+  }
+
+  ionViewWillUnload() {
+    console.log('willunload');
+    console.log('desuscripcion prod sign');
+    this.prodSubs.unsubscribe();
   }
 
   fileterProd() {

@@ -16,6 +16,7 @@ export class ProdChartComponent implements OnInit {
   @ViewChild('prodChart', {read: ViewContainerRef}) prodChartEl: ViewContainerRef;
   @ViewChild('chartContainer') chartContainer;
 
+  prodSubs: any;
   production: any;
   prodChart: any;
 
@@ -36,7 +37,7 @@ export class ProdChartComponent implements OnInit {
   }
 
   ngOnInit() {
-		this.prodData.prodObs.subscribe( (prod: Array<any>) => {
+		this.prodSubs = this.prodData.getProduction().subscribe( (prod: Array<any>) => {
       this.production = prod;
       this.filteredProdData();
     });
@@ -44,6 +45,11 @@ export class ProdChartComponent implements OnInit {
 
   ngAfterViewChecked() {
     this.setWidth();
+  }
+
+  ngOnDestroy() {
+    console.log('unsubs prodChart');
+    this.prodSubs.unsubscribe();
   }
 
   filteredProdData() {
@@ -85,8 +91,28 @@ export class ProdChartComponent implements OnInit {
     this.prodChart = this.prodChartEl.createComponent(childComponent);
     this.prodChart.instance.width = this.chartContainer.nativeElement.clientWidth;
     this.prodChart.instance.chartType = 'line';
+    this.prodChart.instance.options = this.chartOptions();
     this.prodChart.instance.labels = labels;
     this.prodChart.instance.datasets = datasets;
+  }
+
+  chartOptions() {
+    return {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        yAxes: [{
+          ticks: {
+            callback: (value, index, values) => this.chartBuilder.formatChartNumber(value, '1.0')
+          }
+        }]
+      },
+      tooltips: {
+        callbacks: {
+          label: (tooltipItem) => this.chartBuilder.formatChartNumber(tooltipItem.yLabel, '1.0-2')
+        }
+      }
+    }
   }
 
 

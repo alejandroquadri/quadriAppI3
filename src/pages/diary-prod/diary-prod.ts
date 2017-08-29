@@ -18,6 +18,7 @@ export class DiaryProdPage {
   @ViewChild('prodChart') prodChartEl;
 	@ViewChild('prodAcChart') prodAcChartEl;
 
+  prodSubs: any;
 	production: any;
 	date: string = moment().add(-1, 'days').format('YYYY-MM-DD');
 	dailyProd: any = {};
@@ -37,10 +38,16 @@ export class DiaryProdPage {
   }
 
   ionViewDidLoad() {
-  	this.prodData.getProduction().subscribe( prod => {
+  	this.prodSubs = this.prodData.getProduction().subscribe( prod => {
   		this.production = prod;
   		this.dailyProdObj();
   	});
+  }
+
+  ionViewWillUnload() {
+    console.log('willunload');
+    console.log('desuscripcion diary prod');
+    this.prodSubs.unsubscribe();
   }
 
   back() {

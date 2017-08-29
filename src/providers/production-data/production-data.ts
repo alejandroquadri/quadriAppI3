@@ -15,11 +15,11 @@ export class ProductionDataProvider {
   field = 'date';
   asc = false;
 
-  prodSubject = new ReplaySubject(1);
-  prodObs = this.prodSubject.asObservable();
+  // prodSubject = new ReplaySubject(1);
+  // prodObs = this.prodSubject.asObservable();
 
-  filteredProdSubject = new ReplaySubject(1);
-  filteredProdObs = this.filteredProdSubject.asObservable();
+  // filteredProdSubject = new ReplaySubject(1);
+  // filteredProdObs = this.filteredProdSubject.asObservable();
 
   constructor(
   	private api: ApiDataProvider,
@@ -27,11 +27,11 @@ export class ProductionDataProvider {
     private filterPipe: FilterPipe,
     private sortPipe: SortPipe
   	) {
-    this.getProduction().subscribe( prod => {
-      this.production = prod;
-      this.prodSubject.next(prod);
-      this.filter();
-    })
+    // this.getProduction().subscribe( prod => {
+    //   this.production = prod;
+    //   this.prodSubject.next(prod);
+    //   this.filter();
+    // })
   }
 
   pushProduction(form: any) {
@@ -102,9 +102,9 @@ export class ProductionDataProvider {
     return this.api.fanUpdate(removeObject);
   }
 
-  filter() {
-    const filtered = this.filterPipe.transform(this.production, this.searchInput)
-    const ordered = this.sortPipe.transform(filtered, this.field, this.asc);
-    this.filteredProdSubject.next(ordered);
-  }
+  // filter() {
+  //   const filtered = this.filterPipe.transform(this.production, this.searchInput)
+  //   const ordered = this.sortPipe.transform(filtered, this.field, this.asc);
+  //   this.filteredProdSubject.next(ordered);
+  // }
 }

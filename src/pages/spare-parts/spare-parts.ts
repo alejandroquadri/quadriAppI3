@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, Platform, PopoverController, Toast
 // import {IMyDpOptions} from 'mydatepicker';
 
 import { SparePartsDataProvider, SplitShowProvider } from '../../providers';
+import { FieldFilterPipe, FilterPipe, SortPipe } from '../../pipes';
 
 @IonicPage()
 @Component({
@@ -11,11 +12,16 @@ import { SparePartsDataProvider, SplitShowProvider } from '../../providers';
 })
 export class SparePartsPage {
 
+  spareSubs: any;
+  filterSubs: any;
   spareParts: any;
-  @ViewChild(Content) content: Content;
-
+  sparePartsCrude: any;
+  // @ViewChild(Content) content: Content;
+  filters: any;
   searchInput: string = '';
   statusOptions = ['Pendiente', 'Encargado', 'Completo', 'Suspendido'];
+  field = 'fecha';
+  asc = false;
 
   constructor(
   	public navCtrl: NavController, 
@@ -25,19 +31,54 @@ export class SparePartsPage {
     public toastCtrl: ToastController,
     public modalCtrl: ModalController,
     private spareData: SparePartsDataProvider,
-    private splitShow: SplitShowProvider
+    private splitShow: SplitShowProvider,
+    private fieldFilterPipe: FieldFilterPipe,
+    private filterPipe: FilterPipe,
+    private sortPipe: SortPipe
 	) {
-
+    this.filters = this.spareData.filters;
   }
 
   ionViewDidLoad() {
-    this.spareData.sparePartsObs.subscribe( spareParts => {
-      this.spareParts = spareParts;  
-    });
+    // this.spareData.sparePartsObs.subscribe( spareParts => {
+    //   this.spareParts = spareParts;  
+    // });
+    this.spareSubs = this.spareData.getSpareParts().subscribe( parts => {
+      this.sparePartsCrude = parts;
+      this.filter();
+    })
+    this.filterSubs = this.spareData.filterObs.subscribe( filters => {
+      this.filters = filters;
+      this.filter();
+    })
   }
 
   ionViewDidEnter() {
-    
+  }
+
+  ionViewWillUnload() {
+    console.log('willunload');
+    console.log('desuscripcion spare parts');
+    this.spareSubs.unsubscribe();
+    this.filterSubs.unsubscribe();
+  }
+
+  filter() {
+    const filteredField = this.fieldFilterPipe.transform(this.sparePartsCrude, ['status'], this.changeFilters(this.filters));
+    const filtered = this.filterPipe.transform(filteredField, this.searchInput)
+    const ordered = this.sortPipe.transform(filtered, this.field, this.asc);
+    this.spareParts = ordered;
+  }
+
+  changeFilters(filters: any) {
+    const keyArr: any[] = Object.keys(filters);
+    let arrayFilter = [];
+    keyArr.forEach(item => {
+      if(filters[item]) {
+        arrayFilter.push(item);
+      }
+    })
+    return arrayFilter;
   }
 
   deletepart(key) {
@@ -74,9 +115,14 @@ export class SparePartsPage {
     .then( () => console.log('status actualizado'));
   }
 
+  // onChange(event) {
+  //   this.spareData.searchInput = event;
+  //   this.spareData.filter();
+  // }
+
   onChange(event) {
-    this.spareData.searchInput = event;
-    this.spareData.filter();
+    this.searchInput = event;
+    this.filter();
   }
 
 }

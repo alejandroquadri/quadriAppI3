@@ -11,7 +11,7 @@ import * as moment from 'moment';
 })
 export class AcChartComponent implements OnInit {
 
-
+  prodSubs: any;
   production: Array<any>;
   acChart: any;
 
@@ -32,7 +32,7 @@ export class AcChartComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.prodData.prodObs.subscribe( (prod: Array<any>) => {
+    this.prodSubs = this.prodData.getProduction().subscribe( (prod: Array<any>) => {
       this.production = prod;
       this.acProdData();
     });
@@ -40,6 +40,11 @@ export class AcChartComponent implements OnInit {
 
   ngAfterViewChecked() {
     this.setWidth();
+  }
+
+  ngOnDestroy() {
+    console.log('unsubs prodAc');
+    this.prodSubs.unsubscribe();
   }
 
   acProdData() {
@@ -101,9 +106,29 @@ export class AcChartComponent implements OnInit {
     if (this.acChart) { this.acChart.destroy() }
     this.acChart = this.prodAcChartEl.createComponent(childComponent)
     this.acChart.instance.width = this.chartContainer.nativeElement.clientWidth;
+    this.acChart.instance.options = this.chartOptions();
     this.acChart.instance.chartType = 'line';
     this.acChart.instance.labels = labels;
     this.acChart.instance.datasets = datasets;
+  }
+
+  chartOptions() {
+    return {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        yAxes: [{
+          ticks: {
+            callback: (value, index, values) => this.chartBuilder.formatChartNumber(value, '1.0')
+          }
+        }]
+      },
+      tooltips: {
+        callbacks: {
+          label: (tooltipItem) => this.chartBuilder.formatChartNumber(tooltipItem.yLabel, '1.0-2')
+        }
+      }
+    }
   }
 
   setWidth() {

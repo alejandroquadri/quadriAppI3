@@ -24,9 +24,14 @@ export class OptionsPage {
     this.options = this.sparePartsData.filters;
   }
 
+  // updateFilters() {
+  //   this.sparePartsData.filters = this.options;
+  //   this.sparePartsData.filter();
+  // }
+
   updateFilters() {
     this.sparePartsData.filters = this.options;
-    this.sparePartsData.filter();
+    this.sparePartsData.updateFilters();
   }
 
 }

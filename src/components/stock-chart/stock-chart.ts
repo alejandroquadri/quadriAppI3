@@ -10,6 +10,7 @@ import { ChartDrawComponent } from '../chart-draw/chart-draw';
 })
 export class StockChartComponent {
 
+  stockSubs: any;
   stock: any;
   type = '40x40 PT m2';
   stockChart: any;
@@ -25,7 +26,7 @@ export class StockChartComponent {
   }
 
   ngOnInit() {
-  	this.salesData.getStock()
+  	this.stockSubs = this.salesData.getStock()
   	.map( res => res.json())
   	.subscribe( data => {
   		this.stock = data.data;
@@ -35,6 +36,11 @@ export class StockChartComponent {
 
   ngAfterViewChecked() {
     this.setWidth();
+  }
+
+  ngOnDestroy() {
+    console.log('unsubs stockChart');
+    this.stockSubs.unsubscribe();
   }
 
   stockFilter() {
@@ -131,13 +137,28 @@ export class StockChartComponent {
     const childComponent = this.componentFactoryResolver.resolveComponentFactory(ChartDrawComponent);
     if (this.stockChart) { this.stockChart.destroy() }
     this.stockChart = this.stockChartEl.createComponent(childComponent);
-    this.stockChart.instance.yStacked = true;
+    this.stockChart.instance.options = this.chartOptions();
     this.stockChart.instance.xStacked = true;
     this.stockChart.instance.width = this.chartContainer.nativeElement.clientWidth;
     this.stockChart.instance.height = nArts * 20;
     this.stockChart.instance.chartType = 'horizontalBar';
     this.stockChart.instance.labels = labels;
     this.stockChart.instance.datasets = datasets;
+  }
+
+  chartOptions() {
+    return {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        xAxes: [{
+          stacked: true
+        }],
+        yAxes: [{
+          stacked: true,
+        }]
+      }
+    }
   }
 
 }

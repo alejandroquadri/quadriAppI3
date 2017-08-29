@@ -17,10 +17,10 @@ export class AuthDataProvider {
   	private googlePlus: GooglePlus
 	) {
     this.user = afAuth.authState;
-    this.user.subscribe( user => {
-      this.uid = user.uid
-      this.current = user;
-    })
+    // this.user.subscribe( user => {
+    //   this.uid = user.uid;
+    //   this.current = user;
+    // })
   }
 
   login(email: string, password: string): firebase.Promise<any> {

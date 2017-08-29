@@ -12,6 +12,7 @@ import * as moment from 'moment';
 })
 export class AcSalesChartComponent implements OnInit {
 
+  salesSubs: any;
   sales: any;
   acChart: any;
   date = moment();
@@ -31,7 +32,7 @@ export class AcSalesChartComponent implements OnInit {
   }
 
   ngOnInit() {
-  	this.salesData.getRevenue()
+  	this.salesSubs = this.salesData.getRevenue()
   	.map( res => res.json())
   	.subscribe( data => {
   		this.sales = data.data;
@@ -41,6 +42,11 @@ export class AcSalesChartComponent implements OnInit {
 
   ngAfterViewChecked() {
     this.setWidth();
+  }
+
+  ngOnDestroy() {
+    console.log('unsubs sales');
+    this.salesSubs.unsubscribe();
   }
 
   addMonth() {
@@ -131,9 +137,29 @@ export class AcSalesChartComponent implements OnInit {
     if (this.acChart) { this.acChart.destroy() }
     this.acChart = this.salesAcChartEl.createComponent(childComponent)
     this.acChart.instance.width = this.chartContainer.nativeElement.clientWidth;
+    this.acChart.instance.options = this.chartOptions();
     this.acChart.instance.chartType = 'line';
     this.acChart.instance.labels = labels;
     this.acChart.instance.datasets = datasets;
+  }
+
+  chartOptions() {
+    return {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        yAxes: [{
+          ticks: {
+            callback: (value, index, values) => this.chartBuilder.formatChartNumber(value, '1.0')
+          }
+        }]
+      },
+      tooltips: {
+        callbacks: {
+          label: (tooltipItem) => this.chartBuilder.formatChartNumber(tooltipItem.yLabel, '1.0')
+        }
+      }
+    }
   }
 
   setWidth() {

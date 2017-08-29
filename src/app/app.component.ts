@@ -3,7 +3,7 @@ import { Platform, Nav, Content } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { AuthDataProvider, SplitShowProvider } from '../providers';
+import { AuthDataProvider, SplitShowProvider, SparePartsDataProvider } from '../providers';
 
 
 @Component({
@@ -24,13 +24,18 @@ export class MyApp {
     public splashScreen: SplashScreen,
     private splitShow: SplitShowProvider,
     private authData: AuthDataProvider,
+    private spareParts: SparePartsDataProvider
   ) {
     authData.user.subscribe( user => {
       console.log(user);
       this.userProfile = user;
       if (user) {
+        this.authData.uid = user.uid;
+        this.authData.current = user;
         this.rootPage = this.setRoot();
       } else {
+        this.authData.uid = null;
+        this.authData.current = null;
         this.rootPage = 'LoginPage'
       }
 
@@ -48,7 +53,13 @@ export class MyApp {
   }
 
   logOut() {
-    this.authData.logout();
+    // this.authData.diconnect();
+    
+    this.nav.setRoot('LoginPage')
+    .then( () => {
+      console.log('fue a root');
+      this.authData.logout();
+    })
   }
 
   shouldShow() {

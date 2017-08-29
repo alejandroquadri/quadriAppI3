@@ -15,9 +15,10 @@ export class ChartDrawComponent implements OnInit {
 
   @Input() width: number;
   @Input() height: number;
-  @Input() chartType: string
-  @Input() labels: Array<any>
-  @Input() datasets: Array<any>
+  @Input() chartType: string;
+  @Input() labels: Array<any>;
+  @Input() datasets: Array<any>;
+  @Input() options: any;
   @Input() xStacked: boolean = false;
   @Input() yStacked: boolean = false;
   @ViewChild('chart') chart;
@@ -40,8 +41,7 @@ export class ChartDrawComponent implements OnInit {
         this.chartType, 
         this.labels, 
         this.datasets,
-        this.xStacked,
-        this.yStacked 
+        this.options
       );
     })
   }

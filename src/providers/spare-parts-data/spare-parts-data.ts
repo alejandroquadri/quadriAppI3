@@ -9,7 +9,8 @@ import { FieldFilterPipe, FilterPipe, SortPipe } from '../../pipes';
 @Injectable()
 export class SparePartsDataProvider {
 
-	spareParts: any;
+	sparePartsFc: any;
+  spareParts: any;
   filters = {
     completo: false,
     pendiente: true,
@@ -24,6 +25,9 @@ export class SparePartsDataProvider {
   sparePartsSubject = new ReplaySubject(1);
   sparePartsObs = this.sparePartsSubject.asObservable();
 
+  filterSubject = new ReplaySubject(1);
+  filterObs = this.filterSubject.asObservable();
+
   constructor(
   	private api: ApiDataProvider,
   	private authData: AuthDataProvider,
@@ -32,10 +36,11 @@ export class SparePartsDataProvider {
     private sortPipe: SortPipe
 	) {
     console.log('Hello SparePartsProvider Provider');
-    this.getSpareParts().subscribe(parts => {
-      this.spareParts = parts;
-      this.filter();
-    });
+    // this.sparePartsFc = this.getSpareParts();
+    // this.sparePartsFc.subscribe(parts => {
+    //   this.spareParts = parts;
+    //   this.filter();
+    // });
   }
 
   pushSparePart(form: any) {
@@ -66,22 +71,26 @@ export class SparePartsDataProvider {
 		return this.api.getObject(`userSettings/${this.authData.uid}/repuestos`);
 	}
 
-  filter() {
-    const filteredField = this.fieldFilterPipe.transform(this.spareParts, ['status'], this.changeFilters(this.filters));
-    const filtered = this.filterPipe.transform(filteredField, this.searchInput)
-    const ordered = this.sortPipe.transform(filtered, this.field, this.asc);
-    this.sparePartsSubject.next(ordered);
-  }
+  // filter() {
+  //   const filteredField = this.fieldFilterPipe.transform(this.spareParts, ['status'], this.changeFilters(this.filters));
+  //   const filtered = this.filterPipe.transform(filteredField, this.searchInput)
+  //   const ordered = this.sortPipe.transform(filtered, this.field, this.asc);
+  //   this.sparePartsSubject.next(ordered);
+  // }
 
-  changeFilters(filters: any) {
-    const keyArr: any[] = Object.keys(filters);
-    let arrayFilter = [];
-    keyArr.forEach(item => {
-      if(filters[item]) {
-        arrayFilter.push(item);
-      }
-    })
-    return arrayFilter;
+  // changeFilters(filters: any) {
+  //   const keyArr: any[] = Object.keys(filters);
+  //   let arrayFilter = [];
+  //   keyArr.forEach(item => {
+  //     if(filters[item]) {
+  //       arrayFilter.push(item);
+  //     }
+  //   })
+  //   return arrayFilter;
+  // }
+
+  updateFilters() {
+    this.filterSubject.next(this.filters)
   }
 
 }

@@ -10,13 +10,13 @@ import { FilterPipe, SortPipe } from '../../pipes';
 @Injectable()
 export class MachineLogDataProvider {
 
-	machineLogs: any;
-  searchInput: string = '';
-  field = 'date';
-  asc = false;
+	// machineLogs: any;
+ //  searchInput: string = '';
+ //  field = 'date';
+ //  asc = false;
 
-  machineLogsSubject = new ReplaySubject(1);
-  machineLogsObs = this.machineLogsSubject.asObservable();
+  // machineLogsSubject = new ReplaySubject(1);
+  // machineLogsObs = this.machineLogsSubject.asObservable();
 
   constructor(
   	private api: ApiDataProvider,
@@ -25,11 +25,11 @@ export class MachineLogDataProvider {
     private sortPipe: SortPipe
 	) {
     console.log('Hello MachineLogDataProvider Provider');
-    this.machineLogs = this.getMachineLogs();
-    this.getMachineLogs().subscribe(logs => {
-      this.machineLogs = logs;
-      this.filter();
-    })
+    // this.machineLogs = this.getMachineLogs();
+    // this.getMachineLogs().subscribe(logs => {
+    //   this.machineLogs = logs;
+    //   this.filter();
+    // })
   }
 
   pushMachineLog(form: any) {
@@ -48,22 +48,22 @@ export class MachineLogDataProvider {
   	return this.api.updateList('machineLogs', key, form);
   }
 
-  updateSettings(form: boolean, data: boolean) {
-		let obj = {
-	  		form: form,
-	  		data: data
-	  	}
-		return this.api.updateObject(`userSettings/${this.authData.uid}/mahchine-log`,obj);
-	}
+ //  updateSettings(form: boolean, data: boolean) {
+	// 	let obj = {
+	//   		form: form,
+	//   		data: data
+	//   	}
+	// 	return this.api.updateObject(`userSettings/${this.authData.uid}/mahchine-log`,obj);
+	// }
 
-	getSettings() {
-		return this.api.getObject(`userSettings/${this.authData.uid}/mahchine-log`);
-	}
+	// getSettings() {
+	// 	return this.api.getObject(`userSettings/${this.authData.uid}/mahchine-log`);
+	// }
 
-  filter() {
-    const filtered = this.filterPipe.transform(this.machineLogs, this.searchInput)
-    const ordered = this.sortPipe.transform(filtered, this.field, this.asc);
-    this.machineLogsSubject.next(ordered);
-  }
+  // filter() {
+  //   const filtered = this.filterPipe.transform(this.machineLogs, this.searchInput)
+  //   const ordered = this.sortPipe.transform(filtered, this.field, this.asc);
+  //   this.machineLogsSubject.next(ordered);
+  // }
 
 }

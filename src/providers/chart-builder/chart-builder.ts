@@ -16,39 +16,23 @@ export class ChartBuilderProvider {
   ) {
   }
 
-  buildChart(element, chartType: string, labels: Array<any>, datasets: Array<any>, xStacked?: boolean, yStacked?: boolean) {
+  buildChart(element, chartType: string, labels: Array<any>, datasets: Array<any>, options?:any) {
     return new Chart(element, {
         type: chartType,
         data: {
           labels: labels,
           datasets: datasets
         },
-        options: {
+        options: options || {
           responsive: true,
           maintainAspectRatio: false,
-          scales: {
-            xAxes: [{
-                  stacked: xStacked || false
-              }],
-            yAxes: [{
-                  stacked: yStacked || false,
-                  ticks: {
-                    callback: (value, index, values) => {
-                        return this.number.transform(value, '1.0');
-                    }
-                  }
-              }]
-          },
-          tooltips: {
-            callbacks: {
-              label: (tooltipItem) => {
-                return this.number.transform(tooltipItem.yLabel, '1.0-2'); 
-              }
-            }
-          }
         }
       }
     );
+  }
+
+  formatChartNumber(value, format: string) {
+    return this.number.transform(value,format);
   }
 
   buildDatasets(data: Array<any>, label?: string, color?: string, backgroundColor?: string) {

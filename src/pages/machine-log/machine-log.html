@@ -44,7 +44,7 @@
 <ion-content>
   <div #data>
 		<ion-grid>
-			<ion-row class="data" *ngFor="let log of machineLogs | async">
+			<ion-row class="data" *ngFor="let log of machineLogs">
 				<ion-col col-1 text-center>
 					{{ log.date | momentFormat:'D/M/YY' }}
 				</ion-col>
