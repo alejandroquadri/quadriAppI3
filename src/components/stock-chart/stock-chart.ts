@@ -3,6 +3,7 @@ import { SalesDataProvider, ChartBuilderProvider } from '../../providers';
 import 'rxjs/add/operator/map';
 
 import { ChartDrawComponent } from '../chart-draw/chart-draw';
+import { SortPipe } from '../../pipes';
 
 @Component({
   selector: 'stock-chart',
@@ -22,6 +23,7 @@ export class StockChartComponent {
   	private chartBuilder: ChartBuilderProvider,
     private salesData: SalesDataProvider,
     private componentFactoryResolver: ComponentFactoryResolver,
+    private sortPipe: SortPipe,
   ) {
   }
 
@@ -50,12 +52,14 @@ export class StockChartComponent {
     let reserved: Array<any> = [];
 
   	let filtered = this.stock.filter( art => {
-        return ( art.marca === 'Quadri - Quadri' && 
+        return ( (art.marca === 'Quadri - Quadri' || art.marca === 'MP - Materias Primas') && 
           this.prodTypeFilter(art.dimension))
     });
     console.log(filtered);
 
-    filtered.forEach( (art: any) => {
+    let ordered = this.sortPipe.transform(filtered, 'cod_producto', true)
+
+    ordered.forEach( (art: any) => {
       labels.push(art.cod_producto);
       general.push(art.general);
       bloqueado.push(art.bloqueado);
@@ -114,6 +118,13 @@ export class StockChartComponent {
 	      dim === '150 mm' ||
 				dim === '180 mm' ||
 				dim === '60') {
+          result = true;
+        } else {
+          result = false;
+        }
+      break;
+      case 'MP': 
+      if (dim === "") {
           result = true;
         } else {
           result = false;

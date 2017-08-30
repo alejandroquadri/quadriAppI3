@@ -13,6 +13,7 @@ export class MyApp {
 
   rootPage:any;
   userProfile: any = null;
+  first = true;
   // the root nav is a child of the root app component
   // @ViewChild(Nav) gets a reference to the app's root nav
   @ViewChild(Nav) nav: Nav;
@@ -26,26 +27,27 @@ export class MyApp {
     private authData: AuthDataProvider,
     private spareParts: SparePartsDataProvider
   ) {
-    authData.user.subscribe( user => {
-      console.log(user);
-      this.userProfile = user;
-      if (user) {
-        this.authData.uid = user.uid;
-        this.authData.current = user;
-        this.rootPage = this.setRoot();
-      } else {
-        this.authData.uid = null;
-        this.authData.current = null;
-        this.rootPage = 'LoginPage'
-      }
-
-      platform.ready().then(() => {
+    platform.ready().then(() => {
         // Okay, so the platform is ready and our plugins are available.
         // Here you can do any higher level native things you might need.console.log('did load');
-        statusBar.styleDefault();
-        splashScreen.hide();
-      });
-    })
+      statusBar.styleDefault();
+      splashScreen.hide();
+      authData.user.subscribe( user => {
+        console.log(user);
+        this.userProfile = user;
+        if (user) {
+          this.authData.uid = user.uid;
+          this.authData.current = user;
+          this.rootPage = this.setRoot();
+        } else {
+          this.authData.uid = null;
+          this.authData.current = null;
+          this.first? this.rootPage = 'LoginPage' : this.nav.setRoot('LoginPage');
+        }
+        this.first = false;
+      })
+    });
+      
   }
   
   openPage (page: string, params?: any) {
