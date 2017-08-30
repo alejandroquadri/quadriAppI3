@@ -38,7 +38,8 @@ export class MyApp {
         if (user) {
           this.authData.uid = user.uid;
           this.authData.current = user;
-          this.rootPage = this.setRoot();
+          // this.rootPage = this.setRoot();
+          this.first? this.rootPage = this.setRoot() : this.nav.setRoot(this.setRoot());
         } else {
           this.authData.uid = null;
           this.authData.current = null;
