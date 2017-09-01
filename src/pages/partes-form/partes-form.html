@@ -39,30 +39,32 @@
 				</ion-item>
 
 				<ion-item *ngIf="!platform.is('mobile')">
-						<ion-label class="labelMachineSelect">Maquina</ion-label>					
-					  <select item-content formControlName="machine" class="selectMachine">
-					    <option *ngFor="let maquina of data.maquinasProd | sort:'':true">{{maquina}}</option>
-					  </select>
+					<ion-label class="labelMachineSelect">Maquina</ion-label>					
+				  <select item-content formControlName="machine" class="selectMachine">
+				    <option *ngFor="let maquina of data.maquinasProd | sort:'':true">{{maquina}}</option>
+				  </select>
 				</ion-item>
-
+				
 				<ion-item *ngIf="platform.is('mobile')">
 				  <ion-label>Color</ion-label>
 				  <ion-select formControlName="color">
-				    <ion-option *ngFor="let color of data.color | sort:'':true">{{color}}</ion-option>
+				    <ion-option *ngFor="let color of data.colorProductos[isPastina()] | sort:'':true">{{color}}</ion-option>
 				  </ion-select>
 				</ion-item>
 
 				<ion-item *ngIf="platform.is('mobile')">
 				  <ion-label>Dimension</ion-label>
 				  <ion-select formControlName="dim">
-				    <ion-option *ngFor="let dim of data.dim | sort:'':true">{{dim}}</ion-option>
+				    <ion-option *ngFor="let dim of data.dimProductos[isPastina()] | sort:'':true">{{dim}}</ion-option>
 				  </ion-select>
 				</ion-item>
 
 				<ion-item *ngIf="platform.is('mobile')">
 				  <ion-label>Dibujo</ion-label>
 				  <ion-select formControlName="drawing">
-				    <ion-option *ngFor="let drawing of data.drawing | sort:'':true">{{drawing}}</ion-option>
+				    <ion-option *ngIf="isPastina() !== 'pastinas'" value="" disabled selected></ion-option>
+				    <ion-option *ngIf="isPastina() === 'pastinas'" value="pastina" selected>pastina</ion-option>
+				    <div *ngIf="isPastina() !== 'pastinas'" ><ion-option *ngFor="let drawing of data.drawing | sort:'':true">{{drawing}}</ion-option></div>
 				  </ion-select>
 				</ion-item>
 
@@ -71,17 +73,18 @@
 						<div item-content class="labelColor">color</div>					
 					  <select item-content formControlName="color" class="selectMachine selectArt ">
 					    <option value="" disabled selected></option>
-					    <option *ngFor="let color of data.color | sort:'':true">{{color}}</option>
+					    <option *ngFor="let color of data.colorProductos[isPastina()] | sort:'':true">{{color}}</option>
 					  </select>
 					  <div item-content class="labelColor">dimension</div>
 					  <select item-content formControlName="dim" class="selectMachine selectArt">
 					    <option value="" disabled selected></option>
-					    <option *ngFor="let dim of data.dim | sort:'':true">{{dim}}</option>
+					    <option *ngFor="let dim of data.dimProductos[isPastina()] | sort:'':true">{{dim}}</option>
 					  </select>
 					  <div item-content class="labelColor">dibujo</div>
 					  <select item-content formControlName="drawing" class="selectMachine selectArt" style="margin-right: 0px;">
-					    <option value="" disabled selected></option>
-					    <option *ngFor="let drawing of data.drawing | sort:'':true">{{drawing}}</option>
+					    <option *ngIf="isPastina() !== 'pastinas'" value="" disabled selected></option>
+					    <option *ngIf="isPastina() === 'pastinas'" value="pastina" selected>pastina</option>
+					    <div *ngIf="isPastina() !== 'pastinas'"><option *ngFor="let drawing of data.drawing | sort:'':true">{{drawing}}</option></div>
 					  </select>
 				</ion-item>
 
@@ -142,6 +145,9 @@
 			  </ion-item>
 			
 			</ion-list>
+
+<!-- 			{{ myForm.value | json }} <br>
+			{{ myForm.valid }} -->
 			
 			<ion-card class="cardStyle">
 			

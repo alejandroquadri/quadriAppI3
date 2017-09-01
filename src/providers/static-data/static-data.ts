@@ -90,6 +90,7 @@ export class StaticDataProvider {
     'Desmolde',
     'Pasado tablas',
     'Biseladora zocalos',
+    'Pastinas'
   ];
 
   unidades = [
@@ -113,7 +114,28 @@ export class StaticDataProvider {
     'Sierra Chica',
     'Ocre',
     'Cemento'
-  ]
+  ];
+
+  colorProductos = {
+    mosaicos : [
+      'Blanco',
+      'Botichino',
+      'Brechiato',
+      'Gris Perla',
+      'Verde Alpe',
+      'Sierra Chica',
+      'Ocre',
+      'Cemento'
+    ],
+    pastinas : [
+      'Gris',
+      'Marfil',
+      'Napoleon',
+      'Blanco',
+      'Rojo',
+      'Negro'
+    ]
+  };
 
   dim = [
     '40x40',
@@ -121,7 +143,20 @@ export class StaticDataProvider {
     '50x50',
     '10x40',
     '10x50'
-  ]
+  ];
+
+  dimProductos = {
+    mosaicos: [
+      '40x40',
+      '60x40',
+      '50x50',
+      '10x40',
+      '10x50'
+    ],
+    pastinas: [
+      'bolsa 20kg'
+    ]
+  };
 
   equivalences = {
     '40x40': {conv:0.16, unit:'m2', convMl: 0.4},
@@ -140,7 +175,7 @@ export class StaticDataProvider {
     'adoquin curvo',
     'pileta',
     'rusticato'
-  ]
+  ];
 
   premioProd = {
     factorM2: 12,

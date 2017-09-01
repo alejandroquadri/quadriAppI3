@@ -47,17 +47,17 @@ export class PartesFormPage implements OnInit {
   buildForm() {
   	this.myForm = this._fb.group({
     	date: ['', Validators.required],
-    	machine: ['',Validators.required],
-    	color: ['',Validators.required],
-    	dim: ['',Validators.required],
-    	drawing: ['',Validators.required],
-    	mod: ['',Validators.required],
-    	start: ['',Validators.required],
-    	end: ['',Validators.required],
-    	prod: ['',Validators.required],
-    	seg: ['',],
-    	rep: ['',],
-    	broken: ['',],
+    	machine: ['', Validators.required],
+    	color: ['', Validators.required],
+    	dim: ['', Validators.required],
+    	drawing: ['', Validators.required],
+    	mod: ['', Validators.required],
+    	start: ['', Validators.required],
+    	end: ['', Validators.required],
+    	prod: ['', Validators.required],
+    	seg: [''],
+    	rep: [''],
+    	broken: [''],
     	observaciones: [''],
     	stops: this._fb.array([]),
     });
@@ -179,6 +179,14 @@ export class PartesFormPage implements OnInit {
   	} else {
   		return false;
   	}
+  }
+
+  isPastina() {
+    if (this.myForm.value.machine === 'Pastinas') {
+      return 'pastinas';
+    } else {
+      return 'mosaicos';
+    }
   }
 
   focusDate(){
