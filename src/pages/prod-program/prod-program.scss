@@ -1,0 +1,55 @@
+page-prod-program {
+
+	scroll-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  ion-grid {
+    padding: 0px;
+    height: 100%;
+  }
+
+  // map-get($colors, light);
+  // background: color($colors, twitter, base);
+
+  .container {
+  	display: flex;
+    flex-direction: column;
+    border-top: solid 1px map-get($colors, border);
+    border-bottom: solid 1px map-get($colors, border);
+  }
+
+  .grid {
+  	padding: 0px;
+  }
+
+  .monthTitle {
+  	background-color: map-get($colors, secondary);
+  	color: white;
+    border-left: solid 1px map-get($colors, border);
+    border-right: solid 1px map-get($colors, border);
+  }
+
+  .daysTitle {
+    border-left: solid 1px map-get($colors, border);
+    border-right: solid 1px map-get($colors, border);
+  }
+
+  .week {
+    flex: 1;
+    border-top: solid 1px map-get($colors, border);
+    border-left: solid 1px map-get($colors, border);
+  }
+
+  .day {
+  	border-right: solid 1px map-get($colors, border);
+  }
+
+  .fecha {
+  	position: absolute;
+  	right: 5%;
+  	top: 5%;
+  }
+
+}

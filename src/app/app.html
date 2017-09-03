@@ -47,10 +47,10 @@
           <ion-icon item-start name="list-box"></ion-icon>
           Registros
         </button>
-        <!-- <button ion-item menuClose>
-          <ion-icon item-start name="list-box"></ion-icon>
-          Producto en proceso
-        </button> -->
+        <button ion-item menuClose (click)="openPage('ProdProgramPage')" *ngIf="platform.is('core')">
+          <ion-icon item-start name="calendar"></ion-icon>
+          Programa
+        </button>
         <button ion-item menuClose (click)="openPage('DiaryProdPage')" *ngIf="platform.is('core')">
           <ion-icon item-start name="grid"></ion-icon>
           Produccion diaria

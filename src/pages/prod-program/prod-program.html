@@ -1,0 +1,69 @@
+<!--
+  Generated template for the ProdProgramPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+	  <button ion-button menuToggle *ngIf="splitShow.showMenuToggle()">
+	    <ion-icon name="menu"></ion-icon>
+	  </button>
+    <ion-buttons left>
+	    <button ion-button icon-only small (click)="splitShow.showChange()" *ngIf="!splitShow.show && !splitShow.showMenuToggle()">
+	      <ion-icon name="ios-menu"></ion-icon>
+	    </button>
+	  </ion-buttons>
+    <ion-title>Programa de produccion</ion-title>
+    <ion-buttons end>
+	    <button ion-button icon-only small (click)="showEntregas = !showEntregas">
+				<ion-icon name="paper-plane"></ion-icon>
+	    </button>
+	  </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+	<ion-grid>
+		<ion-row no-padding style="height: 100%;">
+			<ion-col class="container" no-padding>
+				<ion-row align-items-center class="monthTitle" no-padding>
+					<ion-col col-1 text-center no-padding>
+						<button ion-button clear icon-only small color="light" (click)="previous()"><ion-icon name="ios-arrow-back"></ion-icon></button>
+					</ion-col>
+					<ion-col col-10 text-center no-padding>
+						{{ selected.format('MMMM') }} {{ selected.format('YYYY') }}
+					</ion-col>
+					<ion-col col-1 text-center no-padding>
+						<button ion-button clear icon-only small color="light" (click)="next()"><ion-icon name="ios-arrow-forward"></ion-icon></button>
+					</ion-col>
+				</ion-row>
+				<ion-row align-items-center class="daysTitle"> 
+					<ion-col text-center>Dom</ion-col>
+					<ion-col text-center>Lun</ion-col>
+					<ion-col text-center>Mar</ion-col>
+					<ion-col text-center>Mier</ion-col>
+					<ion-col text-center>Jue</ion-col>
+					<ion-col text-center>Vier</ion-col>
+					<ion-col text-center>Sab</ion-col>
+				</ion-row>
+				<ion-row *ngFor="let week of weeks" class="week">
+					<ion-col *ngFor="let day of week.days" class="day">
+						<span class="fecha">{{ day.number }}</span>
+						prueba
+					</ion-col>
+				</ion-row>
+			</ion-col>
+		
+		
+			<ion-col col-3 *ngIf="showEntregas">
+				entregas prog
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+</ion-content>
