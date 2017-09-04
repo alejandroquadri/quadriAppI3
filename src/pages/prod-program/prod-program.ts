@@ -3,7 +3,7 @@ import { IonicPage } from 'ionic-angular';
 
 import * as moment from 'moment';
 
-import { SplitShowProvider } from '../../providers';
+import { SplitShowProvider, ProdProgramDataProvider } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -17,42 +17,45 @@ export class ProdProgramPage {
 	weeks: Array <any>;
 	showEntregas = false;
 
+	programSubs: any
+	program: any;
+
   constructor(
-  	private splitShow: SplitShowProvider
+  	private splitShow: SplitShowProvider,
+  	private programData: ProdProgramDataProvider
   ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProdProgramPage');
     this.buildMonth();
+    this.programSubs = this.programData.getProgram().subscribe( prog => {
+    	this.program = prog;
+    })
+  }
+
+  ionViewWillUnload() {
+    console.log('desuscripcion program');
+    this.programSubs.unsubscribe();
   }
 
   next() {
-  	console.log('next');
-    let next = this.selected.clone();
-    this.removeTime(next.month(next.month()+1)).day(0);
     this.selected.month(this.selected.month()+1);
-    this.buildMonth(next);
+    this.buildMonth()
   };
 
   previous() {
-    let next = this.selected.clone();
-    this.removeTime(next.month(next.month()-1)).day(0);
     this.selected.month(this.selected.month()-1);
-    this.buildMonth(next);
+    this.buildMonth()
   };
 
   private removeTime(date){
       return date.day(0).hour(0).minute(0).second(0).millisecond(0);
   }
 
-  private buildWeek(start?) {
-    
-    if(!start) {start = moment()}
-    let first = this.removeTime(start)
+  private buildWeek(start) {
     let weekDays = [];
-    let date = first.clone();
-
+    let date = start.clone();
     for (var i = 0; i < 7; i++) {
       weekDays.push({
         name: date.format("dd").substring(0, 1),
@@ -68,8 +71,10 @@ export class ProdProgramPage {
     return weekDays;
   }
 
-  private buildMonth(start?) {
-		if(!start) {start = moment()}
+  private buildMonth() {
+		let start = this.selected.clone();
+		start.date(1).day(0); 
+		// con date(1) voy a la primer fecha del mes, con day(0) voy al primer dia de la semana
     this.weeks = [];
     let done = false;
     let date = start.clone();

@@ -30,7 +30,8 @@
 
 	<ion-grid>
 		<ion-row no-padding style="height: 100%;">
-			<ion-col class="container" no-padding>
+
+			<ion-col class="container" no-padding *ngIf="program">
 				<ion-row align-items-center class="monthTitle" no-padding>
 					<ion-col col-1 text-center no-padding>
 						<button ion-button clear icon-only small color="light" (click)="previous()"><ion-icon name="ios-arrow-back"></ion-icon></button>
@@ -54,15 +55,17 @@
 				<ion-row *ngFor="let week of weeks" class="week">
 					<ion-col *ngFor="let day of week.days" class="day">
 						<span class="fecha">{{ day.number }}</span>
-						prueba
+						<div *ngIf="program[day.date.format('YYYYMMDD')]">
+							{{ program[day.date.format('YYYYMMDD')] | json }}							
+						</div>
 					</ion-col>
 				</ion-row>
 			</ion-col>
 		
-		
 			<ion-col col-3 *ngIf="showEntregas">
-				entregas prog
+				{{ program | json }}
 			</ion-col>
+
 		</ion-row>
 	</ion-grid>
 

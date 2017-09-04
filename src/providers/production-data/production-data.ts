@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 import { ApiDataProvider } from '../api-data/api-data';
 import { AuthDataProvider } from '../auth-data/auth-data';
@@ -15,23 +14,12 @@ export class ProductionDataProvider {
   field = 'date';
   asc = false;
 
-  // prodSubject = new ReplaySubject(1);
-  // prodObs = this.prodSubject.asObservable();
-
-  // filteredProdSubject = new ReplaySubject(1);
-  // filteredProdObs = this.filteredProdSubject.asObservable();
-
   constructor(
   	private api: ApiDataProvider,
   	private authData: AuthDataProvider,
     private filterPipe: FilterPipe,
     private sortPipe: SortPipe
   	) {
-    // this.getProduction().subscribe( prod => {
-    //   this.production = prod;
-    //   this.prodSubject.next(prod);
-    //   this.filter();
-    // })
   }
 
   pushProduction(form: any) {
@@ -101,10 +89,4 @@ export class ProductionDataProvider {
     console.log(removeObject);
     return this.api.fanUpdate(removeObject);
   }
-
-  // filter() {
-  //   const filtered = this.filterPipe.transform(this.production, this.searchInput)
-  //   const ordered = this.sortPipe.transform(filtered, this.field, this.asc);
-  //   this.filteredProdSubject.next(ordered);
-  // }
 }

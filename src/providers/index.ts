@@ -8,4 +8,5 @@ export * from './split-show/split-show';
 export * from './production-data/production-data';
 export * from './chart-builder/chart-builder';
 export * from './http-api/http-api';
-export * from './sales-data/sales-data'
+export * from './sales-data/sales-data';
+export * from './prod-program-data/prod-program-data';

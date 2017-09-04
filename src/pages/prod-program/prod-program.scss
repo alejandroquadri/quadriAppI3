@@ -16,8 +16,8 @@ page-prod-program {
   .container {
   	display: flex;
     flex-direction: column;
-    border-top: solid 1px map-get($colors, border);
-    border-bottom: solid 1px map-get($colors, border);
+    border-top: solid 1px color($colors, border);
+    border-bottom: solid 1px color($colors, border);
   }
 
   .grid {
@@ -25,7 +25,8 @@ page-prod-program {
   }
 
   .monthTitle {
-  	background-color: map-get($colors, secondary);
+  	background-color: color($colors, secondary);
+  	font-weight: bold;
   	color: white;
     border-left: solid 1px map-get($colors, border);
     border-right: solid 1px map-get($colors, border);
@@ -44,6 +45,7 @@ page-prod-program {
 
   .day {
   	border-right: solid 1px map-get($colors, border);
+  	overflow: scroll;
   }
 
   .fecha {

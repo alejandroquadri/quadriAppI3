@@ -44,6 +44,7 @@ import { ProductionDataProvider } from '../providers/production-data/production-
 import { ChartBuilderProvider } from '../providers/chart-builder/chart-builder';
 import { HttpApiProvider } from '../providers/http-api/http-api';
 import { SalesDataProvider } from '../providers/sales-data/sales-data';
+import { ProdProgramDataProvider } from '../providers/prod-program-data/prod-program-data';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { SalesDataProvider } from '../providers/sales-data/sales-data';
     ProductionDataProvider,
     ChartBuilderProvider,
     HttpApiProvider,
-    SalesDataProvider
+    SalesDataProvider,
+    ProdProgramDataProvider
   ]
 })
 export class AppModule {}
