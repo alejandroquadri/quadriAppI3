@@ -17,6 +17,9 @@
 	  </ion-buttons>
     <ion-title>Programa de produccion</ion-title>
     <ion-buttons end>
+	    <button ion-button icon-only small (click)="showForm = !showForm">
+				<ion-icon name="add"></ion-icon>
+	    </button>
 	    <button ion-button icon-only small (click)="showEntregas = !showEntregas">
 				<ion-icon name="paper-plane"></ion-icon>
 	    </button>
@@ -32,6 +35,9 @@
 		<ion-row no-padding style="height: 100%;">
 
 			<ion-col class="container" no-padding *ngIf="program">
+				<ion-row *ngIf="showForm">
+					prueba para carga de programa
+				</ion-row>
 				<ion-row align-items-center class="monthTitle" no-padding>
 					<ion-col col-1 text-center no-padding>
 						<button ion-button clear icon-only small color="light" (click)="previous()"><ion-icon name="ios-arrow-back"></ion-icon></button>
@@ -56,7 +62,17 @@
 					<ion-col *ngFor="let day of week.days" class="day">
 						<span class="fecha">{{ day.number }}</span>
 						<div *ngIf="program[day.date.format('YYYYMMDD')]">
-							{{ program[day.date.format('YYYYMMDD')] | json }}							
+							<div *ngFor="let mach of program[day.date.format('YYYYMMDD')] | objNgfor" class="item">
+								<div><span [ngClass]="machClass(mach)" class="machine">{{ mach }}:&nbsp;</span></div>
+								<div *ngFor="let art of program[day.date.format('YYYYMMDD')][mach] | objNgfor" class="article">
+									{{ program[day.date.format('YYYYMMDD')][mach][art].codigo }}
+									<span *ngIf="program[day.date.format('YYYYMMDD')][mach][art].valor">-</span> 
+									{{ program[day.date.format('YYYYMMDD')][mach][art].valor }}&nbsp;
+									{{ program[day.date.format('YYYYMMDD')][mach][art].unidad}}
+									<span *ngIf="program[day.date.format('YYYYMMDD')][mach][art].observacion">-</span>
+									{{ program[day.date.format('YYYYMMDD')][mach][art].observacion }}
+								</div>
+							</div>						
 						</div>
 					</ion-col>
 				</ion-row>

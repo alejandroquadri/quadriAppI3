@@ -46,12 +46,40 @@ page-prod-program {
   .day {
   	border-right: solid 1px map-get($colors, border);
   	overflow: scroll;
+  	font-size: 12px;
+  	line-height: 120%;
   }
 
   .fecha {
   	position: absolute;
   	right: 5%;
   	top: 5%;
+  }
+
+  .item {
+  	margin-bottom: 4px;
+  }
+
+  .machine {
+  	color: white;
+  	border-radius: 3px;
+  	font-weight: bold;
+  }
+
+  .article {
+  	color: color($colors, greyQuadri);
+  }
+
+  .prensa {
+  	background-color: color($colors, ionBlue);
+  }
+
+  .pulidora {
+  	background-color: color($colors, ionGreen);
+  }
+
+  .otro {
+  	background-color: color($colors, warning);
   }
 
 }

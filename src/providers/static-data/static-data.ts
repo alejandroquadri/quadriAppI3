@@ -163,7 +163,8 @@ export class StaticDataProvider {
     '60x40': {conv:0.24, unit:'m2', convMl: 0.6},
     '50x50': {conv:0.25, unit:'m2', convMl: 0.5},
     '10x40': {conv:0.4, unit:'ml'},
-    '10x50': {conv:0.5, unit:'ml'}
+    '10x50': {conv:0.5, unit:'ml'},
+    'bolsa 20kg': {conv:1, unit:'bolsa 20kg'}
   }
 
   drawing = [

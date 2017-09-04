@@ -16,6 +16,7 @@ export class ProdProgramPage {
 	weekDays: Array <any>;
 	weeks: Array <any>;
 	showEntregas = false;
+	showFrom = false;
 
 	programSubs: any
 	program: any;
@@ -86,6 +87,26 @@ export class ProdProgramPage {
       done = count++ > 2 && monthIndex !== date.month();
       monthIndex = date.month();
     }
+  }
+
+  machClass(mach) {
+  	let res;
+  	switch (mach) {
+  		case "995":
+  		case "650":
+  			res = 'prensa';
+  			break;
+
+  		case "Breton":
+  		case "Lineal":
+  			res = 'pulidora';
+  			break;
+  		
+  		default:
+  			res = 'otro';
+  			break;
+  	}
+  	return res;
   }
 
 }
