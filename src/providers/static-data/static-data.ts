@@ -175,7 +175,8 @@ export class StaticDataProvider {
     'tresbolillo',
     'adoquin curvo',
     'pileta',
-    'rusticato'
+    'rusticato',
+    'durella'
   ];
 
   premioProd = {
