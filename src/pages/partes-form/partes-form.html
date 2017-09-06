@@ -41,6 +41,7 @@
 				<ion-item *ngIf="!platform.is('mobile')">
 					<ion-label class="labelMachineSelect">Maquina</ion-label>					
 				  <select item-content formControlName="machine" class="selectMachine">
+					  <option value="" disabled selected></option>
 				    <option *ngFor="let maquina of data.maquinasProd | sort:'':true">{{maquina}}</option>
 				  </select>
 				</ion-item>
@@ -62,7 +63,6 @@
 				<ion-item *ngIf="platform.is('mobile')">
 				  <ion-label>Dibujo</ion-label>
 				  <ion-select formControlName="drawing" *ngIf="isPastina() !== 'pastinas'">
-				    <ion-option value="" disabled selected></ion-option>
 				  	<ion-option *ngFor="let drawing of data.drawing | sort:'':true">{{drawing}}</ion-option>
 				  </ion-select>
 				  <ion-select formControlName="drawing" *ngIf="isPastina() === 'pastinas'">
@@ -88,7 +88,7 @@
 				  	<option *ngFor="let drawing of data.drawing | sort:'':true">{{drawing}}</option>
 				  </select>
 				  <select *ngIf="isPastina() === 'pastinas'" item-content formControlName="drawing" class="selectMachine selectArt" style="margin-right: 0px;">
-				    <option value="pastina" selected>pastina</option>
+				    <option>pastina</option>
 				  </select>
 				</ion-item>
 

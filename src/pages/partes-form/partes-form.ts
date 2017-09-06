@@ -183,8 +183,16 @@ export class PartesFormPage implements OnInit {
 
   isPastina() {
     if (this.myForm.value.machine === 'Pastinas') {
+      this.myForm.patchValue({
+        dim: 'bolsa 20kg',
+        drawing: 'pastina'
+      });
       return 'pastinas';
     } else {
+      this.myForm.patchValue({
+        dim: '',
+        drawing: ''
+      });
       return 'mosaicos';
     }
   }

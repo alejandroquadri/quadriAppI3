@@ -16,7 +16,6 @@ page-prod-program {
   .container {
   	display: flex;
     flex-direction: column;
-    border-top: solid 1px color($colors, border);
     border-bottom: solid 1px color($colors, border);
   }
 
@@ -28,8 +27,9 @@ page-prod-program {
   	background-color: color($colors, secondary);
   	font-weight: bold;
   	color: white;
-    border-left: solid 1px map-get($colors, border);
-    border-right: solid 1px map-get($colors, border);
+  	border-top: solid 1px color($colors, secondary);
+    border-left: solid 1px map-get($colors, secondary);
+    border-right: solid 1px map-get($colors, secondary);
   }
 
   .daysTitle {
@@ -80,6 +80,42 @@ page-prod-program {
 
   .otro {
   	background-color: color($colors, warning);
+  }
+
+  .inputForm {
+  	font-size: 12px;
+  }
+
+  .selectInput {
+  	background-color:rgba(244, 244, 244, 0.5);
+    border: none;
+  }
+
+  .selectLabel {
+  	color: #999;
+  }
+
+  .inputQuantity {
+		width: 60px;
+		background-color:rgba(244, 244, 244, 0.5);
+		border-radius: 5px;
+  }
+
+  .inputDate {
+  	background-color:rgba(244, 244, 244, 0.5);
+		width: 140px;
+		border-radius: 5px;
+  }
+
+  .inputObs {
+  	background-color:rgba(244, 244, 244, 0.5);
+		width: 90px;
+		border-radius: 5px;
+  }
+
+  .text-input-md {
+  	margin-top: 0px;
+		margin-bottom: 0px;
   }
 
 }

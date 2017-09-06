@@ -77,7 +77,6 @@ export class StaticDataProvider {
   ];
 
   maquinasProd = [
-    '',
     '995',
     '650',
     'Breton',
@@ -94,7 +93,6 @@ export class StaticDataProvider {
   ];
 
   unidades = [
-    '',
     'litros',
     'ml',
     'unidad',

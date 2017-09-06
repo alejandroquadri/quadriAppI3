@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
+import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 
 import * as moment from 'moment';
 
-import { SplitShowProvider, ProdProgramDataProvider } from '../../providers';
+import { SplitShowProvider, ProdProgramDataProvider, StaticDataProvider } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -12,19 +13,36 @@ import { SplitShowProvider, ProdProgramDataProvider } from '../../providers';
 })
 export class ProdProgramPage {
 
+	data: any;
+	colors = [];
+	dims = [];
+	drawings = [];
+	units = [
+		'm2',
+		'ml',
+		'unidad',
+		'bolsa',
+	]
+
 	selected: any = moment();
 	weekDays: Array <any>;
 	weeks: Array <any>;
 	showEntregas = false;
-	showFrom = false;
+	showForm = false;
 
 	programSubs: any
 	program: any;
 
+	public myForm: FormGroup;
+
   constructor(
+  	private _fb: FormBuilder,
   	private splitShow: SplitShowProvider,
-  	private programData: ProdProgramDataProvider
+  	private programData: ProdProgramDataProvider,
+  	private staticData: StaticDataProvider,
   ) {
+  	this.data = this.staticData;
+  	this.buildForm();
   }
 
   ionViewDidLoad() {
@@ -39,6 +57,32 @@ export class ProdProgramPage {
     console.log('desuscripcion program');
     this.programSubs.unsubscribe();
   }
+
+  // formulario
+
+  buildForm() {
+  	this.myForm = this._fb.group({
+    	date: ['', Validators.required],
+    	machine: ['', Validators.required],
+    	color: ['', Validators.required],
+    	dim: ['', Validators.required],
+    	drawing: ['', Validators.required],
+    	quantity: [''],
+    	unit: [''],
+    	obs: ['']
+    });
+  }
+
+  submit() {
+  	console.log(this.myForm.value);
+  }
+
+  hideShowForm() {
+  	this.buildForm();
+  	this.showForm = !this.showForm;
+  }
+
+  // calendario
 
   next() {
     this.selected.month(this.selected.month()+1);
@@ -107,6 +151,19 @@ export class ProdProgramPage {
   			break;
   	}
   	return res;
+  }
+
+  machChange(mach) {
+  	console.log(mach);
+    if (mach === 'Pastinas') {
+      this.colors = this.data.colorProductos['pastinas'];
+			this.dims = this.data.dimProductos['pastinas'];
+			this.drawings = ['pastina'];
+    } else {
+      this.colors = this.data.colorProductos['mosaicos'];
+			this.dims = this.data.dimProductos['mosaicos'];
+			this.drawings = this.data.drawing;
+    }
   }
 
 }
