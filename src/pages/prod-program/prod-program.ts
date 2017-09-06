@@ -13,6 +13,21 @@ import { SplitShowProvider, ProdProgramDataProvider, StaticDataProvider } from '
 })
 export class ProdProgramPage {
 
+	// variables para datos
+	programSubs: any
+	program: any;
+	
+	// calendario
+	selected: any = moment();
+	weekDays: Array <any>;
+	weeks: Array <any>;
+
+	// entregas
+	showEntregas = false;
+
+	// form
+	showForm = false;
+	editing = false;
 	data: any;
 	colors = [];
 	dims = [];
@@ -23,15 +38,6 @@ export class ProdProgramPage {
 		'unidad',
 		'bolsa',
 	]
-
-	selected: any = moment();
-	weekDays: Array <any>;
-	weeks: Array <any>;
-	showEntregas = false;
-	showForm = false;
-
-	programSubs: any
-	program: any;
 
 	public myForm: FormGroup;
 
@@ -77,9 +83,15 @@ export class ProdProgramPage {
   	console.log(this.myForm.value);
   }
 
-  hideShowForm() {
+  newProgram() {
+  	this.editing = false;
   	this.buildForm();
-  	this.showForm = !this.showForm;
+  	this.showForm = true;
+  }
+
+  edit() {
+  	this.editing = true;
+  	this.showForm = true;
   }
 
   // calendario

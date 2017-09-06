@@ -70,6 +70,12 @@ page-prod-program {
   	color: color($colors, greyQuadri);
   }
 
+  .article:hover {
+  	cursor: pointer;
+  	background-color:rgba(244, 244, 244, 0.8);
+		border-radius: 5px;
+  }
+
   .prensa {
   	background-color: color($colors, ionBlue);
   }

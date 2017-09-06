@@ -11,7 +11,7 @@
 	  </ion-buttons>
     <ion-title>Programa de produccion</ion-title>
     <ion-buttons end>
-	    <button ion-button icon-only small (click)="hideShowForm()">
+	    <button ion-button icon-only small (click)="newProgram()">
 				<ion-icon name="add"></ion-icon>
 	    </button>
 	    <button ion-button icon-only small (click)="showEntregas = !showEntregas">
@@ -71,14 +71,29 @@
 						<ion-col col-auto>
 							<ion-input formControlName="obs" placeholder="Observacion" type="text" class="inputObs"></ion-input>
 						</ion-col>
-						<ion-col col-auto no-padding>
+						<ion-col col-auto no-padding *ngIf="!editing">
 							<button ion-button icon-only clear small  type="submit" [disabled]="!myForm.valid">
 								<ion-icon name="checkmark-circle"></ion-icon>
 							</button>
 						</ion-col>
+						<ion-col col-auto no-padding *ngIf="editing">
+							<button ion-button icon-only clear small  color="ionBlue" type="submit" [disabled]="!myForm.valid">
+								<ion-icon name="create"></ion-icon>
+							</button>
+						</ion-col>
+						<ion-col col-auto no-padding *ngIf="editing">
+							<button ion-button icon-only clear small color="danger" type="button">
+								<ion-icon name="trash"></ion-icon>
+							</button>
+						</ion-col>
 						<ion-col col-auto no-padding>
 							<button ion-button icon-only clear small color="warning" type="button" (click)="buildForm()">
-								<ion-icon name="close-circle"></ion-icon>
+								<ion-icon name="refresh"></ion-icon>
+							</button>
+						</ion-col>
+						<ion-col col-auto no-padding>
+							<button ion-button icon-only clear small color= "lightGreyQ" type="button" (click)="showForm = false">
+								<ion-icon name="remove-circle"></ion-icon>
 							</button>
 						</ion-col>
 					</ion-row>
@@ -113,7 +128,8 @@
 						<div *ngIf="program[day.date.format('YYYYMMDD')]">
 							<div *ngFor="let mach of program[day.date.format('YYYYMMDD')] | objNgfor" class="item">
 								<div><span [ngClass]="machClass(mach)" class="machine">{{ mach }}:&nbsp;</span></div>
-								<div *ngFor="let art of program[day.date.format('YYYYMMDD')][mach] | objNgfor" class="article">
+								<div *ngFor="let art of program[day.date.format('YYYYMMDD')][mach] | objNgfor" class="article"
+								(click)="edit()">
 									{{ program[day.date.format('YYYYMMDD')][mach][art].codigo }}
 									<span *ngIf="program[day.date.format('YYYYMMDD')][mach][art].valor">-</span> 
 									{{ program[day.date.format('YYYYMMDD')][mach][art].valor }}&nbsp;
