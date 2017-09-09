@@ -233,4 +233,42 @@ export class StaticDataProvider {
     }
   }
 
+  codebuilder = {
+    drawing : {
+      'liso': 'Mos',
+      'loseta': 'Los',
+      '64 panes': '64P',
+      '64 tapones': '64T',
+      'tresbolillo': 'Tac',
+      'adoquin curvo': 'AdC',
+      'pileta' : 'Pil',
+      'rusticato': 'Rus',
+      'durella': 'Dur',
+      'pastina': 'Pas'
+    },
+    color: {
+      'Blanco': 'Bla',
+      'Botichino': 'Bot',
+      'Brechiato': 'Bre',
+      'Gris Perla': 'GPe',
+      'Verde Alpe': 'VAl',
+      'Sierra Chica': 'SCh',
+      'Ocre': 'Ocr',
+      'Cemento': 'Cem',
+      'Gris': 'Gri',
+      'Marfil': 'Mar',
+      'Napoleon': 'Nap',
+      'Rojo': 'Roj',
+      'Negro': 'Neg'
+    },
+    dim: {
+      '40x40': '4040',
+      '60x40': '6040',
+      '50x50': '5050',
+      '10x40': '1040',
+      '10x50': '1050',
+      'bolsa 20kg': '20kg'
+    }
+  }
+
 }

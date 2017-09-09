@@ -29,8 +29,8 @@
 		<ion-row no-padding style="height: 100%;">
 
 			<ion-col class="container" no-padding *ngIf="program">
-				<form [formGroup]="myForm" novalidate (ngSubmit)="submit()" *ngIf="showForm">
-					
+				<form [formGroup]="myForm" novalidate (ngSubmit)="submit()" [hidden]="!showForm">
+
 					<ion-row align-items-center class="inputForm">
 						<ion-col col-auto>
 							<ion-input #inputDate [ngClass]="{selectLabel: inputDate.value === ''}" formControlName="date" placeholder="Fecha" type="date" class="inputDate"></ion-input>
@@ -82,7 +82,7 @@
 							</button>
 						</ion-col>
 						<ion-col col-auto no-padding *ngIf="editing">
-							<button ion-button icon-only clear small color="danger" type="button">
+							<button ion-button icon-only clear small color="danger" type="button" (click)="remove()">
 								<ion-icon name="trash"></ion-icon>
 							</button>
 						</ion-col>
@@ -124,18 +124,19 @@
 
 				<ion-row *ngFor="let week of weeks" class="week">
 					<ion-col *ngFor="let day of week.days" class="day">
-						<span class="fecha">{{ day.number }}</span>
+						<div ion-button small clear class="fecha" (click)="newProgram(day)">{{ day.number }}</div>
 						<div *ngIf="program[day.date.format('YYYYMMDD')]">
 							<div *ngFor="let mach of program[day.date.format('YYYYMMDD')] | objNgfor" class="item">
 								<div><span [ngClass]="machClass(mach)" class="machine">{{ mach }}:&nbsp;</span></div>
 								<div *ngFor="let art of program[day.date.format('YYYYMMDD')][mach] | objNgfor" class="article"
-								(click)="edit()">
+								(click)="edit(program[day.date.format('YYYYMMDD')][mach][art], day, art, mach)">
 									{{ program[day.date.format('YYYYMMDD')][mach][art].codigo }}
 									<span *ngIf="program[day.date.format('YYYYMMDD')][mach][art].valor">-</span> 
 									{{ program[day.date.format('YYYYMMDD')][mach][art].valor }}&nbsp;
 									{{ program[day.date.format('YYYYMMDD')][mach][art].unidad}}
 									<span *ngIf="program[day.date.format('YYYYMMDD')][mach][art].observacion">-</span>
 									{{ program[day.date.format('YYYYMMDD')][mach][art].observacion }}
+									<!-- <span (click) = "remove()"><ion-icon name="trash" color="danger"></ion-icon></span> -->
 								</div>
 							</div>						
 						</div>

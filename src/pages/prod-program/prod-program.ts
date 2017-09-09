@@ -28,6 +28,8 @@ export class ProdProgramPage {
 	// form
 	showForm = false;
 	editing = false;
+	idEdit: string;
+	artEdit: any;
 	data: any;
 	colors = [];
 	dims = [];
@@ -67,7 +69,7 @@ export class ProdProgramPage {
   // formulario
 
   buildForm() {
-  	this.myForm = this._fb.group({
+  	return this.myForm = this._fb.group({
     	date: ['', Validators.required],
     	machine: ['', Validators.required],
     	color: ['', Validators.required],
@@ -76,22 +78,74 @@ export class ProdProgramPage {
     	quantity: [''],
     	unit: [''],
     	obs: ['']
-    });
+    })
   }
 
   submit() {
   	console.log(this.myForm.value);
+  	this.editing ? this.update() : this.add(this.myForm.value) ;
   }
 
-  newProgram() {
-  	this.editing = false;
-  	this.buildForm();
-  	this.showForm = true;
-  }
-
-  edit() {
+  edit(art, day, id, mach) {
+  	console.log(art, mach);
+  	this.idEdit = id;
+  	this.artEdit = art;
+  	this.artEdit['date'] = moment(day.date).format('YYYY-MM-DD');
+  	this.artEdit['mach'] = mach;
+  	this.machChange(mach).then( () => {
+  		this.myForm.patchValue({
+		  	date: moment(day.date).format('YYYY-MM-DD'),
+		   	machine: mach,
+	  	});
+	  	console.log(art.color);
+	  	setTimeout(() => {
+        this.myForm.patchValue({
+		     	color: art.color || '',
+			    dim: art.dim || '',
+			    drawing: art.drawing || '',
+			    quantity: art.valor || '',
+			    unit: art.unidad || '',
+			    obs: art.observacion || ''
+		  	});
+      },150);
+  	})
   	this.editing = true;
   	this.showForm = true;
+  }
+
+  newProgram(date?) {
+  	this.editing = false;
+  	this.showForm = true;
+  	date ? this.myForm.patchValue({date: date.date.format('YYYY-MM-DD')}) : this.buildForm() ;
+  }
+
+  add(form: any) {
+  	this.programData.addNew(form).then( () => {
+			console.log('guardado');
+		})
+  }
+
+  update() {
+  	let diff = 'none';
+  	if (this.artEdit.date !== this.myForm.value.date) {
+  		diff = 'date';
+  		this.myForm.value['oldDate'] = moment(this.artEdit.date).format('YYYYMMDD');
+  	}  else if (this.artEdit.mach !== this.myForm.value.machine) { 
+  		diff = 'mach';
+  		this.myForm.value['oldMach'] = this.artEdit.mach
+	  }
+  	this.programData.update(this.myForm.value, this.idEdit, diff)
+  	.then( () => {
+  		console.log('editado');
+  		this.buildForm();
+  	})
+  }
+
+  remove() {
+  	this.programData.remove(this.myForm.value, this.idEdit).then( () => {
+  		console.log('borrado');
+  		this.buildForm();
+  	})
   }
 
   // calendario
@@ -166,16 +220,21 @@ export class ProdProgramPage {
   }
 
   machChange(mach) {
-  	console.log(mach);
-    if (mach === 'Pastinas') {
-      this.colors = this.data.colorProductos['pastinas'];
-			this.dims = this.data.dimProductos['pastinas'];
-			this.drawings = ['pastina'];
-    } else {
-      this.colors = this.data.colorProductos['mosaicos'];
-			this.dims = this.data.dimProductos['mosaicos'];
-			this.drawings = this.data.drawing;
-    }
+  	return new Promise((resolve, reject) => {
+	    console.log(mach);
+	    if (mach === 'Pastinas') {
+	      this.colors = this.data.colorProductos['pastinas'];
+				this.dims = this.data.dimProductos['pastinas'];
+				this.drawings = ['pastina'];
+				resolve(42);
+	    } else {
+	      this.colors = this.data.colorProductos['mosaicos'];
+				this.dims = this.data.dimProductos['mosaicos'];
+				this.drawings = this.data.drawing;
+				resolve(42);
+	    }
+	  });
+  	
   }
 
 }

@@ -204,8 +204,8 @@ export class PartesFormPage implements OnInit {
     	// // element.focus(); esta es otra opcion
     	// this.renderer.invokeElementMethod(element,'focus'); y esta otra
     	setTimeout(() => {
-      this.dateInput.setFocus(); // le pongo un timeout para que haga focus cuando carga
-    },150);
+        this.dateInput.setFocus(); // le pongo un timeout para que haga focus cuando carga
+      },150);
     }
   }
 
