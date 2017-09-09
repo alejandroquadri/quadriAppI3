@@ -87,7 +87,6 @@ export class ProdProgramPage {
   }
 
   edit(art, day, id, mach) {
-  	console.log(art, mach);
   	this.idEdit = id;
   	this.artEdit = art;
   	this.artEdit['date'] = moment(day.date).format('YYYY-MM-DD');
@@ -97,7 +96,6 @@ export class ProdProgramPage {
 		  	date: moment(day.date).format('YYYY-MM-DD'),
 		   	machine: mach,
 	  	});
-	  	console.log(art.color);
 	  	setTimeout(() => {
         this.myForm.patchValue({
 		     	color: art.color || '',
@@ -221,7 +219,6 @@ export class ProdProgramPage {
 
   machChange(mach) {
   	return new Promise((resolve, reject) => {
-	    console.log(mach);
 	    if (mach === 'Pastinas') {
 	      this.colors = this.data.colorProductos['pastinas'];
 				this.dims = this.data.dimProductos['pastinas'];

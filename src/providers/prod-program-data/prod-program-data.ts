@@ -49,21 +49,14 @@ export class ProdProgramDataProvider {
   		unidad: form.unit
   	}
   	if (diff === 'date') {
-  		console.log('diff servicio date');
-
   		let fanObj = this.api.fanOutObject(info, [`program/${date}/${mach}`], true);
   		fanObj[`program/${form.oldDate}`] = null;
-  		console.log(fanObj);
   		return this.api.fanUpdate(fanObj);
 
   	} else if (diff === 'mach') {
-  		console.log('diff servicio mach');
-
   		let fanObj = this.api.fanOutObject(info,[`program/${date}/${mach}`], true);
   		fanObj[`program/${date}/${form.oldMach}`] = null;
-  		console.log(fanObj);
   		return this.api.fanUpdate(fanObj);
-
   	} else {
   		return this.api.updateObject(`program/${date}/${mach}/${key}`,info);
   	}
