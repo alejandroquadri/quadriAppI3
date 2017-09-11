@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
+import 'rxjs/add/operator/map';
 
 import * as moment from 'moment';
+import 'moment/locale/es';
 
 import { SplitShowProvider, ProdProgramDataProvider, StaticDataProvider } from '../../providers';
 
@@ -41,6 +43,12 @@ export class ProdProgramPage {
 		'bolsa',
 	]
 
+	// entregas
+	entregasSubs: any;
+	entregas: any;
+	items: any;
+	weeksEntregas: any;
+
 	public myForm: FormGroup;
 
   constructor(
@@ -59,11 +67,21 @@ export class ProdProgramPage {
     this.programSubs = this.programData.getProgram().subscribe( prog => {
     	this.program = prog;
     })
+    this.weeksEntregas = this.buildNextWeeks();
+    this.entregasSubs = this.programData.getEntregas()
+  	.map( res => res.json())
+  	.subscribe( data => {
+  		let sumaSemanasObj = this.sumaSemana(data.data)
+  		this.entregas = sumaSemanasObj.sem;
+  		this.items = this.buildItemsArray(sumaSemanasObj.items);
+  		console.log(this.entregas, this.items);
+  	});
   }
 
   ionViewWillUnload() {
     console.log('desuscripcion program');
     this.programSubs.unsubscribe();
+    this.entregasSubs.unsubscribe();
   }
 
   // formulario
@@ -232,6 +250,85 @@ export class ProdProgramPage {
 	    }
 	  });
   	
+  }
+
+  sumaSemana(datos){
+    let titulos = datos[0];
+    let artXSem = {};
+    let items = {};
+
+    for (let i = 1 ; i < datos.length ; i++ ) {
+      for (let j = 7; j< datos[0].length ; j++ ) {
+        let valor = datos[i][j];
+
+        if (valor === "" || !valor) {continue;}
+        valor = parseFloat(datos[i][j].replace(/,/g, '.'));
+        if (valor >= 0) {continue;}
+        let fechaString = titulos[j];
+
+        let date = fechaString.substring(4, 6);
+        let month = fechaString.substring(7, 9);
+        let year = ("20"+fechaString.substring(10, 12))
+        console.log(fechaString, date, month, year);
+        // let fecha = moment().year(year).month(month).date(date);
+        let fecha = moment(`${year}-${month}-${date}`);
+
+        console.log(fecha, fechaString);
+
+        // tipo de formato que trae jue. 22/12/16
+
+        let codigo = datos[i][3];
+        let semana = fecha.week()+""+fecha.year();
+        // let semana = fecha.format('wwMM');
+        console.log(semana);
+        if (!(codigo in artXSem)) {
+          artXSem[codigo] = {};
+          if (!(semana in artXSem[codigo])){
+            artXSem[codigo][semana] = Math.abs(valor);
+          } else { artXSem[codigo][semana] += Math.abs(valor);}
+        } else  {
+          if (!(semana in artXSem[codigo])){
+            artXSem[codigo][semana] = Math.abs(valor);
+          } else { artXSem[codigo][semana] += Math.abs(valor);}
+        }
+        if (items[codigo]) {
+        	items[codigo] += Math.abs(valor);
+        } else {
+        	items[codigo] = Math.abs(valor);        	
+        }
+      }
+    }
+    return {
+    	sem: artXSem,
+    	items: items
+    }
+  }
+
+  buildNextWeeks () {
+  	let weeks = [];	
+  	let today = moment();
+
+  	for (let i=0; i < 4; i ++) {
+  		let semana = today.week()+""+today.year();
+  		weeks.push(semana);
+  		today.add(1, 'w');
+  	}
+
+  	return weeks;
+  }
+
+  buildItemsArray(obj: any) {
+  	let keys = Object.keys(obj); 
+  	let itemsArray = [];
+
+  	keys.forEach( item => {
+  		itemsArray.push({
+  			code: item,
+  			total: obj[item]
+  		});
+  	})
+
+  	return itemsArray;
   }
 
 }

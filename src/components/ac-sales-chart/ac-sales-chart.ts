@@ -37,7 +37,7 @@ export class AcSalesChartComponent implements OnInit {
   	.subscribe( data => {
   		this.sales = data.data;
       this.salesDataFilter();
-  	})
+  	});
   }
 
   ngAfterViewChecked() {

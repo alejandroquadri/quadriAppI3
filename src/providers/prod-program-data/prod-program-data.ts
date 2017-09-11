@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiDataProvider } from '../api-data/api-data';
+import { HttpApiProvider } from '../http-api/http-api';
 import { StaticDataProvider } from '../static-data/static-data';
 
 import * as moment from 'moment';
@@ -9,6 +10,7 @@ export class ProdProgramDataProvider {
 
   constructor(
   	private api: ApiDataProvider,
+  	private httpApi: HttpApiProvider,
   	private staticData: StaticDataProvider
   	) {
     console.log('Hello ProdProgramDataProvider Provider');
@@ -66,6 +68,10 @@ export class ProdProgramDataProvider {
   	let date = moment(form.date).format('YYYYMMDD');
   	let mach = form.machine;
   	return this.api.removeItemList(`program/${date}/${mach}`,key)
+  }
+
+  getEntregas() {
+  	return this.httpApi.get('entregas');
   }
 
 }

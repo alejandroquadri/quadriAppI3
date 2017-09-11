@@ -145,8 +145,35 @@
 
 			</ion-col>
 		
-			<ion-col col-3 *ngIf="showEntregas">
-				{{ program | json }}
+			<ion-col col-3 *ngIf="showEntregas" class="entregas">
+				<div *ngIf="entregas">
+
+					<ion-row class="entregasHeader">
+						<ion-col col-4>
+							Art
+						</ion-col>
+						<ion-col col-2>
+							Sem 0
+						</ion-col>
+						<ion-col col-2>
+							Sem 1
+						</ion-col>
+						<ion-col col-2>
+							Sem 2
+						</ion-col>
+						<ion-col col-2>
+							Sem 3
+						</ion-col>
+					</ion-row>
+					<ion-row *ngFor="let item of items | sort:'total':false" class="entregasItems">
+						<ion-col col-4>
+							{{ item.code }}						
+						</ion-col>
+						<ion-col *ngFor="let week of weeksEntregas; let i = index" col-2>
+							<span *ngIf="entregas[item.code][week]">{{ entregas[item.code][week] | number : '1.0-0'}}</span>
+						</ion-col>
+					</ion-row>
+				</div>
 			</ion-col>
 
 		</ion-row>

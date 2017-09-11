@@ -135,4 +135,21 @@ page-prod-program {
 		margin-bottom: 0px;
   }
 
+  .entregas {
+  	font-size: 10px;
+  }
+
+  .entregasHeader {
+		font-weight: bold;
+		border-bottom: solid 2px map-get($colors, border);
+  }
+
+  .entregasItems {
+		border-bottom: solid 1px map-get($colors, border);
+  }
+
+  .entregasItems:hover {
+  	background-color: rgba(244, 244, 244, 0.8);
+  }
+
 }
