@@ -17,6 +17,8 @@
 
 <ion-content padding>
 
+	<!-- {{ myForm.value | json}} -->
+
 	<ion-grid>
 		<form [formGroup]="myForm" novalidate (ngSubmit)="submit()">
 
@@ -88,6 +90,7 @@
 				  	<option *ngFor="let drawing of data.drawing | sort:'':true">{{drawing}}</option>
 				  </select>
 				  <select *ngIf="isPastina() === 'pastinas'" item-content formControlName="drawing" class="selectMachine selectArt" style="margin-right: 0px;">
+				  	<option value="" disabled selected></option>
 				    <option>pastina</option>
 				  </select>
 				</ion-item>

@@ -189,10 +189,10 @@ export class PartesFormPage implements OnInit {
       });
       return 'pastinas';
     } else {
-      this.myForm.patchValue({
-        dim: '',
-        drawing: ''
-      });
+      // this.myForm.patchValue({
+      //   dim: '',
+      //   drawing: ''
+      // });
       return 'mosaicos';
     }
   }

@@ -269,18 +269,11 @@ export class ProdProgramPage {
         let date = fechaString.substring(4, 6);
         let month = fechaString.substring(7, 9);
         let year = ("20"+fechaString.substring(10, 12))
-        console.log(fechaString, date, month, year);
-        // let fecha = moment().year(year).month(month).date(date);
         let fecha = moment(`${year}-${month}-${date}`);
-
-        console.log(fecha, fechaString);
-
-        // tipo de formato que trae jue. 22/12/16
 
         let codigo = datos[i][3];
         let semana = fecha.week()+""+fecha.year();
         // let semana = fecha.format('wwMM');
-        console.log(semana);
         if (!(codigo in artXSem)) {
           artXSem[codigo] = {};
           if (!(semana in artXSem[codigo])){

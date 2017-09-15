@@ -49,7 +49,7 @@
     },
     "devDependencies": {
         "@ionic/app-scripts": "^2.1.4",
-        "ionic": "3.10.0",
+        "ionic": "3.10.3",
         "typescript": "2.3.4"
     },
     "description": "QuadriApp",
