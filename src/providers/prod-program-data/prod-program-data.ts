@@ -52,12 +52,12 @@ export class ProdProgramDataProvider {
   	}
   	if (diff === 'date') {
   		let fanObj = this.api.fanOutObject(info, [`program/${date}/${mach}`], true);
-  		fanObj[`program/${form.oldDate}`] = null;
+  		fanObj[`program/${form.oldDate}/${form.oldMach}/${key}`] = null;
   		return this.api.fanUpdate(fanObj);
 
   	} else if (diff === 'mach') {
   		let fanObj = this.api.fanOutObject(info,[`program/${date}/${mach}`], true);
-  		fanObj[`program/${date}/${form.oldMach}`] = null;
+  		fanObj[`program/${date}/${form.oldMach}/${key}`] = null;
   		return this.api.fanUpdate(fanObj);
   	} else {
   		return this.api.updateObject(`program/${date}/${mach}/${key}`,info);

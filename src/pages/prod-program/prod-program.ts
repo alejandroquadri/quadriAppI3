@@ -143,12 +143,12 @@ export class ProdProgramPage {
 
   update() {
   	let diff = 'none';
+    this.myForm.value['oldDate'] = moment(this.artEdit.date).format('YYYYMMDD');
+    this.myForm.value['oldMach'] = this.artEdit.mach;
   	if (this.artEdit.date !== this.myForm.value.date) {
   		diff = 'date';
-  		this.myForm.value['oldDate'] = moment(this.artEdit.date).format('YYYYMMDD');
   	}  else if (this.artEdit.mach !== this.myForm.value.machine) { 
   		diff = 'mach';
-  		this.myForm.value['oldMach'] = this.artEdit.mach
 	  }
   	this.programData.update(this.myForm.value, this.idEdit, diff)
   	.then( () => {
