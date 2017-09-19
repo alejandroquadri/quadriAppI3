@@ -111,7 +111,9 @@ export class StaticDataProvider {
     'Verde Alpe',
     'Sierra Chica',
     'Ocre',
-    'Cemento'
+    'Cemento',
+    'Napoleon',
+    'Blanco Espuma'
   ];
 
   colorProductos = {
@@ -123,7 +125,9 @@ export class StaticDataProvider {
       'Verde Alpe',
       'Sierra Chica',
       'Ocre',
-      'Cemento'
+      'Cemento',
+      'Napoleon',
+      'Blanco Espuma'
     ],
     pastinas : [
       'Gris',
@@ -259,7 +263,8 @@ export class StaticDataProvider {
       'Marfil': 'Mar',
       'Napoleon': 'Nap',
       'Rojo': 'Roj',
-      'Negro': 'Neg'
+      'Negro': 'Neg',
+      'Blanco Espuma': 'BEs'
     },
     dim: {
       '40x40': '4040',
