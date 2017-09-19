@@ -95,7 +95,7 @@ export class StaticDataProvider {
   unidades = [
     'litros',
     'ml',
-    'unidad',
+    'unidades',
     'm2',
     'juego',
     'kg'
@@ -178,7 +178,8 @@ export class StaticDataProvider {
     'adoquin curvo',
     'pileta',
     'rusticato',
-    'durella'
+    'durella',
+    'escalera'
   ];
 
   premioProd = {
@@ -248,7 +249,8 @@ export class StaticDataProvider {
       'pileta' : 'Pil',
       'rusticato': 'Rus',
       'durella': 'Dur',
-      'pastina': 'Pas'
+      'pastina': 'Pas',
+      'escalera': 'Esc'
     },
     color: {
       'Blanco': 'Bla',

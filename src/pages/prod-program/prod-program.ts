@@ -132,7 +132,8 @@ export class ProdProgramPage {
   newProgram(date?) {
   	this.editing = false;
   	this.showForm = true;
-  	date ? this.myForm.patchValue({date: date.date.format('YYYY-MM-DD')}) : this.buildForm() ;
+    this.buildForm()
+  	date ? this.myForm.patchValue({date: date.date.format('YYYY-MM-DD')}) : '' ;
   }
 
   add(form: any) {
