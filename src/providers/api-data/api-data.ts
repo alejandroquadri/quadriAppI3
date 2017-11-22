@@ -14,15 +14,15 @@ export class ApiDataProvider {
 		return this.db.object(path);
 	}
 
-	setObject(path: string, form: any): firebase.Promise<void> {
+	setObject(path: string, form: any){
 		return this.db.object(`${path}`).set(form);
 	}
 
-	updateObject(path: string, form: any): firebase.Promise<void> {
+	updateObject(path: string, form: any) {
 		return this.db.object(`${path}`).update(form);
 	}
 
-	deleteObject(path: string): firebase.Promise<void> {
+	deleteObject(path: string) {
 		return this.db.object(`${path}`).remove();
 	}
 
@@ -30,15 +30,15 @@ export class ApiDataProvider {
 		return this.db.list(path);
 	}
 
-	push(path: string, form: any): firebase.Promise<void> {
+	push(path: string, form: any){
 		return this.db.list(`${path}`).push(form);
 	}
 
-	updateList(path: string, key:string, form: any): firebase.Promise<void> {
+	updateList(path: string, key:string, form: any){
 		return this.db.list(`${path}`).update(key, form);
 	}
 
-	removeItemList(path: string, key?: string): firebase.Promise<void> {
+	removeItemList(path: string, key?: string){
 		if (key) {
 			return this.db.list(`${path}`).remove(key);
 		} else {
