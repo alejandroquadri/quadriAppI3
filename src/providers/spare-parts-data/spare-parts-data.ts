@@ -35,12 +35,6 @@ export class SparePartsDataProvider {
     private filterPipe: FilterPipe,
     private sortPipe: SortPipe
 	) {
-    console.log('Hello SparePartsProvider Provider');
-    // this.sparePartsFc = this.getSpareParts();
-    // this.sparePartsFc.subscribe(parts => {
-    //   this.spareParts = parts;
-    //   this.filter();
-    // });
   }
 
   pushSparePart(form: any) {
