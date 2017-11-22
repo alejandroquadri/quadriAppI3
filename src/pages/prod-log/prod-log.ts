@@ -31,18 +31,13 @@ export class ProdLogPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProdLogPage');
-    // this.prodLogs = this.prodData.filteredProdObs;
     this.prodSubs = this.prodData.getProduction().subscribe( prod => {
       this.production = prod;
-      // this.prodSubject.next(prod);
       this.filter();
     })
   }
 
   ionViewWillUnload() {
-    console.log('willunload');
-    console.log('desuscripcion production');
     this.prodSubs.unsubscribe();
   }
 

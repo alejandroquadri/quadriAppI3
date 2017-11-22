@@ -45,8 +45,6 @@ export class MachineLogPage {
   }
 
   ionViewWillUnload() {
-    console.log('willunload');
-    console.log('desuscripcion machine logs');
     this.machineSubs.unsubscribe();
   }
 

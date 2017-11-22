@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, /*ViewController */} from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { SparePartsDataProvider } from '../../providers';
 
@@ -15,19 +15,10 @@ export class OptionsPage {
   constructor(
   	public navCtrl: NavController,
   	public navParams: NavParams,
-  	// public viewCtrl: ViewController,
     private sparePartsData: SparePartsDataProvider
 	) {
-    // if (this.navParams.data) {
-    // 	this.form = this.navParams.data
-    // }
     this.options = this.sparePartsData.filters;
   }
-
-  // updateFilters() {
-  //   this.sparePartsData.filters = this.options;
-  //   this.sparePartsData.filter();
-  // }
 
   updateFilters() {
     this.sparePartsData.filters = this.options;

@@ -11,34 +11,34 @@ export class ApiDataProvider {
 	) {}
 
 	getObject(path:string) {
-		return this.db.object(path);
+		return this.db.object(path).valueChanges();
 	}
 
-	setObject(path: string, form: any){
+	setObject(path: string, form: any): Promise<void> {
 		return this.db.object(`${path}`).set(form);
 	}
 
-	updateObject(path: string, form: any) {
+	updateObject(path: string, form: any): Promise<void> {
 		return this.db.object(`${path}`).update(form);
 	}
 
-	deleteObject(path: string) {
+	deleteObject(path: string): Promise<void> {
 		return this.db.object(`${path}`).remove();
 	}
 
 	getList(path:string) {
-		return this.db.list(path);
+		return this.db.list(path).valueChanges();
 	}
 
-	push(path: string, form: any){
+	push(path: string, form: any): firebase.database.ThenableReference {
 		return this.db.list(`${path}`).push(form);
 	}
 
-	updateList(path: string, key:string, form: any){
+	updateList(path: string, key:string, form: any): Promise<void> {
 		return this.db.list(`${path}`).update(key, form);
 	}
 
-	removeItemList(path: string, key?: string){
+	removeItemList(path: string, key?: string): Promise<void> {
 		if (key) {
 			return this.db.list(`${path}`).remove(key);
 		} else {
@@ -46,15 +46,15 @@ export class ApiDataProvider {
 		}
 	}
 
-	getNewKey() {
+	getNewKey(): string {
 		return firebase.database().ref().push().key;
 	}
 
-	timestamp() {
+	timestamp(): Object {
 		return firebase.database.ServerValue.TIMESTAMP;
 	}
 
-  fanUpdate(fanObject: any) {
+  fanUpdate(fanObject: any): Promise <any> {
   	return firebase.database().ref().update(fanObject);
   }
 

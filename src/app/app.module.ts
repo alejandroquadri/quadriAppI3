@@ -9,7 +9,7 @@ import { MyApp } from './app.component';
 
 // importo AngularFire2 modules
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 // settings AF2
@@ -30,14 +30,11 @@ import { ElasticModule } from 'angular2-elastic';
 import { FieldFilterPipe, SortPipe, FilterPipe } from '../pipes';
 import { DecimalPipe } from '@angular/common';
 
-
-
 // providers
 import { ApiDataProvider } from '../providers/api-data/api-data';
 import { AuthDataProvider } from '../providers/auth-data/auth-data';
 import { MachineLogDataProvider } from '../providers/machine-log-data/machine-log-data';
 import { SparePartsDataProvider } from '../providers/spare-parts-data/spare-parts-data';
-import { SettingsProvider } from '../providers/settings/settings';
 import { StaticDataProvider } from '../providers/static-data/static-data';
 import { SplitShowProvider } from '../providers/split-show/split-show';
 import { ProductionDataProvider } from '../providers/production-data/production-data';
@@ -72,7 +69,6 @@ import { ProdProgramDataProvider } from '../providers/prod-program-data/prod-pro
     AuthDataProvider,
     MachineLogDataProvider,
     SparePartsDataProvider,
-    SettingsProvider,
     FieldFilterPipe,
     SortPipe,
     FilterPipe,

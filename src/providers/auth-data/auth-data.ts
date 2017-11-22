@@ -17,29 +17,25 @@ export class AuthDataProvider {
   	private googlePlus: GooglePlus
 	) {
     this.user = afAuth.authState;
-    // this.user.subscribe( user => {
-    //   this.uid = user.uid;
-    //   this.current = user;
-    // })
   }
 
-  login(email: string, password: string): firebase.Promise<any> {
+  login(email: string, password: string): Promise<any> {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password);
   }
 
-  signIn(email: string, password: string): firebase.Promise<any> {
+  signIn(email: string, password: string): Promise<any> {
     return firebase.auth().createUserWithEmailAndPassword(email, password);
   }
 
-  logout(): firebase.Promise<any> {
+  logout(): Promise<any> {
     return this.afAuth.auth.signOut();
   }
 
-  signInWithGoogleWeb(): firebase.Promise<any> {
+  signInWithGoogleWeb(): Promise<any> {
     return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
   }
 
-  signInWithGoogleDevice(): firebase.Promise<any> {
+  signInWithGoogleDevice(): Promise<any> {
   	return this.googlePlus.login({
 	    'webClientId': '872720422739-b5ja69fq45q4aevrik24o3j9nfeak8lg.apps.googleusercontent.com',
 	    'offline': true

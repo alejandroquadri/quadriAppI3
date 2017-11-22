@@ -82,8 +82,9 @@ export class AcSalesChartComponent implements OnInit {
 
       let filtered = this.sales.filter( sale => {
         // esto es para que la fecha salga en este formato (2017-11-22), sino se queja y tira una advertencia
-        let ISODate = sale.fecha_documento.replace(/\//g, "-"); 
-        return (moment(ISODate).format('MM/YY') === month && 
+        let ISODate = sale.fecha_documento.replace(/\//g, "");
+        let momentDate = moment(ISODate, "YYYYMMDD").format('MM/YY')
+        return (momentDate === month && 
           this.salesManFilter(sale.nombreoriginantetr))
       })
 

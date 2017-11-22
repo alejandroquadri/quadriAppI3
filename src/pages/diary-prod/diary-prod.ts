@@ -45,8 +45,6 @@ export class DiaryProdPage {
   }
 
   ionViewWillUnload() {
-    console.log('willunload');
-    console.log('desuscripcion diary prod');
     this.prodSubs.unsubscribe();
   }
 
