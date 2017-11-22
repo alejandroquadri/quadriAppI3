@@ -40,9 +40,6 @@ export class SparePartsPage {
   }
 
   ionViewDidLoad() {
-    // this.spareData.sparePartsObs.subscribe( spareParts => {
-    //   this.spareParts = spareParts;  
-    // });
     this.spareSubs = this.spareData.getSpareParts().subscribe( parts => {
       this.sparePartsCrude = parts;
       this.filter();
@@ -57,8 +54,6 @@ export class SparePartsPage {
   }
 
   ionViewWillUnload() {
-    console.log('willunload');
-    console.log('desuscripcion spare parts');
     this.spareSubs.unsubscribe();
     this.filterSubs.unsubscribe();
   }

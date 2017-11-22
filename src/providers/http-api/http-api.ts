@@ -30,7 +30,7 @@ export class HttpApiProvider {
       // a search field set in options.
       options.search = !options.search && p || options.search;
     }
-    console.log(this.url + '/' + endpoint);
+    // console.log(this.url + '/' + endpoint);
     return this.http.get(this.url + '/' + endpoint, options);
   }
 

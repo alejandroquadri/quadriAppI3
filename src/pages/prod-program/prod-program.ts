@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
-import 'rxjs/add/operator/map';
+import { map } from 'rxjs/operators';
 
 import * as moment from 'moment';
 import 'moment/locale/es';
@@ -69,17 +69,17 @@ export class ProdProgramPage {
     })
     this.weeksEntregas = this.buildNextWeeks();
     this.entregasSubs = this.programData.getEntregas()
-  	.map( res => res.json())
-  	.subscribe( data => {
-  		let sumaSemanasObj = this.sumaSemana(data.data)
-  		this.entregas = sumaSemanasObj.sem;
-  		this.items = this.buildItemsArray(sumaSemanasObj.items);
-  		console.log(this.entregas, this.items);
-  	});
+    .pipe(
+      map( res => res.json())
+     )
+    .subscribe( data => {
+      let sumaSemanasObj = this.sumaSemana(data.data)
+      this.entregas = sumaSemanasObj.sem;
+      this.items = this.buildItemsArray(sumaSemanasObj.items);
+    });
   }
 
   ionViewWillUnload() {
-    console.log('desuscripcion program');
     this.programSubs.unsubscribe();
     this.entregasSubs.unsubscribe();
   }

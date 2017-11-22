@@ -1,6 +1,6 @@
 import { Component, ViewChild, OnInit, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { SalesDataProvider, ChartBuilderProvider } from '../../providers';
-import 'rxjs/add/operator/map';
+import { map } from 'rxjs/operators';
 
 import { ChartDrawComponent } from '../chart-draw/chart-draw';
 import { SortPipe } from '../../pipes';
@@ -29,7 +29,9 @@ export class StockChartComponent {
 
   ngOnInit() {
   	this.stockSubs = this.salesData.getStock()
-  	.map( res => res.json())
+  	.pipe(
+      map( res => res.json())
+     )
   	.subscribe( data => {
   		this.stock = data.data;
   		this.stockFilter();
@@ -41,7 +43,6 @@ export class StockChartComponent {
   }
 
   ngOnDestroy() {
-    console.log('unsubs stockChart');
     this.stockSubs.unsubscribe();
   }
 
@@ -55,7 +56,7 @@ export class StockChartComponent {
         return ( (art.marca === 'Quadri - Quadri' || art.marca === 'MP - Materias Primas') && 
           this.prodTypeFilter(art.dimension))
     });
-    console.log(filtered);
+    // console.log(filtered);
 
     let ordered = this.sortPipe.transform(filtered, 'cod_producto', true)
 

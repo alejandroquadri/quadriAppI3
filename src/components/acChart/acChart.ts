@@ -43,7 +43,6 @@ export class AcChartComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    console.log('unsubs prodAc');
     this.prodSubs.unsubscribe();
   }
 

@@ -1,6 +1,6 @@
 import { Component, ViewChild, OnInit, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { SalesDataProvider, ChartBuilderProvider } from '../../providers';
-import 'rxjs/add/operator/map';
+import { map } from 'rxjs/operators';
 
 import { ChartDrawComponent } from '../chart-draw/chart-draw';
 
@@ -33,7 +33,9 @@ export class AcSalesChartComponent implements OnInit {
 
   ngOnInit() {
   	this.salesSubs = this.salesData.getRevenue()
-  	.map( res => res.json())
+  	.pipe(
+      map( res => res.json())
+     )
   	.subscribe( data => {
   		this.sales = data.data;
       this.salesDataFilter();
@@ -45,7 +47,6 @@ export class AcSalesChartComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    console.log('unsubs sales');
     this.salesSubs.unsubscribe();
   }
 
@@ -80,7 +81,9 @@ export class AcSalesChartComponent implements OnInit {
       let totalEqSales = 0
 
       let filtered = this.sales.filter( sale => {
-        return (moment(sale.fecha_documento).format('MM/YY') === month && 
+        // esto es para que la fecha salga en este formato (2017-11-22), sino se queja y tira una advertencia
+        let ISODate = sale.fecha_documento.replace(/\//g, "-"); 
+        return (moment(ISODate).format('MM/YY') === month && 
           this.salesManFilter(sale.nombreoriginantetr))
       })
 

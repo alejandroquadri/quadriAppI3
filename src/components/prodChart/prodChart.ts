@@ -48,7 +48,6 @@ export class ProdChartComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    console.log('unsubs prodChart');
     this.prodSubs.unsubscribe();
   }
 
