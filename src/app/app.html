@@ -73,6 +73,16 @@
 
       <ion-list>
         <ion-list-header>
+          Finanzas
+        </ion-list-header>
+        <button ion-item menuClose (click)="openPage('FinancePage')">
+          <ion-icon item-start name="logo-usd"></ion-icon>
+          Finanzas
+        </button>
+      </ion-list>
+
+      <ion-list>
+        <ion-list-header>
           Usuario
         </ion-list-header>
         <button ion-item menuClose (click)="logOut()">
@@ -88,4 +98,3 @@
 	<ion-nav [root]="rootPage" #content swipeBackEnabled="false" main></ion-nav>
 
 </ion-split-pane>
-
