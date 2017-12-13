@@ -86,66 +86,21 @@
 						{{ part.proveedor }}
 					</ion-col>
 				<ion-col col-2 text-center>
-					<ion-select #status (ionChange)="changeStatus(status.value, part.$key)" interface="popover" 
+					<ion-select #status (ionChange)="changeStatus(status.value, part.$key)" interface="popover"
 					[ngClass]="{'pendiente': part.status === 'Pendiente','encargado': part.status === 'Encargado', 'suspendido': part.status === 'Suspendido','completo': part.status === 'Completo'}">
 						<ion-option *ngFor="let option of statusOptions" [selected]="part.status===option? true: false">{{option}}</ion-option>
 					</ion-select>
 				</ion-col>
 				<ion-col col-1 text-center>
-					<button ion-button icon-only clear color="dark" small (click)="editPart(part)" class="actionButtons">
+					<button ion-button icon-only clear color="lightGreyQ" small (click)="editPart(part)" class="actionButtons">
 						<ion-icon name="create"></ion-icon>
 					</button>
-					<button ion-button icon-only clear color="dark" small (click)="deletepart(part.$key)" class="actionButtons">
+					<button ion-button icon-only clear color="lightGreyQ" small (click)="deletepart(part.$key)" class="actionButtons">
 						<ion-icon name="trash"></ion-icon>
 					</button>
 				</ion-col>
 			</ion-row>
 	  </ion-grid>
 	</div>
-  
-</ion-content>
 
- <!-- 
-	Esto es para usar el virtualScroll
- <div #data class="tableLog" *ngIf="spareParts">
-	  <ion-list [virtualScroll]="spareParts.length ? spareParts : []" [approxItemHeight]="'45px'">
-		  <div *virtualItem="let part ;let i=index" style="width: 100%">
-				<ion-grid>
-					<ion-row class="data">
-						<ion-col col-1 text-center>
-							{{ part.fecha | momentFormat:'D/M/YYYY' }}
-						</ion-col>
-						<ion-col col-1 text-center>
-							{{ part.tipo }}
-						</ion-col>
-						<ion-col col-4 text-center>
-							{{ part.detalle }}
-						</ion-col>
-						<ion-col col-1>
-							{{ part.cantidad }}
-						</ion-col>
-						<ion-col col-1>
-							{{ part.unidad }}
-						</ion-col>
-						<ion-col col-1>
-							{{ part.destino }}
-						</ion-col>
-						<ion-col col-1>
-							{{ part.muestra }}
-						</ion-col>
-						<ion-col col-1>
-							{{ part.status }}
-						</ion-col>
-						<ion-col col-1 text-center>
-							<button ion-button icon-only clear color="dark" small (click)="editLog(part)">
-								<ion-icon name="create"></ion-icon>
-							</button>
-							<button ion-button icon-only clear color="dark" small (click)="deletepart(part.$key)">
-								<ion-icon name="trash"></ion-icon>
-							</button>
-						</ion-col>
-					</ion-row>
-			  </ion-grid>
-		  </div>
-	  </ion-list>
-	</div> -->
+</ion-content>

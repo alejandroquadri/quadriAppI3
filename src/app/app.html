@@ -73,11 +73,23 @@
 
       <ion-list>
         <ion-list-header>
-          Finanzas
+          CRM
         </ion-list-header>
-        <button ion-item menuClose (click)="openPage('FinancePage')">
-          <ion-icon item-start name="logo-usd"></ion-icon>
-          Finanzas
+        <button ion-item menuClose (click)="openPage('CrmDashboardPage')">
+          <ion-icon item-start name="podium"></ion-icon>
+          Tablero
+        </button>
+        <button ion-item menuClose (click)="openPage('CrmClientsPage')">
+          <ion-icon item-start name="people"></ion-icon>
+          Clientes
+        </button>
+        <button ion-item menuClose (click)="openPage('CrmOpPage')">
+          <ion-icon item-start name="bulb"></ion-icon>
+          Oportunidades
+        </button>
+        <button ion-item menuClose (click)="openPage('CrmNewPspPage')">
+          <ion-icon item-start name="add"></ion-icon>
+          PSP Nuevos
         </button>
       </ion-list>
 

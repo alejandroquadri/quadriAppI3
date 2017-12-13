@@ -1,0 +1,29 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Seleccionar cliente</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="viewCtrl.dismiss()">
+        Salir
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <ion-toolbar>
+    <ion-searchbar [(ngModel)]="searchInput" (ngModelChange)="filter($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-item *ngFor="let client of filteredClients">
+      {{ client.name }}
+      <button ion-button clear icon-only item-end color="lightGreyQ" (click)="selectClient(client.name)">
+        <ion-icon name="checkmark-circle"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

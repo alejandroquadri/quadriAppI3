@@ -42,6 +42,7 @@ import { ChartBuilderProvider } from '../providers/chart-builder/chart-builder';
 import { HttpApiProvider } from '../providers/http-api/http-api';
 import { SalesDataProvider } from '../providers/sales-data/sales-data';
 import { ProdProgramDataProvider } from '../providers/prod-program-data/prod-program-data';
+import { CrmDataProvider } from '../providers/crm-data/crm-data';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,7 @@ import { ProdProgramDataProvider } from '../providers/prod-program-data/prod-pro
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    ElasticModule
+    ElasticModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -79,7 +80,8 @@ import { ProdProgramDataProvider } from '../providers/prod-program-data/prod-pro
     ChartBuilderProvider,
     HttpApiProvider,
     SalesDataProvider,
-    ProdProgramDataProvider
+    ProdProgramDataProvider,
+    CrmDataProvider
   ]
 })
 export class AppModule {}

@@ -1,0 +1,88 @@
+<ion-header>
+
+  <ion-navbar>
+	  <button ion-button menuToggle *ngIf="splitShow.showMenuToggle()">
+	    <ion-icon name="menu"></ion-icon>
+	  </button>
+    <ion-buttons left>
+	    <button ion-button icon-only small (click)="splitShow.showChange()" *ngIf="!splitShow.show && !splitShow.showMenuToggle()">
+	      <ion-icon name="ios-menu"></ion-icon>
+	    </button>
+	  </ion-buttons>
+    <ion-buttons end>
+      <div class="">
+        <label margin-horizontal>Vendedor</label>
+        <select margin-horizontal class="select" name="" [(ngModel)]="salesRep" (ngModelChange)="filterSalesRep()">
+          <option value=""></option>
+          <option value="Alejandra Roldan">Roldan</option>
+          <option value="Tarruella Alberto Horacio ">Tarruella</option>
+        </select>
+      </div>
+    </ion-buttons>
+    <ion-title>Presupuestos nuevos</ion-title>
+  </ion-navbar>
+
+  <ion-toolbar>
+
+		  <ion-grid #dataHeaders>
+			  <ion-row text-center>
+					<ion-col col-2>
+						<strong>Fecha</strong>
+					</ion-col>
+					<ion-col col-2>
+						<strong>n° PSP</strong>
+					</ion-col>
+					<ion-col col-3>
+						<strong>Razon Social</strong>
+					</ion-col>
+					<ion-col col-3>
+						<strong>Vendedor</strong>
+					</ion-col>
+					<ion-col col-1>
+						<strong>Total $</strong>
+					</ion-col>
+					<ion-col col-1>
+					</ion-col>
+				</ion-row>
+		  </ion-grid>
+
+	  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <div class="" *ngIf="filteredPsp">
+
+    <ion-grid>
+      <ion-row class="data"  *ngFor="let psp of viewArray">
+        <ion-col col-2 text-center>
+          {{ psp.date }}
+        </ion-col>
+        <ion-col col-2 text-center>
+          {{ psp.num }}
+        </ion-col>
+        <ion-col col-3>
+          {{ psp.razSoc }}
+        </ion-col>
+        <ion-col col-3 text-center>
+          {{ psp.salesRep }}
+        </ion-col>
+        <ion-col col-1>
+          {{ psp.total | number : '1.0-0'}}
+        </ion-col>
+        <ion-col col-1 text-center>
+          <button ion-button icon-only clear color="lightGreyQ" small (click)="addOp(psp)" class="actionButtons">
+						<ion-icon name="add"></ion-icon>
+					</button>
+					<button ion-button icon-only clear color="lightGreyQ" small (click)="ignore(psp)" class="actionButtons">
+						<ion-icon name="remove"></ion-icon>
+					</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+
+</ion-content>

@@ -10,7 +10,7 @@ export class SalesDataProvider {
   }
 
   getRevenue() {
-  	return this.httpApi.get('ventas')
+  	return this.httpApi.get('ventas');
   }
 
   getStock() {

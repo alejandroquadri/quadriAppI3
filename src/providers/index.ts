@@ -9,3 +9,4 @@ export * from './chart-builder/chart-builder';
 export * from './http-api/http-api';
 export * from './sales-data/sales-data';
 export * from './prod-program-data/prod-program-data';
+export * from './crm-data/crm-data';

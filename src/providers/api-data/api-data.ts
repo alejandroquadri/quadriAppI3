@@ -30,6 +30,10 @@ export class ApiDataProvider {
 		return this.db.list(path).valueChanges();
 	}
 
+	getListMeta(path:string, events?) {
+		return this.db.list(path).snapshotChanges(events);
+	}
+
 	push(path: string, form: any): firebase.database.ThenableReference {
 		return this.db.list(`${path}`).push(form);
 	}

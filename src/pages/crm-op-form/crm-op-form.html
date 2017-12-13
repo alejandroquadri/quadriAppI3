@@ -1,0 +1,78 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{submitType === 'new' ? 'Nueva oportunidad' : 'Editar oportunidad '}}</ion-title>
+    <ion-buttons end>
+	    <button ion-button (click)="viewCtrl.dismiss()">
+	      Salir
+	    </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+	<ion-grid fixed #form>
+	  <form [formGroup]="opForm" (ngSubmit)="onSubmit()">
+				<ion-list>
+
+          <ion-item>
+				    <ion-label fixed>Obra</ion-label>
+				    <ion-input *ngIf="submitType === 'new'" formControlName="obra" type="text"></ion-input>
+				    <div *ngIf="!(submitType === 'new')" item-content class="">
+							{{ opForm.value.obra || ""}}
+				    </div>
+				    <button type="button" ion-button clear color="lightGreyQ" icon-only item-end (click)="lookOp()">
+			        <ion-icon name="eye"></ion-icon>
+			      </button>
+			      <button type="button" ion-button clear color="lightGreyQ" icon-only item-end (click)="addOp()">
+			        <ion-icon name="add"></ion-icon>
+			      </button>
+				  </ion-item>
+
+          <ion-item>
+				    <ion-label fixed>Cliente</ion-label>
+				    <ion-input *ngIf="newClient" formControlName="client" type="text"></ion-input>
+				    <div *ngIf="!newClient" item-content class="">
+							{{ opForm.value.client || ""}}
+				    </div>
+				    <button type="button" ion-button clear color="lightGreyQ" icon-only item-end (click)="client()">
+			        <ion-icon name="eye"></ion-icon>
+			      </button>
+			      <button type="button" ion-button clear color="lightGreyQ" icon-only item-end (click)="addClient()">
+			        <ion-icon name="add"></ion-icon>
+			      </button>
+				  </ion-item>
+
+				  <ion-item>
+				    <ion-label fixed>Razon Social</ion-label>
+				    <div item-content class="">
+							{{ pspData.razSoc }}
+				    </div>
+				  </ion-item>
+
+					<ion-item>
+							<ion-label class="labelSelect">Mes cierre</ion-label>
+							<select item-content formControlName="closeMonth" class="select">
+								<option value=""></option>
+						    <option *ngFor="let month of months">{{ month }}</option>
+						  </select>
+					</ion-item>
+
+          <ion-item>
+				    <ion-label fixed>Monto</ion-label>
+				    <ion-input formControlName="total" type="number"></ion-input>
+				  </ion-item>
+
+				</ion-list>
+
+				<button ion-button outline type="submit" [disabled]="!opForm.valid">
+			    Aceptar
+			  </button>
+
+		  </form>
+  </ion-grid>
+
+</ion-content>
