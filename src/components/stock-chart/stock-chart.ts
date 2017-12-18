@@ -58,7 +58,7 @@ export class StockChartComponent {
     });
     // console.log(filtered);
 
-    let ordered = this.sortPipe.transform(filtered, 'cod_producto', true)
+    let ordered = this.sortPipe.transform(filtered, 'cod_producto', true, false)
 
     ordered.forEach( (art: any) => {
       labels.push(art.cod_producto);
@@ -89,7 +89,7 @@ export class StockChartComponent {
         }
       break;
       case '60x40 PT m2':
-        if (dim === '60 x 60' ) {
+        if (dim === '60 x 40' ) {
           result = true;
         } else {
           result = false;

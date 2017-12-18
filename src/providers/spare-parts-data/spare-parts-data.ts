@@ -35,6 +35,7 @@ export class SparePartsDataProvider {
     private filterPipe: FilterPipe,
     private sortPipe: SortPipe
 	) {
+    this.updateFilters();
   }
 
   pushSparePart(form: any) {
@@ -43,6 +44,10 @@ export class SparePartsDataProvider {
 
   getSpareParts() {
   	return this.api.getList('repuestos');
+  }
+
+  getSparePartsMeta() {
+    return this.api.getListMeta('repuestos');
   }
 
   deleteSparePart(key: string) {
@@ -64,24 +69,6 @@ export class SparePartsDataProvider {
 	getSettings() {
 		return this.api.getObject(`userSettings/${this.authData.uid}/repuestos`);
 	}
-
-  // filter() {
-  //   const filteredField = this.fieldFilterPipe.transform(this.spareParts, ['status'], this.changeFilters(this.filters));
-  //   const filtered = this.filterPipe.transform(filteredField, this.searchInput)
-  //   const ordered = this.sortPipe.transform(filtered, this.field, this.asc);
-  //   this.sparePartsSubject.next(ordered);
-  // }
-
-  // changeFilters(filters: any) {
-  //   const keyArr: any[] = Object.keys(filters);
-  //   let arrayFilter = [];
-  //   keyArr.forEach(item => {
-  //     if(filters[item]) {
-  //       arrayFilter.push(item);
-  //     }
-  //   })
-  //   return arrayFilter;
-  // }
 
   updateFilters() {
     this.filterSubject.next(this.filters)

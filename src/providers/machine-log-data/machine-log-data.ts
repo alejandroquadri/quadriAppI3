@@ -23,6 +23,10 @@ export class MachineLogDataProvider {
   	return this.api.getList('machineLogs');
   }
 
+  getMachineLogsMeta() {
+    return this.api.getListMeta('machineLogs');
+  }
+
   deleteLog(key) {
   	return this.api.removeItemList('machineLogs', key);
   }

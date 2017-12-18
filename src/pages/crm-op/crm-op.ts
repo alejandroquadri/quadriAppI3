@@ -34,8 +34,8 @@ export class CrmOpPage {
 
   changeStatus(status: string, key: string) {
     console.log('status changed', status);
-    this.spareData.updateSparePart(key, {status: status})
-    .then( () => console.log('status actualizado'));
+    // this.spareData.updateSparePart(key, {status: status})
+    // .then( () => console.log('status actualizado'));
   }
 
 }

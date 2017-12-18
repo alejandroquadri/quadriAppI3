@@ -40,8 +40,39 @@
 
 </ion-header>
 
-
 <ion-content>
+	
+  <div #data>
+		<ion-grid>
+			<ion-row class="data" *ngFor="let log of machineLogs">
+				<ion-col col-1 text-center>
+					{{ log.payload.val().date | momentFormat:'D/M/YY' }}
+				</ion-col>
+				<ion-col col-1 text-center>
+					{{ log.payload.val().orderNumber }}
+				</ion-col>
+				<ion-col col-2 text-center>
+					{{ log.payload.val().title }}
+				</ion-col>
+				<ion-col col-6>
+					<div class="description">{{ log.payload.val().description }}</div>
+				</ion-col>
+				<ion-col col-2 text-center>
+					<button ion-button icon-only clear color="dark" small (click)="editLog(log.payload.val(), log.key)">
+						<ion-icon name="create"></ion-icon>
+					</button>
+					<button ion-button icon-only clear color="dark" small (click)="deleteLog(log.key)">
+						<ion-icon name="trash"></ion-icon>
+					</button>
+				</ion-col>
+			</ion-row>
+	  </ion-grid>
+	</div>
+  
+</ion-content>
+
+<!-- <ion-content>
+
   <div #data>
 		<ion-grid>
 			<ion-row class="data" *ngFor="let log of machineLogs">
@@ -69,4 +100,4 @@
 	  </ion-grid>
 	</div>
   
-</ion-content>
+</ion-content> -->

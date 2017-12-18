@@ -15,8 +15,6 @@ export class MachineLogPage {
   machineSubs: any;
   machineDataCrude: any;
 	machineLogs: any;
-	// submitType: string = 'new';
-	// updateKey:  string;
 
 	searchInput: string = '';
   field = 'date';
@@ -37,8 +35,7 @@ export class MachineLogPage {
   }
 
   ionViewDidLoad() {
-    // this.machineLogs = this.machineLogData.machineLogsObs
-    this.machineSubs = this.machineLogData.getMachineLogs().subscribe(logs => {
+    this.machineSubs = this.machineLogData.getMachineLogsMeta().subscribe(logs => {
       this.machineDataCrude = logs;
       this.filter();
     })
@@ -49,8 +46,8 @@ export class MachineLogPage {
   }
 
   filter() {
-    const filtered = this.filterPipe.transform(this.machineDataCrude, this.searchInput)
-    const ordered = this.sortPipe.transform(filtered, this.field, this.asc);
+    const filtered = this.filterPipe.transform(this.machineDataCrude, this.searchInput, true)
+    const ordered = this.sortPipe.transform(filtered, this.field, this.asc, true);
     this.machineLogs = ordered;
   }
 
@@ -58,13 +55,14 @@ export class MachineLogPage {
   	this.machineLogData.deleteLog(key);
   }
 
-  editLog(log) {
-   this.presentModal(log);
+  editLog(log, key) {
+    log['$key'] = key
+    this.presentModal(log);
   }
 
   presentModal(form?: any) {
-     let profileModal = this.modalCtrl.create('MachineLogFormPage', form);
-     profileModal.present();
+    let profileModal = this.modalCtrl.create('MachineLogFormPage', form);
+    profileModal.present();
   }
 
   onChange(event) {

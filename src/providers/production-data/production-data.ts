@@ -35,6 +35,10 @@ export class ProductionDataProvider {
   	return this.api.getList('production');
   }
 
+  getProductionMeta() {
+    return this.api.getListMeta('production');
+  }
+
   deleteProduction(key) {
   	return this.api.removeItemList('production', key);
   }

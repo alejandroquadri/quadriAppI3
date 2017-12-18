@@ -35,7 +35,7 @@ export class ClientSelectPage {
   }
 
   filter(event?) {
-    this.filteredClients = this.filterPipe.transform(this.clientsList, this.searchInput)
+    this.filteredClients = this.filterPipe.transform(this.clientsList, this.searchInput, false);
   }
 
   selectClient(name) {

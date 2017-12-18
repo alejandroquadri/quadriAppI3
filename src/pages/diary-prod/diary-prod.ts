@@ -61,7 +61,7 @@ export class DiaryProdPage {
   }
 
   dailyProdObj() {
-  	const filteredArray = this.fieldFilterPipe.transform(this.production, ['date'], [this.date]);
+  	const filteredArray = this.fieldFilterPipe.transform(this.production, ['date'], [this.date], false);
 		let obj = {};
 		filteredArray.forEach( item => {
   		if (!obj[item.machine]) {

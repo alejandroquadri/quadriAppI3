@@ -5,27 +5,37 @@ import { Injectable, Pipe, PipeTransform } from '@angular/core';
   name: 'filter'
 })
 export class FilterPipe implements PipeTransform {
-  transform(array: any[], term: string) {
+  transform(array: any[], term: string, fb: boolean) {
       if (array) {
-        if (term === '') {
-          return array;
+        return array.filter( object => {
+          return (this.filterSearch(object, term, fb))
+        })
+      }
+    }
+
+  filterSearch(object, term, fb) {
+    if (term === '') {
+      return true;
+    } else {
+      let arrayKeys;
+      if(fb) { 
+          arrayKeys = Object.keys(object.payload.val());;
         } else {
-        	return array.filter( object => {
-        		let arrayKeys = Object.keys(object);
-        		for (let i=0 ; i < arrayKeys.length ; i++) {
-              if (typeof object[arrayKeys[i]] === 'string') {
-                if (object[arrayKeys[i]].toLowerCase().indexOf(term.toLowerCase()) > -1) {
-                  return true;
-                }
-              } else {
-                // if (object[arrayKeys[i]].toString().indexOf(term) > -1) {
-                //   return true;
-                // }
-              }
-        			
-        		}
-          })
+          arrayKeys = Object.keys(object);;
+        }
+      for (let i=0 ; i < arrayKeys.length ; i++) {
+        let item;
+        if(fb) {
+          item = object.payload.val()[arrayKeys[i]];
+        } else {
+          item = object[arrayKeys[i]];
+        }
+        if (typeof item === 'string') {
+          if (item.toLowerCase().indexOf(term.toLowerCase()) > -1) {
+            return true;
+          }
         }
       }
     }
+  }
 }

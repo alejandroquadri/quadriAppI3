@@ -31,7 +31,7 @@ export class ProdLogPage {
   }
 
   ionViewDidLoad() {
-    this.prodSubs = this.prodData.getProduction().subscribe( prod => {
+    this.prodSubs = this.prodData.getProductionMeta().subscribe( prod => {
       this.production = prod;
       this.filter();
     })
@@ -42,8 +42,8 @@ export class ProdLogPage {
   }
 
   filter() {
-    const filtered = this.filterPipe.transform(this.production, this.searchInput)
-    const ordered = this.sortPipe.transform(filtered, this.field, this.asc);
+    const filtered = this.filterPipe.transform(this.production, this.searchInput, true);
+    const ordered = this.sortPipe.transform(filtered, this.field, this.asc, true);
     this.prodLogs = ordered;
   }
 
@@ -62,8 +62,9 @@ export class ProdLogPage {
   	})
   }
 
-  editLog(log) {
-   this.navCtrl.push('PartesFormPage', log);
+  editLog(log, key) {
+    log['$key'] = key
+    this.navCtrl.push('PartesFormPage', log);
   }
 
   pushPrint() {

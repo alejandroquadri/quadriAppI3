@@ -35,9 +35,10 @@ export class ChartBuilderProvider {
     return this.number.transform(value,format);
   }
 
-  buildDatasets(data: Array<any>, label?: string, color?: string, backgroundColor?: string) {
+  buildDatasets(data: Array<any>, label?: string, color?: string, backgroundColor?: string, yAxisID?: string) {
   	let dataset = {	
     	label: label || null,
+      yAxisID: yAxisID || null,
       fill: true,
       // lineTension: 0.1,
       backgroundColor: backgroundColor || "rgba(75,192,192,0.4)",
@@ -99,6 +100,16 @@ export class ChartBuilderProvider {
 
     filteredArray.forEach( sale => {
       let total = + sale.total_importe
+      let cant = + sale.cantidad;
+      let cantNl = + sale.cantidad_nl;
+      let conv = cant/cantNl;
+      let quantity;
+      if (conv === 0.16 || conv === 0.24 || conv === 0.25 ) {
+        quantity = cant;
+      } else { 
+        quantity = 0
+      }
+
       let date;
       if (monthly) {
         date = moment(sale.fecha_documento).format('YYYY-MM');
@@ -108,9 +119,11 @@ export class ChartBuilderProvider {
       if (!filteredObj[date]) {
         filteredObj[date] = {
           total: total,
+          quantity: quantity
         }
       } else {
         filteredObj[date].total += total;
+        filteredObj[date].quantity += quantity;
       }
     })
 

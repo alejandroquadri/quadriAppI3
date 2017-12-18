@@ -68,7 +68,7 @@ export class ProdChartComponent implements OnInit {
     });
 
     let filteredObj = this.chartBuilder.buildFilteredProdObj(filtered);
-    let filObjKeys = this.sortPipe.transform(Object.keys(filteredObj),'',true);
+    let filObjKeys = this.sortPipe.transform(Object.keys(filteredObj),'',true, false);
 
     filObjKeys.forEach( key => {
       labels.push(moment(key).format('D/M/YY'));

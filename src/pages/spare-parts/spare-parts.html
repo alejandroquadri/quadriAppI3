@@ -58,44 +58,43 @@
 
 </ion-header>
 
-
 <ion-content>
 
 	<div #data class="tableLog" *ngIf="spareParts">
 		<ion-grid>
 			<ion-row justify-content:start class="data" *ngFor="let part of spareParts">
 				<ion-col col-1 text-center>
-					{{ part.fecha | momentFormat:'D/M/YY' }}
+					{{ part.payload.val().fecha | momentFormat:'D/M/YY' }}
 				</ion-col>
 				<ion-col col-1 text-center>
-					{{ part.tipo }}
+					{{ part.payload.val().tipo }}
 				</ion-col>
 				<ion-col col-3>
-					<div class="description">{{ part.detalle }}</div>
+					<div class="description">{{ part.payload.val().detalle }}</div>
 				</ion-col>
 				<ion-col col-1 text-center>
-					{{ part.cantidad }} {{ part.unidad }}
+					{{ part.payload.val().cantidad }} {{ part.payload.val().unidad }}
 				</ion-col>
 				<ion-col col-1 text-center>
-					{{ part.destino }}
+					{{ part.payload.val().destino }}
 				</ion-col>
 				<ion-col col-1 text-center>
-					{{ part.muestra }}
+					{{ part.payload.val().muestra }}
 				</ion-col>
 				<ion-col col-1>
-						{{ part.proveedor }}
+						{{ part.payload.val().proveedor }}
 					</ion-col>
 				<ion-col col-2 text-center>
-					<ion-select #status (ionChange)="changeStatus(status.value, part.$key)" interface="popover"
-					[ngClass]="{'pendiente': part.status === 'Pendiente','encargado': part.status === 'Encargado', 'suspendido': part.status === 'Suspendido','completo': part.status === 'Completo'}">
-						<ion-option *ngFor="let option of statusOptions" [selected]="part.status===option? true: false">{{option}}</ion-option>
+					<ion-select #status (ionChange)="changeStatus(status.value, part.key)" interface="popover"
+					[ngClass]="{'pendiente': part.payload.val().status === 'Pendiente','encargado': part.payload.val().status === 'Encargado', 'suspendido': part.payload.val().status === 'Suspendido','completo': part.status === 'Completo'}">
+						<ion-option *ngFor="let option of statusOptions" [selected]="part.payload.val().status===option? true: false">{{option}}</ion-option>
 					</ion-select>
 				</ion-col>
 				<ion-col col-1 text-center>
-					<button ion-button icon-only clear color="lightGreyQ" small (click)="editPart(part)" class="actionButtons">
+					<button ion-button icon-only clear color="lightGreyQ" small (click)="editPart(part.payload.val(), part.key)" class="actionButtons">
 						<ion-icon name="create"></ion-icon>
 					</button>
-					<button ion-button icon-only clear color="lightGreyQ" small (click)="deletepart(part.$key)" class="actionButtons">
+					<button ion-button icon-only clear color="lightGreyQ" small (click)="deletepart(part.key)" class="actionButtons">
 						<ion-icon name="trash"></ion-icon>
 					</button>
 				</ion-col>

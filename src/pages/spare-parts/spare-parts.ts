@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform, PopoverController, ToastController, ModalController, Content } from 'ionic-angular';
-// import {IMyDpOptions} from 'mydatepicker';
+import { Observable } from 'rxjs/Observable';
+import "rxjs/add/observable/combineLatest";
 
 import { SparePartsDataProvider, SplitShowProvider } from '../../providers';
 import { FieldFilterPipe, FilterPipe, SortPipe } from '../../pipes';
@@ -12,6 +13,7 @@ import { FieldFilterPipe, FilterPipe, SortPipe } from '../../pipes';
 })
 export class SparePartsPage {
 
+  obsSubs: Observable<any>;
   spareSubs: any;
   filterSubs: any;
   spareParts: any;
@@ -36,16 +38,17 @@ export class SparePartsPage {
     private filterPipe: FilterPipe,
     private sortPipe: SortPipe
 	) {
-    this.filters = this.spareData.filters;
+    // this.filters = this.spareData.filters;
   }
 
   ionViewDidLoad() {
-    this.spareSubs = this.spareData.getSpareParts().subscribe( parts => {
-      this.sparePartsCrude = parts;
-      this.filter();
-    })
-    this.filterSubs = this.spareData.filterObs.subscribe( filters => {
-      this.filters = filters;
+    this.spareSubs = this.spareData.getSparePartsMeta()
+    this.filterSubs = this.spareData.filterObs
+
+    this.obsSubs = Observable.combineLatest(this.spareSubs, this.filterSubs, (parts: any, filters: any) => ({parts, filters}))
+    this.obsSubs.subscribe( (pair: any) => {
+      this.sparePartsCrude = pair.parts;
+      this.filters = pair.filters;
       this.filter();
     })
   }
@@ -54,14 +57,12 @@ export class SparePartsPage {
   }
 
   ionViewWillUnload() {
-    this.spareSubs.unsubscribe();
-    this.filterSubs.unsubscribe();
   }
 
   filter() {
-    const filteredField = this.fieldFilterPipe.transform(this.sparePartsCrude, ['status'], this.changeFilters(this.filters));
-    const filtered = this.filterPipe.transform(filteredField, this.searchInput)
-    const ordered = this.sortPipe.transform(filtered, this.field, this.asc);
+    const filteredField = this.fieldFilterPipe.transform(this.sparePartsCrude, ['status'], this.changeFilters(this.filters), true);
+    const filtered = this.filterPipe.transform(filteredField, this.searchInput, true);
+    const ordered = this.sortPipe.transform(filtered, this.field, this.asc, true);
     this.spareParts = ordered;
   }
 
@@ -80,11 +81,12 @@ export class SparePartsPage {
     this.spareData.deleteSparePart(key);
   }
 
-  editPart(part) {
+  editPart(part: any, key) {
+    part['$key'] = key;
     this.presentModal(part);
   }
 
-  presentModal(form?: any) {
+  presentModal(form: any) {
      let profileModal = this.modalCtrl.create('SparePartsFormPage', form);
      profileModal.present();
    }

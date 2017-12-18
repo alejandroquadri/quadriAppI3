@@ -51,13 +51,13 @@ export class CrmNewPspPage {
       filteredArray.push(filteredObj[psp]);
     })
 
-    filteredArray = this.sortPipe.transform(filteredArray, 'num', false);
+    filteredArray = this.sortPipe.transform(filteredArray, 'num', false, false);
     return filteredArray;
   }
 
   filterSalesRep() {
     if(this.salesRep !== "") {
-      this.viewArray = this.fieldFilter.transform(this.filteredPsp,['salesRep'],[this.salesRep]);
+      this.viewArray = this.fieldFilter.transform(this.filteredPsp,['salesRep'],[this.salesRep], false);
     } else  {
       this.viewArray = this.filteredPsp;
     }

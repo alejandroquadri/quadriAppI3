@@ -55,8 +55,51 @@
 
 </ion-header>
 
-
 <ion-content>
+
+	<ion-grid>
+	  <ion-row class="data" *ngFor="let log of prodLogs">
+			<ion-col>
+				{{ log.payload.val().date | momentFormat:'D/M/YY'}}
+			</ion-col>
+			<ion-col col-2>
+				{{ log.payload.val().machine }}
+			</ion-col>
+			<ion-col col-2>
+				{{ log.payload.val().drawing }} {{ log.payload.val().color }} {{ log.payload.val().dim }}
+			</ion-col>
+			<ion-col text-center>
+				{{ log.payload.val().mod }}
+			</ion-col>
+			<ion-col col-2 text-center> 
+				{{ log.payload.val().start }} a {{ log.payload.val().end }}
+			</ion-col>
+			<ion-col text-center>
+				{{ log.payload.val().prod }}
+			</ion-col>
+			<ion-col text-center>
+				{{ log.payload.val().seg }}
+			</ion-col>
+			<ion-col text-center>
+				{{ log.payload.val().broken }}
+			</ion-col>
+			<ion-col text-center>
+				{{ log.payload.val().rep }}
+			</ion-col>
+			<ion-col col-2 text-center>
+				<button ion-button icon-only clear color="dark" small (click)="editLog(log.payload.val(), log.key)">
+					<ion-icon name="create"></ion-icon>
+				</button>
+				<button ion-button icon-only clear color="dark" small (click)="deleteLog(log)">
+					<ion-icon name="trash"></ion-icon>
+				</button>
+			</ion-col>
+		</ion-row>
+  </ion-grid>
+
+</ion-content>
+
+<!-- <ion-content>
 
 	<ion-grid>
 	  <ion-row class="data" *ngFor="let log of prodLogs">
@@ -98,4 +141,4 @@
 		</ion-row>
   </ion-grid>
 
-</ion-content>
+</ion-content> -->

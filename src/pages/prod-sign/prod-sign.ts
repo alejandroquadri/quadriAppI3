@@ -63,7 +63,7 @@ export class ProdSignPage {
       }
     });
 
-    let filteredSorted = this.sortPipe.transform(filtered, 'date', true);
+    let filteredSorted = this.sortPipe.transform(filtered, 'date', true, false);
 
     filteredSorted.forEach( log => {
     	let m2 = 0;

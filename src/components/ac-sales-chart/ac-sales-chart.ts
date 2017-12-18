@@ -38,6 +38,7 @@ export class AcSalesChartComponent implements OnInit {
      )
   	.subscribe( data => {
   		this.sales = data.data;
+      console.log(this.sales);
       this.salesDataFilter();
   	});
   }
@@ -64,6 +65,7 @@ export class AcSalesChartComponent implements OnInit {
     if (this.sales) {
       let labels: Array<any> = [];
       let finishedSales: Array<any> = [];
+      let finishedQuantity: Array<any> = [];
       let objLine: Array<any> = [];
       let eqLine: Array<any> = [];
       let month = this.date.format('MM/YY');
@@ -77,8 +79,9 @@ export class AcSalesChartComponent implements OnInit {
       let dailyEqSales = eq / monthDays
       let dailyObjSales = salesObj / monthDays;
       let totalSales = 0;
+      let totalQuantity = 0;
       let totalObjSales = 0;
-      let totalEqSales = 0
+      let totalEqSales = 0;
 
       let filtered = this.sales.filter( sale => {
         // esto es para que la fecha salga en este formato (2017-11-22), sino se queja y tira una advertencia
@@ -95,17 +98,21 @@ export class AcSalesChartComponent implements OnInit {
         labels.push(i);
         if (obj[date]) {
           totalSales += obj[date].total;
+          totalQuantity +=obj[date].quantity;
         }
         totalObjSales += dailyObjSales;
         totalEqSales += dailyEqSales;
+        finishedQuantity.push(totalQuantity);
         finishedSales.push(totalSales);
         objLine.push(totalObjSales);
         eqLine.push(totalEqSales);
       }
+      console.log(totalQuantity);
       let datasets = [
-        this.chartBuilder.buildDatasets(finishedSales, 'ventas', 'rgba(0, 128, 0, 1)', 'rgba(0, 128, 0, 0.2)'), 
-        this.chartBuilder.buildDatasets(eqLine, 'equilibrio',  'rgba(220, 57, 18, 1)', 'rgba(220, 57, 18, 0.2)'), 
-        this.chartBuilder.buildDatasets(objLine , 'objetivo', 'rgba(51, 102, 204, 1)', 'rgba(51, 102, 204, 0.2)')
+        this.chartBuilder.buildDatasets(finishedSales, 'ventas', 'rgba(0, 128, 0, 1)', 'rgba(0, 128, 0, 0.2)', 'A'), 
+        this.chartBuilder.buildDatasets(eqLine, 'equilibrio',  'rgba(220, 57, 18, 1)', 'rgba(220, 57, 18, 0.2)', 'A'), 
+        this.chartBuilder.buildDatasets(objLine , 'objetivo', 'rgba(51, 102, 204, 1)', 'rgba(51, 102, 204, 0.2)', 'A'),
+        this.chartBuilder.buildDatasets(finishedQuantity , 'cantidad', 'rgba(255, 153, 0, 1)', 'rgba(255, 153, 0, 0.2)', 'B')
       ];
       this.buildAcChart(labels, datasets);
     }
@@ -152,11 +159,24 @@ export class AcSalesChartComponent implements OnInit {
       responsive: true,
       maintainAspectRatio: false,
       scales: {
-        yAxes: [{
-          ticks: {
-            callback: (value, index, values) => this.chartBuilder.formatChartNumber(value, '1.0')
+        yAxes: [
+          {
+            ticks: {
+              callback: (value, index, values) => this.chartBuilder.formatChartNumber(value, '1.0')
+            },
+            id: 'A',
+            type: 'linear',
+            position: 'left'
+          },
+          {
+            ticks: {
+              callback: (value, index, values) => this.chartBuilder.formatChartNumber(value, '1.0')
+            },
+            id: 'B',
+            type: 'linear',
+            position: 'right'
           }
-        }]
+        ]
       },
       tooltips: {
         callbacks: {
