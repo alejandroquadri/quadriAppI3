@@ -25,40 +25,8 @@ export class CrmDataProvider {
 			this.subscribeToCalipsoDocs()
 	  }
 
-  getDocs() {
-    return this.httpApi.get('ventas/docs');
-  }
-
-  getCheckedPsp() {
-    return this.apiData.getObject('crm/checkPsp');
-  }
-
-  getOps() {
-    return this.apiData.getListMeta('crm/op');
-  }
-
-  newOp(op) {
-  	return this.apiData.push('crm/op', op);
-  }
-
-  newClient(client) {
-    return this.apiData.push('crem/client', client);
-  }
-
-  razSoc(key, client) {
-    let form = {};
-    form[key] = client;
-    return this.apiData.updateObject('crm/razSoc', form)
-  }
-
-  checkPsp(psp) {
-  	let form = {};
-  	form[psp] = true;
-  	return this.apiData.updateObject('crm/checkPsp',form);
-  }
-
   subscribeToCalipsoDocs() {
-  	this.calipsoSubs = this.getDocs()
+    this.calipsoSubs = this.getDocs()
     .pipe(
       map( (res:any) => res.json())
     );
@@ -74,8 +42,10 @@ export class CrmDataProvider {
   }
 
   buildCalipsoObj(array: any) {
-  	let filteredObj = {};
-
+    let filteredObj = {};
+    if (!this.checkedPspObj) {
+      this.checkedPspObj = {};
+    }
     array.filter((obj:any) => {
       return (obj.descripcion === 'Presupuesto de Venta' && (obj.flag === 'Pronostico' || obj.flag ==='Pendiente') && (!this.checkedPspObj[obj.numerodocumento]))
     })
@@ -97,5 +67,68 @@ export class CrmDataProvider {
     });
     this.calipsoObjSubject.next(filteredObj);
   }
+
+  getDocs() {
+    return this.httpApi.get('ventas/docs');
+  }
+
+  getCheckedPsp() {
+    return this.apiData.getObject('crm/checkPsp');
+  }
+
+  getOps() {
+    return this.apiData.getListMeta('crm/op');
+  }
+
+  getOps2() {
+    return this.apiData.getList('crm/op')
+  }
+
+  getClients() {
+    return this.apiData.getListMeta('crm/clients')
+  }
+
+  getClientsObj() {
+    return this.apiData.getObject('crm/clients');
+  }
+
+  saveNewOp(opForm: any, clientForm: any, psp:any, razSoc: string, opKey?: string, cliKey?: string) {
+    let razSocObj
+    if (!opKey) { opKey = this.apiData.getNewKey() }
+    if (!cliKey) { cliKey = this.apiData.getNewKey() }
+    if (!clientForm['ops']) { clientForm['ops']= {} }
+
+    clientForm['ops'][opKey] = true;
+    opForm['clientKey'] = cliKey;
+
+    let oportunity = this.apiData.fanOutObject(opForm, [`crm/op/${opKey}`], false);
+    let client = this.apiData.fanOutObject(clientForm, [`crm/clients/${cliKey}`], false)
+    let checkPsp = this.apiData.fanOutObject(psp, [`crm/checkPsp`], false);
+    if (razSoc) {
+      razSocObj = this.apiData.fanOutObject(razSoc, [`crm/razSoc`], true);
+    } else {
+      razSocObj = {};
+    }
+    let updateObj = Object.assign({}, oportunity, client, checkPsp, razSocObj);
+    return this.apiData.fanUpdate(updateObj);
+  }
+
+  newClient(client) {
+    return this.apiData.push('crem/client', client);
+  }
+
+  razSoc(key, client) {
+    let form = {};
+    form[key] = client;
+    return this.apiData.updateObject('crm/razSoc', form)
+  }
+
+  checkPsp(psp) {
+  	let form = {};
+  	form[psp] = true;
+  	return this.apiData.updateObject('crm/checkPsp',form);
+  }
+
+  
 
 }

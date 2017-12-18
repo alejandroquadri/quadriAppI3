@@ -50,8 +50,12 @@ export class ApiDataProvider {
 		}
 	}
 
-	getNewKey(): string {
-		return firebase.database().ref().push().key;
+	getNewKey(path?: string): string {
+		if (path) {
+			return firebase.database().ref().child(path).push().key;
+		} else {
+			return firebase.database().ref().push().key;
+		}
 	}
 
 	timestamp(): Object {
@@ -62,21 +66,50 @@ export class ApiDataProvider {
   	return firebase.database().ref().update(fanObject);
   }
 
+	  // esta funcion sirve para armar un objeto el cual pueda ser usado por 
+  	// fanUpdate() para actualizar de forma masiva multiples direcciones en firebase.
+  	// updateForm es el objeto a actualizar. 
+  	// paths es un array de strings con cada una de las direcciones donde se va a actualizar 
+  	// key es un boolean, true para guardar en una lista, false para guardarlo como objeto
+  	// la funcion maneja bien subojetos de hasta 1 subnivel
   fanOutObject (updateForm: any, paths: Array<string>, key: boolean) {
     const fanObject = {}
     const updateFormKeys = Object.keys(updateForm);
     if (key) {
     	const newKey = this.getNewKey();
     	paths.forEach( path => {
-	      updateFormKeys.forEach( updateKey => {
-	        fanObject[`${path}/${newKey}/${updateKey}`] = updateForm[updateKey]
-	      })
+    		if (typeof updateForm === 'string') {
+    			fanObject[`${path}/${newKey}`] = updateForm;
+    		} else {
+    			updateFormKeys.forEach( updateKey => {
+		      	if (typeof updateForm[updateKey] === 'object') {
+		      		const subObjKeys = Object.keys(updateForm[updateKey]);
+		      		subObjKeys.forEach( subObjKey => {
+		      			fanObject[`${path}/${newKey}/${updateKey}/${subObjKey}`] = updateForm[updateKey][subObjKey];
+		      		})
+		      	} else {
+		      		fanObject[`${path}/${newKey}/${updateKey}`] = updateForm[updateKey];
+		      	}
+		        
+		      })
+    		}
 	    })
     } else {
     	paths.forEach( path => {
-	      updateFormKeys.forEach( updateKey => {
-	        fanObject[`${path}/${updateKey}`] = updateForm[updateKey]
-	      })
+    		if (typeof updateForm === 'string') {
+    			fanObject[`${path}`] = updateForm;
+    		} else {
+    			updateFormKeys.forEach( updateKey => {
+		      	if(typeof updateForm[updateKey] === 'object') {
+		      		const subObjKeys = Object.keys(updateForm[updateKey]);
+		      		subObjKeys.forEach( subObjKey => {
+		      			fanObject[`${path}/${updateKey}/${subObjKey}`] = updateForm[updateKey][subObjKey];
+		      		})
+		      	} else {
+		      		fanObject[`${path}/${updateKey}`] = updateForm[updateKey]
+		      	}
+		      })
+    		}
 	    })
     }
     return fanObject;

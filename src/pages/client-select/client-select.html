@@ -19,8 +19,8 @@
 
   <ion-list>
     <ion-item *ngFor="let client of filteredClients">
-      {{ client.name }}
-      <button ion-button clear icon-only item-end color="lightGreyQ" (click)="selectClient(client.name)">
+      {{ client.payload.val().name }}
+      <button ion-button clear icon-only item-end color="lightGreyQ" (click)="selectClient(client)">
         <ion-icon name="checkmark-circle"></ion-icon>
       </button>
     </ion-item>

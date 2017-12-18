@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 
+import { CrmDataProvider } from '../../providers';
 import { FieldFilterPipe, FilterPipe, SortPipe } from '../../pipes';
 
 @IonicPage()
@@ -14,20 +15,27 @@ export class ClientSelectPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private filterPipe: FilterPipe,
-    private viewCtrl: ViewController
+    private viewCtrl: ViewController,
+    private crmData: CrmDataProvider
   ) {
   }
 
   searchInput = '';
+  clientsObs: any;
+  clientsList: any;
   filteredClients;
   clients = [{name: 'Riva'}, {name:'Criba'}, {name:'Sudamericana'}];
 
   ionViewDidLoad() {
-    this.filter();
+    this.clientsObs = this.crmData.getClients();
+    this.clientsObs.subscribe( clients => {
+      this.clientsList = clients;
+      this.filter();
+    })
   }
 
   filter(event?) {
-    this.filteredClients = this.filterPipe.transform(this.clients, this.searchInput)
+    this.filteredClients = this.filterPipe.transform(this.clientsList, this.searchInput)
   }
 
   selectClient(name) {

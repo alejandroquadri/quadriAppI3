@@ -13,8 +13,16 @@ import { CrmDataProvider } from '../../providers';
 export class CrmOpFormPage {
 
   opForm: any;
+  opKey: string;
+
+  updateOpForm: any;
   submitType: string;
-  newClient: boolean;
+  
+  clientObs: any;
+  clientObj: any;
+  clientKey: string;
+  updateClientForm: any;
+  
   months: any;
   pspData: any;
 
@@ -29,12 +37,16 @@ export class CrmOpFormPage {
     this.pspData = this.navParams.data;
     this.buildForm(this.pspData);
     this.buildMonths();
-    console.log(this.navParams.data);
   }
 
   ionViewDidLoad() {
+    this.clientObs = this.crmData.getClientsObj();
+    this.clientObs.subscribe( clients => {
+      this.clientObj = clients;
+    });
   }
 
+  // construye el formulario
   buildForm(form?) {
     this.opForm = this.fb.group({
       obra: ['', Validators.required ],
@@ -45,17 +57,53 @@ export class CrmOpFormPage {
     });
   }
 
-  client() {
+  // para llamar a los modals
+  lookClient() {
     let profileModal = this.modalCtrl.create('ClientSelectPage', {pablo:'pelotudo'});
     profileModal.onDidDismiss(data => {
       this.opForm.patchValue({
-        client: data
+        client: data.payload.val().name
       });
-      console.log(this.opForm.value);
+      this.updateClientForm = data.payload.val();
+      this.clientKey = data.key;
     })
     profileModal.present();
   }
 
+  lookOp() {
+    let profileModal = this.modalCtrl.create('OpSelectPage');
+    profileModal.onDidDismiss(data => {
+      this.opForm.patchValue({
+        obra: data.op.obra,
+        closeMonth: data.op.closeMonth,
+        client: data.op.client
+      });
+      this.updateOpForm = data.op;
+      this.clientKey = data.op.clientKey;
+      this.opKey = data.key;
+      this.updateClientForm = this.clientObj[this.clientKey];
+    })
+    profileModal.present();
+  }
+
+  addClient() {
+    this.clientKey = undefined;
+    this.updateClientForm = undefined
+    this.opForm.patchValue({
+        client: ''
+    });
+  }
+
+  addOp() {
+    this.opKey = undefined;
+    this.opForm.patchValue({
+        obra: '',
+        closeMonth: '',
+        client: ''
+      });
+  }
+
+  // construye los meses del select
   buildMonths() {
     this.months = [];
     for (let i = 0; i < 24; i++) {
@@ -66,39 +114,46 @@ export class CrmOpFormPage {
   }
 
   onSubmit() {
-    if (this.submitType === 'new') {
-      this.saveNewOPPsp();
-    } else {
-    }
+    this.saveNewOPPsp();  
   }
 
   saveNewOPPsp() {
-    let form = this.opForm.value;
-    form['psps'] = [this.pspData.num];
-    let newOp = this.crmData.newOp(form);
-    let checkedPsp = this.crmData.checkPsp(this.pspData.num);
-    Promise.all([newOp, checkedPsp]).then( (ret) => {
-      this.viewCtrl.dismiss();
-    });
-  }
+    let opForm
+    let clientForm;
+    let psp = {};
+    let razSoc
+    psp[this.pspData.num] = true;
 
-  addClient() {
-    this.newClient = true;
-  }
+    if(!this.opKey) {
+      opForm = this.opForm.value;
+      opForm['psps'] = {};
+      opForm['satus'] = 'pendiente';
+    } else {
+      opForm = this.updateOpForm;
+      if (opForm.total !== this.opForm.value.total) {
+        opForm.total = this.opForm.value.total;
+      }
+    }
+    opForm['psps'][this.pspData.num] = true;
 
-  addOp() {
-    this.submitType = 'new';
-  }
-
-  lookOp() {
-    let profileModal = this.modalCtrl.create('OpSelectPage');
-    profileModal.onDidDismiss(data => {
-      this.opForm.patchValue({
-        obra: data
-      });
-      console.log(this.opForm.value);
-    })
-    profileModal.present();
+    if (!this.clientKey) {
+      clientForm = {
+        name: this.opForm.value.client,
+        razSoc: [],
+        ops: {},
+        contacts: {}
+      }
+      clientForm['razSoc'].push(this.pspData.razSoc);
+      razSoc = this.pspData.razSoc;
+    } else {
+      clientForm = this.updateClientForm;
+      if (clientForm['razSoc'].indexOf(this.pspData.razSoc)===(-1)) {
+        clientForm['razSoc'].push(this.pspData.razSoc);
+        razSoc = this.pspData.razSoc
+      }
+    }
+    this.crmData.saveNewOp(opForm, clientForm, psp, razSoc, this.opKey, this.clientKey)
+    .then( () => this.viewCtrl.dismiss());
   }
 
 }

@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
 
-/**
- * Generated class for the CrmOpPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { CrmDataProvider, SplitShowProvider } from '../../providers';
+import { FieldFilterPipe, SortPipe } from '../../pipes';
 
 @IonicPage()
 @Component({
@@ -15,11 +11,31 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CrmOpPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+	opObs: any;
+	opList: any;
+
+	salesRep = "";
+	statusOptions = ['Pendiente', 'Rechazado', 'Cerrada'];
+
+  constructor(
+  	public navCtrl: NavController,
+  	public navParams: NavParams,
+  	private crmData: CrmDataProvider,
+  	private splitShow: SplitShowProvider,
+  	public popoverCtrl: PopoverController
+	) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CrmOpPage');
+    this.opObs = this.crmData.getOps2();
+    this.opObs.subscribe( ops => this.opList = ops );
+  }
+
+  changeStatus(status: string, key: string) {
+    console.log('status changed', status);
+    this.spareData.updateSparePart(key, {status: status})
+    .then( () => console.log('status actualizado'));
   }
 
 }

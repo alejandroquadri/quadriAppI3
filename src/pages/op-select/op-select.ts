@@ -46,8 +46,8 @@ export class OpSelectPage {
 		 }
   }
 
-  selectOp(name) {
-    this.viewCtrl.dismiss(name);
+  selectOp(op, key) {
+    this.viewCtrl.dismiss({op: op, key: key});
   }
 
 }

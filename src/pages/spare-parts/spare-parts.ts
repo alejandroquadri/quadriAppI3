@@ -105,7 +105,7 @@ export class SparePartsPage {
   }
 
   changeStatus(status: string, key: string) {
-    console.log('status changed', status);
+    console.log('status changed', status, key);
     this.spareData.updateSparePart(key, {status: status})
     .then( () => console.log('status actualizado'));
   }

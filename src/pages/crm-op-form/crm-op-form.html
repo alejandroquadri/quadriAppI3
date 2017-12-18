@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{submitType === 'new' ? 'Nueva oportunidad' : 'Editar oportunidad '}}</ion-title>
+    <ion-title>Oportunidad</ion-title>
     <ion-buttons end>
 	    <button ion-button (click)="viewCtrl.dismiss()">
 	      Salir
@@ -20,9 +20,9 @@
 
           <ion-item>
 				    <ion-label fixed>Obra</ion-label>
-				    <ion-input *ngIf="submitType === 'new'" formControlName="obra" type="text"></ion-input>
-				    <div *ngIf="!(submitType === 'new')" item-content class="">
-							{{ opForm.value.obra || ""}}
+				    <ion-input *ngIf="!opKey" formControlName="obra" type="text"></ion-input>
+				    <div *ngIf="opKey" item-content class="">
+							{{ opForm.value.obra}}
 				    </div>
 				    <button type="button" ion-button clear color="lightGreyQ" icon-only item-end (click)="lookOp()">
 			        <ion-icon name="eye"></ion-icon>
@@ -34,11 +34,11 @@
 
           <ion-item>
 				    <ion-label fixed>Cliente</ion-label>
-				    <ion-input *ngIf="newClient" formControlName="client" type="text"></ion-input>
-				    <div *ngIf="!newClient" item-content class="">
-							{{ opForm.value.client || ""}}
+				    <ion-input *ngIf="!clientKey" formControlName="client" type="text"></ion-input>
+				    <div *ngIf="clientKey" item-content class="">
+							{{ opForm.value.client}}
 				    </div>
-				    <button type="button" ion-button clear color="lightGreyQ" icon-only item-end (click)="client()">
+				    <button type="button" ion-button clear color="lightGreyQ" icon-only item-end (click)="lookClient()">
 			        <ion-icon name="eye"></ion-icon>
 			      </button>
 			      <button type="button" ion-button clear color="lightGreyQ" icon-only item-end (click)="addClient()">
