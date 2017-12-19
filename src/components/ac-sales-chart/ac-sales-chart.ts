@@ -38,7 +38,6 @@ export class AcSalesChartComponent implements OnInit {
      )
   	.subscribe( data => {
   		this.sales = data.data;
-      console.log(this.sales);
       this.salesDataFilter();
   	});
   }
@@ -107,7 +106,6 @@ export class AcSalesChartComponent implements OnInit {
         objLine.push(totalObjSales);
         eqLine.push(totalEqSales);
       }
-      console.log(totalQuantity);
       let datasets = [
         this.chartBuilder.buildDatasets(finishedSales, 'ventas', 'rgba(0, 128, 0, 1)', 'rgba(0, 128, 0, 0.2)', 'A'), 
         this.chartBuilder.buildDatasets(eqLine, 'equilibrio',  'rgba(220, 57, 18, 1)', 'rgba(220, 57, 18, 0.2)', 'A'), 

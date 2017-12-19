@@ -127,7 +127,7 @@ export class CrmOpFormPage {
     if(!this.opKey) {
       opForm = this.opForm.value;
       opForm['psps'] = {};
-      opForm['satus'] = 'pendiente';
+      opForm['satus'] = 'Pendiente';
     } else {
       opForm = this.updateOpForm;
       if (opForm.total !== this.opForm.value.total) {

@@ -27,7 +27,7 @@ export class OpSelectPage {
   filteredClients;
 
   ionViewDidLoad() {
-  	this.opSubs = this.crmData.getOps();
+  	this.opSubs = this.crmData.getOpsList();
   	this.opSubs.subscribe( ops => {
   		this.opList = ops;
   		console.log(this.opList);

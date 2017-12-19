@@ -18,7 +18,6 @@ export class SparePartsPage {
   filterSubs: any;
   spareParts: any;
   sparePartsCrude: any;
-  // @ViewChild(Content) content: Content;
   filters: any;
   searchInput: string = '';
   statusOptions = ['Pendiente', 'Encargado', 'Completo', 'Suspendido'];

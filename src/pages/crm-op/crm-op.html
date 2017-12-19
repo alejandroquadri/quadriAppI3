@@ -9,17 +9,15 @@
 	      <ion-icon name="ios-menu"></ion-icon>
 	    </button>
 	  </ion-buttons>
+    <ion-searchbar [(ngModel)]="searchInput" (ngModelChange)="onChange($event)"></ion-searchbar>
     <ion-buttons end>
-      <div class="">
-        <label margin-horizontal>Vendedor</label>
-        <select margin-horizontal class="select" name="" [(ngModel)]="salesRep" (ngModelChange)="filterSalesRep()">
-          <option value=""></option>
-          <option value="Alejandra Roldan">Roldan</option>
-          <option value="Tarruella Alberto Horacio ">Tarruella</option>
-        </select>
-      </div>
+	    <button ion-button icon-only (click)="presentModal()">
+	      <ion-icon name="add"></ion-icon>
+	    </button>
+    	<button ion-button icon-only (click)="presentOptions($event)">
+	      <ion-icon name="options"></ion-icon>
+	    </button>
     </ion-buttons>
-    <ion-title>Oportunidades</ion-title>
   </ion-navbar>
 
 	<ion-toolbar>
@@ -28,7 +26,7 @@
 					<ion-col col-2>
 						<strong>Obra</strong>
 					</ion-col>
-					<ion-col col-2>
+					<ion-col col-3>
 						<strong>Cliente</strong>
 					</ion-col>
 					<ion-col col-2>
@@ -43,6 +41,8 @@
 					<ion-col col-2>
 						<strong>Status</strong>
 					</ion-col>
+					<ion-col col-1>
+					</ion-col>
 				</ion-row>
 		  </ion-grid>
   </ion-toolbar>
@@ -53,10 +53,10 @@
 
 	<ion-grid #dataHeaders>
 	  <ion-row class="data" *ngFor="let op of opList">
-			<!-- <ion-col col-2>
+			<ion-col col-2>
 				{{ op.payload.val().obra }}
 			</ion-col>
-			<ion-col col-2>
+			<ion-col col-3>
 				{{ op.payload.val().client }}
 			</ion-col>
 			<ion-col col-2>
@@ -65,21 +65,28 @@
 			<ion-col col-1>
 				{{ op.payload.val().total |  number : '1.0-0' }}
 			</ion-col>
-			<ion-col col-1>
+			<!-- <ion-col col-1 text-center>
 				{{ op.payload.val().closeMonth }}
 			</ion-col> -->
-			<!-- <ion-col col-2>
-				{{ op.payload.val().status }} {{ op.status }} {{ op.$key }}
-			</ion-col> -->
-			<ion-col col-2>
-				{{ op.status }} {{ op.$key }}
-			</ion-col>
-			<!-- <ion-col col-2 text-center>
-				<ion-select #status (ionChange)="changeStatus(status.value, op.key)" interface="popover"
-				[ngClass]="{'pendiente': part.status === 'Pendiente','encargado': part.status === 'Encargado', 'suspendido': part.status === 'Suspendido','completo': part.status === 'Completo'}">
-					<ion-option *ngFor="let option of statusOptions" [selected]="part.status===option? true: false">{{option}}</ion-option>
+			<ion-col col-1 text-center>
+				<ion-select #closeMonth (ionChange)="changeCloseMonth(closeMonth.value, op.key)" interface="popover">
+					<ion-option *ngFor="let month of months" [selected]="op.payload.val().closeMonth===month? true: false">{{month}}</ion-option>
 				</ion-select>
-			</ion-col> -->
+			</ion-col>
+			<ion-col col-2 text-center>
+				<ion-select #status (ionChange)="changeStatus(status.value, op.key)" interface="popover"
+				[ngClass]="{'pendiente': op.payload.val().status === 'Pendiente','rechazado': op.payload.val().status === 'Rechazado','cerrado': op.payload.val().status === 'Cerrado'}">
+					<ion-option *ngFor="let option of statusOptions" [selected]="op.payload.val().status===option? true: false">{{option}}</ion-option>
+				</ion-select>
+			</ion-col>
+			<ion-col col-1 text-center>
+				<button ion-button icon-only clear color="lightGreyQ" small (click)="editOp(op.payload.val(), op.key)" class="actionButtons">
+					<ion-icon name="create"></ion-icon>
+				</button>
+				<button ion-button icon-only clear color="lightGreyQ" small (click)="seeOp(op.payload.val(), op.key)" class="actionButtons">
+					<ion-icon name="eye"></ion-icon>
+				</button>
+			</ion-col>
 		</ion-row>
   </ion-grid>
 

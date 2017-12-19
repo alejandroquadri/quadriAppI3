@@ -76,12 +76,8 @@ export class CrmDataProvider {
     return this.apiData.getObject('crm/checkPsp');
   }
 
-  getOps() {
+  getOpsList() {
     return this.apiData.getListMeta('crm/op');
-  }
-
-  getOps2() {
-    return this.apiData.getList('crm/op')
   }
 
   getClients() {
@@ -129,6 +125,9 @@ export class CrmDataProvider {
   	return this.apiData.updateObject('crm/checkPsp',form);
   }
 
+  updateOp(key: string, form: any) {
+    return this.apiData.updateList('crm/op', key, form);
+  }
   
 
 }
