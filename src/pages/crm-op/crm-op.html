@@ -10,11 +10,14 @@
 	    </button>
 	  </ion-buttons>
     <ion-searchbar [(ngModel)]="searchInput" (ngModelChange)="onChange($event)"></ion-searchbar>
+    <ion-buttons start>
+			<div class="total"> $ {{ total | number : '1.0-0' }} </div>
+    </ion-buttons>
     <ion-buttons end>
 	    <button ion-button icon-only (click)="presentModal()">
 	      <ion-icon name="add"></ion-icon>
 	    </button>
-    	<button ion-button icon-only (click)="presentOptions($event)">
+    	<button ion-button icon-only (click)="presentFilters($event)">
 	      <ion-icon name="options"></ion-icon>
 	    </button>
     </ion-buttons>
@@ -65,9 +68,6 @@
 			<ion-col col-1>
 				{{ op.payload.val().total |  number : '1.0-0' }}
 			</ion-col>
-			<!-- <ion-col col-1 text-center>
-				{{ op.payload.val().closeMonth }}
-			</ion-col> -->
 			<ion-col col-1 text-center>
 				<ion-select #closeMonth (ionChange)="changeCloseMonth(closeMonth.value, op.key)" interface="popover">
 					<ion-option *ngFor="let month of months" [selected]="op.payload.val().closeMonth===month? true: false">{{month}}</ion-option>

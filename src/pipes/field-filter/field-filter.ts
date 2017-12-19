@@ -7,7 +7,7 @@ import { Pipe, PipeTransform, Injectable } from '@angular/core';
 export class FieldFilterPipe implements PipeTransform {
   transform(array: any[], fields: any[], terms: any[], fb: boolean) {
       if (array) {
-        return array.filter( object => {
+        return array.filter( (object, index) => {
           for (let i=0, m = terms.length ; i<m; i++) {
             for (let j=0, n = fields.length; j < n; j++) {
               let item;

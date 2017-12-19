@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import "rxjs/add/observable/combineLatest";
 import { map } from 'rxjs/operators';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 
 import { HttpApiProvider, ApiDataProvider } from '../../providers';
@@ -14,15 +15,31 @@ export class CrmDataProvider {
 	calipsoSubs: any
   checkedPspSubs: any;
   checkedPspObj: any;
+  filters = {
+    status: {
+      pendiente: true,
+      rechazado: false,
+      cerrado: false
+    },
+    salesRep: {
+      tarruella: true,
+      roldan: true
+    },
+    month: ''
+  }
 
 	private calipsoObjSubject = new BehaviorSubject({});
 	public calipsoObj = this.calipsoObjSubject.asObservable();
+
+  filterSubject = new ReplaySubject(1);
+  filterObs = this.filterSubject.asObservable();
 
   constructor(
     private httpApi: HttpApiProvider,
     private apiData: ApiDataProvider
   ) {
-			this.subscribeToCalipsoDocs()
+			this.subscribeToCalipsoDocs();
+      this.updateFilters();
 	  }
 
   subscribeToCalipsoDocs() {
@@ -127,6 +144,10 @@ export class CrmDataProvider {
 
   updateOp(key: string, form: any) {
     return this.apiData.updateList('crm/op', key, form);
+  }
+
+  updateFilters() {
+    this.filterSubject.next(this.filters)
   }
   
 
