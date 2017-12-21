@@ -12,11 +12,16 @@ import { CrmDataProvider } from '../../providers';
 })
 export class CrmOpFormPage {
 
+  salesReps = ['Alejandra Roldan', 'Tarruella Alberto Horacio '];
+  addPsp: boolean;
+  addNew: boolean;
+  edit: boolean;
+
   opForm: any;
   opKey: string;
 
   updateOpForm: any;
-  submitType: string;
+  // submitType: string;
   
   clientObs: any;
   clientObj: any;
@@ -34,7 +39,20 @@ export class CrmOpFormPage {
     public modalCtrl: ModalController,
     private crmData: CrmDataProvider
   ) {
-    this.pspData = this.navParams.data;
+    if (this.navParams.data.state === 'addNew') {
+      this.addNew = true;
+      this.edit = false;
+      this.addPsp = false;
+    } else if (this.navParams.data.state === 'edit') {
+      this.addNew = false;
+      this.edit = true;
+      this.addPsp = false;
+    } else {
+      this.pspData = this.navParams.data;
+      this.addNew = false;
+      this.edit = false;
+      this.addPsp = true;
+    }
     this.buildForm(this.pspData);
     this.buildMonths();
   }
@@ -51,10 +69,16 @@ export class CrmOpFormPage {
     this.opForm = this.fb.group({
       obra: ['', Validators.required ],
       client: ['', Validators.required],
-      salesRep: [form.salesRep || '', Validators.required],
+      salesRep: ['', Validators.required],
       closeMonth: ['', Validators.required],
-      total: [form.total || '', Validators.required],
+      total: ['', Validators.required],
     });
+    if(this.addPsp) {
+      this.opForm.patchValue({
+        salesRep: form.salesRep,
+        total: form.total
+      })
+    }
   }
 
   // para llamar a los modals
@@ -62,10 +86,13 @@ export class CrmOpFormPage {
     let profileModal = this.modalCtrl.create('ClientSelectPage', {pablo:'pelotudo'});
     profileModal.onDidDismiss(data => {
       this.opForm.patchValue({
+        obra: '',
+        closeMonth: '',
         client: data.payload.val().name
       });
       this.updateClientForm = data.payload.val();
       this.clientKey = data.key;
+      this.opKey = undefined;
     })
     profileModal.present();
   }
@@ -88,14 +115,18 @@ export class CrmOpFormPage {
 
   addClient() {
     this.clientKey = undefined;
+    this.opKey = undefined;
     this.updateClientForm = undefined
     this.opForm.patchValue({
+        obra: '',
+        closeMonth: '',
         client: ''
     });
   }
 
   addOp() {
     this.opKey = undefined;
+    this.clientKey = undefined;
     this.opForm.patchValue({
         obra: '',
         closeMonth: '',
@@ -122,38 +153,47 @@ export class CrmOpFormPage {
     let clientForm;
     let psp = {};
     let razSoc
-    psp[this.pspData.num] = true;
+    this.addPsp? psp[this.pspData.num] = true: psp = undefined;
 
     if(!this.opKey) {
+      console.log('viene por aca');
       opForm = this.opForm.value;
+      opForm.total = Number(this.opForm.value.total);
+      this.opForm.value.salesRep === 'Tarruella Alberto Horacio'? opForm.salesRep = 'Tarruella Alberto Horacio ': '';
       opForm['psps'] = {};
-      opForm['satus'] = 'Pendiente';
+      opForm['status'] = 'Pendiente';
     } else {
       opForm = this.updateOpForm;
-      if (opForm.total !== this.opForm.value.total) {
-        opForm.total = this.opForm.value.total;
+      if (opForm.total !== Number(this.opForm.value.total)) {
+        opForm.total = Number(this.opForm.value.total);
       }
     }
-    opForm['psps'][this.pspData.num] = true;
+    this.addPsp? opForm['psps'][this.pspData.num] = true: '';
 
     if (!this.clientKey) {
       clientForm = {
         name: this.opForm.value.client,
-        razSoc: [],
         ops: {},
         contacts: {}
       }
-      clientForm['razSoc'].push(this.pspData.razSoc);
-      razSoc = this.pspData.razSoc;
+      if (this.addPsp) {
+        clientForm['razSoc'] = [];
+        clientForm['razSoc'].push(this.pspData.razSoc);
+        razSoc = this.pspData.razSoc;
+      }
     } else {
       clientForm = this.updateClientForm;
-      if (clientForm['razSoc'].indexOf(this.pspData.razSoc)===(-1)) {
-        clientForm['razSoc'].push(this.pspData.razSoc);
-        razSoc = this.pspData.razSoc
+      if( this.addPsp ) {
+        if (clientForm['razSoc'].indexOf(this.pspData.razSoc)===(-1)) {
+          clientForm['razSoc'].push(this.pspData.razSoc);
+          razSoc = this.pspData.razSoc;
+        }
       }
     }
     this.crmData.saveNewOp(opForm, clientForm, psp, razSoc, this.opKey, this.clientKey)
     .then( () => this.viewCtrl.dismiss());
   }
+
+
 
 }

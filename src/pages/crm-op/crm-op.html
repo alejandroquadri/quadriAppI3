@@ -9,7 +9,7 @@
 	      <ion-icon name="ios-menu"></ion-icon>
 	    </button>
 	  </ion-buttons>
-    <ion-searchbar [(ngModel)]="searchInput" (ngModelChange)="onChange($event)"></ion-searchbar>
+    <ion-searchbar [(ngModel)]="searchInput" (ngModelChange)="searchBar($event)"></ion-searchbar>
     <ion-buttons start>
 			<div class="total"> $ {{ total | number : '1.0-0' }} </div>
     </ion-buttons>
@@ -35,11 +35,17 @@
 					<ion-col col-2>
 						<strong>Vendedor</strong>
 					</ion-col>
-					<ion-col col-1>
-						<strong>Monto $</strong>
+					<ion-col col-1 (click)="changeSort('total')">
+						<strong>Monto $ 
+							<ion-icon name="arrow-dropup" *ngIf="sortTerm === 'total' && sortDir === true"></ion-icon>
+							<ion-icon name="arrow-dropdown" *ngIf="sortTerm === 'total' && sortDir === false"></ion-icon>
+						</strong>
 					</ion-col>
-					<ion-col col-1>
-						<strong>Cierre</strong>
+					<ion-col col-1 (click)="changeSort('closeMonth')">
+						<strong>Cierre
+							<ion-icon name="arrow-dropup" *ngIf="sortTerm === 'closeMonth' && sortDir === true"></ion-icon>
+							<ion-icon name="arrow-dropdown" *ngIf="sortTerm === 'closeMonth' && sortDir === false"></ion-icon>
+						</strong>
 					</ion-col>
 					<ion-col col-2>
 						<strong>Status</strong>

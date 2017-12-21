@@ -23,6 +23,8 @@ export class CrmOpPage {
 	opListCrude: Array<any>;
   filters: any;	
   searchInput: string = '';
+  sortTerm = 'total';
+  sortDir = false;
 
   ascTotal = false;
   ascMonth = true;
@@ -45,7 +47,6 @@ export class CrmOpPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CrmOpPage');
     this.opObs = this.crmData.getOpsList();
     this.filtersObs = this.crmData.filterObs;
 
@@ -69,19 +70,18 @@ export class CrmOpPage {
   filter() {
     const fieldsFiltered = this.fieldFilter(this.opListCrude);
     this.opList = this.filterPipe.transform(fieldsFiltered, this.searchInput, true);
-    this.sort('total', false);
+    this.sort();
     this.calcTotal(this.opList);
   }
 
   fieldFilter(array: Array<any>) {
     return array.filter( itemMeta => {
-      let item = itemMeta.payload.val()
-      return (this.statusFilter(item) && this.salesRepFilter(item) && this.monthFilter(item))
+      let item = itemMeta.payload.val();
+      return (this.statusFilter(item) && this.salesRepFilter(item) && this.monthFilter(item));
     })
   }
 
   calcTotal(array: Array<any>) {
-    console.log('calculo');
     this.total = 0;
     array.forEach( itemM => {
       let total = +itemM.payload.val().total;
@@ -89,8 +89,13 @@ export class CrmOpPage {
     })
   }
 
-  sort(field, asc: boolean) {
-    this.opList =  this.sortPipe.transform(this.opList, field, asc, true);
+  sort() {
+    this.opList =  this.sortPipe.transform(this.opList, this.sortTerm, this.sortDir, true);
+  }
+
+  searchBar(event) {
+    this.searchInput = event;
+    this.filter();
   }
 
   statusFilter(item) {
@@ -120,7 +125,13 @@ export class CrmOpPage {
         return true;
       }
     }
-    
+  }
+
+  changeSort(term) {
+    console.log('cambia a', term);
+    this.sortTerm = term;
+    this.sortDir = !this.sortDir;
+    this.sort();
   }
 
   changeFilters(filters: any) {
@@ -143,20 +154,13 @@ export class CrmOpPage {
   }
 
   changeStatus(status: string, key: string) {
-    console.log('status changed', key, status);
     this.crmData.updateOp(key, {status: status})
     .then( () => console.log('status actualizado'));
   }
 
   changeCloseMonth(closeMonth: string, key: string) {
-    console.log('status changed', key, closeMonth);
     this.crmData.updateOp(key, {closeMonth: closeMonth})
     .then( () => console.log('closeMonth actualizado'));
-  }
-
-  onChange(event) {
-    this.searchInput = event;
-    this.filter();
   }
 
   seeOp(op: any, key: string) {
@@ -172,6 +176,11 @@ export class CrmOpPage {
     popover.present({
       ev: myEvent
     });
+  }
+
+  presentModal() {
+    let profileModal = this.modalCtrl.create('CrmOpFormPage', {state:'addNew'});
+    profileModal.present();
   }
 
 }

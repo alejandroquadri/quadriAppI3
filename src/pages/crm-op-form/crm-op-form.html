@@ -24,10 +24,10 @@
 				    <div *ngIf="opKey" item-content class="">
 							{{ opForm.value.obra}}
 				    </div>
-				    <button type="button" ion-button clear color="lightGreyQ" icon-only item-end (click)="lookOp()">
+				    <button *ngIf="addPsp" type="button" ion-button clear color="lightGreyQ" icon-only item-end (click)="lookOp()">
 			        <ion-icon name="eye"></ion-icon>
 			      </button>
-			      <button type="button" ion-button clear color="lightGreyQ" icon-only item-end (click)="addOp()">
+			      <button *ngIf="addPsp" type="button" ion-button clear color="lightGreyQ" icon-only item-end (click)="addOp()">
 			        <ion-icon name="add"></ion-icon>
 			      </button>
 				  </ion-item>
@@ -46,11 +46,19 @@
 			      </button>
 				  </ion-item>
 
-				  <ion-item>
+				  <ion-item *ngIf="addPsp">
 				    <ion-label fixed>Razon Social</ion-label>
 				    <div item-content class="">
 							{{ pspData.razSoc }}
 				    </div>
+				  </ion-item>
+
+				  <ion-item *ngIf="!addPsp">
+					  <ion-label class="labelSelect">Vendedor</ion-label>
+						<select item-content formControlName="salesRep" class="select">
+							<option value="" disabled></option>
+					    <option *ngFor="let salesRep of salesReps | sort:'':true">{{ salesRep }}</option>
+					  </select>
 				  </ion-item>
 
 					<ion-item>
@@ -73,6 +81,8 @@
 			  </button>
 
 		  </form>
+
+		  {{ opForm.value.salesRep }}
   </ion-grid>
 
 </ion-content>

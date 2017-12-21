@@ -105,8 +105,10 @@ export class CrmDataProvider {
     return this.apiData.getObject('crm/clients');
   }
 
-  saveNewOp(opForm: any, clientForm: any, psp:any, razSoc: string, opKey?: string, cliKey?: string) {
-    let razSocObj
+  saveNewOp(opForm: any, clientForm: any, psp?:any, razSoc?: string, opKey?: string, cliKey?: string) {
+    console.log('llega', opForm, clientForm, psp, razSoc, opKey, cliKey);
+    let razSocObj;
+    let checkPsp;
     if (!opKey) { opKey = this.apiData.getNewKey() }
     if (!cliKey) { cliKey = this.apiData.getNewKey() }
     if (!clientForm['ops']) { clientForm['ops']= {} }
@@ -116,13 +118,18 @@ export class CrmDataProvider {
 
     let oportunity = this.apiData.fanOutObject(opForm, [`crm/op/${opKey}`], false);
     let client = this.apiData.fanOutObject(clientForm, [`crm/clients/${cliKey}`], false)
-    let checkPsp = this.apiData.fanOutObject(psp, [`crm/checkPsp`], false);
+    if (psp) {
+      checkPsp = this.apiData.fanOutObject(psp, [`crm/checkPsp`], false);      
+    } else {
+      checkPsp = {};
+    }
     if (razSoc) {
       razSocObj = this.apiData.fanOutObject(razSoc, [`crm/razSoc`], true);
     } else {
       razSocObj = {};
     }
     let updateObj = Object.assign({}, oportunity, client, checkPsp, razSocObj);
+    console.log(updateObj);
     return this.apiData.fanUpdate(updateObj);
   }
 
@@ -149,6 +156,5 @@ export class CrmDataProvider {
   updateFilters() {
     this.filterSubject.next(this.filters)
   }
-  
 
 }
