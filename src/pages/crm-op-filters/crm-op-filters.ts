@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import * as moment from 'moment';
 
 import { CrmDataProvider } from '../../providers';
 
@@ -20,7 +19,7 @@ export class CrmOpFiltersPage {
   	private crmData: CrmDataProvider
   	) {
   		this.filters = this.crmData.filters;
-      this.buildCloseMonth();
+      this.months = this.crmData.buildCloseMonth();
   	}
 
   ionViewDidLoad() {
@@ -30,15 +29,6 @@ export class CrmOpFiltersPage {
   updateFilters() {
     this.crmData.filters = this.filters;
     this.crmData.updateFilters();
-  }
-
-  buildCloseMonth() {
-    this.months = [];
-    for (let i = 0; i < 24; i++) {
-      let today =  moment();
-      let item = today.add(i, 'month').format('MM-YYYY');
-      this.months.push(item);
-    }
   }
 
 }

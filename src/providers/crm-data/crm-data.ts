@@ -6,7 +6,7 @@ import "rxjs/add/observable/combineLatest";
 import { map } from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 
-
+import * as moment from 'moment';
 import { HttpApiProvider, ApiDataProvider } from '../../providers';
 
 @Injectable()
@@ -83,6 +83,16 @@ export class CrmDataProvider {
       }
     });
     this.calipsoObjSubject.next(filteredObj);
+  }
+
+  buildCloseMonth() {
+    let months = [];
+    for (let i = 0; i < 24; i++) {
+      let today =  moment();
+      let item = today.add(i, 'month').format('YYYY-MM');
+      months.push(item);
+    }
+    return months;
   }
 
   getDocs() {

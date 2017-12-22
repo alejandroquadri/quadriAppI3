@@ -54,7 +54,8 @@ export class CrmOpFormPage {
       this.addPsp = true;
     }
     this.buildForm(this.pspData);
-    this.buildMonths();
+    this.months = this.crmData.buildCloseMonth();
+    // this.buildMonths();
   }
 
   ionViewDidLoad() {
@@ -135,14 +136,14 @@ export class CrmOpFormPage {
   }
 
   // construye los meses del select
-  buildMonths() {
-    this.months = [];
-    for (let i = 0; i < 24; i++) {
-      let today =  moment();
-      let item = today.add(i, 'month').format('MM-YYYY');
-      this.months.push(item);
-    }
-  }
+  // buildMonths() {
+  //   this.months = [];
+  //   for (let i = 0; i < 24; i++) {
+  //     let today =  moment();
+  //     let item = today.add(i, 'month').format('YYYY-MM');
+  //     this.months.push(item);
+  //   }
+  // }
 
   onSubmit() {
     this.saveNewOPPsp();  

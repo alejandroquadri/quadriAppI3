@@ -43,7 +43,7 @@ export class CrmOpPage {
     private filterPipe: FilterPipe,
     private sortPipe: SortPipe
 	) {
-    this.buildCloseMonth();
+    this.months = this.crmData.buildCloseMonth();
   }
 
   ionViewDidLoad() {
@@ -56,15 +56,6 @@ export class CrmOpPage {
       this.filters = pair.filters;
       this.filter();
     })
-  }
-
-  buildCloseMonth() {
-    this.months = [];
-    for (let i = 0; i < 24; i++) {
-      let today =  moment();
-      let item = today.add(i, 'month').format('MM-YYYY');
-      this.months.push(item);
-    }
   }
 
   filter() {
@@ -128,7 +119,6 @@ export class CrmOpPage {
   }
 
   changeSort(term) {
-    console.log('cambia a', term);
     this.sortTerm = term;
     this.sortDir = !this.sortDir;
     this.sort();
