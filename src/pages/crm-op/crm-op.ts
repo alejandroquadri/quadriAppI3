@@ -154,7 +154,8 @@ export class CrmOpPage {
   }
 
   seeOp(op: any, key: string) {
-
+    op['$key'] = key;
+    this.navCtrl.push('CrmOpDetailPage', op);
   }
 
   editOp(op: any, key: string) {

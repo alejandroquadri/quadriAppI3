@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
-import "rxjs/add/observable/zip";
 import "rxjs/add/observable/combineLatest";
-// import { map } from 'rxjs/operators';
+
 import * as moment from 'moment';
 
 import { CrmDataProvider, SplitShowProvider } from '../../providers';
@@ -17,8 +16,11 @@ import { FieldFilterPipe, SortPipe } from '../../pipes';
 export class CrmNewPspPage {
 
   pspSubs: any;
-  checkedPsps: any;
-  pspObj: Array<any>;
+  checkedPspSubs: any;
+
+  checkedPspsObj: any;
+  pspObj: any;
+
   filteredPsp: any;
   salesRep = "";
   viewArray: any;
@@ -36,23 +38,29 @@ export class CrmNewPspPage {
 
   ionViewDidLoad() {
     this.pspSubs = this.crmData.calipsoObj;
-    this.pspSubs.subscribe( data => {
-      this.filteredPsp = this.filterPsp(data);
-      this.filterSalesRep();
-  	});
+    this.checkedPspSubs = this.crmData.getCheckedPsp();
 
+    Observable.combineLatest(this.pspSubs, this.checkedPspSubs, (psps: any, checkedPsp: any) => ({psps, checkedPsp}))
+    .subscribe( pair => {
+      this.checkedPspsObj = pair.checkedPsp;
+      this.pspObj = pair.psps.psp;
+      this.filterPsp();
+      this.filterSalesRep(); 
+    })
   }
 
-  filterPsp(filteredObj) {
+  filterPsp() {
+    !this.pspObj ? this.pspObj = {} : '' ;
     let filteredArray = [];
 
-    let psp = Object.keys(filteredObj);
-    psp.forEach( psp => {
-      filteredArray.push(filteredObj[psp]);
+    let psp = Object.keys(this.pspObj);
+    psp.filter( (psp:any) => {
+      return (!this.checkedPspsObj[psp] && (this.pspObj[psp].flag === 'Pronostico' || this.pspObj[psp].flag ==='Pendiente'))
     })
-
-    filteredArray = this.sortPipe.transform(filteredArray, 'num', false, false);
-    return filteredArray;
+    .forEach( psp => {
+      filteredArray.push(this.pspObj[psp]);
+    })
+    this.filteredPsp = this.sortPipe.transform(filteredArray, 'num', false, false);;
   }
 
   filterSalesRep() {
@@ -61,10 +69,6 @@ export class CrmNewPspPage {
     } else  {
       this.viewArray = this.filteredPsp;
     }
-  }
-
-  filterCheckedPsp() {
-
   }
 
   addOp(psp) {

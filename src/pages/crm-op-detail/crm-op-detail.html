@@ -1,0 +1,170 @@
+<ion-header>
+
+  <ion-navbar>
+  	<button ion-button menuToggle *ngIf="splitShow.showMenuToggle()">
+	    <ion-icon name="menu"></ion-icon>
+	  </button>
+    <ion-buttons left>
+	    <button ion-button icon-only small (click)="splitShow.showChange()" *ngIf="!splitShow.show && !splitShow.showMenuToggle()">
+	      <ion-icon name="ios-menu"></ion-icon>
+	    </button>
+	  </ion-buttons>
+    <ion-title>{{ op?.obra }} - {{ op?.client }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+	<ion-grid *ngIf="op">
+		
+		<ion-row >
+			<ion-col class="colTitle">
+				<div class="titleItem"> {{ op.salesRep }} </div>
+				<div class="titleItem"> $ {{ op.total | number : '1.0-0' }} </div>
+				<select class="titleItem" #closeMonth (change)="changeCloseMonth(closeMonth.value)">
+					<option *ngFor="let month of months" [selected]="op.closeMonth===month? true: false">{{month}}</option>
+				</select>
+				<select class="titleItem" #status (change)="changeStatus(status.value)"
+				[ngClass]="{'pendiente': statusBis === 'Pendiente','rechazado': statusBis === 'Rechazado','cerrado': statusBis === 'Cerrado'}">
+					<option *ngFor="let option of statusOptions" [selected]="op.status === option? true: false">{{option}}</option>
+				</select>
+			</ion-col>
+		</ion-row>
+		
+		<form [formGroup]="agendaForm" class="inputForm" (ngSubmit)="submit()">
+			<ion-row align-items-center>
+					<ion-col col-auto>
+						<ion-input #inputDate [ngClass]="{label: inputDate.value === ''}" formControlName="time" placeholder="Fecha" type="date" class="input inputDate"></ion-input>
+					</ion-col>
+				<ion-col col-auto>
+					<select #selectInput formControlName="action" class="selectInput" [ngClass]="{label: selectInput.value === ''}">
+						<option value="" disabled selected>accion</option>
+				    <option *ngFor="let action of actions | sort:'':true">{{ action }}</option>
+					</select>
+				</ion-col>
+				<ion-col>
+					<ion-input #desc [ngClass]="{label: desc.value === ''}" formControlName="desc" placeholder="descripcion" type="text" class="input inputText"></ion-input>
+				</ion-col>
+				<ion-col col-auto>
+					<button ion-button icon-only clear small  color="ionBlue" type="submit" [disabled]="!agendaForm.valid">
+						<ion-icon name="create"></ion-icon>
+					</button>
+				</ion-col>
+			</ion-row>
+		</form>
+
+		<div *ngIf="op.agenda">
+			<ion-card>
+			
+			  <ion-card-header>
+			    Agenda
+			  </ion-card-header>
+			
+			  <ion-card-content>
+			    <ion-row class="headers">
+						<ion-col text-center col-2>
+							<strong>Fecha</strong>
+						</ion-col>
+						<ion-col text-center col-2>
+							<strong>Accion</strong>
+						</ion-col>
+						<ion-col text-center>
+							<strong>Descripcion</strong>
+						</ion-col>
+						<ion-col text-center col-1>
+							<strong>Completo</strong>
+						</ion-col>
+					</ion-row>
+
+					<ion-row *ngFor="let item of op.agenda | objNgfor" class="data">
+						<ion-col text-center col-2>
+							{{ agendaObj[item].time }}
+						</ion-col>
+						<ion-col text-center col-2>
+							{{ agendaObj[item].action }}
+						</ion-col>
+						<ion-col>
+							{{ agendaObj[item].desc }}
+						</ion-col>
+						<ion-col text-center col-1>
+							<ion-checkbox #check [checked]="agendaObj[item].complete" 
+							(ionChange)="changeCheck(item, check.value)"></ion-checkbox>
+						</ion-col>
+					</ion-row>
+					
+
+			  </ion-card-content>
+			
+			</ion-card>
+		</div>
+		
+		
+		<h4 *ngIf="!op.psps" margin>
+			No han sido emitidos presupuestos
+		</h4>
+		<div *ngIf="op.psps">
+			<ion-card *ngFor="let psp of op.psps | objNgfor">
+				
+				<div *ngIf="calipsoObj">
+					<div *ngIf="calipsoObj[psp]">
+						<ion-card-header margin-bottom>
+					   Presupuesto {{ psp }} - {{ calipsoObj[psp].flag }} - <span>$ {{ calipsoObj[psp].total | number: '1.0-0' }}</span>
+					  </ion-card-header>
+						
+					  <ion-card-content>
+							<ion-row class="headers">
+								<ion-col>
+									<strong>Codigo</strong>
+								</ion-col>
+								<ion-col col-4>
+									<strong>Descripcion</strong>
+								</ion-col>
+								<ion-col>
+									<strong>Cantidad</strong>
+								</ion-col>
+								<ion-col>
+									<strong>Precio</strong>
+								</ion-col>
+								<ion-col>
+									<strong>Sub-total</strong>
+								</ion-col>
+							</ion-row>
+							<ion-row *ngFor="let item of calipsoObj[psp]?.items" class="data">
+			    			<ion-col>
+									{{ item.codigocc }}
+								</ion-col>
+								<ion-col col-4>
+									{{ item.conceptocomercial }}
+								</ion-col>
+								<ion-col>
+									{{ item.cantidad | number: '1.0-0'}}
+								</ion-col>
+								<ion-col>
+									{{ item.precio | number: '1.0-0' }}
+								</ion-col>
+								<ion-col>
+									{{ item.total_importe | number: '1.0-0'}}
+								</ion-col>
+			    		</ion-row>
+					  </ion-card-content>
+					</div>
+					<div *ngIf="!calipsoObj[psp]" >
+						<ion-card-header margin-bottom>
+					   Presupuesto {{ psp }}
+					  </ion-card-header>
+						<ion-card-content>
+								rechazado, para licitacion o muy antiguo
+						</ion-card-content>
+					</div>
+				</div>
+				
+			  
+
+			</ion-card>
+		</div>
+
+	</ion-grid>
+
+</ion-content>

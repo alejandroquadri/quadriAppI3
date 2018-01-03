@@ -1,10 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Observable } from 'rxjs/Observable';
-import "rxjs/add/observable/combineLatest";
-import { map } from 'rxjs/operators';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { map } from 'rxjs/operators';
 
 import * as moment from 'moment';
 import { HttpApiProvider, ApiDataProvider } from '../../providers';
@@ -15,6 +13,8 @@ export class CrmDataProvider {
 	calipsoSubs: any
   checkedPspSubs: any;
   checkedPspObj: any;
+  statusOptions = ['Pendiente', 'Rechazado', 'Cerrado'];
+  actions = ['Llamada', 'Envio de muestra', 'Visita', 'Mail', 'Nota'];
   filters = {
     status: {
       pendiente: true,
@@ -46,40 +46,36 @@ export class CrmDataProvider {
     this.calipsoSubs = this.getDocs()
     .pipe(
       map( (res:any) => res.json())
-    );
-
-    this.checkedPspSubs = this.getCheckedPsp();
-
-    Observable.combineLatest(this.calipsoSubs, this.checkedPspSubs, (psps: any, checkedPsps: any) => ({psps, checkedPsps}))
-    .subscribe( pair => {
-      this.checkedPspObj = pair.checkedPsps;
-      this.buildCalipsoObj(pair.psps.data);
+    )
+    .subscribe( docs => {
+      this.buildCalipsoObj(docs.data);
     })
-
   }
 
   buildCalipsoObj(array: any) {
-    let filteredObj = {};
-    if (!this.checkedPspObj) {
-      this.checkedPspObj = {};
-    }
-    array.filter((obj:any) => {
-      return (obj.descripcion === 'Presupuesto de Venta' && (obj.flag === 'Pronostico' || obj.flag ==='Pendiente') && (!this.checkedPspObj[obj.numerodocumento]))
-    })
-    .forEach((psp:any) => {
-      if(filteredObj[psp.numerodocumento]) {
-        filteredObj[psp.numerodocumento].total += (+psp.total_importe);
-        filteredObj[psp.numerodocumento].items.push(psp);
-      } else {
-        filteredObj[psp.numerodocumento] = {
-          date: psp.fecha_documento,
-          num: psp.numerodocumento,
-          razSoc: psp.nombredestinatariotr,
-          salesRep: psp.nombreoriginantetr,
-          total: +psp.total_importe
+    let filteredObj = {
+      np: {},
+      psp: {},
+      invoice: {}
+    };
+
+    array.forEach((doc:any) => {
+      if(doc.descripcion === 'Presupuesto de Venta') {
+        if(filteredObj.psp[doc.numerodocumento]) {
+          filteredObj.psp[doc.numerodocumento].total += (+doc.total_importe);
+          filteredObj.psp[doc.numerodocumento].items.push(doc);
+        } else {
+          filteredObj.psp[doc.numerodocumento] = {
+            date: doc.fecha_documento,
+            num: doc.numerodocumento,
+            razSoc: doc.nombredestinatariotr,
+            salesRep: doc.nombreoriginantetr,
+            total: +doc.total_importe,
+            flag: doc.flag
+          }
+          filteredObj.psp[doc.numerodocumento].items = [];
+          filteredObj.psp[doc.numerodocumento].items.push(doc)
         }
-        filteredObj[psp.numerodocumento].items = [];
-        filteredObj[psp.numerodocumento].items.push(psp)
       }
     });
     this.calipsoObjSubject.next(filteredObj);
@@ -89,7 +85,7 @@ export class CrmDataProvider {
     let months = [];
     for (let i = 0; i < 24; i++) {
       let today =  moment();
-      let item = today.add(i, 'month').format('YYYY-MM');
+      let item = today.add(i, 'month').format('YYYY-MM')
       months.push(item);
     }
     return months;
@@ -115,8 +111,20 @@ export class CrmDataProvider {
     return this.apiData.getObject('crm/clients');
   }
 
+  getOp(key) {
+    return this.apiData.getObject(`crm/op/${key}`);
+  }
+
+  getAgendaObj() {
+    return this.apiData.getObject('crm/agenda');
+  }
+
+  getAgendaList() {
+    return this.apiData.getListMeta('crm/agenda');
+  }
+
   saveNewOp(opForm: any, clientForm: any, psp?:any, razSoc?: string, opKey?: string, cliKey?: string) {
-    console.log('llega', opForm, clientForm, psp, razSoc, opKey, cliKey);
+    // console.log('llega', opForm, clientForm, psp, razSoc, opKey, cliKey);
     let razSocObj;
     let checkPsp;
     if (!opKey) { opKey = this.apiData.getNewKey() }
@@ -139,12 +147,24 @@ export class CrmDataProvider {
       razSocObj = {};
     }
     let updateObj = Object.assign({}, oportunity, client, checkPsp, razSocObj);
-    console.log(updateObj);
+    // console.log(updateObj);
     return this.apiData.fanUpdate(updateObj);
   }
 
   newClient(client) {
-    return this.apiData.push('crem/client', client);
+    return this.apiData.push('crm/client', client);
+  }
+
+  newAgendaNote (agenda) {
+    let agendaKey = this.apiData.getNewKey();
+    let opAgenda = {};
+    opAgenda[agendaKey] = true;
+
+    let agendaLog = this.apiData.fanOutObject(agenda, [`crm/agenda/${agendaKey}`], false);
+    let opUpdate = this.apiData.fanOutObject(opAgenda, [`crm/op/${agenda.opKey}/agenda`], false);
+    let updateObj = Object.assign({}, agendaLog, opUpdate);
+    // console.log(updateObj);
+    return this.apiData.fanUpdate(updateObj);
   }
 
   razSoc(key, client) {
@@ -161,6 +181,10 @@ export class CrmDataProvider {
 
   updateOp(key: string, form: any) {
     return this.apiData.updateList('crm/op', key, form);
+  }
+
+  updateAgendaItem(key: string, form: any) {
+    return this.apiData.updateList('crm/agenda', key, form);
   }
 
   updateFilters() {

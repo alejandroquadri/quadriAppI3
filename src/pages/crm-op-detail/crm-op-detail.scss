@@ -1,0 +1,71 @@
+page-crm-op-detail {
+
+	.colTitle {
+		display: flex;
+		align-items: center;
+	}
+
+	.titleItem {
+		padding: 0 2rem 0 2rem;
+	}
+
+	.pendiente {
+		background-color: map-get($colors, warning);
+	}
+
+	.rechazado {
+		background-color: map-get($colors, danger);
+	}
+
+	.cerrado {
+		background-color: map-get($colors, ionGreen);
+	}
+
+	select {
+    background-color:rgba(244, 244, 244, 0.29);
+    border: none;
+    margin: 0 2rem 0 2rem;
+	}
+
+	.inputForm {
+  	font-size: 14px;
+  }
+
+	.label {
+  	color: #999;
+  }
+
+  .input {
+  	background-color:rgba(244, 244, 244, 0.5);
+		border-radius: 8px;
+  }
+
+  .inputDate {
+		width: 160px;
+  }
+
+  .inputText {
+		width: 100%;
+		line-height: 1.6;
+  }
+	
+  .text-input-md {
+  	margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .selectInput {
+  	background-color:rgba(244, 244, 244, 0.5);
+    border: none;
+    height: 26px;
+  }
+
+  .headers {
+		border-bottom: solid map-get($colors, light) 1px;
+	}
+
+	.data:hover {
+		background-color: map-get($colors, light);
+	}
+
+}

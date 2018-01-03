@@ -26,10 +26,6 @@ page-crm-op {
 		background-color: map-get($colors, warning);
 	}
 
-	.encargado {
-		background-color: map-get($colors, ionBlue);
-	}
-
 	.rechazado {
 		background-color: map-get($colors, danger);
 	}
