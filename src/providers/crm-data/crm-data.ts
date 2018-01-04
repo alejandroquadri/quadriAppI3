@@ -187,6 +187,15 @@ export class CrmDataProvider {
     return this.apiData.updateList('crm/agenda', key, form);
   }
 
+  delteAgendaItem(agendaKey: string, opKey) {
+    let deleteObj = {};
+    deleteObj[`crm/agenda/${agendaKey}`] = null;
+    deleteObj[`crm/op/${opKey}/agenda/${agendaKey}`] = null;
+    console.log(deleteObj);
+    return this.apiData.fanUpdate(deleteObj);
+
+  }
+
   updateFilters() {
     this.filterSubject.next(this.filters)
   }

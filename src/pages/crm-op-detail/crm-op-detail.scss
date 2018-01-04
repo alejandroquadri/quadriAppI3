@@ -68,4 +68,14 @@ page-crm-op-detail {
 		background-color: map-get($colors, light);
 	}
 
+	.actionButtons {
+		margin: 0px;
+	}
+
+	.checkButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	}
+
 }

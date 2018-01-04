@@ -28,6 +28,8 @@ export class CrmOpDetailPage {
 	months: any;
 	actions: any;
 	agendaForm: FormGroup;
+	edit = false;
+	editAgendaKey: string;
 
   constructor(
   	public navCtrl: NavController, 
@@ -86,6 +88,14 @@ export class CrmOpDetailPage {
   }
 
   submit() {
+  	if (!this.edit) {
+  		this.newAgendaItem();
+  	} else {
+  		this.editAgendaItem()
+  	}
+  }
+
+  newAgendaItem() {
   	let form = this.agendaForm.value;
 		form['opKey'] = this.op.$key;
 		form['clientKey'] = this.op.clientKey;
@@ -94,6 +104,37 @@ export class CrmOpDetailPage {
 		.then( ret =>  {
 	  	this.agendaForm.reset();			
 		})
+  }
+
+  switchEditAgendaItem(agendaItem, key) {
+  	console.log(agendaItem, key);
+  	this.editAgendaKey = key;
+  	this.agendaForm.patchValue( {
+  		time: agendaItem.time,
+  		action: agendaItem.action,
+  		desc: agendaItem.desc
+  	})
+  	this.edit = true;
+  }
+
+  switchToNew() {
+  	this.edit = false;
+  	this.editAgendaKey = undefined;
+  	this.agendaForm.reset();
+  }
+
+  editAgendaItem() {
+  	let updateForm = {
+  		time: this.agendaForm.value.time,
+  		desc: this.agendaForm.value.desc,
+  		action: this.agendaForm.value.action
+  	};
+  	this.crmData.updateAgendaItem(this.editAgendaKey, updateForm)
+  	.then( () => console.log('updated'));
+  }
+
+  deleteAgendaItem(agendaKey) {
+  	this.crmData.delteAgendaItem(agendaKey, this.op.$key);
   }
 
 }

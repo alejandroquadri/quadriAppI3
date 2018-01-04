@@ -49,7 +49,14 @@
 				</ion-col>
 				<ion-col col-auto>
 					<button ion-button icon-only clear small  color="ionBlue" type="submit" [disabled]="!agendaForm.valid">
-						<ion-icon name="create"></ion-icon>
+						<ion-icon *ngIf="edit" name="create"></ion-icon>
+						<ion-icon *ngIf="!edit" name="add"></ion-icon>
+					</button>
+				</ion-col>
+				<ion-col col-auto *ngIf="edit">
+					<button ion-button icon-only clear small  color="ionBlue" type="button"
+					(click)="switchToNew()" >
+						<ion-icon name="add"></ion-icon>
 					</button>
 				</ion-col>
 			</ion-row>
@@ -76,27 +83,37 @@
 						<ion-col text-center col-1>
 							<strong>Completo</strong>
 						</ion-col>
+						<ion-col col-1>
+						</ion-col>
 					</ion-row>
 
-					<ion-row *ngFor="let item of op.agenda | objNgfor" class="data">
+					<ion-row *ngFor="let item of op.agenda | objNgfor" class="data" align-items-center>
 						<ion-col text-center col-2>
-							{{ agendaObj[item].time }}
+							{{ agendaObj[item]?.time | momentFormat:'DD-MM-YYYY' }}
 						</ion-col>
 						<ion-col text-center col-2>
-							{{ agendaObj[item].action }}
+							{{ agendaObj[item]?.action }}
 						</ion-col>
 						<ion-col>
-							{{ agendaObj[item].desc }}
+							{{ agendaObj[item]?.desc }}
 						</ion-col>
-						<ion-col text-center col-1>
-							<ion-checkbox #check [checked]="agendaObj[item].complete" 
+						<ion-col text-center col-1 class="checkButton">
+							<ion-checkbox #check align-self-center [checked]="agendaObj[item]?.complete" 
 							(ionChange)="changeCheck(item, check.value)"></ion-checkbox>
 						</ion-col>
+						<ion-col col-1 text-center>
+							<button ion-button icon-only clear color="lightGreyQ" small 
+							(click)="switchEditAgendaItem(agendaObj[item], item)" class="actionButtons">
+								<ion-icon name="create"></ion-icon>
+							</button>
+							<button ion-button icon-only clear color="lightGreyQ" small 
+							(click)="deleteAgendaItem(item)" class="actionButtons">
+								<ion-icon name="trash"></ion-icon>
+							</button>
+						</ion-col>
 					</ion-row>
-					
 
 			  </ion-card-content>
-			
 			</ion-card>
 		</div>
 		
@@ -110,7 +127,7 @@
 				<div *ngIf="calipsoObj">
 					<div *ngIf="calipsoObj[psp]">
 						<ion-card-header margin-bottom>
-					   Presupuesto {{ psp }} - {{ calipsoObj[psp].flag }} - <span>$ {{ calipsoObj[psp].total | number: '1.0-0' }}</span>
+					   Presupuesto {{ psp }} - {{ calipsoObj[psp].flag }}
 					  </ion-card-header>
 						
 					  <ion-card-content>
@@ -148,6 +165,19 @@
 									{{ item.total_importe | number: '1.0-0'}}
 								</ion-col>
 			    		</ion-row>
+			    		<ion-row class="headers">
+								<ion-col>
+								</ion-col>
+								<ion-col col-4>
+								</ion-col>
+								<ion-col>
+								</ion-col>
+								<ion-col>
+								</ion-col>
+								<ion-col>
+									<strong>{{ calipsoObj[psp].total | number: '1.0-0' }}</strong>
+								</ion-col>
+							</ion-row>
 					  </ion-card-content>
 					</div>
 					<div *ngIf="!calipsoObj[psp]" >
