@@ -15,6 +15,7 @@ export class CrmDataProvider {
   checkedPspObj: any;
   statusOptions = ['Pendiente', 'Rechazado', 'Cerrado'];
   actions = ['Llamada', 'Envio de muestra', 'Visita', 'Mail', 'Nota'];
+  salesReps = ['Alejandra Roldan', 'Tarruella Alberto Horacio '];
   filters = {
     status: {
       pendiente: true,

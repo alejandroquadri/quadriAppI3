@@ -158,10 +158,6 @@ export class CrmOpPage {
     this.navCtrl.push('CrmOpDetailPage', op);
   }
 
-  editOp(op: any, key: string) {
-
-  }
-
   presentFilters(myEvent) {
     let popover = this.popoverCtrl.create('CrmOpFiltersPage');
     popover.present({
@@ -172,6 +168,10 @@ export class CrmOpPage {
   presentModal() {
     let profileModal = this.modalCtrl.create('CrmOpFormPage', {state:'addNew'});
     profileModal.present();
+  }
+
+  oldMonth(month: string) {
+    return moment().isAfter(month, 'month');
   }
 
 }

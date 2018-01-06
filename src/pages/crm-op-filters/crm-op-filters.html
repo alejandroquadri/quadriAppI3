@@ -28,7 +28,7 @@
   <ion-item>
     <select class="select" [(ngModel)]="filters.month" (ngModelChange)="updateFilters()">
     	<option value="">Mes</option>
-    	<option *ngFor="let month of months">{{ month }}</option>
+    	<option *ngFor="let month of months" [value]="month">{{ month | momentFormat:'MMM YY' }}</option>
     </select>
   </ion-item>
 

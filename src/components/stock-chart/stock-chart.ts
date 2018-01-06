@@ -114,6 +114,7 @@ export class StockChartComponent {
       break;
       case 'PT unidades': 
       if (
+        dim === "Pileta" ||
 	      dim === "Pastina" ||
 	      dim === '30 x 30' ||
 	      dim === '150 mm' ||

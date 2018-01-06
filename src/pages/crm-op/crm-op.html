@@ -41,7 +41,7 @@
 							<ion-icon name="arrow-dropdown" *ngIf="sortTerm === 'total' && sortDir === false"></ion-icon>
 						</strong>
 					</ion-col>
-					<ion-col col-1 (click)="changeSort('closeMonth')" class="orderCol">
+					<ion-col col (click)="changeSort('closeMonth')" class="orderCol">
 						<strong>Cierre
 							<ion-icon name="arrow-dropup" *ngIf="sortTerm === 'closeMonth' && sortDir === true"></ion-icon>
 							<ion-icon name="arrow-dropdown" *ngIf="sortTerm === 'closeMonth' && sortDir === false"></ion-icon>
@@ -50,7 +50,7 @@
 					<ion-col col-2>
 						<strong>Status</strong>
 					</ion-col>
-					<ion-col col-1>
+					<ion-col col-auto>
 					</ion-col>
 				</ion-row>
 		  </ion-grid>
@@ -60,7 +60,7 @@
 
 <ion-content>
 
-	<ion-grid #dataHeaders>
+	<ion-grid>
 	  <ion-row class="data" *ngFor="let op of opList">
 			<ion-col col-2>
 				{{ op.payload.val().obra }}
@@ -74,9 +74,12 @@
 			<ion-col col-1>
 				{{ op.payload.val().total |  number : '1.0-0' }}
 			</ion-col>
-			<ion-col col-1 text-center>
+			<ion-col text-center>
 				<ion-select #closeMonth (ionChange)="changeCloseMonth(closeMonth.value, op.key)" interface="popover">
-					<ion-option *ngFor="let month of months" [selected]="op.payload.val().closeMonth===month? true: false">{{month}}</ion-option>
+					<ion-option [selected]="oldMonth(op.payload.val().closeMonth)" disabled="true">
+						anterior
+					</ion-option>
+					<ion-option *ngFor="let month of months" [selected]="op.payload.val().closeMonth===month? true: false">{{ month | momentFormat:'MMM YY'}}</ion-option>
 				</ion-select>
 			</ion-col>
 			<ion-col col-2 text-center>
@@ -85,10 +88,7 @@
 					<ion-option *ngFor="let option of statusOptions" [selected]="op.payload.val().status===option? true: false">{{option}}</ion-option>
 				</ion-select>
 			</ion-col>
-			<ion-col col-1 text-center>
-				<button ion-button icon-only clear color="lightGreyQ" small (click)="editOp(op.payload.val(), op.key)" class="actionButtons">
-					<ion-icon name="create"></ion-icon>
-				</button>
+			<ion-col col-auto text-center>
 				<button ion-button icon-only clear color="lightGreyQ" small (click)="seeOp(op.payload.val(), op.key)" class="actionButtons">
 					<ion-icon name="eye"></ion-icon>
 				</button>

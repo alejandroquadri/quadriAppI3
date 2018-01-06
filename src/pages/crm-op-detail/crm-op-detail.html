@@ -21,12 +21,14 @@
 		
 		<ion-row >
 			<ion-col class="colTitle">
-				<div class="titleItem"> {{ op.salesRep }} </div>
-				<div class="titleItem"> $ {{ op.total | number : '1.0-0' }} </div>
-				<select class="titleItem" #closeMonth (change)="changeCloseMonth(closeMonth.value)">
+				<select class="titleItem" #sales (change)="change('salesRep', sales.value)">
+					<option *ngFor="let salesRep of salesReps" [selected]="op.salesRep===salesRep? true: false">{{salesRep}}</option>
+				</select>
+				$ <input style="border: none;" #totalValueEl type="text" size="{{ totalValue.toString().length || 1 }}" (blur)="change('total', totalValueEl.value)" [(ngModel)]="totalValue">
+				<select class="titleItem" #closeMonth (change)="change('closeMonth', closeMonth.value)">
 					<option *ngFor="let month of months" [selected]="op.closeMonth===month? true: false">{{month}}</option>
 				</select>
-				<select class="titleItem" #status (change)="changeStatus(status.value)"
+				<select class="titleItem" #status (change)="change('status', status.value)"
 				[ngClass]="{'pendiente': statusBis === 'Pendiente','rechazado': statusBis === 'Rechazado','cerrado': statusBis === 'Cerrado'}">
 					<option *ngFor="let option of statusOptions" [selected]="op.status === option? true: false">{{option}}</option>
 				</select>

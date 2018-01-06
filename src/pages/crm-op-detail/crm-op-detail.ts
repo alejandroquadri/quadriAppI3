@@ -27,9 +27,11 @@ export class CrmOpDetailPage {
 	statusOptions: any;
 	months: any;
 	actions: any;
+  salesReps: any;
 	agendaForm: FormGroup;
 	edit = false;
 	editAgendaKey: string;
+  totalValue;
 
   constructor(
   	public navCtrl: NavController, 
@@ -41,6 +43,7 @@ export class CrmOpDetailPage {
   	this.months = this.crmData.buildCloseMonth();
   	this.statusOptions = this.crmData.statusOptions;
   	this.actions = this.crmData.actions;
+    this.salesReps = this.crmData.salesReps;
   	this.buildForm();
   }
 
@@ -55,7 +58,8 @@ export class CrmOpDetailPage {
     	this.op = pair.op;
     	if (this.op) {
     		this.statusBis = this.op.status;
-    		this.op['$key'] = this.opKey
+    		this.op['$key'] = this.opKey;
+        this.totalValue = this.op.total;
     	}
     	this.calipsoObj = pair.calipsoObj.psp;
     	this.agendaObj = pair.agendaObj;
@@ -81,10 +85,24 @@ export class CrmOpDetailPage {
     .then( () => console.log('closeMonth actualizado'));
   }
 
+  change(field: string, value: string) {
+    value === 'Tarruella Alberto Horacio'? value = 'Tarruella Alberto Horacio ': '';
+    let form = {};
+    form[field] = value;
+    this.crmData.updateOp(this.op.$key, form)
+    .then( () => console.log(`${field} actualizado`));
+  }
+
   changeCheck(agendaKey, check) {
   	console.log(check);
   	this.crmData.updateAgendaItem(agendaKey, { complete: check})
   	.then( () => console.log('check actualizado'));
+  }
+
+  changeTotal(value) {
+    console.log(value);
+    this.crmData.updateOp(this.op.$key, {total: value})
+    .then( () => console.log('closeMonth actualizado'));
   }
 
   submit() {

@@ -12,7 +12,7 @@ import { CrmDataProvider } from '../../providers';
 })
 export class CrmOpFormPage {
 
-  salesReps = ['Alejandra Roldan', 'Tarruella Alberto Horacio '];
+  salesReps: any;
   addPsp: boolean;
   addNew: boolean;
   edit: boolean;
@@ -55,7 +55,7 @@ export class CrmOpFormPage {
     }
     this.buildForm(this.pspData);
     this.months = this.crmData.buildCloseMonth();
-    // this.buildMonths();
+    this.salesReps = this.crmData.salesReps;
   }
 
   ionViewDidLoad() {
@@ -134,16 +134,6 @@ export class CrmOpFormPage {
         client: ''
       });
   }
-
-  // construye los meses del select
-  // buildMonths() {
-  //   this.months = [];
-  //   for (let i = 0; i < 24; i++) {
-  //     let today =  moment();
-  //     let item = today.add(i, 'month').format('YYYY-MM');
-  //     this.months.push(item);
-  //   }
-  // }
 
   onSubmit() {
     this.saveNewOPPsp();  
