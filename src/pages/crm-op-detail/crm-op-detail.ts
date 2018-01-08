@@ -74,19 +74,20 @@ export class CrmOpDetailPage {
   	})
   }
 
-  changeStatus(status: string) {
-  	this.statusBis = status;
-    this.crmData.updateOp(this.op.$key, {status: status})
-    .then( () => console.log('status actualizado'));
-  }
+  // changeStatus(status: string) {
+  // 	this.statusBis = status;
+  //   this.crmData.updateOp(this.op.$key, {status: status})
+  //   .then( () => console.log('status actualizado'));
+  // }
 
-  changeCloseMonth(closeMonth: string) {
-    this.crmData.updateOp(this.op.$key, {closeMonth: closeMonth})
-    .then( () => console.log('closeMonth actualizado'));
-  }
+  // changeCloseMonth(closeMonth: string) {
+  //   this.crmData.updateOp(this.op.$key, {closeMonth: closeMonth})
+  //   .then( () => console.log('closeMonth actualizado'));
+  // }
 
-  change(field: string, value: string) {
+  change(field: string, value: any) {
     value === 'Tarruella Alberto Horacio'? value = 'Tarruella Alberto Horacio ': '';
+    field === 'total' ? value = Number(value) : '' ;
     let form = {};
     form[field] = value;
     this.crmData.updateOp(this.op.$key, form)
@@ -99,11 +100,11 @@ export class CrmOpDetailPage {
   	.then( () => console.log('check actualizado'));
   }
 
-  changeTotal(value) {
-    console.log(value);
-    this.crmData.updateOp(this.op.$key, {total: value})
-    .then( () => console.log('closeMonth actualizado'));
-  }
+  // changeTotal(value) {
+  //   console.log(value);
+  //   this.crmData.updateOp(this.op.$key, {total: value})
+  //   .then( () => console.log('closeMonth actualizado'));
+  // }
 
   submit() {
   	if (!this.edit) {
