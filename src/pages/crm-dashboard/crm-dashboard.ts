@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { SplitShowProvider } from '../../providers';
+
 /**
  * Generated class for the CrmDashboardPage page.
  *
@@ -15,7 +17,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CrmDashboardPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+  	public navCtrl: NavController,
+  	public navParams: NavParams,
+  	private splitShow: SplitShowProvider) {
   }
 
   ionViewDidLoad() {
