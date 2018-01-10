@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { CrmDashboardPage } from './crm-dashboard';
 
-import { AcSalesChartComponentModule } from '../../components/ac-sales-chart/ac-sales-chart.module';
+import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
   declarations: [
@@ -10,7 +10,7 @@ import { AcSalesChartComponentModule } from '../../components/ac-sales-chart/ac-
   ],
   imports: [
     IonicPageModule.forChild(CrmDashboardPage),
-    AcSalesChartComponentModule
+    ComponentsModule
   ],
 })
 export class CrmDashboardPageModule {}
