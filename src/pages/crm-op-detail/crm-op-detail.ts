@@ -57,6 +57,7 @@ export class CrmOpDetailPage {
     .subscribe( (pair: any) => {
     	this.op = pair.op;
     	if (this.op) {
+        console.log(this.op);
     		this.statusBis = this.op.status;
     		this.op['$key'] = this.opKey;
         this.totalValue = this.op.total;
@@ -74,17 +75,6 @@ export class CrmOpDetailPage {
   	})
   }
 
-  // changeStatus(status: string) {
-  // 	this.statusBis = status;
-  //   this.crmData.updateOp(this.op.$key, {status: status})
-  //   .then( () => console.log('status actualizado'));
-  // }
-
-  // changeCloseMonth(closeMonth: string) {
-  //   this.crmData.updateOp(this.op.$key, {closeMonth: closeMonth})
-  //   .then( () => console.log('closeMonth actualizado'));
-  // }
-
   change(field: string, value: any) {
     value === 'Tarruella Alberto Horacio'? value = 'Tarruella Alberto Horacio ': '';
     field === 'total' ? value = Number(value) : '' ;
@@ -100,12 +90,6 @@ export class CrmOpDetailPage {
   	.then( () => console.log('check actualizado'));
   }
 
-  // changeTotal(value) {
-  //   console.log(value);
-  //   this.crmData.updateOp(this.op.$key, {total: value})
-  //   .then( () => console.log('closeMonth actualizado'));
-  // }
-
   submit() {
   	if (!this.edit) {
   		this.newAgendaItem();
@@ -117,7 +101,9 @@ export class CrmOpDetailPage {
   newAgendaItem() {
   	let form = this.agendaForm.value;
 		form['opKey'] = this.op.$key;
+    form['op'] = this.op.obra;
 		form['clientKey'] = this.op.clientKey;
+    form['client'] = this.op.client;
 		form['complete'] = false;
 		this.crmData.newAgendaNote(form)
 		.then( ret =>  {

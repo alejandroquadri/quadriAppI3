@@ -1,7 +1,8 @@
 ac-sales-chart {
 
 	.selectItem {
-    background-color:rgba(244, 244, 244, 0.29);
+    background-color: rgba(244, 244, 244, 0.29);
+    color: black;
     border: none;
     width: 200px;
     text-indent: 15px;
@@ -9,6 +10,10 @@ ac-sales-chart {
 
   .salesMan {
     width: 300px;
+  }
+
+  .label {
+  	color: #999;
   }
 
 }

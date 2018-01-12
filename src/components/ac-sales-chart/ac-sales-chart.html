@@ -18,8 +18,8 @@
 		</ion-col>
 		<ion-col>
 			<ion-item no-lines class="salesMan">
-				<select [(ngModel)]="salesMan" (ngModelChange)="salesDataFilter()" class="selectItem">
-					<option></option>
+				<select #selectInput [(ngModel)]="salesMan" (ngModelChange)="salesDataFilter()" class="selectItem" [ngClass]="{label: selectInput.value === ''}">
+					<option value="" selected>Vendedor</option>
 					<option>Alejandra Roldan</option>
 					<option>Alberto Tarruella</option>
 				</select>

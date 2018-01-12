@@ -1,4 +1,11 @@
-<!-- Generated template for the OpChartComponent component -->
-<div>
-  {{text}}
-</div>
+<ion-grid>
+	
+	<ion-row no-padding>
+		<h4>Oportunidades</h4>
+	</ion-row>
+
+	<ion-row #chartContainer (window:resize)="setWidth()">
+		<div #opChart></div>
+	</ion-row>
+
+</ion-grid>

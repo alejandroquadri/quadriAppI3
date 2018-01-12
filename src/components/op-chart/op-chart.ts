@@ -1,22 +1,118 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, OnInit, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
+import { StaticDataProvider, ChartBuilderProvider, CrmDataProvider } from '../../providers';
 
-/**
- * Generated class for the OpChartComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
+import { ChartDrawComponent } from '../chart-draw/chart-draw';
+
 @Component({
   selector: 'op-chart',
   templateUrl: 'op-chart.html'
 })
-export class OpChartComponent {
+export class OpChartComponent implements OnInit {
 
-  text: string;
+  @ViewChild('opChart', {read: ViewContainerRef}) opChartEl: ViewContainerRef;
+  @ViewChild('chartContainer') chartContainer;
 
-  constructor() {
-    console.log('Hello OpChartComponent Component');
-    this.text = 'Hello World';
+  opChart: any;
+  opSubs: any;
+  opList: any;
+
+  constructor(
+  	private chartBuilder: ChartBuilderProvider,
+    private staticData: StaticDataProvider,
+    private crmData: CrmDataProvider,
+    private componentFactoryResolver: ComponentFactoryResolver,
+  ) {
   }
+
+  ngOnInit() {
+  	this.opSubs = this.crmData.getOpsListSimple().subscribe( ops => {
+  		this.opList = ops;
+  		this.buildOpData();
+  	})
+  }
+
+  ngAfterViewChecked() {
+    this.setWidth();
+  }
+
+  setWidth() {
+    if (this.opChart) {
+      this.opChart.instance.width = this.chartContainer.nativeElement.clientWidth;
+    }
+  }
+
+  buildOpData() {
+  	let opObj = {};
+  	let labels;
+  	let pendiente = [];
+  	let cerrado = [];
+  	let rechazado = [];
+
+  	this.opList.forEach( op => {
+  		if (!opObj[op.closeMonth]) {
+  			opObj[op.closeMonth] = {
+  				pendiente: 0,
+  				cerrado: 0,
+  				rechazado: 0
+  			};
+  			opObj[op.closeMonth][op.status.toLowerCase()] += op.total;
+  		} else {
+  			opObj[op.closeMonth][op.status.toLowerCase()] += op.total;
+  		}
+  	});  	
+  	labels = Object.keys(opObj);
+
+  	labels.forEach( month => {
+  		pendiente.push(opObj[month].pendiente);
+  		cerrado.push(opObj[month].cerrado);
+  		rechazado.push(opObj[month].rechazado);
+  	})
+
+  	let datasets = [
+  		this.chartBuilder.buildDatasets(pendiente, 'pendiente', 'rgba(255, 153, 0, 1)', 'rgba(255, 153, 0, 0.8)'),
+  		this.chartBuilder.buildDatasets(cerrado, 'cerrado', 'rgba(0, 128, 0, 1)', 'rgba(0, 128, 0, 0.8)'),
+  		this.chartBuilder.buildDatasets(rechazado, 'rechazado', 'rgba(220, 57, 18, 1)', 'rgba(220, 57, 18, 0.8)')
+  	]
+
+  	this.buildStockChart(labels, datasets);
+
+  }
+
+  buildStockChart(labels, datasets, nArts?: number) {
+    const childComponent = this.componentFactoryResolver.resolveComponentFactory(ChartDrawComponent);
+    if (this.opChart) { this.opChart.destroy() }
+    this.opChart = this.opChartEl.createComponent(childComponent);
+    this.opChart.instance.options = this.chartOptions();
+    this.opChart.instance.xStacked = true;
+    this.opChart.instance.width = this.chartContainer.nativeElement.clientWidth;
+    this.opChart.instance.chartType = 'bar';
+    this.opChart.instance.labels = labels;
+    this.opChart.instance.datasets = datasets;
+  }
+
+  chartOptions() {
+    return {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        xAxes: [{
+          stacked: true,
+        }],
+        yAxes: [{
+          stacked: true,
+          ticks: {
+              callback: (value, index, values) => this.chartBuilder.formatChartNumber(value, '1.0')
+          },
+        }]
+      },
+      tooltips: {
+        callbacks: {
+          label: (tooltipItem) => this.chartBuilder.formatChartNumber(tooltipItem.yLabel, '1.0')
+        }
+      }
+    }
+  }
+
+  
 
 }

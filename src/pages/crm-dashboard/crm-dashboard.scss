@@ -1,3 +1,48 @@
 page-crm-dashboard {
 
+	.container {
+		display: flex;
+	}
+
+	.agenda {
+		width: 50%;
+	}
+
+	.graficos {
+		width: 50%
+	}
+
+	.date {
+    width: 270px;
+  }
+
+  .text-input {
+    background-color: rgba(244, 244, 244, 0.29);
+    border-radius: 15px;
+  }
+
+  .item-inner {
+    border-bottom-color: transparent !important; 
+    -webkit-box-shadow: none !important; 
+    box-shadow: none !important; 
+  }
+
+  .checkButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	}
+
+	.data {
+		border-bottom: solid map-get($colors, light) 1px;
+	}
+
+	.data:hover {
+		background-color: map-get($colors, light);
+	}
+
+	.actionButtons {
+		margin: 0px;
+	}
+
 }

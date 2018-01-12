@@ -82,11 +82,13 @@ export class CrmDataProvider {
     this.calipsoObjSubject.next(filteredObj);
   }
 
-  buildCloseMonth() {
+  buildCloseMonth(subsMonths?: number) {
     let months = [];
+    let today; 
+    subsMonths ? today = moment() : today = moment().subtract(subsMonths, 'months');
+
     for (let i = 0; i < 24; i++) {
-      let today =  moment();
-      let item = today.add(i, 'month').format('YYYY-MM')
+      let item = today.clone().add(i, 'month').format('YYYY-MM')
       months.push(item);
     }
     return months;
@@ -102,6 +104,10 @@ export class CrmDataProvider {
 
   getOpsList() {
     return this.apiData.getListMeta('crm/op');
+  }
+
+  getOpsListSimple() {
+    return this.apiData.getList('crm/op');
   }
 
   getClients() {

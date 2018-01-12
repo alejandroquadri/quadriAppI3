@@ -9,14 +9,85 @@
 	      <ion-icon name="ios-menu"></ion-icon>
 	    </button>
 	  </ion-buttons>
-    <ion-title>crm-dashboard</ion-title>
+    <ion-title>Tablero</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+	
+	<div class="container">
+		<div class="agenda" *ngIf="agendaObj">
+	
+				<ion-row>
+					<ion-col no-padding>
+						<h4>Agenda</h4>
+					</ion-col>
+				</ion-row>
 
-	<ac-sales-chart></ac-sales-chart>
+				<ion-row>
+					<ion-col>
+						<ion-item no-lines class="date" >
+					  	<ion-input class="dateInput" [(ngModel)]="date" (ngModelChange)="dailyProdObj()" type="date"></ion-input>
+					  	<button ion-button outline item-end icon-only small (click)="back()"><ion-icon name="ios-arrow-back"></ion-icon></button>
+					    <button ion-button outline item-end icon-only small (click)="forward()"><ion-icon name="ios-arrow-forward"></ion-icon></button>
+						</ion-item>
+					</ion-col>
+				</ion-row>
 
+				<ion-row>
+					<ion-col text-center col-3>
+						<strong>Oportunidad</strong>
+						
+					</ion-col>
+					<ion-col text-center col-2>
+						<strong>Cliente</strong>
+					</ion-col>
+					<ion-col text-center col-2>
+						<strong>Accion</strong>
+					</ion-col>
+					<ion-col text-center col-3>
+						<strong>Descripcion</strong>
+					</ion-col>
+					<ion-col text-center col-auto>
+					</ion-col>
+					<ion-col col-auto>
+					</ion-col>
+				</ion-row>
+
+				<ion-row *ngFor="let item of agendaObj[date]" align-items-center class="data">
+					<ion-col col-3>
+						{{ item.op }}
+					</ion-col>
+					<ion-col col-2>
+						{{ item.client }}
+					</ion-col>
+					<ion-col col-2>
+						{{ item.action }}
+					</ion-col>
+					<ion-col col-3 text-center>
+						{{ item.desc }}
+					</ion-col>
+					<ion-col class="checkButton" col-auto>
+						<ion-checkbox #check align-self-center [checked]="item?.complete" 
+							(ionChange)="changeCheck(item.$key, check.value)">
+						</ion-checkbox>
+					</ion-col>
+					<ion-col col-auto>
+						<button ion-button icon-only clear color="lightGreyQ" small (click)="seeOp(item.opKey)" class="actionButtons">
+							<ion-icon name="eye"></ion-icon>
+						</button>
+					</ion-col>
+				</ion-row>
+
+		</div>
+
+		<div class="graficos">
+			<ac-sales-chart></ac-sales-chart>
+			<op-chart></op-chart>
+		</div>
+
+	</div>
+		
 </ion-content>
