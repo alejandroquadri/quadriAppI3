@@ -41,8 +41,8 @@ export class SparePartsPage {
   }
 
   ionViewDidLoad() {
-    this.spareSubs = this.spareData.getSparePartsMeta()
-    this.filterSubs = this.spareData.filterObs
+    this.spareSubs = this.spareData.getSparePartsMeta();
+    this.filterSubs = this.spareData.filterObs;
 
     this.obsSubs = Observable.combineLatest(this.spareSubs, this.filterSubs, (parts: any, filters: any) => ({parts, filters}))
     this.obsSubs.subscribe( (pair: any) => {
