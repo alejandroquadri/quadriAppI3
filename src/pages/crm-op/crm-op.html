@@ -1,13 +1,8 @@
 <ion-header>
 
   <ion-navbar>
-	  <button ion-button menuToggle *ngIf="splitShow.showMenuToggle()">
-	    <ion-icon name="menu"></ion-icon>
-	  </button>
-    <ion-buttons left>
-	    <button ion-button icon-only small (click)="splitShow.showChange()" *ngIf="!splitShow.show && !splitShow.showMenuToggle()">
-	      <ion-icon name="ios-menu"></ion-icon>
-	    </button>
+	  <ion-buttons left>
+	  	<split-ctrl></split-ctrl>
 	  </ion-buttons>
     <ion-searchbar [(ngModel)]="searchInput" (ngModelChange)="searchBar($event)"></ion-searchbar>
     <ion-buttons start>

@@ -8,6 +8,7 @@ import { ProdChartComponent } from './prodChart/prodChart';
 import { AcChartComponent } from './acChart/acChart';
 import { AcSalesChartComponent } from './ac-sales-chart/ac-sales-chart';
 import { StockChartComponent } from './stock-chart/stock-chart';
+import { SplitCtrlComponent } from './split-ctrl/split-ctrl';
 
 @NgModule({
 	declarations: [
@@ -16,7 +17,8 @@ import { StockChartComponent } from './stock-chart/stock-chart';
     ProdChartComponent,
     AcChartComponent,
     AcSalesChartComponent,
-    StockChartComponent
+    StockChartComponent,
+    SplitCtrlComponent
   ],
 	imports: [
 		IonicModule,
@@ -31,7 +33,8 @@ import { StockChartComponent } from './stock-chart/stock-chart';
     ProdChartComponent,
     AcChartComponent,
     AcSalesChartComponent,
-    StockChartComponent
+    StockChartComponent,
+    SplitCtrlComponent
   ],
 
 })

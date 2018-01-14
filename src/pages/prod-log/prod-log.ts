@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 
-import { ProductionDataProvider, SplitShowProvider } from '../../providers';
+import { ProductionDataProvider } from '../../providers';
 import { FilterPipe, SortPipe } from '../../pipes';
 
 @IonicPage()
@@ -24,7 +24,6 @@ export class ProdLogPage {
   	public navParams: NavParams,
     public platform: Platform,
     private prodData: ProductionDataProvider,
-    private splitShow: SplitShowProvider,
     private filterPipe: FilterPipe,
     private sortPipe: SortPipe
     ) {

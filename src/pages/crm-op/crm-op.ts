@@ -4,8 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import "rxjs/add/observable/combineLatest";
 import * as moment from 'moment';
 
-import { CrmDataProvider, SplitShowProvider } from '../../providers';
-import { FieldFilterPipe, FilterPipe, SortPipe } from '../../pipes';
+import { CrmDataProvider } from '../../providers';
+import { FilterPipe, SortPipe } from '../../pipes';
 
 @IonicPage()
 @Component({
@@ -36,10 +36,8 @@ export class CrmOpPage {
   	public navCtrl: NavController,
   	public navParams: NavParams,
   	private crmData: CrmDataProvider,
-  	private splitShow: SplitShowProvider,
   	public popoverCtrl: PopoverController,
     public modalCtrl: ModalController,
-    private fieldFilterPipe: FieldFilterPipe,
     private filterPipe: FilterPipe,
     private sortPipe: SortPipe
 	) {

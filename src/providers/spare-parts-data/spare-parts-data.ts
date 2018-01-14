@@ -4,8 +4,6 @@ import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { ApiDataProvider } from '../api-data/api-data';
 import { AuthDataProvider } from '../auth-data/auth-data';
 
-import { FieldFilterPipe, FilterPipe, SortPipe } from '../../pipes';
-
 @Injectable()
 export class SparePartsDataProvider {
 
@@ -30,10 +28,7 @@ export class SparePartsDataProvider {
 
   constructor(
   	private api: ApiDataProvider,
-  	private authData: AuthDataProvider,
-    private fieldFilterPipe: FieldFilterPipe,
-    private filterPipe: FilterPipe,
-    private sortPipe: SortPipe
+  	private authData: AuthDataProvider
 	) {
     this.updateFilters();
   }

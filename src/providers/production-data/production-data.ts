@@ -3,9 +3,6 @@ import { Injectable } from '@angular/core';
 import { ApiDataProvider } from '../api-data/api-data';
 import { AuthDataProvider } from '../auth-data/auth-data';
 
-import { FilterPipe, SortPipe } from '../../pipes';
-
-
 @Injectable()
 export class ProductionDataProvider {
 
@@ -17,8 +14,6 @@ export class ProductionDataProvider {
   constructor(
   	private api: ApiDataProvider,
   	private authData: AuthDataProvider,
-    private filterPipe: FilterPipe,
-    private sortPipe: SortPipe
   	) {
   }
 

@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import "rxjs/add/observable/combineLatest";
 
-import { CrmDataProvider, SplitShowProvider } from '../../providers';
+import { CrmDataProvider } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -37,7 +37,6 @@ export class CrmOpDetailPage {
   	public navCtrl: NavController, 
   	public navParams: NavParams,
   	private crmData: CrmDataProvider,
-  	private splitShow: SplitShowProvider,
   	private fb: FormBuilder,
   	) {
   	this.months = this.crmData.buildCloseMonth();

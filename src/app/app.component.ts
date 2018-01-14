@@ -3,7 +3,7 @@ import { Platform, Nav, Content } from 'ionic-angular';
 // import { StatusBar } from '@ionic-native/status-bar';
 // import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { AuthDataProvider, SplitShowProvider, SparePartsDataProvider } from '../providers';
+import { AuthDataProvider, SplitShowProvider } from '../providers';
 
 
 @Component({
@@ -25,7 +25,6 @@ export class MyApp {
     // public splashScreen: SplashScreen,
     private splitShow: SplitShowProvider,
     private authData: AuthDataProvider,
-    private spareParts: SparePartsDataProvider
   ) {
     platform.ready().then(() => {
         // Okay, so the platform is ready and our plugins are available.

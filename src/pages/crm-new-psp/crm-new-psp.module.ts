@@ -3,6 +3,8 @@ import { IonicPageModule } from 'ionic-angular';
 import { CrmNewPspPage } from './crm-new-psp';
 
 import { PipesModule } from '../../pipes/pipes.module';
+import { ComponentsModule } from '../../components/components.module';
+
 
 @NgModule({
   declarations: [
@@ -10,7 +12,8 @@ import { PipesModule } from '../../pipes/pipes.module';
   ],
   imports: [
     IonicPageModule.forChild(CrmNewPspPage),
-    PipesModule
+    PipesModule,
+    ComponentsModule
   ],
 })
 export class CrmNewPspPageModule {}

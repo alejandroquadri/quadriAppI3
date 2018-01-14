@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
-import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { map } from 'rxjs/operators';
 
 import * as moment from 'moment';
 import 'moment/locale/es';
 
-import { SplitShowProvider, ProdProgramDataProvider, StaticDataProvider } from '../../providers';
+import { ProdProgramDataProvider, StaticDataProvider } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -53,7 +53,6 @@ export class ProdProgramPage {
 
   constructor(
   	private _fb: FormBuilder,
-  	private splitShow: SplitShowProvider,
   	private programData: ProdProgramDataProvider,
   	private staticData: StaticDataProvider,
   ) {
@@ -177,9 +176,9 @@ export class ProdProgramPage {
     this.buildMonth()
   };
 
-  private removeTime(date){
-      return date.day(0).hour(0).minute(0).second(0).millisecond(0);
-  }
+  // private removeTime(date){
+  //     return date.day(0).hour(0).minute(0).second(0).millisecond(0);
+  // }
 
   private buildWeek(start) {
     let weekDays = [];

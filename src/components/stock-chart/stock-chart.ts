@@ -9,7 +9,7 @@ import { SortPipe } from '../../pipes';
   selector: 'stock-chart',
   templateUrl: 'stock-chart.html'
 })
-export class StockChartComponent {
+export class StockChartComponent implements OnInit {
 
   stockSubs: any;
   stock: any;

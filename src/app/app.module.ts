@@ -9,7 +9,7 @@ import { MyApp } from './app.component';
 
 // importo AngularFire2 modules
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 // settings AF2

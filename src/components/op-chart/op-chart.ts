@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
-import { StaticDataProvider, ChartBuilderProvider, CrmDataProvider } from '../../providers';
+import { ChartBuilderProvider, CrmDataProvider } from '../../providers';
 
 import { ChartDrawComponent } from '../chart-draw/chart-draw';
 
@@ -18,7 +18,6 @@ export class OpChartComponent implements OnInit {
 
   constructor(
   	private chartBuilder: ChartBuilderProvider,
-    private staticData: StaticDataProvider,
     private crmData: CrmDataProvider,
     private componentFactoryResolver: ComponentFactoryResolver,
   ) {

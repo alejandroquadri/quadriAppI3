@@ -2,7 +2,7 @@ import { Component, ViewChild, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 import { IonicPage, NavController, NavParams, ViewController, Platform} from 'ionic-angular';
 
-import { StaticDataProvider, ProductionDataProvider, SplitShowProvider } from '../../providers';
+import { StaticDataProvider, ProductionDataProvider } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -25,7 +25,6 @@ export class PartesFormPage implements OnInit {
     public viewCtrl: ViewController,
     private prodData: ProductionDataProvider,
     private staticData: StaticDataProvider,
-    private splitShow: SplitShowProvider
   ) { 
     this.data = this.staticData;
   }

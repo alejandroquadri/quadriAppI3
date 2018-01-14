@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as moment from 'moment';
 
-import { SplitShowProvider, CrmDataProvider } from '../../providers';
+import { CrmDataProvider } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -19,7 +19,6 @@ export class CrmDashboardPage {
   constructor(
   	public navCtrl: NavController,
   	public navParams: NavParams,
-  	private splitShow: SplitShowProvider,
     private crmData: CrmDataProvider
   ) {
   }

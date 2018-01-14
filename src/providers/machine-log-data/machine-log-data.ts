@@ -2,16 +2,11 @@ import { Injectable } from '@angular/core';
 
 import { ApiDataProvider } from '../api-data/api-data';
 
-import { FilterPipe, SortPipe } from '../../pipes';
-
-
 @Injectable()
 export class MachineLogDataProvider {
 
   constructor(
   	private api: ApiDataProvider,
-    private filterPipe: FilterPipe,
-    private sortPipe: SortPipe
 	) {
   }
 

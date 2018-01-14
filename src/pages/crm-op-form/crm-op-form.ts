@@ -1,7 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
-import * as moment from 'moment';
 
 import { CrmDataProvider } from '../../providers';
 

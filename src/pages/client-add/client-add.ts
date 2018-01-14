@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-
-import { CrmDataProvider } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -18,7 +16,6 @@ export class ClientAddPage {
   	public navParams: NavParams,
   	private fb: FormBuilder,
     public viewCtrl: ViewController,
-    private crmData: CrmDataProvider
   ) {
   }
 

@@ -1,9 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform, PopoverController, ToastController, ModalController, Content } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams, Platform, PopoverController, ToastController, ModalController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import "rxjs/add/observable/combineLatest";
 
-import { SparePartsDataProvider, SplitShowProvider } from '../../providers';
+import { SparePartsDataProvider } from '../../providers';
 import { FieldFilterPipe, FilterPipe, SortPipe } from '../../pipes';
 
 @IonicPage()
@@ -32,12 +32,10 @@ export class SparePartsPage {
     public toastCtrl: ToastController,
     public modalCtrl: ModalController,
     private spareData: SparePartsDataProvider,
-    private splitShow: SplitShowProvider,
     private fieldFilterPipe: FieldFilterPipe,
     private filterPipe: FilterPipe,
     private sortPipe: SortPipe
 	) {
-    // this.filters = this.spareData.filters;
   }
 
   ionViewDidLoad() {

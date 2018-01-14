@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 
 import { CrmDataProvider } from '../../providers';
-import { FieldFilterPipe, FilterPipe, SortPipe } from '../../pipes';
+import { FilterPipe } from '../../pipes';
 
 @IonicPage()
 @Component({

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 
-import { FieldFilterPipe, FilterPipe, SortPipe } from '../../pipes';
 import { CrmDataProvider } from '../../providers';
 
 @IonicPage()
@@ -14,8 +13,6 @@ export class OpSelectPage {
   constructor(
   	public navCtrl: NavController,
     public navParams: NavParams,
-    private filterPipe: FilterPipe,
-    private fieldFilterPipe: FieldFilterPipe,
     private viewCtrl: ViewController,
     private crmData: CrmDataProvider
   ) {

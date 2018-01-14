@@ -3,9 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import { Observable } from 'rxjs/Observable';
 import "rxjs/add/observable/combineLatest";
 
-import * as moment from 'moment';
-
-import { CrmDataProvider, SplitShowProvider } from '../../providers';
+import { CrmDataProvider } from '../../providers';
 import { FieldFilterPipe, SortPipe } from '../../pipes';
 
 @IonicPage()
@@ -29,7 +27,6 @@ export class CrmNewPspPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public crmData: CrmDataProvider,
-    private splitShow: SplitShowProvider,
     private fieldFilter: FieldFilterPipe,
     private sortPipe: SortPipe,
     public modalCtrl: ModalController,
