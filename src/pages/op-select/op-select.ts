@@ -21,25 +21,32 @@ export class OpSelectPage {
   searchInput = '';
   opSubs: any;
   opList: Array<any>;
-  filteredClients;
+  filteredOps;
 
   ionViewDidLoad() {
   	this.opSubs = this.crmData.getOpsList();
   	this.opSubs.subscribe( ops => {
-  		this.opList = ops;
+  		this.opList = this.initialFilter(ops);
   		console.log(this.opList);
   		this.filter();
   	})
-    
+  }
+
+  initialFilter(opList) {
+    // permito que se vean solo las ops que aun estan pendientes
+    return opList.filter((op:any) => {
+      return op.payload.val().status === 'Pendiente';
+    })
   }
 
   filter(event?) {
+    // filtro que sirve para la searchbar
   	if(this.searchInput !== '') {
-  		this.filteredClients = this.opList.filter((op:any) => {
+  		this.filteredOps = this.opList.filter((op:any) => {
 	      return (op.payload.val().obra.toLowerCase().indexOf(this.searchInput.toLowerCase()) > -1);
 	    });
 		 } else {
-		 	this.filteredClients = this.opList;
+		 	this.filteredOps = this.opList;
 		 }
   }
 
