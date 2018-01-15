@@ -41,7 +41,7 @@ export class CrmNewPspPage {
 
     Observable.combineLatest(this.pspSubs, this.checkedPspSubs, (psps: any, checkedPsp: any) => ({psps, checkedPsp}))
     .subscribe( pair => {
-      this.checkedPspsObj = pair.checkedPsp;
+      pair.checkedPsp? this.checkedPspsObj = pair.checkedPsp : this.checkedPspsObj = {};
       this.pspObj = pair.psps.psp;
       this.filterPsp();
       this.filterSalesRep(); 
