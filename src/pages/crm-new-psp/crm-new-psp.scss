@@ -25,4 +25,8 @@ page-crm-new-psp {
     background-color: map-get($colors, light);
   }
 
+  .orderCol {
+    cursor: pointer;
+  }
+
 }

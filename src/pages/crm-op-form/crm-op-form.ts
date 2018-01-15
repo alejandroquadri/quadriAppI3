@@ -85,7 +85,8 @@ export class CrmOpFormPage {
   lookClient() {
     let profileModal = this.modalCtrl.create('ClientSelectPage', {pablo:'pelotudo'});
     profileModal.onDidDismiss(data => {
-      this.opForm.patchValue({
+      if (data) {
+        this.opForm.patchValue({
         obra: '',
         closeMonth: '',
         client: data.payload.val().name
@@ -93,6 +94,7 @@ export class CrmOpFormPage {
       this.updateClientForm = data.payload.val();
       this.clientKey = data.key;
       this.opKey = undefined;
+      }
     })
     profileModal.present();
   }
@@ -100,7 +102,8 @@ export class CrmOpFormPage {
   lookOp() {
     let profileModal = this.modalCtrl.create('OpSelectPage');
     profileModal.onDidDismiss(data => {
-      this.opForm.patchValue({
+      if (data) {
+        this.opForm.patchValue({
         obra: data.op.obra,
         closeMonth: data.op.closeMonth,
         client: data.op.client
@@ -109,6 +112,7 @@ export class CrmOpFormPage {
       this.clientKey = data.op.clientKey;
       this.opKey = data.key;
       this.updateClientForm = this.clientObj[this.clientKey];
+      }
     })
     profileModal.present();
   }

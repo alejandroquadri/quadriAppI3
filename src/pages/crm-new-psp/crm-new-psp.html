@@ -23,8 +23,11 @@
 					<ion-col col-2>
 						<strong>Fecha</strong>
 					</ion-col>
-					<ion-col col-2>
-						<strong>n° PSP</strong>
+					<ion-col col-2 (click)="changeSort('num')" class="orderCol">
+						<strong>n° PSP
+              <ion-icon name="arrow-dropup" *ngIf="sortTerm === 'num' && sortDir === true"></ion-icon>
+              <ion-icon name="arrow-dropdown" *ngIf="sortTerm === 'num' && sortDir === false"></ion-icon>
+            </strong>
 					</ion-col>
 					<ion-col col-3>
 						<strong>Razon Social</strong>
@@ -32,8 +35,11 @@
 					<ion-col col-3>
 						<strong>Vendedor</strong>
 					</ion-col>
-					<ion-col col-1>
-						<strong>Total $</strong>
+					<ion-col col-1 (click)="changeSort('total')" class="orderCol">
+						<strong>Total $
+              <ion-icon name="arrow-dropup" *ngIf="sortTerm === 'total' && sortDir === true"></ion-icon>
+              <ion-icon name="arrow-dropdown" *ngIf="sortTerm === 'total' && sortDir === false"></ion-icon>
+            </strong>
 					</ion-col>
 					<ion-col col-1>
 					</ion-col>
@@ -69,7 +75,7 @@
           <button ion-button icon-only clear color="lightGreyQ" small (click)="addOp(psp)" class="actionButtons">
 						<ion-icon name="add"></ion-icon>
 					</button>
-					<button ion-button icon-only clear color="lightGreyQ" small (click)="ignore(psp)" class="actionButtons">
+					<button ion-button icon-only clear color="lightGreyQ" small (click)="ignore(psp.num)" class="actionButtons">
 						<ion-icon name="remove"></ion-icon>
 					</button>
         </ion-col>

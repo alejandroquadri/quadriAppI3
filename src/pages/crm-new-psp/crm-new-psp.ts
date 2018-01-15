@@ -22,6 +22,8 @@ export class CrmNewPspPage {
   filteredPsp: any;
   salesRep = "";
   viewArray: any;
+  sortTerm = 'num';
+  sortDir = false;
 
   constructor(
     public navCtrl: NavController,
@@ -52,12 +54,16 @@ export class CrmNewPspPage {
 
     let psp = Object.keys(this.pspObj);
     psp.filter( (psp:any) => {
-      return (!this.checkedPspsObj[psp] && (this.pspObj[psp].flag === 'Pronostico' || this.pspObj[psp].flag ==='Pendiente'))
+      return (
+                !(this.checkedPspsObj[psp]) &&
+                // !(this.checkedPspsObj[psp]=== 'ignored') &&
+                (this.pspObj[psp].flag === 'Pronostico' || this.pspObj[psp].flag ==='Pendiente')
+              )
     })
     .forEach( psp => {
       filteredArray.push(this.pspObj[psp]);
     })
-    this.filteredPsp = this.sortPipe.transform(filteredArray, 'num', false, false);;
+    this.filteredPsp = filteredArray;
   }
 
   filterSalesRep() {
@@ -66,6 +72,17 @@ export class CrmNewPspPage {
     } else  {
       this.viewArray = this.filteredPsp;
     }
+    this.sort();
+  }
+
+  sort() {
+    this.viewArray = this.sortPipe.transform(this.viewArray, this.sortTerm, this.sortDir, false);;
+  }
+
+  changeSort(term) {
+    this.sortTerm = term;
+    this.sortDir = !this.sortDir;
+    this.sort();
   }
 
   addOp(psp) {
@@ -74,7 +91,7 @@ export class CrmNewPspPage {
   }
 
   ignore(psp) {
-
+    this.crmData.ignorePsp(psp);
   }
 
 }

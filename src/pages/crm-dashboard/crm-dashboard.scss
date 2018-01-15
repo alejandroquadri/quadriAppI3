@@ -14,11 +14,13 @@ page-crm-dashboard {
 
 	.date {
     width: 270px;
+    padding-left: 0px;
   }
 
   .text-input {
     background-color: rgba(244, 244, 244, 0.29);
     border-radius: 15px;
+    padding-left: 2rem;
   }
 
   .item-inner {
@@ -33,6 +35,10 @@ page-crm-dashboard {
     justify-content: center;
 	}
 
+	.headers {
+		border-bottom: solid map-get($colors, light) 1px;
+	}
+
 	.data {
 		border-bottom: solid map-get($colors, light) 1px;
 	}
@@ -43,6 +49,10 @@ page-crm-dashboard {
 
 	.actionButtons {
 		margin: 0px;
+	}
+
+	.agendaCard {
+		margin-left: 0px;
 	}
 
 }

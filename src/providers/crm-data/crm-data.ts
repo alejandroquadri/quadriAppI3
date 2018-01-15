@@ -129,6 +129,12 @@ export class CrmDataProvider {
     return this.apiData.getListMeta('crm/agenda');
   }
 
+  ignorePsp(psp: string) {
+    let form = {}
+    form[psp] = 'ignored';
+    return this.apiData.updateObject('crm/checkPsp', form)
+  }
+
   saveNewOp(opForm: any, clientForm: any, psp?:any, razSoc?: string, opKey?: string, cliKey?: string) {
     // console.log('llega', opForm, clientForm, psp, razSoc, opKey, cliKey);
     let razSocObj;
