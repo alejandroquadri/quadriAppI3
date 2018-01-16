@@ -27,7 +27,6 @@ export class OpSelectPage {
   	this.opSubs = this.crmData.getOpsList();
   	this.opSubs.subscribe( ops => {
   		this.opList = this.initialFilter(ops);
-  		console.log(this.opList);
   		this.filter();
   	})
   }
