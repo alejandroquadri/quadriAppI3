@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import "rxjs/add/observable/combineLatest";
@@ -38,6 +38,7 @@ export class CrmOpDetailPage {
   	public navParams: NavParams,
   	private crmData: CrmDataProvider,
   	private fb: FormBuilder,
+    public modalCtrl: ModalController,
   	) {
   	this.months = this.crmData.buildCloseMonth();
   	this.statusOptions = this.crmData.statusOptions;
@@ -139,6 +140,11 @@ export class CrmOpDetailPage {
 
   deleteAgendaItem(agendaKey) {
   	this.crmData.delteAgendaItem(agendaKey, this.op.$key);
+  }
+
+  seeClient(key: string) {
+    let profileModal = this.modalCtrl.create('CrmClientFormPage', {$key: key, mode: 'edit'});
+    profileModal.present();
   }
 
 }

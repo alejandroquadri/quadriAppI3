@@ -5,6 +5,11 @@
 	  	<split-ctrl></split-ctrl>
 	  </ion-buttons>
     <ion-title>{{ op?.obra }} - {{ op?.client }}</ion-title>
+    <ion-buttons start>
+    	<button ion-button icon-only clear color="lightGreyQ" small (click)="seeClient(op?.clientKey)">
+					<ion-icon name="eye"></ion-icon>
+			</button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -14,7 +19,7 @@
 
 	<ion-grid *ngIf="op">
 		
-		<ion-row >
+		<ion-row>
 			<ion-col class="colTitle">
 				<select class="titleItem" #sales (change)="change('salesRep', sales.value)">
 					<option *ngFor="let salesRep of salesReps" [selected]="op.salesRep===salesRep? true: false">{{salesRep}}</option>

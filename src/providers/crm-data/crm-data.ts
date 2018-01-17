@@ -117,6 +117,10 @@ export class CrmDataProvider {
     return this.apiData.getObject('crm/clients');
   }
 
+  getClient(key: string) {
+    return this.apiData.getObject(`crm/clients/${key}`);
+  }
+
   getOp(key) {
     return this.apiData.getObject(`crm/op/${key}`);
   }
