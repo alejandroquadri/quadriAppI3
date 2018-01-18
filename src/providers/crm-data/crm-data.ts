@@ -9,12 +9,13 @@ import { HttpApiProvider, ApiDataProvider } from '../../providers';
 @Injectable()
 export class CrmDataProvider {
 
-	calipsoSubs: any
+	calipsoSubs: any;
   checkedPspSubs: any;
   checkedPspObj: any;
   statusOptions = ['Pendiente', 'Rechazado', 'Cerrado'];
   actions = ['Llamada', 'Envio de muestra', 'Visita', 'Mail', 'Nota'];
   salesReps = ['Alejandra Roldan', 'Tarruella Alberto Horacio '];
+  clientTypes = ['Constructora', 'Estudio Arq', 'Dsitribuidor', 'Adm Consorcio', 'Cliente Final'];
   filters = {
     status: {
       pendiente: true,
@@ -36,7 +37,7 @@ export class CrmDataProvider {
 
   constructor(
     private httpApi: HttpApiProvider,
-    private apiData: ApiDataProvider
+    private apiData: ApiDataProvider,
   ) {
 			this.subscribeToCalipsoDocs();
       this.updateFilters();
@@ -133,6 +134,10 @@ export class CrmDataProvider {
     return this.apiData.getListMeta('crm/agenda');
   }
 
+  getContactObj() {
+    return this.apiData.getObject('crm/contacts');
+  }
+
   ignorePsp(psp: string) {
     let form = {}
     form[psp] = 'ignored';
@@ -171,7 +176,7 @@ export class CrmDataProvider {
     return this.apiData.push('crm/client', client);
   }
 
-  newAgendaNote (agenda) {
+  newAgendaNote(agenda) {
     let agendaKey = this.apiData.getNewKey();
     let opAgenda = {};
     opAgenda[agendaKey] = true;
@@ -195,21 +200,46 @@ export class CrmDataProvider {
   	return this.apiData.updateObject('crm/checkPsp',form);
   }
 
+  newContact(contact) {
+    let contactKey = this.apiData.getNewKey();
+    let clientContact = {};
+    clientContact[contactKey] = true;
+    
+    let contacts = this.apiData.fanOutObject(contact, [`crm/contacts/${contactKey}`], false);
+    let clientUpdate = this.apiData.fanOutObject(clientContact, [`crm/clients/${contact.clientKey}/contacts`], false);
+    let updateObj = Object.assign({}, contacts, clientUpdate);
+    console.log(updateObj);
+    return this.apiData.fanUpdate(updateObj);
+  }
+
   updateOp(key: string, form: any) {
     return this.apiData.updateList('crm/op', key, form);
+  }
+
+  updateClient(key: string, form: any) {
+    return this.apiData.updateList('crm/clients', key, form)
   }
 
   updateAgendaItem(key: string, form: any) {
     return this.apiData.updateList('crm/agenda', key, form);
   }
 
+  updateContact(key: string, form: any) {
+    return this.apiData.updateList('crm/contacts', key, form);
+  }
+
   delteAgendaItem(agendaKey: string, opKey) {
     let deleteObj = {};
     deleteObj[`crm/agenda/${agendaKey}`] = null;
     deleteObj[`crm/op/${opKey}/agenda/${agendaKey}`] = null;
-    console.log(deleteObj);
     return this.apiData.fanUpdate(deleteObj);
+  }
 
+  deleteContact(contactKey: string, clientKey: string) {
+    let deleteObj = {};
+    deleteObj[`crm/contacts/${contactKey}`] = null;
+    deleteObj[`crm/clients/${clientKey}/contacts/${contactKey}`] = null;
+    return this.apiData.fanUpdate(deleteObj);
   }
 
   updateFilters() {

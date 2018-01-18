@@ -57,7 +57,6 @@ export class CrmOpDetailPage {
     .subscribe( (pair: any) => {
     	this.op = pair.op;
     	if (this.op) {
-        console.log(this.op);
     		this.statusBis = this.op.status;
     		this.op['$key'] = this.opKey;
         this.totalValue = this.op.total;

@@ -1,13 +1,30 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ clientObj?.name }}</ion-title>
+		<ion-title>{{ clientObj?.name }}</ion-title>
     <ion-buttons end>
 	    <button ion-button (click)="viewCtrl.dismiss()">
 	      Salir
-	    </button>
+			</button>
     </ion-buttons>
-  </ion-navbar>
+	</ion-navbar>
+	
+	<ion-toolbar no-padding>
+        <label margin-horizontal>Vendedor</label>
+        <select margin-horizontal class="select" name="" [(ngModel)]="salesRep" (ngModelChange)="change('salesRep', salesRep)">
+          <option disabled value=""></option>
+					<option *ngFor="let salesRepOp of salesReps"
+					value="{{ salesRepOp === 'Tarruella Alberto Horacio'? 'Tarruella Alberto Horacio ': salesRepOp }}">
+						{{ salesRepOp }}
+					</option>
+				</select>
+
+			<label margin-horizontal>Tipo</label>
+        <select margin-horizontal class="select" name="" [(ngModel)]="clientType" (ngModelChange)="change('clientType', clientType)">
+					<option value=""></option>
+					<option *ngFor="let clientTypeOp of clientTypes">{{clientTypeOp}}</option>
+        </select>
+	</ion-toolbar>
 
 </ion-header>
 
@@ -53,17 +70,38 @@
 			</ion-col>
 		</ion-row>
 	</form>
-
-	<ion-card>
 	
-	  <ion-card-header>
-	    Card Header
-	  </ion-card-header>
+	<div *ngIf="clientObj?.contacts">
+		<ion-card *ngFor="let contact of clientObj.contacts | objNgfor" >
 	
-	  <ion-card-content>
-	    <!-- Add card content here! -->
-	  </ion-card-content>
-	
-	</ion-card>
+			<ion-card-header>
+				<ion-row no-padding>
+					<ion-col>
+						<span>{{ contactObj[contact]?.name }}</span>
+						<span *ngIf="contactObj[contact]?.pos" > - {{ contactObj[contact]?.pos }}</span>
+					</ion-col>
+					<ion-col col-auto>
+						<button end ion-button icon-only clear color="lightGreyQ" small 
+						(click)="switchEditContact(contactObj[contact], contact)" class="actionButtons">
+							<ion-icon name="create"></ion-icon>
+						</button>
+						<button end ion-button icon-only clear color="lightGreyQ" small 
+						(click)="deleteContact(contact)" class="actionButtons">
+							<ion-icon name="trash"></ion-icon>
+						</button>
+					</ion-col>
+				</ion-row>
+				
+				
+			</ion-card-header>
+		
+			<ion-card-content>
+				<div>{{ contactObj[contact]?.tel}}</div>
+				<div>{{ contactObj[contact]?.mail}}</div>
+				<div>{{contactObj[contact]?.obs }}</div>
+			</ion-card-content>
+		
+		</ion-card>
+	</div>
 
 </ion-content>

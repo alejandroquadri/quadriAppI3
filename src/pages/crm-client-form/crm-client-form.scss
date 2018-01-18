@@ -1,5 +1,12 @@
 page-crm-client-form {
 
+  .select {
+    background-color: rgba(255, 255, 255, 0.88);
+    border: none;
+    flex: 1;
+    // -webkit-appearance: none;
+  }
+
 	.inputForm {
     font-size: 12px;
   }
@@ -22,5 +29,14 @@ page-crm-client-form {
   	margin-top: 0.2rem;
     margin-bottom: 0.2rem;
   }
+
+  .card-header {
+    padding: 1rem;
+  }
+
+  .actionButtons {
+    margin: 0px;
+    font-size: 1rem;
+	}
 
 }

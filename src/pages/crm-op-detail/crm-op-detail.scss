@@ -61,8 +61,8 @@ page-crm-op-detail {
   }
 
   .headers {
-		border-bottom: solid map-get($colors, light) 1px;
-	}
+	border-bottom: solid map-get($colors, light) 1px;
+  }
 
 	.data:hover {
 		background-color: map-get($colors, light);
@@ -73,9 +73,9 @@ page-crm-op-detail {
 	}
 
 	.checkButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
 }
