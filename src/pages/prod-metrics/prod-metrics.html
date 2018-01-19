@@ -20,9 +20,12 @@
 
 	<prodChart></prodChart>
 
-	<div><hr></div> 
+	<div *ngIf="!permision('fabrica')">
+		<div><hr></div> 
 
-	<ac-sales-chart></ac-sales-chart>
+		<ac-sales-chart></ac-sales-chart>
+	</div>
+	
 
 	<div><hr></div> 
 

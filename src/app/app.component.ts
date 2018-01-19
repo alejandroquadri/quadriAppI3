@@ -1,7 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav, Content } from 'ionic-angular';
-// import { StatusBar } from '@ionic-native/status-bar';
-// import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AuthDataProvider, SplitShowProvider } from '../providers';
 
@@ -21,23 +19,21 @@ export class MyApp {
 
   constructor(
     public platform: Platform,
-    // public statusBar: StatusBar,
-    // public splashScreen: SplashScreen,
-    private splitShow: SplitShowProvider,
-    private authData: AuthDataProvider,
+    public splitShow: SplitShowProvider,
+    public authData: AuthDataProvider,
   ) {
     platform.ready().then(() => {
         // Okay, so the platform is ready and our plugins are available.
         // Here you can do any higher level native things you might need.console.log('did load');
-      // statusBar.styleDefault();
-      // splashScreen.hide();
       authData.user.subscribe( user => {
         console.log(user);
         this.userProfile = user;
         if (user) {
+          if(!this.authData.checkIfQuadri(user.email)) { 
+            this.logOut();
+          }
           this.authData.uid = user.uid;
           this.authData.current = user;
-          // this.rootPage = this.setRoot();
           this.first? this.rootPage = this.setRoot() : this.nav.setRoot(this.setRoot());
         } else {
           this.authData.uid = null;
@@ -55,8 +51,6 @@ export class MyApp {
   }
 
   logOut() {
-    // this.authData.diconnect();
-    
     this.nav.setRoot('LoginPage')
     .then( () => {
       console.log('fue a root');
@@ -70,10 +64,14 @@ export class MyApp {
 
   setRoot() {
     if (this.platform.is('mobile')) {
-      return 'SparePartsFormPage'
+      return 'ProdMetricsPage'
     } else {
-      return 'SparePartsPage'
+      return 'ProdMetricsPage'
     }
+  }
+
+  permision(area: string) {
+    return this.authData.checkRestriction(area, this.userProfile.email);
   }
 
 

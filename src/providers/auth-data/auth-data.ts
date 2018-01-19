@@ -5,18 +5,22 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase';
 import { GooglePlus } from '@ionic-native/google-plus';
 
+import { Users } from './users'
+
 @Injectable()
 export class AuthDataProvider {
 
 	user: Observable<firebase.User>;
   current: any;
   uid: string;
+  users: any;
 
   constructor(
   	public afAuth: AngularFireAuth,
   	private googlePlus: GooglePlus
 	) {
     this.user = afAuth.authState;
+    this.users = Users;
   }
 
   login(email: string, password: string): Promise<any> {
@@ -43,6 +47,22 @@ export class AuthDataProvider {
 	  .then( res => {
 	  	firebase.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credential(res.idToken))
 	  })
+  }
+
+  checkRestriction(area: string, userMail?: string) {
+    if (this.current) {
+      !userMail ? userMail = this.current.email : '';
+      if (this.users[area].indexOf(userMail) !== -1) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+
+  checkIfQuadri(userMail: string) {
+    let regEx = /@quadri/;
+    return regEx.test(userMail);
   }
 
 }
