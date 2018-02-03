@@ -18,8 +18,12 @@ export class AcSalesChartComponent implements OnInit {
   date = moment();
 
   salesMan = '';
+  brand: string = '';
   eq = 1600000;
   obj = this.eq * 1.1;
+
+  totalSales = 0;
+  toCom = 0;
 
   @ViewChild('salesAcChart', {read: ViewContainerRef}) salesAcChartEl: ViewContainerRef;
   @ViewChild('chartContainer') chartContainer;
@@ -87,7 +91,9 @@ export class AcSalesChartComponent implements OnInit {
         let ISODate = sale.fecha_documento.replace(/\//g, "");
         let momentDate = moment(ISODate, "YYYYMMDD").format('MM/YY')
         return (momentDate === month && 
-          this.salesManFilter(sale.nombreoriginantetr))
+          this.salesManFilter(sale.nombreoriginantetr) &&
+          this.brandFilter(sale.marca)
+        )
       })
 
       let obj = this.chartBuilder.buildSalesObj(filtered);
@@ -106,6 +112,10 @@ export class AcSalesChartComponent implements OnInit {
         objLine.push(totalObjSales);
         eqLine.push(totalEqSales);
       }
+      
+      this.totalSales = finishedSales[finishedSales.length-1];
+      this.toCom = this.eq/2 - this.totalSales;
+
       let datasets = [
         this.chartBuilder.buildDatasets(finishedSales, 'ventas', 'rgba(0, 128, 0, 1)', 'rgba(0, 128, 0, 0.2)', 'A'), 
         this.chartBuilder.buildDatasets(eqLine, 'equilibrio',  'rgba(220, 57, 18, 1)', 'rgba(220, 57, 18, 0.2)', 'A'), 
@@ -130,6 +140,23 @@ export class AcSalesChartComponent implements OnInit {
       case "Alberto Tarruella":
         if (salesMan === 'Tarruella Alberto Horacio ') {
            result = true;
+        } else {
+          result = false;
+        }
+      break;
+      default:
+        result = true;
+        break;
+    }
+    return result;
+  }
+
+  brandFilter(brand: string) {
+    let result
+    switch (this.brand) {
+      case "Quadri":
+        if (brand === 'Quadri - Quadri') {
+          result = true;
         } else {
           result = false;
         }

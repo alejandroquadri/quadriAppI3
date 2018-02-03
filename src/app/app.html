@@ -24,7 +24,7 @@
 
     <ion-content class="outer-content">
 
-      <ion-list *ngIf="permision('fabrica') || permision('direccion')">
+      <ion-list *ngIf="permission('fabrica') || permission('direccion')">
         <ion-list-header>
           Mantenimiento
         </ion-list-header>
@@ -38,7 +38,7 @@
         </button>
       </ion-list>
 
-      <ion-list *ngIf="permision('fabrica') || permision('adm') || permision('direccion')">
+      <ion-list *ngIf="permission('fabrica') || permission('adm') || permission('direccion')">
         <ion-list-header>
           Produccion
         </ion-list-header>
@@ -60,7 +60,7 @@
         </button>
       </ion-list>
 
-      <ion-list *ngIf="permision('ventas') || permision('direccion')">
+      <ion-list *ngIf="permission('ventas') || permission('direccion')">
         <ion-list-header>
           CRM
         </ion-list-header>

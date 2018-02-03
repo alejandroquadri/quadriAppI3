@@ -1,4 +1,4 @@
-<ion-grid>
+<!-- <ion-grid> -->
 
 	<ion-row>
 		<h4>Facturacion acumulada mensual</h4>
@@ -6,28 +6,46 @@
 
 	<ion-row>
 		<ion-col col-auto>
-			<ion-item no-lines class="month">
+			<ion-item no-lines class="month filters">
 				<button item-end ion-button icon-only outline small (click)= "subMonth()">
 					<ion-icon name="ios-arrow-back"></ion-icon>
 				</button>
-					{{ date.format('MMMM') }}
+				<span>{{ date.format('MMMM') }}</span>
 				<button item-end ion-button icon-only outline small (click)= "addMonth()">
 					<ion-icon name="ios-arrow-forward"></ion-icon>
 				</button>
 			</ion-item>
 		</ion-col>
-		<ion-col>
-			<ion-item no-lines class="salesMan">
-				<select #selectInput [(ngModel)]="salesMan" (ngModelChange)="salesDataFilter()" class="selectItem" [ngClass]="{label: selectInput.value === ''}">
+		<ion-col col-auto>
+			<ion-item no-lines class="salesMan filters">
+				<select #selectSalesMan [(ngModel)]="salesMan" (ngModelChange)="salesDataFilter()" class="selectItem" [ngClass]="{label: selectSalesMan.value === ''}">
 					<option value="" selected>Vendedor</option>
 					<option>Alejandra Roldan</option>
 					<option>Alberto Tarruella</option>
 				</select>
 			</ion-item>
 		</ion-col>
-	</ion-row>
+		<ion-col col-auto>
+			<ion-item no-lines class="salesMan filters">
+				<select #selectBrand [(ngModel)]="brand" (ngModelChange)="salesDataFilter()" class="selectItem" [ngClass]="{label: selectBrand.value === ''}">
+					<option value="" selected>Marca</option>
+					<option>Quadri</option>
+				</select>
+			</ion-item>
+		</ion-col>
+  </ion-row>
+  
+  <ion-row>
+    <ion-col>
+      Facturacion: {{ totalSales | number : '1.0-2' }}
+    </ion-col>
+    <ion-col *ngIf="salesMan !== ''" >
+      Restan a objetivo: {{ toCom | number: '1.0-2' }}
+    </ion-col>
+  </ion-row>
+
 	<ion-row #chartContainer (window:resize)="setWidth()">
 		<div #salesAcChart class="chart"></div>
 	</ion-row>
 
-</ion-grid>
+<!-- </ion-grid> -->

@@ -13,7 +13,7 @@ export class ProdMetricsPage {
     private authData: AuthDataProvider
   ) {}
 
-  permision(area: string) {
+  permission(area: string) {
     return this.authData.checkRestriction(area);
   }
 
