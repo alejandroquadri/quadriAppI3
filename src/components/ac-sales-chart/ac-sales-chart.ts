@@ -1,5 +1,7 @@
-import { Component, ViewChild, OnInit, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
+import { Component, ViewChild, OnInit, ViewContainerRef, ComponentFactoryResolver, Input } from '@angular/core';
 import { SalesDataProvider, ChartBuilderProvider } from '../../providers';
+import { Observable } from 'rxjs/Observable';
+import "rxjs/add/observable/combineLatest";
 import { map } from 'rxjs/operators';
 
 import { ChartDrawComponent } from '../chart-draw/chart-draw';
@@ -13,7 +15,10 @@ import * as moment from 'moment';
 export class AcSalesChartComponent implements OnInit {
 
   salesSubs: any;
+  objectiveSubs: any;
+  obsSubs: any;
   sales: any;
+  objectives: any;
   acChart: any;
   date = moment();
 
@@ -25,6 +30,7 @@ export class AcSalesChartComponent implements OnInit {
   totalSales = 0;
   toCom = 0;
 
+  @Input() showPrize: any = true;
   @ViewChild('salesAcChart', {read: ViewContainerRef}) salesAcChartEl: ViewContainerRef;
   @ViewChild('chartContainer') chartContainer;
 
@@ -36,14 +42,30 @@ export class AcSalesChartComponent implements OnInit {
   }
 
   ngOnInit() {
-  	this.salesSubs = this.salesData.getRevenue()
-  	.pipe(
-      map( res => res.json())
-     )
-  	.subscribe( data => {
-  		this.sales = data.data;
+    let today = moment();
+    let end = today.format('YYYYMMDD');
+    let start = today.date(1).subtract(6, 'months').format('YYYYMMDD');
+    this.objectiveSubs = this.salesData.getObjectives()
+    .pipe( map( res => res.json()));
+    this.salesSubs = this.salesData.getRevenue(start, end)
+    .pipe( map( res => res.json()));
+    
+    this.obsSubs = Observable.combineLatest(this.salesSubs, this.objectiveSubs, (sales: any, objectives: any) => ({sales, objectives}))
+    .subscribe( pair => {
+      this.sales = pair.sales.data;
+      this.objectives = pair.objectives.data;
+      this.eq = this.objectives[0][0].replace(/\./g,'');
+      this.obj = this.objectives[1][0].replace(/\./g,'');
       this.salesDataFilter();
-  	});
+    })
+  	// this.salesSubs = this.salesData.getRevenue(start, end)
+  	// .pipe(
+    //   map( res => res.json())
+    //  )
+  	// .subscribe( data => {
+  	// 	this.sales = data.data;
+    //   this.salesDataFilter();
+  	// });
   }
 
   ngAfterViewChecked() {
@@ -51,7 +73,7 @@ export class AcSalesChartComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.salesSubs.unsubscribe();
+    this.obsSubs.unsubscribe();
   }
 
   addMonth() {
@@ -65,6 +87,7 @@ export class AcSalesChartComponent implements OnInit {
   }
 
   salesDataFilter() {
+    console.log(this.sales);
     if (this.sales) {
       let labels: Array<any> = [];
       let finishedSales: Array<any> = [];
@@ -75,6 +98,8 @@ export class AcSalesChartComponent implements OnInit {
       let monthDays = this.date.daysInMonth();
       let eq = this.eq;
       let salesObj = this.obj
+      // let eq = this.objectives[0][0];
+      // let salesObj = this.objectives[0][1];
       if (this.salesMan !== '') {
         eq = eq/2;
         salesObj = salesObj/2
@@ -86,17 +111,25 @@ export class AcSalesChartComponent implements OnInit {
       let totalObjSales = 0;
       let totalEqSales = 0;
 
+      // let filtered = this.sales.filter( sale => {
+      //   // esto es para que la fecha salga en este formato (2017-11-22), sino se queja y tira una advertencia
+      //   let ISODate = sale.fecha_documento.replace(/\//g, "");
+      //   let momentDate = moment(ISODate, "YYYYMMDD").format('MM/YY')
+      //   return (momentDate === month && 
+      //     this.salesManFilter(sale.nombreoriginantetr) &&
+      //     this.brandFilter(sale.marca)
+      //   )
+      // })
+
       let filtered = this.sales.filter( sale => {
-        // esto es para que la fecha salga en este formato (2017-11-22), sino se queja y tira una advertencia
-        let ISODate = sale.fecha_documento.replace(/\//g, "");
-        let momentDate = moment(ISODate, "YYYYMMDD").format('MM/YY')
+        let momentDate = moment(sale.fecha).format('MM/YY');
         return (momentDate === month && 
-          this.salesManFilter(sale.nombreoriginantetr) &&
+          this.salesManFilter(sale.vendedor) &&
           this.brandFilter(sale.marca)
         )
-      })
+      });
 
-      let obj = this.chartBuilder.buildSalesObj(filtered);
+      let obj = this.buildSalesObj(filtered);
 
       for (let i=1, n= monthDays ; i <= n; i++) {
         let date = this.date.date(i).format('YYYY-MM-DD');
@@ -114,7 +147,7 @@ export class AcSalesChartComponent implements OnInit {
       }
       
       this.totalSales = finishedSales[finishedSales.length-1];
-      this.toCom = this.eq/2 - this.totalSales;
+      this.eq/2 - this.totalSales > 0 ? this.toCom = this.eq/2 - this.totalSales : this.toCom = 0 ;
 
       let datasets = [
         this.chartBuilder.buildDatasets(finishedSales, 'ventas', 'rgba(0, 128, 0, 1)', 'rgba(0, 128, 0, 0.2)', 'A'), 
@@ -126,6 +159,75 @@ export class AcSalesChartComponent implements OnInit {
     }
     
   }
+
+  buildSalesObj(filteredArray: Array<any>, monthly?: boolean) {
+    let filteredObj = {};
+
+    filteredArray.forEach( sale => {
+      let total = + sale.total
+      let cant = + sale.cantidad;
+      let quantity;
+      let date;
+
+      if (sale.unidad_medida === "M2") {
+        quantity = cant;
+      } else {
+        quantity = 0;
+      }
+
+      if (monthly) {
+        date = moment(sale.fecha).format('YYYY-MM');
+      } else {
+        date = moment(sale.fecha).format('YYYY-MM-DD');
+      }
+      if (!filteredObj[date]) {
+        filteredObj[date] = {
+          total: total,
+          quantity: quantity
+        }
+      } else {
+        filteredObj[date].total += total;
+        filteredObj[date].quantity += quantity;
+      }
+    })
+
+    return filteredObj;
+  }
+
+  // buildSalesObj(filteredArray: Array<any>, monthly?: boolean) {
+  //   let filteredObj = {};
+
+  //   filteredArray.forEach( sale => {
+  //     let total = + sale.total_importe
+  //     let cant = + sale.cantidad;
+  //     let cantNl = + sale.cantidad_nl;
+  //     let conv = cant/cantNl;
+  //     let quantity;
+  //     if (conv === 0.16 || conv === 0.24 || conv === 0.25 ) {
+  //       quantity = cant;
+  //     } else { 
+  //       quantity = 0
+  //     }
+
+  //     let date;
+  //     if (monthly) {
+  //       date = moment(sale.fecha_documento).format('YYYY-MM');
+  //     } else {
+  //       date = moment(sale.fecha_documento).format('YYYY-MM-DD');
+  //     }
+  //     if (!filteredObj[date]) {
+  //       filteredObj[date] = {
+  //         total: total,
+  //         quantity: quantity
+  //       }
+  //     } else {
+  //       filteredObj[date].total += total;
+  //       filteredObj[date].quantity += quantity;
+  //     }
+  //   })
+
+  //   return filteredObj;
+  // }
 
   salesManFilter(salesMan) {
     let result

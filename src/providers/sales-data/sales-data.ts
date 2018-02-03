@@ -9,12 +9,20 @@ export class SalesDataProvider {
 	) {
   }
 
-  getRevenue() {
-  	return this.httpApi.get('ventas');
+  // getRevenue() {
+  // 	return this.httpApi.get('ventas');
+  // }
+
+  getRevenue(start: string, end:string) {
+    return this.httpApi.get(`ventas/ok/${start}/${end}`);
   }
 
   getStock() {
   	return this.httpApi.get('stock');
+  }
+
+  getObjectives() {
+    return this.httpApi.get('ventas/objetivos');
   }
 
 }

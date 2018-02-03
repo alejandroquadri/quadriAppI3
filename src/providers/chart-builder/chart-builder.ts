@@ -95,41 +95,6 @@ export class ChartBuilderProvider {
     return filteredObj;
   }
 
-  buildSalesObj(filteredArray: Array<any>, monthly?: boolean) {
-    let filteredObj = {};
-
-    filteredArray.forEach( sale => {
-      let total = + sale.total_importe
-      let cant = + sale.cantidad;
-      let cantNl = + sale.cantidad_nl;
-      let conv = cant/cantNl;
-      let quantity;
-      if (conv === 0.16 || conv === 0.24 || conv === 0.25 ) {
-        quantity = cant;
-      } else { 
-        quantity = 0
-      }
-
-      let date;
-      if (monthly) {
-        date = moment(sale.fecha_documento).format('YYYY-MM');
-      } else {
-        date = moment(sale.fecha_documento).format('YYYY-MM-DD');
-      }
-      if (!filteredObj[date]) {
-        filteredObj[date] = {
-          total: total,
-          quantity: quantity
-        }
-      } else {
-        filteredObj[date].total += total;
-        filteredObj[date].quantity += quantity;
-      }
-    })
-
-    return filteredObj;
-  }
-
   toSalesUnit(unit: string, dim) {
     let eq = this.staticData.equivalences[dim];
     let total: number = 0
