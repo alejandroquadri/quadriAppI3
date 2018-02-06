@@ -1,0 +1,453 @@
+{
+  "-L3dgrUmhdDJ48Si6kGp" : {
+    "broken" : "",
+    "color" : "Brechiato",
+    "date" : "2018-01-24",
+    "dim" : "40x40",
+    "drawing" : "64 panes",
+    "end" : "16:00",
+    "machine" : "995",
+    "mod" : "3",
+    "observaciones" : "",
+    "prod" : "820",
+    "rep" : "",
+    "seg" : "",
+    "start" : "09:00",
+    "timestamp" : 1516823063584,
+    "user" : {
+      "uid" : "Tw6HN2XanCeoCkN5J2AboPIaN3w1"
+    }
+  },
+  "-L3dh8-5R0nXbLetUqQJ" : {
+    "broken" : "5",
+    "color" : "Verde Alpe",
+    "date" : "2018-01-24",
+    "dim" : "40x40",
+    "drawing" : "64 panes",
+    "end" : "12:10",
+    "machine" : "Breton",
+    "mod" : "4",
+    "observaciones" : "",
+    "prod" : "1202",
+    "rep" : "6",
+    "seg" : "118",
+    "start" : "08:00",
+    "timestamp" : 1516823133120,
+    "user" : {
+      "uid" : "Tw6HN2XanCeoCkN5J2AboPIaN3w1"
+    }
+  },
+  "-L3dhUsT3Pi6TLQhvVgJ" : {
+    "broken" : "",
+    "color" : "Botichino",
+    "date" : "2018-01-24",
+    "dim" : "10x40",
+    "drawing" : "liso",
+    "end" : "14:00",
+    "machine" : "Cortadora",
+    "mod" : "1",
+    "observaciones" : "",
+    "prod" : "170",
+    "rep" : "",
+    "seg" : "",
+    "start" : "08:00",
+    "timestamp" : 1516823224941,
+    "user" : {
+      "uid" : "Tw6HN2XanCeoCkN5J2AboPIaN3w1"
+    }
+  },
+  "-L3diem3OdaeSyz2399K" : {
+    "broken" : "",
+    "color" : "Botichino",
+    "date" : "2018-01-24",
+    "dim" : "50x50",
+    "drawing" : "pileta",
+    "end" : "16:00",
+    "machine" : "Desmolde",
+    "mod" : "2",
+    "observaciones" : "",
+    "prod" : "72",
+    "rep" : "",
+    "seg" : "",
+    "start" : "00:20",
+    "timestamp" : 1516823529580,
+    "user" : {
+      "uid" : "Tw6HN2XanCeoCkN5J2AboPIaN3w1"
+    }
+  },
+  "-L3diuSYyWL0vCP_F-N-" : {
+    "broken" : "1",
+    "color" : "Botichino",
+    "date" : "2018-01-24",
+    "dim" : "50x50",
+    "drawing" : "pileta",
+    "end" : "16:00",
+    "machine" : "Desmolde",
+    "mod" : "2",
+    "observaciones" : "(son bordes 40x50)",
+    "prod" : "18",
+    "rep" : "",
+    "seg" : "",
+    "start" : "00:20",
+    "timestamp" : 1516823591691,
+    "user" : {
+      "uid" : "Tw6HN2XanCeoCkN5J2AboPIaN3w1"
+    }
+  },
+  "-L3ilOmO7npiyIfn8SmZ" : {
+    "broken" : "",
+    "color" : "Brechiato",
+    "date" : "2018-01-25",
+    "dim" : "40x40",
+    "drawing" : "64 panes",
+    "end" : "16:00",
+    "machine" : "650",
+    "mod" : "3",
+    "observaciones" : "",
+    "prod" : "1525",
+    "rep" : "",
+    "seg" : "",
+    "start" : "06:00",
+    "timestamp" : 1516908151940,
+    "user" : {
+      "uid" : "Tw6HN2XanCeoCkN5J2AboPIaN3w1"
+    }
+  },
+  "-L3ileJ6ISRydQqAv-Mx" : {
+    "color" : "Botichino",
+    "date" : "2018-01-25",
+    "dim" : "50x50",
+    "drawing" : "pileta",
+    "end" : "16:00",
+    "machine" : "Llenado moldes",
+    "mod" : "2",
+    "prod" : "100",
+    "start" : "08:00",
+    "timestamp" : 1516908217789,
+    "user" : {
+      "uid" : "Tw6HN2XanCeoCkN5J2AboPIaN3w1"
+    }
+  },
+  "-L3ilyof0NsH0YwfJ8gq" : {
+    "broken" : "",
+    "color" : "Botichino",
+    "date" : "2018-01-25",
+    "dim" : "50x50",
+    "drawing" : "pileta",
+    "end" : "16:00",
+    "machine" : "Llenado moldes",
+    "mod" : "2",
+    "observaciones" : "(son bordes40x50)",
+    "prod" : "19",
+    "rep" : "",
+    "seg" : "",
+    "start" : "08:00",
+    "timestamp" : 1516908306322,
+    "user" : {
+      "uid" : "Tw6HN2XanCeoCkN5J2AboPIaN3w1"
+    }
+  },
+  "-L3inPgZ8ha2jT2vPH_x" : {
+    "broken" : "",
+    "color" : "Botichino",
+    "date" : "2018-01-25",
+    "dim" : "10x40",
+    "drawing" : "liso",
+    "end" : "15:00",
+    "machine" : "Cortadora",
+    "mod" : "1",
+    "observaciones" : "",
+    "prod" : "230",
+    "rep" : "",
+    "seg" : "",
+    "start" : "08:00",
+    "timestamp" : 1516908704827,
+    "user" : {
+      "uid" : "Tw6HN2XanCeoCkN5J2AboPIaN3w1"
+    }
+  },
+  "-L3njeRQTMDWq2IdCsbE" : {
+    "broken" : "",
+    "color" : "Brechiato",
+    "date" : "2018-01-26",
+    "dim" : "40x40",
+    "drawing" : "64 panes",
+    "end" : "14:45",
+    "machine" : "650",
+    "mod" : "3",
+    "observaciones" : "7hs regulacion tramoya , 14:45  hs  rotura valvula de agua olla",
+    "prod" : "1600",
+    "rep" : "",
+    "seg" : "",
+    "start" : "07:00",
+    "timestamp" : 1516991579416,
+    "user" : {
+      "uid" : "Tw6HN2XanCeoCkN5J2AboPIaN3w1"
+    }
+  },
+  "-L3nkfrxMG9o0VdT4Nkk" : {
+    "broken" : "15",
+    "color" : "Brechiato",
+    "date" : "2018-01-26",
+    "dim" : "40x40",
+    "drawing" : "64 panes",
+    "end" : "15:00",
+    "machine" : "Breton",
+    "mod" : "3",
+    "observaciones" : "SE PULIO A MANO Y CON CARGADOR (CARGADOR EN REPARARACION )",
+    "prod" : "1500",
+    "rep" : "40",
+    "seg" : "100",
+    "start" : "08:30",
+    "timestamp" : 1516991839977,
+    "user" : {
+      "uid" : "Tw6HN2XanCeoCkN5J2AboPIaN3w1"
+    }
+  },
+  "-L3nl0eO7-VvDFuDjUaQ" : {
+    "broken" : "",
+    "color" : "Botichino",
+    "date" : "2018-01-26",
+    "dim" : "10x40",
+    "drawing" : "liso",
+    "end" : "01:00",
+    "machine" : "Cortadora",
+    "mod" : "1",
+    "observaciones" : "",
+    "prod" : "150",
+    "rep" : "",
+    "seg" : "",
+    "start" : "08:00",
+    "timestamp" : 1516991926899,
+    "user" : {
+      "uid" : "Tw6HN2XanCeoCkN5J2AboPIaN3w1"
+    }
+  },
+  "-L42NsI0izuZczl9yMOj" : {
+    "broken" : "25",
+    "color" : "Brechiato",
+    "date" : "2018-01-29",
+    "dim" : "40x40",
+    "drawing" : "64 panes",
+    "end" : "16:00",
+    "machine" : "Breton",
+    "mod" : "3",
+    "observaciones" : "",
+    "prod" : "2143",
+    "rep" : "50",
+    "seg" : "80",
+    "start" : "08:00",
+    "timestamp" : 1517254037938,
+    "user" : {
+      "uid" : "Tw6HN2XanCeoCkN5J2AboPIaN3w1"
+    }
+  },
+  "-L47aIGp52U5-UkCpK9p" : {
+    "broken" : "",
+    "color" : "Blanco Espuma",
+    "date" : "2018-01-30",
+    "dim" : "50x50",
+    "drawing" : "liso",
+    "end" : "16:00",
+    "machine" : "650",
+    "mod" : "5",
+    "observaciones" : "",
+    "prod" : "1086",
+    "rep" : "",
+    "seg" : "",
+    "start" : "08:30",
+    "timestamp" : 1517341455753,
+    "user" : {
+      "uid" : "Tw6HN2XanCeoCkN5J2AboPIaN3w1"
+    }
+  },
+  "-L4CdOz96xub_6ztkWB1" : {
+    "broken" : "",
+    "color" : "Blanco Espuma",
+    "date" : "2018-01-31",
+    "dim" : "50x50",
+    "drawing" : "liso",
+    "end" : "16:00",
+    "machine" : "650",
+    "mod" : "2",
+    "observaciones" : "9hs  areglo tramoya ,tenzado cinta baña ",
+    "prod" : "1716",
+    "rep" : "",
+    "seg" : "",
+    "start" : "09:00",
+    "timestamp" : 1517426096534,
+    "user" : {
+      "uid" : "Tw6HN2XanCeoCkN5J2AboPIaN3w1"
+    }
+  },
+  "-L4Cdt1rEcBOkUJys0P8" : {
+    "broken" : "",
+    "color" : "Sierra Chica",
+    "date" : "2018-01-31",
+    "dim" : "40x40",
+    "drawing" : "rusticato",
+    "end" : "12:00",
+    "machine" : "Granalladora",
+    "mod" : "3",
+    "observaciones" : "",
+    "prod" : "150",
+    "rep" : "",
+    "seg" : "",
+    "start" : "11:00",
+    "timestamp" : 1517426221881,
+    "user" : {
+      "uid" : "Tw6HN2XanCeoCkN5J2AboPIaN3w1"
+    }
+  },
+  "-L4HqX04eAbv4Ar1i20d" : {
+    "broken" : "",
+    "color" : "Blanco",
+    "date" : "2018-02-01",
+    "dim" : "50x50",
+    "drawing" : "liso",
+    "end" : "09:00",
+    "machine" : "650",
+    "mod" : "2",
+    "observaciones" : "",
+    "prod" : "528",
+    "rep" : "",
+    "seg" : "",
+    "start" : "06:00",
+    "timestamp" : 1517513464607,
+    "user" : {
+      "uid" : "Tw6HN2XanCeoCkN5J2AboPIaN3w1"
+    }
+  },
+  "-L4Hqpp1IExrkhJslkN2" : {
+    "broken" : "",
+    "color" : "Blanco Espuma",
+    "date" : "2018-02-01",
+    "dim" : "50x50",
+    "drawing" : "liso",
+    "end" : "14:30",
+    "machine" : "650",
+    "mod" : "2",
+    "observaciones" : "",
+    "prod" : "816",
+    "rep" : "",
+    "seg" : "",
+    "start" : "09:00",
+    "timestamp" : 1517513544105,
+    "user" : {
+      "uid" : "Tw6HN2XanCeoCkN5J2AboPIaN3w1"
+    }
+  },
+  "-L4HrO2Z3koDUY7ng6bv" : {
+    "broken" : "",
+    "color" : "Blanco Espuma",
+    "date" : "2018-02-01",
+    "dim" : "50x50",
+    "drawing" : "liso",
+    "end" : "16:40",
+    "machine" : "Lineal",
+    "mod" : "4",
+    "observaciones" : "",
+    "prod" : "246",
+    "rep" : "70",
+    "seg" : "60",
+    "start" : "10:00",
+    "timestamp" : 1517513685017,
+    "user" : {
+      "uid" : "Tw6HN2XanCeoCkN5J2AboPIaN3w1"
+    }
+  },
+  "-L4Hrjg6eLBwd2-ujYya" : {
+    "broken" : "",
+    "color" : "Botichino",
+    "date" : "2018-02-01",
+    "dim" : "50x50",
+    "drawing" : "pileta",
+    "end" : "14:00",
+    "machine" : "Desmolde",
+    "mod" : "1",
+    "observaciones" : "(son bordes 40x50)",
+    "prod" : "19",
+    "rep" : "",
+    "seg" : "",
+    "start" : "11:30",
+    "timestamp" : 1517513775577,
+    "user" : {
+      "uid" : "Tw6HN2XanCeoCkN5J2AboPIaN3w1"
+    }
+  },
+  "-L4HtLV8sIzn_0S647nr" : {
+    "broken" : "",
+    "color" : "Botichino",
+    "date" : "2018-02-01",
+    "dim" : "10x40",
+    "drawing" : "liso",
+    "end" : "10:00",
+    "machine" : "Cortadora",
+    "mod" : "1",
+    "observaciones" : "",
+    "prod" : "150",
+    "rep" : "",
+    "seg" : "",
+    "start" : "08:00",
+    "timestamp" : 1517514194198,
+    "user" : {
+      "uid" : "Tw6HN2XanCeoCkN5J2AboPIaN3w1"
+    }
+  },
+  "-L4MiqRr1o5SKtKvA0R5" : {
+    "broken" : "",
+    "color" : "Verde Alpe",
+    "date" : "2018-02-02",
+    "dim" : "40x40",
+    "drawing" : "64 panes",
+    "end" : "15:00",
+    "machine" : "995",
+    "mod" : "3",
+    "observaciones" : "6:hs  a 7:15 regulacion pala ",
+    "prod" : "1680",
+    "rep" : "",
+    "seg" : "",
+    "start" : "07:15",
+    "timestamp" : 1517595347084,
+    "user" : {
+      "uid" : "Tw6HN2XanCeoCkN5J2AboPIaN3w1"
+    }
+  },
+  "-L4MjeIlgLS2d6FPodF6" : {
+    "broken" : "4",
+    "color" : "Blanco Espuma",
+    "date" : "2018-02-02",
+    "dim" : "50x50",
+    "drawing" : "liso",
+    "end" : "15:00",
+    "machine" : "Lineal",
+    "mod" : "4",
+    "observaciones" : "de 8;hs 10hs rectificando lado de la baña ",
+    "prod" : "574",
+    "seg" : "10",
+    "start" : "06:15",
+    "timestamp" : 1517595554605,
+    "user" : {
+      "uid" : "Tw6HN2XanCeoCkN5J2AboPIaN3w1"
+    }
+  },
+  "-L4Mko49zdFMOQ8qTebR" : {
+    "broken" : "",
+    "color" : "Botichino",
+    "date" : "2018-02-02",
+    "dim" : "10x40",
+    "drawing" : "liso",
+    "end" : "10:00",
+    "machine" : "Cortadora",
+    "mod" : "1",
+    "observaciones" : "",
+    "prod" : "146",
+    "rep" : "",
+    "seg" : "",
+    "start" : "08:00",
+    "timestamp" : 1517595851978,
+    "user" : {
+      "uid" : "Tw6HN2XanCeoCkN5J2AboPIaN3w1"
+    }
+  }
+}

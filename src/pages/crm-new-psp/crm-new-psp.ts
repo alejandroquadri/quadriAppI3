@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, InfiniteScroll } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import "rxjs/add/observable/combineLatest";
 
@@ -24,6 +24,7 @@ export class CrmNewPspPage {
   viewArray: any;
   sortTerm = 'num';
   sortDir = false;
+  offset = 100;
 
   constructor(
     public navCtrl: NavController,
@@ -76,13 +77,26 @@ export class CrmNewPspPage {
   }
 
   sort() {
-    this.viewArray = this.sortPipe.transform(this.viewArray, this.sortTerm, this.sortDir, false);;
+    this.viewArray = this.sliceArray(this.sortPipe.transform(this.viewArray, this.sortTerm, this.sortDir, false));
   }
 
   changeSort(term) {
     this.sortTerm = term;
     this.sortDir = !this.sortDir;
     this.sort();
+  }
+
+  sliceArray(array: Array<any>) {
+    return array.slice(0, this.offset);
+  }
+
+  doInfinite(infiniteScroll: InfiniteScroll) {
+    console.log('infinite');
+    setTimeout( () => {
+      this.offset += 20;
+      this.filterSalesRep();
+      infiniteScroll.complete()  
+    }, 500)
   }
 
   addOp(psp) {

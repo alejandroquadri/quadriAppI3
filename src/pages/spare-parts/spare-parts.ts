@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform, PopoverController, ToastController, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, PopoverController, ToastController, ModalController, InfiniteScroll } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import "rxjs/add/observable/combineLatest";
 
@@ -23,6 +23,7 @@ export class SparePartsPage {
   statusOptions = ['Pendiente', 'Encargado', 'Completo', 'Suspendido'];
   field = 'fecha';
   asc = false;
+  offset = 50;
 
   constructor(
   	public navCtrl: NavController, 
@@ -46,6 +47,7 @@ export class SparePartsPage {
     this.obsSubs.subscribe( (pair: any) => {
       this.sparePartsCrude = pair.parts;
       this.filters = pair.filters;
+      this.offsetInit();      
       this.filter();
     })
   }
@@ -60,7 +62,7 @@ export class SparePartsPage {
     const filteredField = this.fieldFilterPipe.transform(this.sparePartsCrude, ['status'], this.changeFilters(this.filters), true);
     const filtered = this.filterPipe.transform(filteredField, this.searchInput, true);
     const ordered = this.sortPipe.transform(filtered, this.field, this.asc, true);
-    this.spareParts = ordered;
+    this.spareParts = this.sliceArray(ordered);
   }
 
   changeFilters(filters: any) {
@@ -72,6 +74,18 @@ export class SparePartsPage {
       }
     })
     return arrayFilter;
+  }
+
+  sliceArray(array: Array<any>) {
+    return array.slice(0, this.offset);
+  }
+
+  doInfinite(infiniteScroll: InfiniteScroll) {
+    setTimeout( () => {
+      this.offset += 20;
+      this.filter();
+      infiniteScroll.complete()  
+    }, 500)
   }
 
   deletepart(key) {
@@ -115,8 +129,13 @@ export class SparePartsPage {
   // }
 
   onChange(event) {
+    this.offsetInit();
     this.searchInput = event;
     this.filter();
+  }
+
+  offsetInit() {
+    this.offset = 50;    
   }
 
 }

@@ -66,38 +66,17 @@
 					</button>
 				</ion-col>
 			</ion-row>
-	  </ion-grid>
-	</div>
-  
-</ion-content>
-
-<!-- <ion-content>
-
-  <div #data>
-		<ion-grid>
-			<ion-row class="data" *ngFor="let log of machineLogs">
-				<ion-col col-1 text-center>
-					{{ log.date | momentFormat:'D/M/YY' }}
-				</ion-col>
-				<ion-col col-1 text-center>
-					{{ log.orderNumber }}
-				</ion-col>
-				<ion-col col-2 text-center>
-					{{ log.title }}
-				</ion-col>
-				<ion-col col-6>
-					<div class="description">{{ log.description }}</div>
-				</ion-col>
-				<ion-col col-2 text-center>
-					<button ion-button icon-only clear color="dark" small (click)="editLog(log)">
-						<ion-icon name="create"></ion-icon>
-					</button>
-					<button ion-button icon-only clear color="dark" small (click)="deleteLog(log.$key)">
-						<ion-icon name="trash"></ion-icon>
-					</button>
+			<ion-row>
+				<ion-col>
+						<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+								<ion-infinite-scroll-content
+									loadingSpinner="bubbles"
+									loadingText="Cargando mas registros...">
+								</ion-infinite-scroll-content>
+							</ion-infinite-scroll>
 				</ion-col>
 			</ion-row>
 	  </ion-grid>
 	</div>
   
-</ion-content> -->
+</ion-content>

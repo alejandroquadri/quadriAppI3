@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform, PopoverController, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, PopoverController, ModalController, InfiniteScroll } from 'ionic-angular';
 
 import { MachineLogDataProvider, SplitShowProvider } from '../../providers';
 import { FilterPipe, SortPipe } from '../../pipes';
@@ -19,6 +19,7 @@ export class MachineLogPage {
 	searchInput: string = '';
   field = 'date';
   asc = false;
+  offset = 100;
 
 
   constructor(
@@ -48,7 +49,19 @@ export class MachineLogPage {
   filter() {
     const filtered = this.filterPipe.transform(this.machineDataCrude, this.searchInput, true)
     const ordered = this.sortPipe.transform(filtered, this.field, this.asc, true);
-    this.machineLogs = ordered;
+    this.machineLogs = this.sliceArray(ordered);
+  }
+
+  sliceArray(array: Array<any>) {
+    return array.slice(0, this.offset);
+  }
+
+  doInfinite(infiniteScroll: InfiniteScroll) {
+    setTimeout( () => {
+      this.offset += 20;
+      this.filter();
+      infiniteScroll.complete()  
+    }, 500)
   }
 
   deleteLog(key) {

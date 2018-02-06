@@ -87,7 +87,6 @@ export class AcSalesChartComponent implements OnInit {
   }
 
   salesDataFilter() {
-    console.log(this.sales);
     if (this.sales) {
       let labels: Array<any> = [];
       let finishedSales: Array<any> = [];

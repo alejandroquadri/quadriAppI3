@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { AngularFireDatabase} from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import * as firebase from 'firebase';
 
 @Injectable()
@@ -28,7 +28,11 @@ export class ApiDataProvider {
 
 	getList(path:string) {
 		return this.db.list(path).valueChanges();
-	}
+  }
+  
+  getListQuery(path, offset, startKey?) {
+    return this.db.list(path, ref => ref.startAt(startKey).limitToLast(offset+1)).valueChanges();
+  }
 
 	getListMeta(path:string, events?) {
 		return this.db.list(path).snapshotChanges(events);
@@ -63,7 +67,7 @@ export class ApiDataProvider {
 	}
 
   fanUpdate(fanObject: any): Promise <any> {
-  	return firebase.database().ref().update(fanObject);
+    return firebase.database().ref().update(fanObject);
   }
 
 	  // esta funcion sirve para armar un objeto el cual pueda ser usado por 

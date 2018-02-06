@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, InfiniteScroll } from 'ionic-angular';
 
 import { ProductionDataProvider } from '../../providers';
 import { FilterPipe, SortPipe } from '../../pipes';
@@ -18,6 +18,7 @@ export class ProdLogPage {
   searchInput: string = '';
   field = 'date';
   asc = false;
+  offset = 100;
 
   constructor(
   	public navCtrl: NavController,
@@ -43,12 +44,25 @@ export class ProdLogPage {
   filter() {
     const filtered = this.filterPipe.transform(this.production, this.searchInput, true);
     const ordered = this.sortPipe.transform(filtered, this.field, this.asc, true);
-    this.prodLogs = ordered;
+    this.prodLogs = this.sliceArray(ordered);
   }
 
   onChange(event) {
-  	this.searchInput = event;
+    this.searchInput = event;
+    this.offset = 100;
   	this.filter();
+  }
+
+  sliceArray(array: Array<any>) {
+    return array.slice(0, this.offset);
+  }
+
+  doInfinite(infiniteScroll: InfiniteScroll) {
+    setTimeout( () => {
+      this.offset += 20;
+      this.filter();
+      infiniteScroll.complete()  
+    }, 500)
   }
 
   deleteLog(log) {

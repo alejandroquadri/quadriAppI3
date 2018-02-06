@@ -89,51 +89,17 @@
 					<ion-icon name="trash"></ion-icon>
 				</button>
 			</ion-col>
-		</ion-row>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+          <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+              <ion-infinite-scroll-content
+                loadingSpinner="bubbles"
+                loadingText="Cargando mas registros...">
+              </ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 
 </ion-content>
-
-<!-- <ion-content>
-
-	<ion-grid>
-	  <ion-row class="data" *ngFor="let log of prodLogs">
-			<ion-col>
-				{{ log.date | momentFormat:'D/M/YY'}}
-			</ion-col>
-			<ion-col col-2>
-				{{ log.machine }}
-			</ion-col>
-			<ion-col col-2>
-				{{ log.drawing }} {{ log.color }} {{ log.dim }}
-			</ion-col>
-			<ion-col text-center>
-				{{ log.mod }}
-			</ion-col>
-			<ion-col col-2 text-center> 
-				{{ log.start }} a {{ log.end }}
-			</ion-col>
-			<ion-col text-center>
-				{{ log.prod }}
-			</ion-col>
-			<ion-col text-center>
-				{{ log.seg }}
-			</ion-col>
-			<ion-col text-center>
-				{{ log.broken }}
-			</ion-col>
-			<ion-col text-center>
-				{{ log.rep }}
-			</ion-col>
-			<ion-col col-2 text-center>
-				<button ion-button icon-only clear color="dark" small (click)="editLog(log)">
-					<ion-icon name="create"></ion-icon>
-				</button>
-				<button ion-button icon-only clear color="dark" small (click)="deleteLog(log)">
-					<ion-icon name="trash"></ion-icon>
-				</button>
-			</ion-col>
-		</ion-row>
-  </ion-grid>
-
-</ion-content> -->
