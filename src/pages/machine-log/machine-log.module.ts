@@ -3,7 +3,7 @@ import { IonicPageModule } from 'ionic-angular';
 import { MachineLogPage } from './machine-log';
 
 import { PipesModule } from '../../pipes/pipes.module';
-import { MyDatePickerModule } from 'mydatepicker';
+import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +12,7 @@ import { MyDatePickerModule } from 'mydatepicker';
   imports: [
     IonicPageModule.forChild(MachineLogPage),
     PipesModule,
-    MyDatePickerModule,
+    ComponentsModule
   ],
   exports: [
     MachineLogPage
