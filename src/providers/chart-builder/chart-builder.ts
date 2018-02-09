@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 import { StaticDataProvider } from '../static-data/static-data';
 import Chart from 'chart.js';
-import * as moment from 'moment';
 
 @Injectable()
 export class ChartBuilderProvider {

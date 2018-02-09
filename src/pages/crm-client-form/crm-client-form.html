@@ -10,20 +10,20 @@
 	</ion-navbar>
 	
 	<ion-toolbar no-padding>
-        <label margin-horizontal>Vendedor</label>
-        <select margin-horizontal class="select" name="" [(ngModel)]="salesRep" (ngModelChange)="change('salesRep', salesRep)">
-          <option disabled value=""></option>
-					<option *ngFor="let salesRepOp of salesReps"
-					value="{{ salesRepOp === 'Tarruella Alberto Horacio'? 'Tarruella Alberto Horacio ': salesRepOp }}">
-						{{ salesRepOp }}
-					</option>
-				</select>
+    <label margin-horizontal>Vendedor</label>
+    <select margin-horizontal class="select" name="" [(ngModel)]="salesRep" (ngModelChange)="change('salesRep', salesRep)">
+      <option disabled value=""></option>
+      <option *ngFor="let salesRepOp of salesReps"
+      value="{{ salesRepOp === 'Tarruella Alberto Horacio'? 'Tarruella Alberto Horacio ': salesRepOp }}">
+        {{ salesRepOp }}
+      </option>
+		</select>
 
-			<label margin-horizontal>Tipo</label>
-        <select margin-horizontal class="select" name="" [(ngModel)]="clientType" (ngModelChange)="change('clientType', clientType)">
-					<option value=""></option>
-					<option *ngFor="let clientTypeOp of clientTypes">{{clientTypeOp}}</option>
-        </select>
+		<label margin-horizontal>Tipo</label>
+    <select margin-horizontal class="select" name="" [(ngModel)]="clientType" (ngModelChange)="change('clientType', clientType)">
+      <option value=""></option>
+      <option *ngFor="let clientTypeOp of clientTypes">{{clientTypeOp}}</option>
+    </select>
 	</ion-toolbar>
 
 </ion-header>

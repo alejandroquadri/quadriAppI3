@@ -82,6 +82,12 @@ export class CrmOpPage {
     this.opList =  this.sortPipe.transform(this.opList, this.sortTerm, this.sortDir, true);
   }
 
+  changeSort(term) {
+    this.sortTerm = term;
+    this.sortDir = !this.sortDir;
+    this.sort();
+  }
+
   searchBar(event) {
     this.searchInput = event;
     this.filter();
@@ -116,12 +122,6 @@ export class CrmOpPage {
     }
   }
 
-  changeSort(term) {
-    this.sortTerm = term;
-    this.sortDir = !this.sortDir;
-    this.sort();
-  }
-
   changeFilters(filters: any) {
     const keyArr: any[] = Object.keys(filters);
     let arrayFilter = [];
@@ -147,7 +147,8 @@ export class CrmOpPage {
   }
 
   changeCloseMonth(closeMonth: string, key: string) {
-    this.crmData.updateOp(key, {closeMonth: closeMonth})
+    let month = moment(closeMonth, 'MMM YY').format('YYYY-MM');
+    this.crmData.updateOp(key, {closeMonth: month})
     .then( () => console.log('closeMonth actualizado'));
   }
 

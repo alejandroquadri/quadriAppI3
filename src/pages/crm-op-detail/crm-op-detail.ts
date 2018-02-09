@@ -39,7 +39,7 @@ export class CrmOpDetailPage {
   	private crmData: CrmDataProvider,
   	private fb: FormBuilder,
     public modalCtrl: ModalController,
-  	) {
+  ) {
   	this.months = this.crmData.buildCloseMonth();
   	this.statusOptions = this.crmData.statusOptions;
   	this.actions = this.crmData.actions;

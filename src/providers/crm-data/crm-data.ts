@@ -15,7 +15,7 @@ export class CrmDataProvider {
   statusOptions = ['Pendiente', 'Rechazado', 'Cerrado'];
   actions = ['Llamada', 'Envio de muestra', 'Visita', 'Mail', 'Nota'];
   salesReps = ['Alejandra Roldan', 'Tarruella Alberto Horacio '];
-  clientTypes = ['Constructora', 'Estudio Arq', 'Dsitribuidor', 'Adm Consorcio', 'Cliente Final'];
+  clientTypes = ['Constructora', 'Estudio Arq', 'Distribuidor', 'Adm Consorcio', 'Cliente Final'];
   filters = {
     status: {
       pendiente: true,
@@ -110,6 +110,14 @@ export class CrmDataProvider {
     return this.apiData.getList('crm/op');
   }
 
+  getOp(key) {
+    return this.apiData.getObject(`crm/op/${key}`);
+  }
+
+  getOpObject() {
+    return this.apiData.getObject('crm/op');
+  }
+
   getClients() {
     return this.apiData.getListMeta('crm/clients')
   }
@@ -120,10 +128,6 @@ export class CrmDataProvider {
 
   getClient(key: string) {
     return this.apiData.getObject(`crm/clients/${key}`);
-  }
-
-  getOp(key) {
-    return this.apiData.getObject(`crm/op/${key}`);
   }
 
   getAgendaObj() {
@@ -228,6 +232,10 @@ export class CrmDataProvider {
     return this.apiData.updateList('crm/contacts', key, form);
   }
 
+  updateFilters() {
+    this.filterSubject.next(this.filters)
+  }
+
   delteAgendaItem(agendaKey: string, opKey) {
     let deleteObj = {};
     deleteObj[`crm/agenda/${agendaKey}`] = null;
@@ -240,10 +248,6 @@ export class CrmDataProvider {
     deleteObj[`crm/contacts/${contactKey}`] = null;
     deleteObj[`crm/clients/${clientKey}/contacts/${contactKey}`] = null;
     return this.apiData.fanUpdate(deleteObj);
-  }
-
-  updateFilters() {
-    this.filterSubject.next(this.filters)
   }
 
 }

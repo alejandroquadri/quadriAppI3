@@ -1,3 +1,31 @@
 page-crm-clients {
 
+  .select {
+    background-color: rgba(255, 255, 255, 0.88);
+    border: none;
+    flex: 1;
+    // -webkit-appearance: none;
+  }
+
+  .headers {
+    font-weight: bold;
+  }
+
+  .totals {
+    font-weight: bold;
+    border-bottom: solid 1px;
+  }
+
+  .orderCol {
+		cursor: pointer;
+  }
+  
+  .data {
+		border-bottom: solid map-get($colors, light) 1px;
+	}
+
+	.data:hover {
+		background-color: map-get($colors, light);
+	}
+
 }
