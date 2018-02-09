@@ -139,6 +139,7 @@ export class PartesFormPage implements OnInit {
 
     this.prodData.pushProduction(prod)
     .then( (ret: any) => {
+      console.log(ret);
     	if (stops.length > 0) {
       	this.prodData.setProdStop(ret.key, prod, stops);
     	}
@@ -155,12 +156,17 @@ export class PartesFormPage implements OnInit {
     let prod = this.myForm.value;
     let stops = this.myForm.value.stops;
     delete prod.stops;
+    console.log(this.updateForm.stops);
 
     if(stops.length > 0) {
-      let stopKeys = Object.keys(this.updateForm.stops);
-      console.log(stopKeys);
-      this.prodData.updateProdStop(this.updateForm['$key'], prod, stops, stopKeys)
-      .then( () => console.log('terminado update stops'));
+      if(!this.updateForm.stops){
+        this.prodData.setProdStop(this.updateForm['$key'], prod, stops);
+      } else {
+        let stopKeys = Object.keys(this.updateForm.stops);
+        console.log(stopKeys);
+        this.prodData.updateProdStop(this.updateForm['$key'], prod, stops, stopKeys)
+        .then( () => console.log('terminado update stops'));
+      }
     }
     this.prodData.updateProduction(this.updateForm['$key'],prod)
     .then( () => {

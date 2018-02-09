@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { ApiDataProvider } from '../api-data/api-data';
 import { AuthDataProvider } from '../auth-data/auth-data';
 
+import * as moment from 'moment';
+
 @Injectable()
 export class ProductionDataProvider {
 
@@ -38,7 +40,7 @@ export class ProductionDataProvider {
     return this.api.getListQuery('production', offset, startKey);
   }
 
-  deleteProduction(key) {
+  deleteProduction(key: string) {
   	return this.api.removeItemList('production', key);
   }
 
@@ -47,10 +49,12 @@ export class ProductionDataProvider {
   }
 
   setProdStop(prodKey: string, prod: any, stops: Array<any>) {
+    console.log(prodKey, prod, stops);
+    let timestamp = moment().format();
   	let stopForm = {};
   	stops.forEach( item => {
   		let stop = {
-      	timestamp: this.api.timestamp(),
+      	timestamp: timestamp,
       	user: {
 		  		displayName: this.authData.current.displayName,
 				  uid: this.authData.current.uid
@@ -66,7 +70,8 @@ export class ProductionDataProvider {
       }
       let fanObj = this.api.fanOutObject(stop, [`production/${prodKey}/stops`,'stops'], true);
       Object.assign(stopForm, fanObj);
-  	});
+    });
+    console.log(stopForm)
   	return this.api.fanUpdate(stopForm);
   }
 

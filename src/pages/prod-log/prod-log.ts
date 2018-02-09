@@ -66,10 +66,12 @@ export class ProdLogPage {
   }
 
   deleteLog(log) {
-  	this.prodData.deleteProduction(log.$key)
+    console.log(log, log.key);
+    let logVal = log.payload.val();
+  	this.prodData.deleteProduction(log.key)
   	.then ( () => {
-  		if (log.stops) {
-	  		let stopKeys = Object.keys(log.stops);
+  		if (logVal.stops) {
+	  		let stopKeys = Object.keys(logVal.stops);
 		  	this.prodData.removeProdStop(stopKeys);
 	  	}
   	})
