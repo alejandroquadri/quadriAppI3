@@ -142,6 +142,10 @@ export class CrmDataProvider {
     return this.apiData.getObject('crm/contacts');
   }
 
+  getPrices() {
+    return this.httpApi.get('ventas/precios');
+  }
+
   ignorePsp(psp: string) {
     let form = {}
     form[psp] = 'ignored';

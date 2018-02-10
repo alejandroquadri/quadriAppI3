@@ -1,0 +1,11 @@
+page-crm-prices {
+
+    .data {
+		border-bottom: solid map-get($colors, light) 1px;
+	}
+
+	.data:hover {
+		background-color: map-get($colors, light);
+	}
+
+}

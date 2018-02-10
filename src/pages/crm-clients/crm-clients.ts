@@ -40,7 +40,7 @@ export class CrmClientsPage {
   sortTerm:string;
   sortDir = false;
 
-  seeTotals = true;
+  seeTotals = false;
 
   constructor(
     public navCtrl: NavController,
