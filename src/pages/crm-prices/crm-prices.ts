@@ -50,7 +50,6 @@ export class CrmPricesPage {
     .subscribe( pair => {
       this.pricesList = pair.prices.data;
       this.stockList = pair.stock.data;
-      console.log(this.pricesList, this.stockList);
       this.filter();
     })
   }
@@ -67,6 +66,10 @@ export class CrmPricesPage {
 
   sort() {
     this.priceView =  this.sortPipe.transform(this.priceView, this.sortTerm, this.sortDir, false);
+  }
+
+  toNumber(val: string) {
+    return Number(val);
   }
 
 }
