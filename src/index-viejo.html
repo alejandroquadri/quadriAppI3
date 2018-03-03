@@ -26,43 +26,17 @@
   <link rel="apple-touch-icon" sizes="152x152" href="assets/icon/icon-76@2x.png">
 
   <meta name="theme-color" content="#4e8ef7">
-  
+ 
+  <!-- cordova.js required for cordova apps -->
+  <script src="cordova.js"></script>
+
    <!-- un-comment this code to enable service worker -->
   <script>
-    // make the whole serviceworker process into a promise so later on we can
-		// listen to it and in case new content is available a toast will be shown
-		window.isUpdateAvailable = new Promise(function(resolve, reject) {
-			// lazy way of disabling service workers while developing
-			if ('serviceWorker' in navigator && ['localhost', '127'].indexOf(location.hostname) === -1) {
-        // register service worker file
-        console.log('registra')
-				navigator.serviceWorker.register('service-worker.js')
-					.then(reg => {
-            console.log('despues del register');
-						reg.onupdatefound = () => {
-              console.log('despues de onupdatefound');
-							const installingWorker = reg.installing;
-							installingWorker.onstatechange = () => {
-                console.log('instalando');
-								switch (installingWorker.state) {
-									case 'installed':
-										if (navigator.serviceWorker.controller) {
-                      // new update available
-                      console.log('update disp');
-											resolve(true);
-										} else {
-                      // no update available
-                      console.log('no hay update');
-											resolve(false);
-										}
-										break;
-								}
-							};
-						};
-					})
-					.catch(err => console.error('[SW ERROR]', err));
-			} else { console.log('SW disabled, we are in dev')}
-		});
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('service worker installed'))
+        .catch(err => console.error('Error', err));
+    }
   </script>
 
   <link href="build/main.css" rel="stylesheet">

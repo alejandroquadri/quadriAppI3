@@ -39,14 +39,21 @@ export class CrmNewPspPage {
   ionViewDidLoad() {
     this.pspSubs = this.crmData.calipsoObj;
     this.checkedPspSubs = this.crmData.getCheckedPsp();
-
+    this.checkCurrentSalesRep();
     Observable.combineLatest(this.pspSubs, this.checkedPspSubs, (psps: any, checkedPsp: any) => ({psps, checkedPsp}))
     .subscribe( pair => {
       pair.checkedPsp? this.checkedPspsObj = pair.checkedPsp : this.checkedPspsObj = {};
       this.pspObj = pair.psps.psp;
       this.filterPsp();
-      this.filterSalesRep(); 
+      this.filterSalesRep();
     })
+  }
+
+  checkCurrentSalesRep() {
+    if (this.crmData.currentSalesRep) {
+      console.log(this.crmData.currentSalesRep);
+      this.salesRep = this.crmData.currentSalesRep;
+    }
   }
 
   filterPsp() {

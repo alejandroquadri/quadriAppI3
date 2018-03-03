@@ -16,6 +16,8 @@ export class CrmDashboardPage {
   agendaObj: any
   date: string = moment().format('YYYY-MM-DD');
 
+  salesMan = '';
+
   constructor(
   	public navCtrl: NavController,
   	public navParams: NavParams,
@@ -26,6 +28,7 @@ export class CrmDashboardPage {
   ionViewDidLoad() {
     this.agendaObs = this.crmData.getAgendaList().subscribe( agenda => {
       this.agendaList = agenda;
+      console.log(this.agendaList);
       this.buildAgendaObj();
     })
   }
@@ -45,6 +48,7 @@ export class CrmDashboardPage {
       }
     })
     this.agendaObj = agendaObj;
+    console.log(this.agendaObj);
   }
 
   back() {

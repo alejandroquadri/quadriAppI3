@@ -42,8 +42,7 @@ export class MyApp {
         }
         this.first = false;
       })
-    });
-      
+    });  
   }
   
   openPage (page: string, params?: any) {
@@ -53,7 +52,7 @@ export class MyApp {
   logOut() {
     this.nav.setRoot('LoginPage')
     .then( () => {
-      console.log('fue a root');
+      console.log('fue a root, cambio');
       this.authData.logout();
     })
   }

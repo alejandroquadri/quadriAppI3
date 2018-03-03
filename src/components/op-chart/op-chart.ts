@@ -2,6 +2,8 @@ import { Component, ViewChild, OnInit, ViewContainerRef, ComponentFactoryResolve
 import { ChartBuilderProvider, CrmDataProvider } from '../../providers';
 
 import { ChartDrawComponent } from '../chart-draw/chart-draw';
+import { SortPipe, FieldFilterPipe } from '../../pipes';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'op-chart',
@@ -16,10 +18,14 @@ export class OpChartComponent implements OnInit {
   opSubs: any;
   opList: any;
 
+  salesMan = '';
+
   constructor(
   	private chartBuilder: ChartBuilderProvider,
     private crmData: CrmDataProvider,
     private componentFactoryResolver: ComponentFactoryResolver,
+    private sort: SortPipe,
+    private fieldFilter: FieldFilterPipe
   ) {
   }
 
@@ -45,9 +51,13 @@ export class OpChartComponent implements OnInit {
   	let labels;
   	let pendiente = [];
   	let cerrado = [];
-  	let rechazado = [];
+    let rechazado = [];
+    let filteredList;
 
-  	this.opList.forEach( op => {
+    filteredList = this.fieldFilter.transform(this.opList, ['salesRep'], [this.salesMan], false);
+    console.log(filteredList);
+
+  	filteredList.forEach( op => {
   		if (!opObj[op.closeMonth]) {
   			opObj[op.closeMonth] = {
   				pendiente: 0,
@@ -59,8 +69,8 @@ export class OpChartComponent implements OnInit {
   			opObj[op.closeMonth][op.status.toLowerCase()] += op.total;
   		}
   	});  	
-  	labels = Object.keys(opObj);
-
+    labels = Object.keys(opObj);
+    labels = this.sort.transform(labels,'', true, false);
   	labels.forEach( month => {
   		pendiente.push(opObj[month].pendiente);
   		cerrado.push(opObj[month].cerrado);

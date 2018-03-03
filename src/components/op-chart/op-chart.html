@@ -3,6 +3,18 @@
 	<ion-row no-padding>
 		<h4>Oportunidades</h4>
 	</ion-row>
+	
+	<ion-row>
+		<ion-col>
+			<select #selectSalesMan [(ngModel)]="salesMan" (ngModelChange)="buildOpData()"  class="selectItem" [ngClass]="{label: selectSalesMan.value === ''}">
+				<option value="" selected>Vendedor</option>
+				<option>Alejandra Roldan</option>
+				<option
+				value="{{'Tarruella Alberto Horacio '}}"
+				>Alberto Tarruella</option>
+			</select>
+		</ion-col>
+	</ion-row>
 
 	<ion-row #chartContainer (window:resize)="setWidth()">
 		<div #opChart></div>

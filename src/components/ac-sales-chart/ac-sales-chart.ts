@@ -58,14 +58,6 @@ export class AcSalesChartComponent implements OnInit {
       this.obj = this.objectives[1][0].replace(/\./g,'');
       this.salesDataFilter();
     })
-  	// this.salesSubs = this.salesData.getRevenue(start, end)
-  	// .pipe(
-    //   map( res => res.json())
-    //  )
-  	// .subscribe( data => {
-  	// 	this.sales = data.data;
-    //   this.salesDataFilter();
-  	// });
   }
 
   ngAfterViewChecked() {
@@ -109,16 +101,6 @@ export class AcSalesChartComponent implements OnInit {
       let totalQuantity = 0;
       let totalObjSales = 0;
       let totalEqSales = 0;
-
-      // let filtered = this.sales.filter( sale => {
-      //   // esto es para que la fecha salga en este formato (2017-11-22), sino se queja y tira una advertencia
-      //   let ISODate = sale.fecha_documento.replace(/\//g, "");
-      //   let momentDate = moment(ISODate, "YYYYMMDD").format('MM/YY')
-      //   return (momentDate === month && 
-      //     this.salesManFilter(sale.nombreoriginantetr) &&
-      //     this.brandFilter(sale.marca)
-      //   )
-      // })
 
       let filtered = this.sales.filter( sale => {
         let momentDate = moment(sale.fecha).format('MM/YY');
@@ -192,41 +174,6 @@ export class AcSalesChartComponent implements OnInit {
 
     return filteredObj;
   }
-
-  // buildSalesObj(filteredArray: Array<any>, monthly?: boolean) {
-  //   let filteredObj = {};
-
-  //   filteredArray.forEach( sale => {
-  //     let total = + sale.total_importe
-  //     let cant = + sale.cantidad;
-  //     let cantNl = + sale.cantidad_nl;
-  //     let conv = cant/cantNl;
-  //     let quantity;
-  //     if (conv === 0.16 || conv === 0.24 || conv === 0.25 ) {
-  //       quantity = cant;
-  //     } else { 
-  //       quantity = 0
-  //     }
-
-  //     let date;
-  //     if (monthly) {
-  //       date = moment(sale.fecha_documento).format('YYYY-MM');
-  //     } else {
-  //       date = moment(sale.fecha_documento).format('YYYY-MM-DD');
-  //     }
-  //     if (!filteredObj[date]) {
-  //       filteredObj[date] = {
-  //         total: total,
-  //         quantity: quantity
-  //       }
-  //     } else {
-  //       filteredObj[date].total += total;
-  //       filteredObj[date].quantity += quantity;
-  //     }
-  //   })
-
-  //   return filteredObj;
-  // }
 
   salesManFilter(salesMan) {
     let result

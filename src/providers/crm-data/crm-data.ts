@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { map } from 'rxjs/operators';
 
 import * as moment from 'moment';
-import { HttpApiProvider, ApiDataProvider } from '../../providers';
+import { HttpApiProvider, ApiDataProvider, AuthDataProvider } from '../../providers';
 
 @Injectable()
 export class CrmDataProvider {
@@ -28,6 +29,7 @@ export class CrmDataProvider {
     },
     month: ''
   }
+  currentSalesRep: string;
 
 	private calipsoObjSubject = new BehaviorSubject({});
 	public calipsoObj = this.calipsoObjSubject.asObservable();
@@ -38,9 +40,11 @@ export class CrmDataProvider {
   constructor(
     private httpApi: HttpApiProvider,
     private apiData: ApiDataProvider,
+    private authData: AuthDataProvider
   ) {
 			this.subscribeToCalipsoDocs();
       this.updateFilters();
+      this.currentSalesRepCheck();
 	  }
 
   subscribeToCalipsoDocs() {
@@ -50,6 +54,20 @@ export class CrmDataProvider {
     )
     .subscribe( docs => {
       this.buildCalipsoObj(docs.data);
+    })
+  }
+
+  currentSalesRepCheck() {
+    this.authData.user.subscribe( (user: any) => {
+      console.log(user.email);
+      if (user.email === "alejandraroldan@quadri.com.ar") {
+        this.currentSalesRep = 'Alejandra Roldan';
+        this.filters.salesRep.tarruella = false;
+      }
+      if (user.email === "alejandroquadri@quadri.com.ar") {
+        this.currentSalesRep = 'Tarruella Alberto Horacio ';
+        this.filters.salesRep.roldan = false;
+      }
     })
   }
 

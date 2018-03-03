@@ -15,21 +15,26 @@
 	<div class="container">
 		<div class="agenda" *ngIf="agendaObj">
 
-			<ion-row>
-				<ion-col no-padding>
-					<h4>Agenda</h4>
-				</ion-col>
-			</ion-row>
-
 			<ion-card class="agendaCard">
 
 			  <ion-card-content>
 			    <ion-row>
-						<ion-col>
+						<ion-col col-auto>
 							<ion-item no-lines class="date" >
 						  	<ion-input class="dateInput" [(ngModel)]="date" (ngModelChange)="buildAgendaObj()" type="date"></ion-input>
 						  	<button ion-button outline item-end icon-only small (click)="back()"><ion-icon name="ios-arrow-back"></ion-icon></button>
 						    <button ion-button outline item-end icon-only small (click)="forward()"><ion-icon name="ios-arrow-forward"></ion-icon></button>
+							</ion-item>
+						</ion-col>
+						<ion-col col-auto>
+							<ion-item no-lines class="salesMan filters">
+								<select #selectSalesMan [(ngModel)]="salesMan" class="selectItem" [ngClass]="{label: selectSalesMan.value === ''}">
+									<option value="" selected>Vendedor</option>
+									<option>Alejandra Roldan</option>
+									<option
+									value="{{'Tarruella Alberto Horacio '}}"
+									>Alberto Tarruella</option>
+								</select>
 							</ion-item>
 						</ion-col>
 					</ion-row>
@@ -37,7 +42,6 @@
 					<ion-row *ngIf="agendaObj[date]" class="headers">
 						<ion-col text-center col-3>
 							<strong>Oportunidad</strong>
-							
 						</ion-col>
 						<ion-col text-center col-2>
 							<strong>Cliente</strong>
@@ -54,7 +58,7 @@
 						</ion-col>
 					</ion-row>
 
-					<ion-row *ngFor="let item of agendaObj[date]" align-items-center class="data">
+					<ion-row *ngFor="let item of agendaObj[date] | fieldFilter:['salesRep']:[salesMan]:false" align-items-center class="data">
 						<ion-col col-3>
 							{{ item.op }}
 						</ion-col>
@@ -85,8 +89,19 @@
 		</div>
 
 		<div class="graficos">
-			<ac-sales-chart></ac-sales-chart>
-			<op-chart></op-chart>
+
+			<ion-card>
+				<ion-card-content>
+						<ac-sales-chart></ac-sales-chart>
+				</ion-card-content>
+			</ion-card>
+
+			<ion-card>
+				<ion-card-content>
+						<op-chart></op-chart>
+				</ion-card-content>
+			</ion-card>
+			
 		</div>
 
 	</div>

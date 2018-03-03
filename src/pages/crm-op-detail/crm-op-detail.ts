@@ -104,6 +104,8 @@ export class CrmOpDetailPage {
 		form['clientKey'] = this.op.clientKey;
     form['client'] = this.op.client;
 		form['complete'] = false;
+		form['salesRep'] = this.op.salesRep;
+
 		this.crmData.newAgendaNote(form)
 		.then( ret =>  {
 	  	this.agendaForm.reset();			
