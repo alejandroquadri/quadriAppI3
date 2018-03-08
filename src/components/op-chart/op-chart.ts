@@ -3,7 +3,6 @@ import { ChartBuilderProvider, CrmDataProvider } from '../../providers';
 
 import { ChartDrawComponent } from '../chart-draw/chart-draw';
 import { SortPipe, FieldFilterPipe } from '../../pipes';
-import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'op-chart',
@@ -55,8 +54,6 @@ export class OpChartComponent implements OnInit {
     let filteredList;
 
     filteredList = this.fieldFilter.transform(this.opList, ['salesRep'], [this.salesMan], false);
-    console.log(filteredList);
-
   	filteredList.forEach( op => {
   		if (!opObj[op.closeMonth]) {
   			opObj[op.closeMonth] = {

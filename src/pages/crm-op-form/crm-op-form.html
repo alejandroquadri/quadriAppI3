@@ -18,7 +18,7 @@
 	  <form [formGroup]="opForm" (ngSubmit)="onSubmit()">
 				<ion-list>
 
-          <ion-item>
+          <!-- <ion-item>
 				    <ion-label fixed>Obra</ion-label>
 				    <ion-input *ngIf="!opKey" formControlName="obra" type="text"></ion-input>
 				    <div *ngIf="opKey" item-content class="">
@@ -30,20 +30,34 @@
 			      <button *ngIf="addPsp" type="button" ion-button clear color="lightGreyQ" icon-only item-end (click)="addOp()">
 			        <ion-icon name="add"></ion-icon>
 			      </button>
-				  </ion-item>
+					</ion-item> -->
+					
+					<ion-item>
+						<ion-label fixed>Obra</ion-label>
+						<ion-input *ngIf="!addPsp" formControlName="obra" type="text"></ion-input>
+						<div *ngIf="addPsp" item-content class="">
+							{{ opForm.value.obra}}
+						</div>
+						<button *ngIf="addPsp" type="button" ion-button clear color="lightGreyQ" icon-only item-end (click)="lookOp()">
+							<ion-icon name="eye"></ion-icon>
+						</button>
+					</ion-item>
 
           <ion-item>
 				    <ion-label fixed>Cliente</ion-label>
-				    <ion-input *ngIf="!clientKey" formControlName="client" type="text"></ion-input>
+				    <!-- <ion-input *ngIf="!clientKey" formControlName="client" type="text"></ion-input>
 				    <div *ngIf="clientKey" item-content class="">
 							{{ opForm.value.client}}
-				    </div>
+						</div> -->
+						<div item-content class="">
+								{{ opForm.value.client}}
+						</div>
 				    <button type="button" ion-button clear color="lightGreyQ" icon-only item-end (click)="lookClient()">
 			        <ion-icon name="eye"></ion-icon>
 			      </button>
-			      <button type="button" ion-button clear color="lightGreyQ" icon-only item-end (click)="addClient()">
+			      <!-- <button type="button" ion-button clear color="lightGreyQ" icon-only item-end (click)="addClient()">
 			        <ion-icon name="add"></ion-icon>
-			      </button>
+			      </button> -->
 				  </ion-item>
 
 				  <ion-item *ngIf="addPsp">
@@ -57,7 +71,8 @@
 					  <ion-label class="labelSelect">Vendedor</ion-label>
 						<select item-content formControlName="salesRep" class="select">
 							<option value="" disabled></option>
-					    <option *ngFor="let salesRep of salesReps | sort:'':true">{{ salesRep }}</option>
+							<option *ngFor="let salesRepOp of salesReps | sort:'':true"
+							value="{{ salesRepOp === 'Tarruella Alberto Horacio'? 'Tarruella Alberto Horacio ': salesRepOp }}">{{ salesRepOp }}</option>
 					  </select>
 				  </ion-item>
 

@@ -9,10 +9,6 @@ export class SalesDataProvider {
 	) {
   }
 
-  // getRevenue() {
-  // 	return this.httpApi.get('ventas');
-  // }
-
   getRevenue(start: string, end:string) {
     return this.httpApi.get(`ventas/ok/${start}/${end}`);
   }

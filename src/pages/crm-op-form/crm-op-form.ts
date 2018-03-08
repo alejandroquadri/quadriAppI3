@@ -82,18 +82,53 @@ export class CrmOpFormPage {
   }
 
   // para llamar a los modals
+  // lookClient() {
+  //   let profileModal = this.modalCtrl.create('ClientSelectPage', {pablo:'pelotudo'});
+  //   profileModal.onDidDismiss(data => {
+  //     console.log(data);
+  //     if (data) {
+  //       if (data.payload) {
+  //         this.opForm.patchValue({
+  //           obra: '',
+  //           closeMonth: '',
+  //           client: data.payload.val().name
+  //         });
+  //         this.updateClientForm = data.payload.val();
+  //         this.clientKey = data.key;
+  //         this.opKey = undefined;
+  //       } else {
+  //         this.opForm.patchValue({
+  //           client: data
+  //         });
+  //       }
+  //     }
+  //   })
+  //   profileModal.present();
+  // }
+
   lookClient() {
     let profileModal = this.modalCtrl.create('ClientSelectPage', {pablo:'pelotudo'});
     profileModal.onDidDismiss(data => {
+      console.log(data);
       if (data) {
-        this.opForm.patchValue({
-        obra: '',
-        closeMonth: '',
-        client: data.payload.val().name
-      });
-      this.updateClientForm = data.payload.val();
-      this.clientKey = data.key;
-      this.opKey = undefined;
+        if (data.payload) {
+          this.opForm.patchValue({
+            client: data.payload.val().name
+          });
+          this.updateClientForm = data.payload.val();
+          this.clientKey = data.key;
+        } else {
+          this.opForm.patchValue({
+            client: data
+          });
+        }
+        if (this.opKey) {
+          this.opForm.patchValue({
+            obra: '',
+            closeMonth: '',
+          });
+          this.opKey = undefined;
+        }
       }
     })
     profileModal.present();
@@ -102,29 +137,37 @@ export class CrmOpFormPage {
   lookOp() {
     let profileModal = this.modalCtrl.create('OpSelectPage');
     profileModal.onDidDismiss(data => {
+      console.log(data);
       if (data) {
-        this.opForm.patchValue({
-        obra: data.op.obra,
-        closeMonth: data.op.closeMonth,
-        client: data.op.client
-      });
-      this.updateOpForm = data.op;
-      this.clientKey = data.op.clientKey;
-      this.opKey = data.key;
-      this.updateClientForm = this.clientObj[this.clientKey];
+        if (data.op) {
+          console.log('viene por aca');
+          this.opForm.patchValue({
+            obra: data.op.obra,
+            closeMonth: data.op.closeMonth,
+            client: data.op.client
+          });
+          this.updateOpForm = data.op;
+          this.clientKey = data.op.clientKey;
+          this.opKey = data.key;
+          this.updateClientForm = this.clientObj[this.clientKey];
+        } else {
+          this.opForm.patchValue({
+            obra: data
+          });
+        }
       }
     })
     profileModal.present();
   }
-
+  
   addClient() {
     this.clientKey = undefined;
     this.opKey = undefined;
     this.updateClientForm = undefined
     this.opForm.patchValue({
-        obra: '',
-        closeMonth: '',
-        client: ''
+      obra: '',
+      closeMonth: '',
+      client: ''
     });
   }
 

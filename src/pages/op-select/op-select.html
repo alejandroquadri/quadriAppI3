@@ -11,6 +11,11 @@
 
   <ion-toolbar>
     <ion-searchbar [(ngModel)]="searchInput" (ngModelChange)="filter($event)"></ion-searchbar>
+    <ion-buttons end *ngIf="searchInput !== ''" >
+      <button ion-button color="ionBlue" small icon-end (click)="newOp()">
+        Nuevo <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

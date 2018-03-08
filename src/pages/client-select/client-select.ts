@@ -15,7 +15,7 @@ export class ClientSelectPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private filterPipe: FilterPipe,
-    private viewCtrl: ViewController,
+    public viewCtrl: ViewController,
     private crmData: CrmDataProvider
   ) {
   }
@@ -35,11 +35,15 @@ export class ClientSelectPage {
   }
 
   filter(event?) {
-    this.filteredClients = this.filterPipe.transform(this.clientsList, this.searchInput, false);
+    this.filteredClients = this.filterPipe.transform(this.clientsList, this.searchInput, true);
   }
 
   selectClient(name) {
     this.viewCtrl.dismiss(name);
+  }
+
+  newClient() {
+    this.viewCtrl.dismiss(this.searchInput);
   }
 
 }

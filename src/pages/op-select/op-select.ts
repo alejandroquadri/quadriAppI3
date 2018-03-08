@@ -13,7 +13,7 @@ export class OpSelectPage {
   constructor(
   	public navCtrl: NavController,
     public navParams: NavParams,
-    private viewCtrl: ViewController,
+    public viewCtrl: ViewController,
     private crmData: CrmDataProvider
   ) {
   }
@@ -51,6 +51,10 @@ export class OpSelectPage {
 
   selectOp(op, key) {
     this.viewCtrl.dismiss({op: op, key: key});
+  }
+
+  newOp() {
+    this.viewCtrl.dismiss(this.searchInput);
   }
 
 }
