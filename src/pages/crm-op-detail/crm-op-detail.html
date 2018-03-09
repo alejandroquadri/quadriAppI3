@@ -8,7 +8,7 @@
 			<input class="opName" #opNameEl type="text" size="{{ opName.length || 1 }}" 
 			(blur)="change('obra', opNameEl.value)" 
 			[(ngModel)]="opName">
-			<span>
+			<span (click)="changeClient(op)" class="client" >
 				- {{ op?.client }}	
 			</span>
 			<span>- {{ op?.$key }}</span>

@@ -148,6 +148,26 @@ export class CrmOpDetailPage {
   seeClient(key: string) {
     let profileModal = this.modalCtrl.create('CrmClientFormPage', {$key: key, mode: 'edit'});
     profileModal.present();
-  }
+	}
+
+	changeClient(op) {
+		console.log(op);
+		let profileModal = this.modalCtrl.create('ClientSelectPage', {pablo:'pelotudo'});
+    profileModal.onDidDismiss(data => {
+      if (data) {
+        if (data.payload) {
+					console.log(data.payload.val(), data.key);
+					let client = data.payload.val();
+					this.crmData.changeClient(client.name, op.clientKey, op.$key, data.key);
+        } else {
+					console.log(data);
+					this.crmData.changeClient(data, op.clientKey, op.$key);
+        }
+      }
+    })
+    profileModal.present();
+	}
+	
+
 
 }

@@ -233,8 +233,28 @@ export class CrmDataProvider {
     let contacts = this.apiData.fanOutObject(contact, [`crm/contacts/${contactKey}`], false);
     let clientUpdate = this.apiData.fanOutObject(clientContact, [`crm/clients/${contact.clientKey}/contacts`], false);
     let updateObj = Object.assign({}, contacts, clientUpdate);
-    console.log(updateObj);
+    // console.log(updateObj);
     return this.apiData.fanUpdate(updateObj);
+  }
+
+  changeClient(newName: string, oldClientKey: string, opKey: string, newClientKey?: string) {
+    let updateObj;
+    let opForm;
+    let newClientForm = {};
+
+    if (!newClientKey) { newClientKey = this.apiData.getNewKey() }
+
+    opForm = {
+      client: newName,
+      clientKey: newClientKey
+    }
+
+    updateObj = this.apiData.fanOutObject(opForm, [`crm/op/${opKey}`], false);
+    updateObj[`crm/clients/${oldClientKey}/ops/${opKey}`] = null;
+    updateObj[`crm/clients/${newClientKey}/ops/${opKey}`] = true;
+    updateObj[`crm/clients/${newClientKey}/name`] = newName;
+
+    this.apiData.fanUpdate(updateObj);
   }
 
   updateOp(key: string, form: any) {

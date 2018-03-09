@@ -85,4 +85,12 @@ page-crm-op-detail {
 		padding: 0px;
 	}
 
+	.client {
+		cursor: pointer
+	}
+
+	.client:hover {
+		color: map-get($colors, ionBlue);
+	}
+
 }
