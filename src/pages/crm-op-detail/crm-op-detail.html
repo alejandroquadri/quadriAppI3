@@ -11,7 +11,7 @@
 			<span (click)="changeClient(op)" class="client" >
 				- {{ op?.client }}	
 			</span>
-			<span>- {{ op?.$key }}</span>
+			<br> <span>- ClaveOp {{ op?.$key }} - Clave Cliente {{ op.clientKey }} </span>
 
 		</ion-title>
     <ion-buttons start>
@@ -137,9 +137,21 @@
 				
 				<div *ngIf="calipsoObj">
 					<div *ngIf="calipsoObj[psp]">
-						<ion-card-header margin-bottom>
-					   Presupuesto {{ psp }} - {{ calipsoObj[psp].flag }}
-					  </ion-card-header>
+						
+						<ion-row class="headers">
+							<ion-col>
+								<ion-card-header>
+								Presupuesto {{ psp }} - {{ calipsoObj[psp].flag }}
+								</ion-card-header>
+							</ion-col>
+							<ion-col col-auto align-self-center>
+								<button ion-button icon-only clear color="lightGreyQ" small 
+								(click)="deletePsp(psp)" class="actionButtons">
+									<ion-icon name="trash"></ion-icon>
+								</button>
+							</ion-col>
+						</ion-row>
+						
 						
 					  <ion-card-content>
 							<ion-row class="headers">

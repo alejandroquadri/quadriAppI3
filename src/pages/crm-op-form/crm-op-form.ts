@@ -137,29 +137,6 @@ export class CrmOpFormPage {
     profileModal.present();
   }
   
-  // addClient() {
-  //   this.clientKey = undefined;
-  //   this.opKey = undefined;
-  //   this.updateClientForm = undefined
-  //   this.opForm.patchValue({
-  //     obra: '',
-  //     closeMonth: '',
-  //     client: ''
-  //   });
-  // }
-
-  // addOp() {
-  //   this.opKey = undefined;
-  //   this.clientKey = undefined;
-  //   this.opForm.patchValue({
-  //       obra: '',
-  //       closeMonth: '',
-  //       client: ''
-  //     });
-  // }
-
-  // funciones para guardar las ops
-  
   onSubmit() {
     this.saveNewOPPsp();  
   }
@@ -184,6 +161,7 @@ export class CrmOpFormPage {
         opForm.total = Number(this.opForm.value.total);
       }
     }
+    !opForm['psps'] ? opForm['psps'] = {} : '' ;
     this.addPsp? opForm['psps'][this.pspData.num] = true: '';
 
     if (!this.clientKey) {

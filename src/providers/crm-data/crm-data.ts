@@ -240,7 +240,6 @@ export class CrmDataProvider {
   changeClient(newName: string, oldClientKey: string, opKey: string, newClientKey?: string) {
     let updateObj;
     let opForm;
-    let newClientForm = {};
 
     if (!newClientKey) { newClientKey = this.apiData.getNewKey() }
 
@@ -289,6 +288,14 @@ export class CrmDataProvider {
     deleteObj[`crm/contacts/${contactKey}`] = null;
     deleteObj[`crm/clients/${clientKey}/contacts/${contactKey}`] = null;
     return this.apiData.fanUpdate(deleteObj);
+  }
+
+  removePspOp(pspNum: string, opKey: string) {
+    let updateObj = {};
+    updateObj[`crm/op/${opKey}/psps/${pspNum}`] = null;
+    updateObj[`crm/checkPsp/${pspNum}`] = null;
+    console.log(updateObj);
+    this.apiData.fanUpdate(updateObj);
   }
 
 }

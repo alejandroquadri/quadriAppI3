@@ -151,16 +151,13 @@ export class CrmOpDetailPage {
 	}
 
 	changeClient(op) {
-		console.log(op);
 		let profileModal = this.modalCtrl.create('ClientSelectPage', {pablo:'pelotudo'});
     profileModal.onDidDismiss(data => {
       if (data) {
         if (data.payload) {
-					console.log(data.payload.val(), data.key);
 					let client = data.payload.val();
 					this.crmData.changeClient(client.name, op.clientKey, op.$key, data.key);
         } else {
-					console.log(data);
 					this.crmData.changeClient(data, op.clientKey, op.$key);
         }
       }
@@ -168,6 +165,10 @@ export class CrmOpDetailPage {
     profileModal.present();
 	}
 	
+	deletePsp(psp) {
+		console.log(psp, this.opKey);
+		this.crmData.removePspOp(psp, this.opKey);
+	}
 
 
 }
