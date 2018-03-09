@@ -1,0 +1,15 @@
+page-crm-psp-detail {
+
+  .headers {
+    border-bottom: solid map-get($colors, light) 1px;
+  }
+
+  .footer {
+    border-top: solid map-get($colors, light) 1px;
+  }
+  
+  .data:hover {
+    background-color: map-get($colors, light);
+  }
+
+}

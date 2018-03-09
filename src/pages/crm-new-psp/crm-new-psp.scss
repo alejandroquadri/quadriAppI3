@@ -29,4 +29,12 @@ page-crm-new-psp {
     cursor: pointer;
   }
 
+  .psp {
+    cursor: pointer;
+  }
+
+  .psp:hover {
+    color: map-get($colors, ionBlue);
+  }
+
 }

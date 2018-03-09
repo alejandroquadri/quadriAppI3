@@ -60,7 +60,7 @@
         <ion-col col-2 text-center>
           {{ psp.date }}
         </ion-col>
-        <ion-col col-2 text-center>
+        <ion-col col-2 text-center (click)="seePsp(psp)" class="psp">
           {{ psp.num }}
         </ion-col>
         <ion-col col-3>
@@ -73,6 +73,9 @@
           {{ psp.total | number : '1.0-0'}}
         </ion-col>
         <ion-col col-1 text-center>
+          <!-- <button ion-button icon-only clear color="lightGreyQ" small (click)="seePsp(psp)" class="actionButtons">
+            <ion-icon name="eye"></ion-icon>
+          </button> -->
           <button ion-button icon-only clear color="lightGreyQ" small (click)="addOp(psp)" class="actionButtons">
 						<ion-icon name="add"></ion-icon>
 					</button>

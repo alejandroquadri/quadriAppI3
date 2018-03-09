@@ -104,6 +104,12 @@ export class CrmNewPspPage {
     }, 500)
   }
 
+  seePsp(psp) {
+    console.log(psp);
+    let profileModal = this.modalCtrl.create('CrmPspDetailPage', psp);
+    profileModal.present();
+  }
+
   addOp(psp) {
     let profileModal = this.modalCtrl.create('CrmOpFormPage', psp);
     profileModal.present();
