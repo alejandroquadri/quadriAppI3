@@ -7,14 +7,15 @@
     <ion-buttons end>
       <div class="">
         <label margin-horizontal>Vendedor</label>
-        <select margin-horizontal class="select" name="" [(ngModel)]="salesRep" (ngModelChange)="filterSalesRep()">
+        <select margin-horizontal class="select" name="" [(ngModel)]="salesRep" (ngModelChange)="filter()">
           <option value=""></option>
           <option value="Alejandra Roldan">Roldan</option>
           <option value="Tarruella Alberto Horacio ">Tarruella</option>
         </select>
       </div>
     </ion-buttons>
-    <ion-title>Presupuestos nuevos</ion-title>
+    <!-- <ion-title>Presupuestos nuevos</ion-title> -->
+    <ion-searchbar [(ngModel)]="searchInput" (ngModelChange)="filter($event)"></ion-searchbar>
   </ion-navbar>
 
   <ion-toolbar>

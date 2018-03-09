@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import "rxjs/add/observable/combineLatest";
 
 import { CrmDataProvider } from '../../providers';
-import { FieldFilterPipe, SortPipe } from '../../pipes';
+import { FieldFilterPipe, SortPipe, FilterPipe } from '../../pipes';
 
 @IonicPage()
 @Component({
@@ -20,9 +20,10 @@ export class CrmNewPspPage {
   pspObj: any;
 
   filteredPsp: any;
-  salesRep = "";
+  salesRep = '';
+  searchInput = '';
   viewArray: any;
-  sortTerm = 'num';
+  sortTerm = 'total';
   sortDir = false;
   offset = 100;
 
@@ -31,6 +32,7 @@ export class CrmNewPspPage {
     public navParams: NavParams,
     public crmData: CrmDataProvider,
     private fieldFilter: FieldFilterPipe,
+    private searchFilter: FilterPipe,
     private sortPipe: SortPipe,
     public modalCtrl: ModalController,
   ) {
@@ -45,13 +47,12 @@ export class CrmNewPspPage {
       pair.checkedPsp? this.checkedPspsObj = pair.checkedPsp : this.checkedPspsObj = {};
       this.pspObj = pair.psps.psp;
       this.filterPsp();
-      this.filterSalesRep();
+      this.filter();
     })
   }
 
   checkCurrentSalesRep() {
     if (this.crmData.currentSalesRep) {
-      console.log(this.crmData.currentSalesRep);
       this.salesRep = this.crmData.currentSalesRep;
     }
   }
@@ -74,12 +75,9 @@ export class CrmNewPspPage {
     this.filteredPsp = filteredArray;
   }
 
-  filterSalesRep() {
-    if(this.salesRep !== "") {
-      this.viewArray = this.fieldFilter.transform(this.filteredPsp,['salesRep'],[this.salesRep], false);
-    } else  {
-      this.viewArray = this.filteredPsp;
-    }
+  filter(event?) {
+    let salesFilter = this.fieldFilter.transform(this.filteredPsp,['salesRep'],[this.salesRep], false);
+    this.viewArray = this.searchFilter.transform(salesFilter,this.searchInput, false);
     this.sort();
   }
 
@@ -101,7 +99,7 @@ export class CrmNewPspPage {
     console.log('infinite');
     setTimeout( () => {
       this.offset += 20;
-      this.filterSalesRep();
+      this.filter();
       infiniteScroll.complete()  
     }, 500)
   }
