@@ -78,4 +78,11 @@ page-crm-op-detail {
 		justify-content: center;
 	}
 
+	.opName {
+		background-color: map-get($colors, toolbarBack);
+		border: none;
+		text-align: center;
+		padding: 0px;
+	}
+
 }

@@ -4,7 +4,16 @@
   	<ion-buttons left>
 	  	<split-ctrl></split-ctrl>
 	  </ion-buttons>
-    <ion-title>{{ op?.obra }} - {{ op?.client }} - {{ op?.$key }}</ion-title>
+    <ion-title *ngIf="op">
+			<input class="opName" #opNameEl type="text" size="{{ opName.length || 1 }}" 
+			(blur)="change('obra', opNameEl.value)" 
+			[(ngModel)]="opName">
+			<span>
+				- {{ op?.client }}	
+			</span>
+			<span>- {{ op?.$key }}</span>
+
+		</ion-title>
     <ion-buttons start>
     	<button ion-button icon-only clear color="lightGreyQ" small (click)="seeClient(op?.clientKey)">
 					<ion-icon name="eye"></ion-icon>

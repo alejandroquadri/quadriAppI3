@@ -31,7 +31,8 @@ export class CrmOpDetailPage {
 	agendaForm: FormGroup;
 	edit = false;
 	editAgendaKey: string;
-  totalValue;
+	totalValue;
+	opName;
 
   constructor(
   	public navCtrl: NavController, 
@@ -59,7 +60,8 @@ export class CrmOpDetailPage {
     	if (this.op) {
     		this.statusBis = this.op.status;
     		this.op['$key'] = this.opKey;
-        this.totalValue = this.op.total;
+				this.totalValue = this.op.total;
+				this.opName = this.op.obra;
     	}
     	this.calipsoObj = pair.calipsoObj.psp;
     	this.agendaObj = pair.agendaObj;
