@@ -21,6 +21,7 @@ export class CrmClientFormPage {
 	clientType: string;
 	salesReps: any;
 	clientTypes: any;
+	clientName: any;
 
 	clientForm: FormGroup;
 
@@ -53,6 +54,7 @@ export class CrmClientFormPage {
 			this.salesRep = this.clientObj.salesRep;
 			this.clientType = this.clientObj.clientType;
 			this.contactObj = pair.contacts;
+			this.clientName = this.clientObj.name;
 		})
 	}
 
@@ -117,6 +119,10 @@ export class CrmClientFormPage {
 	deleteContact(contactKey) {
 		this.crmData.deleteContact(contactKey, this.clientKey)
 		.then( _ => console.log('contact deleted'));
+	}
+
+	editName(newName) {
+		this.crmData.editClientName(newName, this.clientObj, this.clientKey);
 	}
 	
 

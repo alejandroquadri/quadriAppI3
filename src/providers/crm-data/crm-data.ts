@@ -256,6 +256,25 @@ export class CrmDataProvider {
     this.apiData.fanUpdate(updateObj);
   }
 
+  editClientName(newName: string, clientForm: any, clientKey: string) {
+    console.log(newName, clientForm, clientKey);
+    let clientObj = {}    
+    let opsArray = Object.keys(clientForm.ops);
+    let pathArray = [];
+
+    opsArray.forEach( op => {
+      pathArray.push(`crm/op/${op}`);
+    })
+    console.log(pathArray);
+    let opsObj = this.apiData.fanOutObject({'client':newName}, pathArray, false);
+
+    clientObj[`crm/clients/${clientKey}/name`] = newName;
+
+    let updateObj = Object.assign(clientObj, opsObj);
+    console.log(updateObj);
+    this.apiData.fanUpdate(updateObj);
+  }
+
   updateOp(key: string, form: any) {
     return this.apiData.updateList('crm/op', key, form);
   }

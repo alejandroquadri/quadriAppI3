@@ -37,6 +37,13 @@ page-crm-client-form {
   .actionButtons {
     margin: 0px;
     font-size: 1rem;
+  }
+  
+  .clientName {
+		background-color: map-get($colors, toolbarBack);
+		border: none;
+		text-align: center;
+		padding: 0px;
 	}
 
 }

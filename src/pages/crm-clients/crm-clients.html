@@ -69,7 +69,7 @@
         </ion-col>
       </ion-row>
       <ion-row *ngFor="let client of clientView" class="data">
-          <ion-col col-2 (click)="seeClient(client.key)">
+          <ion-col col-2 (click)="seeClient(client.key)" class="client">
             {{ client.name }}
           </ion-col>
           <ion-col *ngFor="let period of periodArray" >

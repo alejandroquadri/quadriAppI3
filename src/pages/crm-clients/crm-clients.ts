@@ -116,7 +116,7 @@ export class CrmClientsPage {
       if (clientVal.ops) {
         let opsList = Object.keys(clientVal.ops);
         opsList.forEach( op => {
-          console.log(id, op, this.opObj[op]);
+          // console.log(id, op, this.opObj[op]);
           let month = this.monthTime(this.opObj[op].closeMonth);
           clientObj[id][this.opObj[op].status][month] += this.opObj[op].total;
           clientObj[id][this.opObj[op].status]['total'] += this.opObj[op].total;

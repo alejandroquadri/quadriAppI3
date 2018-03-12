@@ -1,7 +1,11 @@
 <ion-header>
 
   <ion-navbar>
-		<ion-title>{{ clientObj?.name }}</ion-title>
+		<ion-title *ngIf="clientName">
+			<input class="clientName" #clientNameEl type="text" size="{{ clientName.length || 1 }}" 
+			(blur)="editName(clientNameEl.value)" 
+			[(ngModel)]="clientName">
+		</ion-title>
     <ion-buttons end>
 	    <button ion-button (click)="viewCtrl.dismiss()">
 	      Salir

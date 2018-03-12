@@ -26,6 +26,14 @@ page-crm-clients {
 
 	.data:hover {
 		background-color: map-get($colors, light);
-	}
+  }
+  
+  .client {
+    cursor: pointer;
+  }
+  
+  .client:hover {
+    color: map-get($colors, ionBlue);
+  }
 
 }
