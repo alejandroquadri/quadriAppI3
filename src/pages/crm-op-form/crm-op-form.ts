@@ -98,6 +98,7 @@ export class CrmOpFormPage {
           this.opForm.patchValue({
             client: data
           });
+          this.clientKey = undefined;
         }
         if (this.opKey) {
           this.opForm.patchValue({
@@ -131,6 +132,7 @@ export class CrmOpFormPage {
           this.opForm.patchValue({
             obra: data
           });
+          this.opKey = undefined;
         }
       }
     })
