@@ -1,0 +1,100 @@
+page-sc-program {
+
+  .container {
+    height: 100%;
+    font-size: 1.2rem;
+  }
+
+  .headers {
+    border-bottom: solid 1px black;
+    font-size: 1.3rem;
+  }
+
+  .dateHeaders {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border-left: solid 1px black;
+  }
+
+  .data {
+    height: calc(100% - 62px);
+    overflow-y: auto;
+  }
+
+  .scDataCol {
+    border-left: solid 1px black;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .today {
+    font-weight: bold;
+    color: map-get($colors, primary)
+  }
+
+  .np {
+    border-bottom: solid map-get($colors, light) 1px;
+  }
+
+  .articles {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .article {
+    flex-grow: 1;
+    height: 100%;
+  }
+  
+  .cell {
+    // min-height: 26px;
+    cursor: pointer;
+    border-right: solid map-get($colors, light) 1px;
+    flex-grow: 1;
+    height: 100%;
+  }
+  
+  .cellItems {
+    border-left: solid map-get($colors, light) 1px;
+    height: 100%;
+  }
+
+  .toMake {
+    color: map-get($colors, danger);
+  }
+
+  .cell:hover {
+    background-color: map-get($colors, light);
+  }
+
+  .inputForm {
+  	font-size: 12px;
+  }
+
+  .inputQuantity {
+    // height: 20px;
+		width: 60px;
+		background-color: white;
+    border-radius: 5px;
+    line-height: 160%;
+  }
+
+  .inputDate {
+    // height: 20px;    
+  	background-color:white;
+		width: 140px;
+		border-radius: 5px;
+  }
+
+  .text-input-md {
+  	margin-top: 0px;
+		margin-bottom: 0px;
+  }
+
+  .inputObs {
+  	background-color: white;
+    border-radius: 5px;
+    line-height: 160%;
+  }
+
+}

@@ -52,8 +52,12 @@
         </button>
         <button ion-item menuClose (click)="openPage('ProdProgramPage')" *ngIf="platform.is('core')">
           <ion-icon item-start name="calendar"></ion-icon>
-          Programa
+          Programa produccion
         </button>
+        <button ion-item menuClose (click)="openPage('ScProgramPage')" *ngIf="platform.is('core')">
+            <ion-icon item-start name="calendar"></ion-icon>
+            Programa entregas
+          </button>
         <button ion-item menuClose (click)="openPage('DiaryProdPage')" *ngIf="platform.is('core')">
           <ion-icon item-start name="grid"></ion-icon>
           Produccion diaria

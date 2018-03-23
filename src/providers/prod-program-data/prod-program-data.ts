@@ -72,6 +72,26 @@ export class ProdProgramDataProvider {
 
   getEntregas() {
   	return this.httpApi.get('entregas');
-  }
+	}
+	
+	getNPPendientes() {
+		return this.httpApi.get('np');
+	}
+
+	getScProgram() {
+		return this.api.getListMeta('sc-program');
+	}
+
+	pushNewScProg(form) {
+		return this.api.push('sc-program', form);
+	}
+
+	updateScProg(form, key) {
+		return this.api.updateList('sc-program', key, form);
+	}
+
+	deleteScProg(key) {
+		return this.api.removeItemList('sc-program', key);
+	}
 
 }
