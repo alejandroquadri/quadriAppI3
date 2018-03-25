@@ -32,14 +32,17 @@
           <ion-input formControlName="quantity" placeholder="Cant" type="number" class="inputQuantity"></ion-input>
         </ion-col>
         <ion-col col-auto>
+          <input type="checkbox" formControlName="reserved" value="" (change)="reservedChange($event)"> Reservado {{ scForm.value.reserved }}
+        </ion-col>
+        <ion-col col-auto>
           <input type="checkbox" formControlName="paid" value=""> Pago
         </ion-col>
         <ion-col col-auto>
-          <input type="checkbox" formControlName="delivery" value=""> Entrega coordinada
+          <input type="checkbox" formControlName="delivery" value="" (change)="deliveryChange()"> Entrega coordinada
         </ion-col>
         <ion-col col-auto>
-            <input type="checkbox" formControlName="takeAway" value=""> Retira
-          </ion-col>
+            <input type="checkbox" formControlName="takeAway" value="" (change)="takeAwayChange()"> Retira
+        </ion-col>
         <ion-col>
           <ion-input formControlName="obs" placeholder="Observacion" type="text" class="inputObs"></ion-input>
         </ion-col>
@@ -159,7 +162,8 @@
               *ngFor="let date of periodArray"
               (click)="addToForm(np, item.code, date, returnQ(np, item.code, date))">
                 <div class="innerCell" *ngIf="returnQ(np, item.code, date)">
-                  <span [ngClass]="{toMake: scObj[np][item.code][dateFormat(date, 'fechaObj')].quantity<0}" >
+                  <span [ngClass]="{toMake: scObj[np][item.code][dateFormat(date, 'fechaObj')].quantity<0,
+                reserved: scObj[np][item.code][dateFormat(date, 'fechaObj')].reserved}" >
                     {{ scObj[np][item.code][dateFormat(date, 'fechaObj')].quantity }}
                   </span>
                   <span *ngIf="scObj[np][item.code][dateFormat(date, 'fechaObj')].paid"><ion-icon name="logo-usd" color="ionGreen"></ion-icon></span>

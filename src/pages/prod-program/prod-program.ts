@@ -48,6 +48,7 @@ export class ProdProgramPage {
 	entregas: any;
 	items: any;
 	weeksEntregas: any;
+	scProgSubs: any
 
 	public myForm: FormGroup;
 
@@ -73,9 +74,15 @@ export class ProdProgramPage {
      )
     .subscribe( data => {
       let sumaSemanasObj = this.sumaSemana(data.data)
-      this.entregas = sumaSemanasObj.sem;
-      this.items = this.buildItemsArray(sumaSemanasObj.items);
-    });
+      // this.entregas = sumaSemanasObj.sem;
+      // this.items = this.buildItemsArray(sumaSemanasObj.items);
+		});
+		
+		this.scProgSubs = this.programData.getScProgram()
+		.subscribe( prog => {
+			console.log(prog);
+			this.sumaSemanaFb(prog);
+		})
   }
 
   ionViewWillUnload() {
@@ -290,12 +297,47 @@ export class ProdProgramPage {
         	items[codigo] = Math.abs(valor);        	
         }
       }
-    }
+		}
+		console.log(artXSem, items);
     return {
     	sem: artXSem,
     	items: items
     }
-  }
+	}
+	
+	sumaSemanaFb(scList: Array<any>) {
+		let artXSem = {};
+		let items = {};
+		
+		scList.forEach( scProg => {
+			let sc = scProg.payload.val();
+			let date = moment(sc.date);
+			let semana = date.format('wwYYYY')
+
+			if(!artXSem[sc.code]) {
+				artXSem[sc.code] = {};
+				artXSem[sc.code][semana] = Math.abs(sc.quantity);
+			} else {
+				if (!artXSem[sc.code][semana]) {
+					artXSem[sc.code][semana] = Math.abs(sc.quantity);
+				} else {
+					artXSem[sc.code][semana] += Math.abs(sc.quantity);
+				}
+			}
+
+			if (items[sc.code]) {
+				items[sc.code] += Math.abs(sc.quantity);
+			} else {
+				items[sc.code] = Math.abs(sc.quantity);        	
+			}
+
+		});
+
+		console.log(artXSem, items);
+		this.entregas = artXSem;
+		this.items = this.buildItemsArray(items);
+
+	}
 
   buildNextWeeks () {
   	let weeks = [];	

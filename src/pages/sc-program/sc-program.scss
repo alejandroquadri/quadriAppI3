@@ -67,6 +67,10 @@ page-sc-program {
     background-color: map-get($colors, light);
   }
 
+  .reserved {
+    color: map-get($colors, primary);
+  }
+
   .inputForm {
   	font-size: 12px;
   }

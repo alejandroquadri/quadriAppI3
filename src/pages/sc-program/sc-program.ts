@@ -98,6 +98,7 @@ export class ScProgramPage {
         paid: values.paid,
         delivery: values.delivery,
         takeAway: values.takeAway,
+        reserved: values.reserved,
         obs: values.obs,
         $key: sc.key
       }
@@ -114,17 +115,8 @@ export class ScProgramPage {
           scObj[values.np][values.code][values.date] = form;
         }
       }
-
-      // if (!scObj[values.code]) {
-      //   console.log('viene por aca');
-      //   scObj[values.code] = {};
-      //   scObj[values.code][values.date] = form; 
-      // } else {
-      //   console.log('viene por aca 2');
-      //   scObj[values.code][values.date] = form;
-      // }
     })
-    console.log(scObj)
+    // console.log(scObj)
     return scObj;
   }
 
@@ -225,11 +217,11 @@ export class ScProgramPage {
     	paid: [''],
       delivery: [''],
       takeAway: [''],
+      reserved: ['']
     })
   }
 
   submit() {
-    console.log(this.scForm.value);
     if (!this.editing) {
       this.newProg();
     } else {
@@ -247,7 +239,6 @@ export class ScProgramPage {
   }
 
   remove() {
-    console.log('delete');
     this.progData.deleteScProg(this.editKey)
     .then( () => {
       this.editKey = undefined;
@@ -256,10 +247,7 @@ export class ScProgramPage {
     })
   }
 
-
-
   addToForm(np: string, code: string, date, value?) {
-    console.log(value);
     if (value) {
       this.editing = true;
       this.editKey = value.$key;
@@ -272,6 +260,7 @@ export class ScProgramPage {
         paid: value.paid || false,
         delivery: value.delivery || false,
         takeAway: value.takeAway || false,
+        reserved: value.reserved || false,
       })
     } else {
       this.editing = false;
@@ -284,8 +273,37 @@ export class ScProgramPage {
         obs: '',
         paid: false,
         delivery: false,
-        takeAway: false
+        takeAway: false,
+        reserved: false
       })
+    }
+  }
+
+  reservedChange(event) {
+    if (this.scForm.value.reserved && (this.scForm.value.quantity<0)) {
+      this.scForm.patchValue({
+        quantity: Math.abs(this.scForm.value.quantity)
+      });
+    }
+  }
+
+  deliveryChange() {
+    let formVal = this.scForm.value;
+    if (formVal.delivery === true) {
+      this.scForm.patchValue({
+        takeAway: false,
+        delivery: true
+      });
+    }
+  }
+
+  takeAwayChange() {
+    let formVal = this.scForm.value;
+    if (formVal.takeAway === true) {
+      this.scForm.patchValue({
+        delivery: false,
+        takeAway: true
+      });
     }
   }
 
