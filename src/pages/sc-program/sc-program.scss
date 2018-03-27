@@ -53,6 +53,10 @@ page-sc-program {
     flex-grow: 1;
     height: 100%;
   }
+
+  .cellSat {
+    border-right: solid map-get($colors, greyQuadri) 1px;
+  }
   
   .cellItems {
     border-left: solid map-get($colors, light) 1px;

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 import * as moment from 'moment';
 
 import { ProdProgramDataProvider } from '../../providers';
-
+import { FieldFilterPipe, SortPipe, FilterPipe } from '../../pipes';
 
 @IonicPage()
 @Component({
@@ -31,12 +31,16 @@ export class ScProgramPage {
   showForm = true;
   editing = false;
   editKey: string;
+  searchInput = '';
+
+  @ViewChild("qInput") qInput;  
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private progData: ProdProgramDataProvider,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private filterPipe: FilterPipe
   ) {
     this.buildPeriodArray();
     this.buildForm();
@@ -53,11 +57,17 @@ export class ScProgramPage {
     this.subs.subscribe( (pair: any) => {
       this.npList = pair.np.data;
       this.scProgList = pair.scProg;
-      this.npObj = this.buildNpObj(this.npList);
+      // this.npObj = this.buildNpObj(this.filter(this.npList));
+      this.filter();
       this.scObj = this.buildScObj(this.scProgList);
       // console.log(this.npList, this.scProgList, this.npObj, this.scObj);
       // console.log(this.scProgList, this.scObj);
     })
+  }
+
+  filter(event?) {
+    let filteredArrey = this.filterPipe.transform(this.npList, this.searchInput, false);
+    this.npObj = this.buildNpObj(filteredArrey);
   }
 
   buildNpObj(npList: Array<any>) {
@@ -248,6 +258,9 @@ export class ScProgramPage {
   }
 
   addToForm(np: string, code: string, date, value?) {
+    // setTimeout(() => {
+      this.qInput.setFocus(); // le pongo un timeout para que haga focus cuando carga
+    // },150);
     if (value) {
       this.editing = true;
       this.editKey = value.$key;

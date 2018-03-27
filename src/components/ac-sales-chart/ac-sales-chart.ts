@@ -45,17 +45,20 @@ export class AcSalesChartComponent implements OnInit {
     let today = moment();
     let end = today.format('YYYYMMDD');
     let start = today.date(1).subtract(6, 'months').format('YYYYMMDD');
-    this.objectiveSubs = this.salesData.getObjectives()
-    .pipe( map( res => res.json()));
+    // this.objectiveSubs = this.salesData.getObjectives()
+    // .pipe( map( res => res.json()));
+    this.objectiveSubs = this.salesData.getObjectives();
     this.salesSubs = this.salesData.getRevenue(start, end)
     .pipe( map( res => res.json()));
     
     this.obsSubs = Observable.combineLatest(this.salesSubs, this.objectiveSubs, (sales: any, objectives: any) => ({sales, objectives}))
     .subscribe( pair => {
       this.sales = pair.sales.data;
-      this.objectives = pair.objectives.data;
-      this.eq = this.objectives[0][0].replace(/\./g,'');
-      this.obj = this.objectives[1][0].replace(/\./g,'');
+      // this.objectives = pair.objectives.data;
+      // this.eq = this.objectives[0][0].replace(/\./g,'');
+      // this.obj = this.objectives[1][0].replace(/\./g,'');
+      this.eq = pair.objectives.eq;
+      this.obj = pair.objectives.obj;
       this.salesDataFilter();
     })
   }

@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpApiProvider } from '../../providers';
+import { HttpApiProvider, ApiDataProvider } from '../../providers';
 
 @Injectable()
 export class SalesDataProvider {
 
   constructor(
-  	private httpApi: HttpApiProvider,
+    private httpApi: HttpApiProvider,
+    private apiData: ApiDataProvider
 	) {
   }
 
@@ -17,8 +18,12 @@ export class SalesDataProvider {
   	return this.httpApi.get('stock');
   }
 
-  getObjectives() {
+  getObjectivesOld() {
     return this.httpApi.get('ventas/objetivos');
+  }
+
+  getObjectives() {
+    return this.apiData.getObject('crm/objectives');
   }
 
 }

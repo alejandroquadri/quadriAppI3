@@ -313,22 +313,26 @@ export class ProdProgramPage {
 			let sc = scProg.payload.val();
 			let date = moment(sc.date);
 			let semana = date.format('wwYYYY')
+			let valor = sc.quantity;
 
-			if(!artXSem[sc.code]) {
-				artXSem[sc.code] = {};
-				artXSem[sc.code][semana] = Math.abs(sc.quantity);
-			} else {
-				if (!artXSem[sc.code][semana]) {
-					artXSem[sc.code][semana] = Math.abs(sc.quantity);
+			if (valor < 0) {
+				valor = Math.abs(valor)
+				if(!artXSem[sc.code]) {
+					artXSem[sc.code] = {};
+					artXSem[sc.code][semana] = valor;
 				} else {
-					artXSem[sc.code][semana] += Math.abs(sc.quantity);
+					if (!artXSem[sc.code][semana]) {
+						artXSem[sc.code][semana] = valor;
+					} else {
+						artXSem[sc.code][semana] += valor;
+					}
 				}
-			}
-
-			if (items[sc.code]) {
-				items[sc.code] += Math.abs(sc.quantity);
-			} else {
-				items[sc.code] = Math.abs(sc.quantity);        	
+	
+				if (items[sc.code]) {
+					items[sc.code] += valor;
+				} else {
+					items[sc.code] = valor;        	
+				}
 			}
 
 		});

@@ -4,7 +4,7 @@
     <ion-buttons left>
 	  	<split-ctrl></split-ctrl>
 	  </ion-buttons>
-    <ion-title>Programa de entregas</ion-title>
+    <ion-searchbar [(ngModel)]="searchInput" (ngModelChange)="filter($event)"></ion-searchbar>
     <ion-buttons end>
       <button ion-button outline icon-only small (click)="thisWeek()">
         <ion-icon name="calendar"></ion-icon>
@@ -29,16 +29,16 @@
           <span>{{ this.scForm.value.code || '' }}</span>
         </ion-col>
         <ion-col col-auto>
-          <ion-input formControlName="quantity" placeholder="Cant" type="number" class="inputQuantity"></ion-input>
+          <ion-input #qInput formControlName="quantity" placeholder="Cant" type="number" class="inputQuantity"></ion-input>
         </ion-col>
         <ion-col col-auto>
-          <input type="checkbox" formControlName="reserved" value="" (change)="reservedChange($event)"> Reservado {{ scForm.value.reserved }}
+          <input type="checkbox" formControlName="reserved" value="" (change)="reservedChange($event)"> Reservado
         </ion-col>
         <ion-col col-auto>
           <input type="checkbox" formControlName="paid" value=""> Pago
         </ion-col>
         <ion-col col-auto>
-          <input type="checkbox" formControlName="delivery" value="" (change)="deliveryChange()"> Entrega coordinada
+          <input type="checkbox" formControlName="delivery" value="" (change)="deliveryChange()"> Entrega
         </ion-col>
         <ion-col col-auto>
             <input type="checkbox" formControlName="takeAway" value="" (change)="takeAwayChange()"> Retira
@@ -160,7 +160,8 @@
             <ion-row *ngFor="let item of npObj[np].items" align-items-center align-self-center class="article">
               <ion-col align-self-center text-center class="cell"
               *ngFor="let date of periodArray"
-              (click)="addToForm(np, item.code, date, returnQ(np, item.code, date))">
+              (click)="addToForm(np, item.code, date, returnQ(np, item.code, date))"
+              [ngClass]="{cellSat: dateFormat(date, 'dia') === 'sá'}">
                 <div class="innerCell" *ngIf="returnQ(np, item.code, date)">
                   <span [ngClass]="{toMake: scObj[np][item.code][dateFormat(date, 'fechaObj')].quantity<0,
                 reserved: scObj[np][item.code][dateFormat(date, 'fechaObj')].reserved}" >
