@@ -5,6 +5,10 @@ page-sc-program {
     font-size: 1.2rem;
   }
 
+  ::-webkit-scrollbar {
+    display: none;
+	}
+
   .headers {
     border-bottom: solid 1px black;
     font-size: 1.3rem;
@@ -18,7 +22,7 @@ page-sc-program {
 
   .data {
     height: calc(100% - 62px);
-    overflow-y: auto;
+    overflow-y: scroll;
   }
 
   .scDataCol {

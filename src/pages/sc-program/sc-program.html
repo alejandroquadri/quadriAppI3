@@ -6,6 +6,9 @@
 	  </ion-buttons>
     <ion-searchbar [(ngModel)]="searchInput" (ngModelChange)="filter($event)"></ion-searchbar>
     <ion-buttons end>
+      <button ion-button outline icon-only small (click)="showCalc = !showCalc">
+        <ion-icon name="calculator"></ion-icon>
+      </button>
       <button ion-button outline icon-only small (click)="thisWeek()">
         <ion-icon name="calendar"></ion-icon>
       </button>
@@ -17,6 +20,14 @@
   </ion-navbar>
 
   <ion-toolbar *ngIf="showForm" >
+    <ion-row *ngIf="showCalc" class="inputForm">
+      <ion-col col-auto>
+        Pendiente de entrega: {{ this.totalPending | number : '1.0-2' }}
+      </ion-col>
+      <ion-col col-auto>
+        Pendiente de produccion: {{ this.totalProg | number : '1.0-2' }}
+      </ion-col>
+    </ion-row>
     <form [formGroup]="scForm" (ngSubmit)="submit()">
       <ion-row align-items-center class="inputForm">
         <ion-col col-auto>

@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 import * as moment from 'moment';
 
 import { ProdProgramDataProvider } from '../../providers';
-import { FieldFilterPipe, SortPipe, FilterPipe } from '../../pipes';
+import { FilterPipe } from '../../pipes';
 
 @IonicPage()
 @Component({
@@ -33,6 +33,11 @@ export class ScProgramPage {
   editKey: string;
   searchInput = '';
 
+  showCalc = false;
+  npCodeObj = {};
+  totalPending = 0;
+  totalProg = 0;
+
   @ViewChild("qInput") qInput;  
 
   constructor(
@@ -57,23 +62,35 @@ export class ScProgramPage {
     this.subs.subscribe( (pair: any) => {
       this.npList = pair.np.data;
       this.scProgList = pair.scProg;
-      // this.npObj = this.buildNpObj(this.filter(this.npList));
       this.filter();
       this.scObj = this.buildScObj(this.scProgList);
-      // console.log(this.npList, this.scProgList, this.npObj, this.scObj);
-      // console.log(this.scProgList, this.scObj);
     })
   }
-
+  
   filter(event?) {
-    let filteredArrey = this.filterPipe.transform(this.npList, this.searchInput, false);
+    let filteredArrey;
+    if (this.searchInput.length >3 ) {
+      filteredArrey = this.filterPipe.transform(this.npList, this.searchInput, false);
+    } else {
+      filteredArrey = this.npList;
+    }
     this.npObj = this.buildNpObj(filteredArrey);
   }
 
   buildNpObj(npList: Array<any>) {
     let npObj = {};
+    this.totalPending = 0;
+    this.totalProg = 0;
 
     npList.forEach( np => {
+      
+      if (this.showCalc) {
+        this.totalPending += Number(np.pendiente);
+        if (this.npCodeObj[`${np.np}${np.codigo}`]) {
+          this.totalProg += this.npCodeObj[`${np.np}${np.codigo}`]
+        }
+      }
+
       let item = {
         code: np.codigo,
         desc: np.descripcion,
@@ -95,6 +112,7 @@ export class ScProgramPage {
         npObj[np.np].items.push(item);
       }
     });
+    
     return npObj;
   }
 
@@ -103,30 +121,35 @@ export class ScProgramPage {
 
     scList.forEach( sc => {
       let values = sc.payload.val();
-      let form = {
-        quantity: values.quantity,
-        paid: values.paid,
-        delivery: values.delivery,
-        takeAway: values.takeAway,
-        reserved: values.reserved,
-        obs: values.obs,
-        $key: sc.key
-      }
 
-      if (!scObj[values.np]) {
-        scObj[values.np] = {};
-        scObj[values.np][values.code] = {};
-        scObj[values.np][values.code][values.date] = form;
-      } else {
-        if (!scObj[values.np][values.code]) {
+        let form = {
+          quantity: values.quantity,
+          paid: values.paid,
+          delivery: values.delivery,
+          takeAway: values.takeAway,
+          reserved: values.reserved,
+          obs: values.obs,
+          $key: sc.key
+        }
+  
+        if (!scObj[values.np]) {
+          scObj[values.np] = {};
           scObj[values.np][values.code] = {};
           scObj[values.np][values.code][values.date] = form;
         } else {
-          scObj[values.np][values.code][values.date] = form;
+          if (!scObj[values.np][values.code]) {
+            scObj[values.np][values.code] = {};
+            scObj[values.np][values.code][values.date] = form;
+          } else {
+            scObj[values.np][values.code][values.date] = form;
+          }
         }
+
+      if (values.quantity < 0) {
+        this.npCodeObj[`${values.np}${values.code}`] = Math.abs(values.quantity);
       }
+    
     })
-    // console.log(scObj)
     return scObj;
   }
 

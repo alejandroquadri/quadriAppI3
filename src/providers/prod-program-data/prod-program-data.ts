@@ -13,7 +13,6 @@ export class ProdProgramDataProvider {
   	private httpApi: HttpApiProvider,
   	private staticData: StaticDataProvider
   	) {
-    console.log('Hello ProdProgramDataProvider Provider');
   }
 
   getProgram() {

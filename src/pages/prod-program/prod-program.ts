@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
-import { map } from 'rxjs/operators';
 
 import * as moment from 'moment';
 import 'moment/locale/es';
@@ -62,32 +61,21 @@ export class ProdProgramPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProdProgramPage');
     this.buildMonth();
     this.programSubs = this.programData.getProgram().subscribe( prog => {
     	this.program = prog;
     })
-    this.weeksEntregas = this.buildNextWeeks();
-    this.entregasSubs = this.programData.getEntregas()
-    .pipe(
-      map( res => res.json())
-     )
-    .subscribe( data => {
-      let sumaSemanasObj = this.sumaSemana(data.data)
-      // this.entregas = sumaSemanasObj.sem;
-      // this.items = this.buildItemsArray(sumaSemanasObj.items);
-		});
+		this.weeksEntregas = this.buildNextWeeks();
 		
 		this.scProgSubs = this.programData.getScProgram()
 		.subscribe( prog => {
-			console.log(prog);
 			this.sumaSemanaFb(prog);
 		})
   }
 
   ionViewWillUnload() {
     this.programSubs.unsubscribe();
-    this.entregasSubs.unsubscribe();
+    this.scProgSubs.unsubscribe();
   }
 
   // formulario
@@ -106,7 +94,6 @@ export class ProdProgramPage {
   }
 
   submit() {
-  	console.log(this.myForm.value);
   	this.editing ? this.update() : this.add(this.myForm.value) ;
   }
 
@@ -144,7 +131,6 @@ export class ProdProgramPage {
 
   add(form: any) {
   	this.programData.addNew(form).then( () => {
-			console.log('guardado');
 		})
   }
 
@@ -159,14 +145,12 @@ export class ProdProgramPage {
 	  }
   	this.programData.update(this.myForm.value, this.idEdit, diff)
   	.then( () => {
-  		console.log('editado');
   		this.buildForm();
   	})
   }
 
   remove() {
   	this.programData.remove(this.myForm.value, this.idEdit).then( () => {
-  		console.log('borrado');
   		this.buildForm();
   	})
   }
@@ -298,7 +282,6 @@ export class ProdProgramPage {
         }
       }
 		}
-		console.log(artXSem, items);
     return {
     	sem: artXSem,
     	items: items
@@ -337,7 +320,6 @@ export class ProdProgramPage {
 
 		});
 
-		console.log(artXSem, items);
 		this.entregas = artXSem;
 		this.items = this.buildItemsArray(items);
 
