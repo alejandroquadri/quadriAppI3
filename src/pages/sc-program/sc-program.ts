@@ -23,6 +23,7 @@ export class ScProgramPage {
   npList: any;
   scProgList: any;
   npObj: any;
+  npObjNoFilter: any
   scObj: any;
 
   periodArray = [];
@@ -32,11 +33,13 @@ export class ScProgramPage {
   editing = false;
   editKey: string;
   searchInput = '';
+  wasFiltered = false;
 
   showCalc = false;
   npCodeObj = {};
   totalPending = 0;
   totalProg = 0;
+  load = true;
 
   @ViewChild("qInput") qInput;  
 
@@ -67,29 +70,29 @@ export class ScProgramPage {
     })
   }
   
-  filter(event?) {
-    let filteredArrey;
-    if (this.searchInput.length >3 ) {
-      filteredArrey = this.filterPipe.transform(this.npList, this.searchInput, false);
+  filter() {
+    let filtered;
+    if (this.load) {
+      this.npObj = this.buildNpObj(this.npList)
+      this.npObjNoFilter = this.npObj;
+      this.load = false;
     } else {
-      filteredArrey = this.npList;
+      if (this.searchInput.length > 3) {
+        filtered = this.filterPipe.transform(this.npList, this.searchInput, false);
+        this.npObj = this.buildNpObj(filtered)
+      } else {
+        this.npObj = this.npObjNoFilter;
+      }
     }
-    this.npObj = this.buildNpObj(filteredArrey);
   }
 
   buildNpObj(npList: Array<any>) {
+    this.load = false;
     let npObj = {};
     this.totalPending = 0;
     this.totalProg = 0;
 
     npList.forEach( np => {
-      
-      if (this.showCalc) {
-        this.totalPending += Number(np.pendiente);
-        if (this.npCodeObj[`${np.np}${np.codigo}`]) {
-          this.totalProg += this.npCodeObj[`${np.np}${np.codigo}`]
-        }
-      }
 
       let item = {
         code: np.codigo,
@@ -111,8 +114,8 @@ export class ScProgramPage {
       } else {
         npObj[np.np].items.push(item);
       }
+
     });
-    
     return npObj;
   }
 
@@ -122,6 +125,8 @@ export class ScProgramPage {
     scList.forEach( sc => {
       let values = sc.payload.val();
 
+      if (values.np  in this.npObj) {
+        
         let form = {
           quantity: values.quantity,
           paid: values.paid,
@@ -144,11 +149,7 @@ export class ScProgramPage {
             scObj[values.np][values.code][values.date] = form;
           }
         }
-
-      if (values.quantity < 0) {
-        this.npCodeObj[`${values.np}${values.code}`] = Math.abs(values.quantity);
       }
-    
     })
     return scObj;
   }
