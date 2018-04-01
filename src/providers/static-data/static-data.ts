@@ -328,6 +328,25 @@ export class StaticDataProvider {
       'cabezal 4',
       'cabezal 5',
       'cabezal 6'   
+    ],
+    'Desbañadora': [
+      'delantero derecho',
+      'delantero izquierdo',
+      'trasero derecho',
+      'trasero izquierdo'
+    ],
+    'Biseladora zocalos': [
+      '1er copa',
+      '2da copa'
+    ],
+    'Biseladora' : [
+      'entrada derecha',
+      'entrada izquierda',
+      'salida derecha',
+      'salida izquierda'
+    ],
+    'Cortadora' : [
+      'Disco de corte'
     ]
   }
 

@@ -43,7 +43,7 @@
             </select>
           </ion-item>
 
-          <!-- breton -->
+          <!-- breton o lineal -->
           <div *ngIf="sForm.value.machine === 'Breton' || sForm.value.machine === 'Lineal'" >
 
             <ion-item *ngIf="platform.is('mobile')">
@@ -85,6 +85,36 @@
             </ion-item>
 
           </div>
+
+          <!-- cortadoras y biseladoras -->
+
+          <div *ngIf="sForm.value.machine === 'Desbañadora' || sForm.value.machine === 'Biseladora zocalos' || sForm.value.machine === 'Biseladora' || sForm.value.machine === 'Cortadora'">
+
+            <ion-item *ngIf="platform.is('mobile')">
+              <ion-label>Cabezal</ion-label>
+              <ion-select #cabInput formControlName="cab">
+                <ion-option *ngFor="let cabezal of staticData.cabezales['sForm.value.machine']">
+                  {{cabezal}}
+                </ion-option>
+              </ion-select>
+            </ion-item>
+    
+            <ion-item *ngIf="!platform.is('mobile')">
+              <ion-label class="labelSelect">Cabezal</ion-label>				
+              <select #cabInput item-content formControlName="cab" class="select">
+                <option value="" disabled selected></option>
+                <option *ngFor="let cabezal of staticData.cabezales[sForm.value.machine]">
+                  {{cabezal}}
+                </option>
+              </select>
+            </ion-item>
+
+          </div>
+
+          <ion-item>
+            <ion-label fixed>Observacion</ion-label>
+            <ion-textarea formControlName="obs" fz-elastic></ion-textarea>
+          </ion-item>
           
       </ion-list>
 

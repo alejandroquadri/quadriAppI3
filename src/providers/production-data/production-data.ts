@@ -97,4 +97,8 @@ export class ProductionDataProvider {
     console.log(removeObject);
     return this.api.fanUpdate(removeObject);
   }
+
+  pushSupply(form) {
+    this.api.push('supplies', form);
+  }
 }

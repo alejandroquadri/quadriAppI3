@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import * as moment from 'moment';
 
-import { StaticDataProvider } from '../../providers';
+import { StaticDataProvider, ProductionDataProvider } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -25,7 +25,8 @@ today = moment();
     public platform: Platform,
     public fb: FormBuilder,
     public staticData: StaticDataProvider,
-    public renderer: Renderer
+    public renderer: Renderer,
+    private prodData: ProductionDataProvider
   ) {
     this.buildForm();
   }
@@ -38,8 +39,9 @@ today = moment();
     this.sForm = this.fb.group({
       date: ['', Validators.required],
       machine: ['', Validators.required],
-      cab: ['', Validators.required],
-      brick: ['', Validators.required]
+      cab: [''],
+      brick: [''],
+      obs: ['']
     });
     this.setFormToday();
   }
@@ -51,25 +53,47 @@ today = moment();
   }
 
   onSubmit() {
-    console.log(this.sForm.values)
-    if (this.sForm.value.machine === 'Breton' || this.sForm.value.machine === 'Lineal') {
-      this.sForm.patchValue({
-        cab: '',
-        brick: ''
-      });
-      this.focus(this.cabInput);
-    }
+    let form = this.sForm.value;
+    let keys = Object.keys(form);
+    keys.forEach(key => {
+      if (form[key] === '') {
+        delete form[key];
+      }
+    });
+    this.prodData.pushSupply(form);
+    this.clearPartial(this.sForm.value.machine);
   }
 
   clear() {
     this.sForm.reset();
-    this.setFormToday();
     this.focus(this.machInput);
+    this.setFormToday();
+  }
+
+  clearPartial(machine: string) {
+    switch (machine) {
+      case 'Breton':
+        this.sForm.controls.cab.reset();
+        this.sForm.controls.brick.reset();
+        this.sForm.controls.obs.reset();
+        this.focus(this.cabInput);
+      break;
+    
+      case 'Lineal':
+        this.sForm.controls.cab.reset();
+        this.sForm.controls.brick.reset();
+        this.sForm.controls.obs.reset();
+        this.focus(this.cabInput);
+      break;
+
+      default:
+        this.clear();
+        break;
+    }
   }
 
   focus(variable){
     setTimeout(() => {
-      console.log(this.machInput);
     	this.renderer.invokeElementMethod(variable.nativeElement,'focus'); 
     },150);
   }
