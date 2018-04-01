@@ -50,6 +50,10 @@
           <ion-icon item-start name="list-box"></ion-icon>
           Registros
         </button>
+        <button ion-item menuClose (click)="openPage('ProdSuppliesPage')">
+          <ion-icon item-start name="hammer"></ion-icon>
+          Insumos
+        </button>
         <button ion-item menuClose (click)="openPage('ProdProgramPage')" *ngIf="platform.is('core')">
           <ion-icon item-start name="calendar"></ion-icon>
           Programa produccion

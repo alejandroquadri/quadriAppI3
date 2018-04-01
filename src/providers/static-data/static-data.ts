@@ -92,6 +92,18 @@ export class StaticDataProvider {
     'Pastinas'
   ];
 
+  maquinasSupplies = [
+    '995',
+    '650',
+    'Breton',
+    'Lineal',
+    'Biseladora',
+    'Desbañadora',
+    'Cortadora',
+    'Granalladora',
+    'Biseladora zocalos',
+  ]
+
   unidades = [
     'litros',
     'ml',
@@ -276,6 +288,47 @@ export class StaticDataProvider {
       '10x50': '1050',
       'bolsa 20kg': '20kg'
     }
+  }
+
+  abrasivos = [
+    'metal-diamante #30',
+    'metal-diamante #60',
+    'metal-diamante #100',
+    'carburo #100',
+    'carburo #120',
+    'carburo #200',
+    'carburo #400',
+    'carburo #800',
+    'carburo #1000',    
+    'carburo #1500',
+    'carburo #3000',
+  ]
+
+  cabezales = {
+    'Breton' : [
+      'cabezal 1',
+      'cabezal 2',
+      'cabezal 3',
+      'cabezal 4',
+      'cabezal 5',
+      'cabezal 6',
+      'cabezal 7',
+      'cabezal 8',
+      'cabezal 9',
+      'cabezal 10',
+      'cabezal 11',
+      'cabezal 12',
+      'cabezal 13',
+      'cabezal 14'
+    ],
+    'Lineal' : [
+      'cabezal 1',
+      'cabezal 2',
+      'cabezal 3',
+      'cabezal 4',
+      'cabezal 5',
+      'cabezal 6'   
+    ]
   }
 
 }
