@@ -18,7 +18,7 @@ export class PartesFormPage implements OnInit {
   data: any
 
   constructor(
-  	private _fb: FormBuilder,
+  	public _fb: FormBuilder,
     public navCtrl: NavController,
   	public navParams: NavParams,
     public platform: Platform,
