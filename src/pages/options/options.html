@@ -1,6 +1,11 @@
 <ion-list>
 
   <ion-item>
+    <ion-label>Autorizacion</ion-label>
+    <ion-toggle color="primary" [(ngModel)]="options.autorizacion" (click)="updateFilters()"></ion-toggle>
+  </ion-item>
+
+  <ion-item>
     <ion-label>Pendiente</ion-label>
     <ion-toggle value="foo" checked="true" color="primary" [(ngModel)]="options.pendiente" (click)="updateFilters()"></ion-toggle>
   </ion-item>

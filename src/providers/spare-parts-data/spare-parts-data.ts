@@ -13,7 +13,8 @@ export class SparePartsDataProvider {
     completo: false,
     pendiente: true,
     suspendido: false,
-    encargado: true
+    encargado: true,
+    autorizacion: true
   }
   searchInput: string = '';
   field = 'fecha';

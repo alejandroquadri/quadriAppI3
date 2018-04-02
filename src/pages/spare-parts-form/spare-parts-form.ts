@@ -98,7 +98,7 @@ export class SparePartsFormPage {
   pushNew() {
     let form = this.spareForm.value;
     form['fecha'] = firebase.database.ServerValue.TIMESTAMP
-    form['status'] = 'Pendiente';
+    form['status'] = 'Autorizacion';
     form['user'] = {
       displayName: this.authData.current.displayName,
       uid: this.authData.current.uid

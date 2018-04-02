@@ -20,7 +20,7 @@ export class SparePartsPage {
   sparePartsCrude: any;
   filters: any;
   searchInput: string = '';
-  statusOptions = ['Pendiente', 'Encargado', 'Completo', 'Suspendido'];
+  statusOptions = ['Autorizacion', 'Pendiente', 'Encargado', 'Completo', 'Suspendido'];
   field = 'fecha';
   asc = false;
   offset = 50;
@@ -50,12 +50,6 @@ export class SparePartsPage {
       this.offsetInit();      
       this.filter();
     })
-  }
-
-  ionViewDidEnter() {
-  }
-
-  ionViewWillUnload() {
   }
 
   filter() {
