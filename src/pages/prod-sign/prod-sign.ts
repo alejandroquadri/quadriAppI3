@@ -31,7 +31,7 @@ export class ProdSignPage {
   }
 
   ionViewDidLoad() {
-    this.prodData.getProduction().subscribe( prod => {
+    this.prodSubs = this.prodData.getProduction().subscribe( prod => {
   		this.production = prod;
       this.fileterProd();
   	});
@@ -89,7 +89,7 @@ export class ProdSignPage {
   			this.prodObj[date].ml += ml;
   		}
     })
-    console.log(this.prodObj, this.m2total, this.mltotal);
+    // console.log(this.prodObj, this.m2total, this.mltotal);
 
   }
 

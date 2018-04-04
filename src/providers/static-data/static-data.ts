@@ -293,15 +293,17 @@ export class StaticDataProvider {
   abrasivos = [
     'metal-diamante #30',
     'metal-diamante #60',
-    'metal-diamante #100',
-    'carburo #100',
+    'metal-diamante #80',
     'carburo #120',
-    'carburo #200',
+    'carburo #180',
+    'carburo #220',
+    'carburo #280',
+    'carburo #320',
     'carburo #400',
-    'carburo #800',
-    'carburo #1000',    
-    'carburo #1500',
-    'carburo #3000',
+    'carburo #600',
+    'carburo #800',    
+    'carburo #1000',
+    'carburo #1200',
   ]
 
   cabezales = {
