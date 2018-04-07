@@ -37,7 +37,7 @@
   
           <ion-item *ngIf="!platform.is('mobile')">
             <ion-label class="labelSelect">Maquina</ion-label>				
-            <select #machInput item-content formControlName="machine" class="select">
+            <select #machInput item-content formControlName="machine" class="selectInput">
               <option value="" disabled selected></option>
               <option *ngFor="let maquina of staticData.maquinasSupplies | sort:'':true">{{maquina}}</option>
             </select>
@@ -57,7 +57,7 @@
     
             <ion-item *ngIf="!platform.is('mobile')">
               <ion-label class="labelSelect">Cabezal</ion-label>				
-              <select #cabInput item-content formControlName="cab" class="select">
+              <select #cabInput item-content formControlName="cab" class="selectInput">
                 <option value="" disabled selected></option>
                 <option *ngFor="let cabezal of staticData.cabezales[sForm.value.machine]">
                   {{cabezal}}
@@ -76,7 +76,7 @@
     
             <ion-item *ngIf="!platform.is('mobile')">
               <ion-label class="labelSelect">Abrasivo</ion-label>				
-              <select item-content formControlName="brick" class="select">
+              <select item-content formControlName="brick" class="selectInput">
                 <option value="" disabled selected></option>
                 <option *ngFor="let abrasivo of staticData.abrasivos">
                   {{abrasivo}}
@@ -101,7 +101,7 @@
     
             <ion-item *ngIf="!platform.is('mobile')">
               <ion-label class="labelSelect">Cabezal</ion-label>				
-              <select #cabInput item-content formControlName="cab" class="select">
+              <select #cabInput item-content formControlName="cab" class="selectInput">
                 <option value="" disabled selected></option>
                 <option *ngFor="let cabezal of staticData.cabezales[sForm.value.machine]">
                   {{cabezal}}
