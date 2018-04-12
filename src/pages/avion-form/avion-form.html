@@ -1,0 +1,112 @@
+
+<ion-header>
+
+  <ion-navbar>
+  	<button ion-button menuToggle *ngIf="platform.is('mobile')">
+	    <ion-icon name="menu"></ion-icon>
+	  </button>
+    <ion-title>{{submitType === 'new' ? 'Nuevo registro' : 'Editar registro'}}</ion-title>
+    <ion-buttons end *ngIf="!platform.is('mobile')">
+	    <button ion-button (click)="viewCtrl.dismiss()">
+	      Salir
+	    </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+	<ion-grid fixed #form>
+	  <form [formGroup]="avionForm" (ngSubmit)="onSubmit()">
+				<ion-list>
+
+          <ion-item *ngIf="platform.is('mobile')">
+            <ion-label fixed>Fecha</ion-label>
+            <ion-datetime #dateInput formControlName="date" displayFormat="MM/DD/YYYY"></ion-datetime>
+          </ion-item>
+  
+          <ion-item *ngIf="!platform.is('mobile')">
+            <ion-label fixed>Fecha</ion-label>
+            <ion-input #dateInput formControlName="date" type="date"></ion-input>
+          </ion-item>
+					
+					<ion-item *ngIf="platform.is('mobile')">
+					  <ion-label>Tipo</ion-label>
+					  <ion-select #type formControlName="type" interface="popover">
+					    <ion-option *ngFor="let type of data.type | sort:'':true">{{type}}</ion-option>
+					  </ion-select>
+					</ion-item>
+
+					<ion-item *ngIf="!platform.is('mobile')">
+							<ion-label class="selectLabel">Tipo</ion-label>					
+							<select #type item-content formControlName="type" class="selectInput" (change)="typeChange()">
+                <option value="" disabled selected></option>
+                <option *ngFor="let type of data.type | sort:'':true">{{type}}</option>
+						  </select>
+					</ion-item>
+
+					<ion-item *ngIf="platform.is('mobile')">
+            <ion-label>Cuenta</ion-label>
+            <ion-select formControlName="account">
+              <ion-option *ngFor="let account of data.account[avionForm.value.type] | sort:'':true">{{account}}</ion-option>
+            </ion-select>
+          </ion-item>
+  
+          <ion-item *ngIf="!platform.is('mobile')">
+            <ion-label class="selectLabel">Cuenta</ion-label>				
+            <select item-content formControlName="account" class="selectInput">
+              <option value="" disabled selected></option>
+              <option *ngFor="let account of data.account[avionForm.value.type] | sort:'':true">{{account}}</option>
+            </select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label fixed>Monto</ion-label>
+            <ion-input formControlName="amount" type="number"></ion-input>
+          </ion-item>
+
+          <div *ngIf="showSalesForm" >
+
+            <ion-item>
+              <ion-label fixed>NP</ion-label>
+              <ion-input formControlName="np" type="number"></ion-input>
+            </ion-item>
+  
+            <ion-item>
+              <ion-label class="selectLabel" fixed>Vendedor</ion-label>
+              <select item-content formControlName="salesRep" class="selectInput">
+                <option value="" disabled selected></option>
+                <option>Tarruella Alberto Horacio</option>
+                <option>Alejandra Roldan</option>
+              </select>
+            </ion-item>
+  
+            <ion-item>
+              <ion-label fixed>Cliente</ion-label>
+              <ion-input formControlName="client" type="text"></ion-input>
+            </ion-item>
+
+          </div>
+
+
+				  <ion-item>
+				    <ion-label fixed>Observacion</ion-label>
+				    <ion-textarea formControlName="obs" fz-elastic></ion-textarea>
+				  </ion-item>
+
+				</ion-list>
+				<button ion-button outline  type="submit" [disabled]="!avionForm.valid">
+          {{submitType === 'new' ? 'Agregar' : 'Actualizar '}}
+        </button>
+        
+			  <button ion-button outline (click)="toNew()" *ngIf="submitType !== 'new'">
+          Nuevo
+			  </button>
+
+      </form>
+      
+  </ion-grid>
+
+</ion-content>

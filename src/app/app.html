@@ -94,6 +94,24 @@
         </button>
       </ion-list>
 
+      <ion-list *ngIf="permission('direccion')">
+        <ion-list-header>
+          Finanzas
+        </ion-list-header>
+        <button 
+        *ngIf="(userProfile.email === 'alejandroquadri@quadri.com.ar' || userProfile.email === 'nicolas@quadri.com.ar')" 
+        ion-item menuClose (click)="openPage('AvionListPage')">
+          <ion-icon item-start name="plane"></ion-icon>
+          Avion
+        </button>
+        <button 
+        *ngIf="!(userProfile.email === 'alejandroquadri@quadri.com.ar' || userProfile.email === 'nicolas@quadri.com.ar')"  
+        ion-item menuClose (click)="openPage('AvionFormPage')">
+          <ion-icon item-start name="plane"></ion-icon>
+          Avion
+        </button>
+      </ion-list>
+
       <ion-list>
         <ion-list-header>
           Usuario

@@ -43,6 +43,7 @@ import { HttpApiProvider } from '../providers/http-api/http-api';
 import { SalesDataProvider } from '../providers/sales-data/sales-data';
 import { ProdProgramDataProvider } from '../providers/prod-program-data/prod-program-data';
 import { CrmDataProvider } from '../providers/crm-data/crm-data';
+import { FinanceDataProvider } from '../providers/finance-data/finance-data';
 
 @NgModule({
   declarations: [
@@ -81,7 +82,8 @@ import { CrmDataProvider } from '../providers/crm-data/crm-data';
     HttpApiProvider,
     SalesDataProvider,
     ProdProgramDataProvider,
-    CrmDataProvider
+    CrmDataProvider,
+    FinanceDataProvider,
   ]
 })
 export class AppModule {}

@@ -1,0 +1,89 @@
+<ion-header>
+
+  <ion-navbar>
+	  <ion-buttons left>
+	  	<split-ctrl></split-ctrl>
+	  </ion-buttons>
+    <ion-searchbar [(ngModel)]="searchInput" (ngModelChange)="onChange($event)"></ion-searchbar>
+    <ion-buttons end>
+	    <button ion-button icon-only (click)="presentModal()">
+	      <ion-icon name="add"></ion-icon>
+	    </button>
+		</ion-buttons>
+		<ion-buttons start>
+			<div class="total"> $ {{ total | number : '1.0-0' }} </div>
+		</ion-buttons>
+  </ion-navbar>
+
+  <ion-toolbar>
+
+		  <ion-grid #dataHeaders>
+			  <ion-row text-center>
+					<ion-col col-2>
+						<strong>Fecha</strong>
+					</ion-col>
+					<ion-col col-3>
+						<strong>Usuario</strong>
+					</ion-col>
+					<ion-col col-2>
+						<strong>Tipo</strong>
+					</ion-col>
+					<ion-col col-2>
+						<strong>Cuenta</strong>
+					</ion-col>
+					<ion-col col-1>
+						<strong>Monto $</strong>
+					</ion-col>
+					<ion-col col-2>
+					</ion-col>
+				</ion-row>
+		  </ion-grid>
+
+	  </ion-toolbar>
+
+
+</ion-header>
+
+<ion-content>
+
+	<div #data class="tableLog" *ngIf="avionView">
+		<ion-grid>
+			<ion-row justify-content:start class="data" *ngFor="let avion of avionView">
+				<ion-col col-2 text-center>
+					{{ avion.payload.val().date | momentFormat:'D/M/YY' }}
+				</ion-col>
+				<ion-col col-3 text-center>
+					{{ avion.payload.val().user.displayName }}
+				</ion-col>
+				<ion-col col-2 text-center>
+					<div>{{ avion.payload.val().type }}</div>
+				</ion-col>
+				<ion-col col-2 text-center>
+					{{ avion.payload.val().account }}
+				</ion-col>
+				<ion-col col-1 text-center>
+					{{ (avion.payload.val().type === 'Egreso'? (-1)*(avion.payload.val().amount): (avion.payload.val().amount)) |  number : '1.0-0'}}
+				</ion-col>
+				<ion-col col-2 text-center>
+					<button ion-button icon-only clear color="lightGreyQ" small (click)="editPart(avion.payload.val(), avion.key)" class="actionButtons">
+						<ion-icon name="create"></ion-icon>
+					</button>
+					<button ion-button icon-only clear color="lightGreyQ" small (click)="deletepart(avion.key)" class="actionButtons">
+						<ion-icon name="trash"></ion-icon>
+					</button>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+						<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+								<ion-infinite-scroll-content
+									loadingSpinner="bubbles"
+									loadingText="Cargando mas registros...">
+								</ion-infinite-scroll-content>
+							</ion-infinite-scroll>
+				</ion-col>
+			</ion-row>
+	  </ion-grid>
+	</div>
+
+</ion-content>

@@ -1,0 +1,58 @@
+page-avion-list {
+
+  .bigFont {
+    font-size: 1.6rem;
+  }
+
+  .data {
+    border-bottom: solid map-get($colors, light) 1px;
+  }
+
+  .data:hover {
+    background-color: map-get($colors, light);
+  }
+
+  ion-select {
+    max-width: 100%;
+    border-radius: 5px;
+  }
+
+  .description {
+    word-wrap: break-word;
+    white-space: pre-wrap;
+  }
+
+  .select-md {
+    padding: 5px 8px 5px 16px;
+  }
+
+  .pendiente {
+    background-color: map-get($colors, warning);
+  }
+
+  .encargado {
+    background-color: map-get($colors, ionBlue);
+  }
+
+  .suspendido {
+    background-color: map-get($colors, danger);
+  }
+
+  .completo {
+    background-color: map-get($colors, secondary);
+  }
+
+  .autorizacion {
+  background-color: map-get($colors, lightGreyQ);		
+  }
+
+  .actionButtons {
+    margin: 0px;
+  }
+
+  .total {
+    padding: 0 1rem;
+	}
+
+}
+
