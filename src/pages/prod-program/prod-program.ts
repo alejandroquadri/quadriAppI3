@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage } from 'ionic-angular';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
-
+import { Observable } from 'rxjs/Observable';
+import "rxjs/add/observable/combineLatest";
+import { map } from 'rxjs/operators';
 import * as moment from 'moment';
 import 'moment/locale/es';
 
@@ -15,8 +17,11 @@ import { ProdProgramDataProvider, StaticDataProvider } from '../../providers';
 export class ProdProgramPage {
 
 	// variables para datos
-	programSubs: any
+	programSubs: any;
+	npSubs: any;
+	subsObs: any;
 	program: any;
+	npList: any;
 	
 	// calendario
 	selected: any = moment();
@@ -66,16 +71,19 @@ export class ProdProgramPage {
     	this.program = prog;
     })
 		this.weeksEntregas = this.buildNextWeeks();
+
+		this.npSubs = this.programData.getNPPendientes()
+    .pipe(
+      map( (res:any) => res.json())
+		);
 		
 		this.scProgSubs = this.programData.getScProgram()
-		.subscribe( prog => {
-			this.sumaSemanaFb(prog);
-		})
-  }
+		this.subsObs = Observable.combineLatest(this.npSubs, this.scProgSubs, (np:any, scProg) => ({np, scProg}));
+		this.subsObs.subscribe( pair => {
+			this.npList = pair.np.data;
+			this.sumaSemanaFb(pair.scProg);
+		});
 
-  ionViewWillUnload() {
-    this.programSubs.unsubscribe();
-    this.scProgSubs.unsubscribe();
   }
 
   // formulario
@@ -240,52 +248,6 @@ export class ProdProgramPage {
 				resolve(42);
 	    }
 	  });
-  	
-  }
-
-  sumaSemana(datos){
-    let titulos = datos[0];
-    let artXSem = {};
-    let items = {};
-
-    for (let i = 1 ; i < datos.length ; i++ ) {
-      for (let j = 7; j< datos[0].length ; j++ ) {
-        let valor = datos[i][j];
-
-        if (valor === "" || !valor) {continue;}
-        valor = parseFloat(datos[i][j].replace(/,/g, '.'));
-        if (valor >= 0) {continue;}
-        let fechaString = titulos[j];
-
-        let date = fechaString.substring(4, 6);
-        let month = fechaString.substring(7, 9);
-        let year = ("20"+fechaString.substring(10, 12))
-        let fecha = moment(`${year}-${month}-${date}`);
-
-        let codigo = datos[i][3];
-        let semana = fecha.week()+""+fecha.year();
-        // let semana = fecha.format('wwMM');
-        if (!(codigo in artXSem)) {
-          artXSem[codigo] = {};
-          if (!(semana in artXSem[codigo])){
-            artXSem[codigo][semana] = Math.abs(valor);
-          } else { artXSem[codigo][semana] += Math.abs(valor);}
-        } else  {
-          if (!(semana in artXSem[codigo])){
-            artXSem[codigo][semana] = Math.abs(valor);
-          } else { artXSem[codigo][semana] += Math.abs(valor);}
-        }
-        if (items[codigo]) {
-        	items[codigo] += Math.abs(valor);
-        } else {
-        	items[codigo] = Math.abs(valor);        	
-        }
-      }
-		}
-    return {
-    	sem: artXSem,
-    	items: items
-    }
 	}
 	
 	sumaSemanaFb(scList: Array<any>) {
@@ -294,28 +256,34 @@ export class ProdProgramPage {
 		
 		scList.forEach( scProg => {
 			let sc = scProg.payload.val();
-			let date = moment(sc.date);
-			let semana = date.format('wwYYYY')
-			let valor = sc.quantity;
+			// console.log(this.checkNp(`${sc.np}${sc.code}`));
 
-			if (valor < 0) {
-				valor = Math.abs(valor)
-				if(!artXSem[sc.code]) {
-					artXSem[sc.code] = {};
-					artXSem[sc.code][semana] = valor;
-				} else {
-					if (!artXSem[sc.code][semana]) {
+			if(this.checkNp(`${sc.np}${sc.code}`)) {
+
+				let date = moment(sc.date);
+				let semana = date.format('wwYYYY')
+				let valor = sc.quantity;
+	
+				if (valor < 0) {
+					valor = Math.abs(valor)
+					if(!artXSem[sc.code]) {
+						artXSem[sc.code] = {};
 						artXSem[sc.code][semana] = valor;
 					} else {
-						artXSem[sc.code][semana] += valor;
+						if (!artXSem[sc.code][semana]) {
+							artXSem[sc.code][semana] = valor;
+						} else {
+							artXSem[sc.code][semana] += valor;
+						}
+					}
+		
+					if (items[sc.code]) {
+						items[sc.code] += valor;
+					} else {
+						items[sc.code] = valor;        	
 					}
 				}
-	
-				if (items[sc.code]) {
-					items[sc.code] += valor;
-				} else {
-					items[sc.code] = valor;        	
-				}
+			
 			}
 
 		});
@@ -323,6 +291,24 @@ export class ProdProgramPage {
 		this.entregas = artXSem;
 		this.items = this.buildItemsArray(items);
 
+	}
+
+	checkNp (npCodigo: string) {
+		// console.log(npCodigo);
+		for(let i=0, len = this.npList.length; i<len; i++) {
+			let valueNp = `${this.npList[i].np}${this.npList[i].codigo}`;
+			// console.log(npCodigo, valueNp, npCodigo ===  valueNp);
+			if (valueNp === npCodigo) {
+				// console.log(valueNp, npCodigo);
+				return true;
+			}
+		}
+
+
+		// return this.npList.map( item => {
+		// 	// console.log(npCodigo);
+		// 	return `${item.np}${item.codigo}`;
+		// }).indexOf(`npCodigo`) !== -1;
 	}
 
   buildNextWeeks () {
@@ -353,3 +339,48 @@ export class ProdProgramPage {
   }
 
 }
+
+// sumaSemana(datos){
+// 	let titulos = datos[0];
+// 	let artXSem = {};
+// 	let items = {};
+
+// 	for (let i = 1 ; i < datos.length ; i++ ) {
+// 		for (let j = 7; j< datos[0].length ; j++ ) {
+// 			let valor = datos[i][j];
+
+// 			if (valor === "" || !valor) {continue;}
+// 			valor = parseFloat(datos[i][j].replace(/,/g, '.'));
+// 			if (valor >= 0) {continue;}
+// 			let fechaString = titulos[j];
+
+// 			let date = fechaString.substring(4, 6);
+// 			let month = fechaString.substring(7, 9);
+// 			let year = ("20"+fechaString.substring(10, 12))
+// 			let fecha = moment(`${year}-${month}-${date}`);
+
+// 			let codigo = datos[i][3];
+// 			let semana = fecha.week()+""+fecha.year();
+// 			// let semana = fecha.format('wwMM');
+// 			if (!(codigo in artXSem)) {
+// 				artXSem[codigo] = {};
+// 				if (!(semana in artXSem[codigo])){
+// 					artXSem[codigo][semana] = Math.abs(valor);
+// 				} else { artXSem[codigo][semana] += Math.abs(valor);}
+// 			} else  {
+// 				if (!(semana in artXSem[codigo])){
+// 					artXSem[codigo][semana] = Math.abs(valor);
+// 				} else { artXSem[codigo][semana] += Math.abs(valor);}
+// 			}
+// 			if (items[codigo]) {
+// 				items[codigo] += Math.abs(valor);
+// 			} else {
+// 				items[codigo] = Math.abs(valor);        	
+// 			}
+// 		}
+// 	}
+// 	return {
+// 		sem: artXSem,
+// 		items: items
+// 	}
+// }

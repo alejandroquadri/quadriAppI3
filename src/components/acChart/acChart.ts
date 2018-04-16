@@ -132,7 +132,7 @@ export class AcChartComponent implements OnInit {
 
   setWidth() {
     if (this.acChart) { 
-      this.acChart.instance.width = this.chartContainer.nativeElement.clientWidth; 
+      this.acChart.instance.width = this.chartContainer.nativeElement.clientWidth;
     }
   }
 

@@ -1,7 +1,7 @@
 export const Users = {
-	superUser : [
+	owner : [
     'alejandroquadri@quadri.com.ar',
-    'prueba@quadri.com.ar'
+    'nicolas@quadri.com.ar',
   ],
   direccion: [
     'alejandroquadri@quadri.com.ar',

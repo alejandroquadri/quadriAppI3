@@ -58,7 +58,7 @@
     <ion-grid>
       <ion-row class="data"  *ngFor="let psp of viewArray">
         <ion-col col-2 text-center>
-          {{ psp.date }}
+          {{ psp.date | momentFormat:'DD/MM/YY'}}
         </ion-col>
         <ion-col col-2 text-center (click)="seePsp(psp)" class="psp">
           {{ psp.num }}

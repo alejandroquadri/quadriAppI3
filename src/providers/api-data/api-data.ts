@@ -1,6 +1,8 @@
+import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireAction } from 'angularfire2/database';
+import { DataSnapshot } from '@firebase/database-types';
 import * as firebase from 'firebase';
 
 @Injectable()
@@ -10,7 +12,7 @@ export class ApiDataProvider {
   	public db: AngularFireDatabase
 	) {}
 
-	getObject(path:string) {
+	getObject(path:string): Observable<{}> {
 		return this.db.object(path).valueChanges();
 	}
 
@@ -26,15 +28,15 @@ export class ApiDataProvider {
 		return this.db.object(`${path}`).remove();
 	}
 
-	getList(path:string) {
+	getList(path:string): Observable<{}[]> {
 		return this.db.list(path).valueChanges();
   }
   
-  getListQuery(path, offset, startKey?) {
+  getListQuery(path, offset, startKey?): Observable<{}[]> {
     return this.db.list(path, ref => ref.startAt(startKey).limitToLast(offset+1)).valueChanges();
   }
 
-	getListMeta(path:string, events?) {
+	getListMeta(path:string, events?): Observable<AngularFireAction<DataSnapshot>[]> {
 		return this.db.list(path).snapshotChanges(events);
 	}
 
@@ -66,7 +68,7 @@ export class ApiDataProvider {
 		return firebase.database.ServerValue.TIMESTAMP;
 	}
 
-  fanUpdate(fanObject: any): Promise <any> {
+  fanUpdate(fanObject: any): Promise<any> {
     return firebase.database().ref().update(fanObject);
   }
 
@@ -76,7 +78,7 @@ export class ApiDataProvider {
   	// paths es un array de strings con cada una de las direcciones donde se va a actualizar 
   	// key es un boolean, true para guardar en una lista, false para guardarlo como objeto
   	// la funcion maneja bien subojetos de hasta 1 subnivel
-  fanOutObject (updateForm: any, paths: Array<string>, key: boolean) {
+  fanOutObject (updateForm: any, paths: Array<string>, key: boolean): Object {
     const fanObject = {}
     const updateFormKeys = Object.keys(updateForm);
     if (key) {

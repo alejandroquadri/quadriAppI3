@@ -1,7 +1,38 @@
 page-prod-metrics {
 
-  .acChart {
-    margin-bottom: 30px;
+  // .acChart {
+  //   margin-bottom: 30px;
+  // }
+
+  .container {
+    display: flex;
+  }
+
+  .otherCharts {
+    width: 70%;
+  }
+
+  .stockChart {
+    width: 30%;
+  }
+
+  .charts {
+    position: relative;
+  }
+
+  .buttons {
+    position: absolute;
+  	right: 3%;
+    top: 3%;
+    z-index: 1;
+  }
+
+  .totalWidth {
+    width: 100%;
+  }
+
+  .ceroWidth {
+    width: 0%;
   }
 
 }

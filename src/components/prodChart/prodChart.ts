@@ -30,7 +30,7 @@ export class ProdChartComponent implements OnInit {
   constructor(
   	private chartBuilder: ChartBuilderProvider,
     private prodData: ProductionDataProvider,
-    private staticData: StaticDataProvider,
+    public staticData: StaticDataProvider,
     private componentFactoryResolver: ComponentFactoryResolver,
     private sortPipe: SortPipe,
   ) {

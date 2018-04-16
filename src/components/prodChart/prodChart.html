@@ -51,8 +51,10 @@
 
 	</ion-row>
 
-	<ion-row #chartContainer (window:resize)="setWidth()">
-		<div #prodChart></div>
+	<ion-row>
+		<ion-col #chartContainer (window:resize)="setWidth()" class="chartContainer" >
+			<div #prodChart></div>
+		</ion-col>
 	</ion-row>
 
 </ion-grid>

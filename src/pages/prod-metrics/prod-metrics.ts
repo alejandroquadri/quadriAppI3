@@ -8,6 +8,11 @@ import { AuthDataProvider } from '../../providers';
   templateUrl: 'prod-metrics.html',
 })
 export class ProdMetricsPage {
+	
+	acProdChart = true;
+	prodChart = true;
+	stockchart = true;
+	acSalesChart = true;
 
   constructor(
     private authData: AuthDataProvider,
@@ -33,6 +38,49 @@ export class ProdMetricsPage {
 
   permission(area: string) {
     return this.authData.checkRestriction(area);
-  }
+	}
+	
+	expandView (chart: string) {
+
+		switch (chart) {
+			case 'acProd':
+					this.acProdChart = true;
+					this.prodChart = false;
+					this.stockchart = false;
+					this.acSalesChart = false;
+			break;
+			
+			case 'acSales':
+				this.acProdChart = false;
+				this.prodChart = false;
+				this.stockchart = false;
+				this.acSalesChart = true;
+			break;
+
+			case 'prod':
+				this.acProdChart = false;
+				this.prodChart = true;
+				this.stockchart = false;
+				this.acSalesChart = false;
+				break;
+
+			case 'stock':
+				this.acProdChart = false;
+				this.prodChart = false;
+				this.stockchart = true;
+				this.acSalesChart = false;
+			break;
+		
+			default:
+				break;
+		}
+	}
+
+	contractView() {
+		this.acProdChart = true;
+		this.prodChart = true;
+		this.stockchart = true;
+		this.acSalesChart = true;
+	}
 
 }

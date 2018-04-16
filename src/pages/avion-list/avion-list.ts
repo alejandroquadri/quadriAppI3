@@ -94,7 +94,7 @@ export class AvionListPage {
     this.avionView.forEach( record => {
       let val = record.payload.val();
       let amount = Number(val.amount);
-      if (val.type === "egreso") {
+      if (val.type === "Egreso") {
         amount = -amount;
       }
       this.total += amount;

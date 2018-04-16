@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AuthDataProvider } from './../auth-data/auth-data';
 import { ApiDataProvider } from './../api-data/api-data';
-import * as firebase from 'firebase';
+import firebase from 'firebase';
 
 @Injectable()
 export class FinanceDataProvider {
@@ -23,7 +23,7 @@ export class FinanceDataProvider {
       displayName: this.authData.current.displayName,
     }
     form['user'] = user;
-    console.log(form);
+    form['timestamp'] = this.api.timestamp();    
     return this.api.push('finance/avion', form);
   }
 

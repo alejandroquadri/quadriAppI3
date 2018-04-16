@@ -23,6 +23,7 @@ export class ChartDrawComponent implements OnInit {
   @Input() yStacked: boolean = false;
   @ViewChild('chart') chart;
   @ViewChild('container') container;
+  navHeight: any;
 
   constructor(
     private chartBuilder: ChartBuilderProvider,
@@ -31,6 +32,7 @@ export class ChartDrawComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.navHeight = document.getElementsByTagName('ion-nav')[0].offsetHeight;
     let size = new Promise( (resolve, reject) => {
       this.setSize();
       resolve();
@@ -66,7 +68,10 @@ export class ChartDrawComponent implements OnInit {
     if (this.height) {
       this.height < 80 ? height = 80 : height = this.height;
     } else {
-      height = this.width / 2;
+      height = this.width / 3;
+      if (height > (this.navHeight - 200)) {
+        height = (this.navHeight - 200)
+      }
     }
     this.renderer.setElementStyle(this.container.nativeElement, 'height', `${height}px`);
   }
