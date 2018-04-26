@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AuthDataProvider } from './../auth-data/auth-data';
 import { ApiDataProvider } from './../api-data/api-data';
-import firebase from 'firebase';
 
 @Injectable()
 export class FinanceDataProvider {

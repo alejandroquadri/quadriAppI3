@@ -13,6 +13,7 @@ export class ProdMetricsPage {
 	prodChart = true;
 	stockchart = true;
 	acSalesChart = true;
+	size = 3;
 
   constructor(
     private authData: AuthDataProvider,
@@ -41,7 +42,7 @@ export class ProdMetricsPage {
 	}
 	
 	expandView (chart: string) {
-
+		this.size = 2;
 		switch (chart) {
 			case 'acProd':
 					this.acProdChart = true;
@@ -77,6 +78,7 @@ export class ProdMetricsPage {
 	}
 
 	contractView() {
+		this.size = 3;
 		this.acProdChart = true;
 		this.prodChart = true;
 		this.stockchart = true;

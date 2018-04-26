@@ -67,7 +67,7 @@
 				</ion-card>
 			</div>
 			
-			<ion-card *ngIf="prodChart">
+			<ion-card *ngIf="prodChart" class="charts">
 				<div class="buttons">
 					<button ion-button small clear icon-only (click)="expandView('prod')">
 							<ion-icon name="expand"></ion-icon>
@@ -83,7 +83,7 @@
 		</div>
 
 		<div class="stockChart" [ngClass]="{totalWidth: stockchart && !(acProdChart || prodChart || acSalesChart), ceroWidth: !stockchart && (acProdChart || prodChart || acSalesChart)}">
-			<ion-card *ngIf="stockchart">
+			<ion-card *ngIf="stockchart" class="charts">
 				<div class="buttons">
 					<button ion-button small clear icon-only (click)="expandView('stock')">
 							<ion-icon name="expand"></ion-icon>

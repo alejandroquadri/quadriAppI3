@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform, PopoverController, ToastController, ModalController, InfiniteScroll } from 'ionic-angular';
-import { Observable } from 'rxjs/Observable';
-import "rxjs/add/observable/combineLatest";
 
-import { SparePartsDataProvider, FinanceDataProvider } from '../../providers';
-import { FieldFilterPipe, FilterPipe, SortPipe } from '../../pipes';
+import { FinanceDataProvider } from '../../providers';
+import { FilterPipe, SortPipe } from '../../pipes';
 
 @IonicPage()
 @Component({
@@ -30,8 +28,6 @@ export class AvionListPage {
     public popoverCtrl: PopoverController,
     public toastCtrl: ToastController,
     public modalCtrl: ModalController,
-    private spareData: SparePartsDataProvider,
-    private fieldFilterPipe: FieldFilterPipe,
     private fData: FinanceDataProvider,
     private filterPipe: FilterPipe,
     private sortPipe: SortPipe

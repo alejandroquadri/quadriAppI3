@@ -45,8 +45,7 @@ export class AcSalesChartComponent implements OnInit {
     let today = moment();
     let end = today.format('YYYYMMDD');
     let start = today.date(1).subtract(6, 'months').format('YYYYMMDD');
-    // this.objectiveSubs = this.salesData.getObjectives()
-    // .pipe( map( res => res.json()));
+
     this.objectiveSubs = this.salesData.getObjectives();
     this.salesSubs = this.salesData.getRevenue(start, end)
     .pipe( map( res => res.json()));
@@ -54,9 +53,6 @@ export class AcSalesChartComponent implements OnInit {
     this.obsSubs = Observable.combineLatest(this.salesSubs, this.objectiveSubs, (sales: any, objectives: any) => ({sales, objectives}))
     .subscribe( pair => {
       this.sales = pair.sales.data;
-      // this.objectives = pair.objectives.data;
-      // this.eq = this.objectives[0][0].replace(/\./g,'');
-      // this.obj = this.objectives[1][0].replace(/\./g,'');
       this.eq = pair.objectives.eq;
       this.obj = pair.objectives.obj;
       this.salesDataFilter();
@@ -224,6 +220,7 @@ export class AcSalesChartComponent implements OnInit {
     if (this.acChart) { this.acChart.destroy() }
     this.acChart = this.salesAcChartEl.createComponent(childComponent)
     this.acChart.instance.width = this.chartContainer.nativeElement.clientWidth;
+    this.acChart.instance.size = 3;
     this.acChart.instance.options = this.chartOptions();
     this.acChart.instance.chartType = 'line';
     this.acChart.instance.labels = labels;
@@ -264,7 +261,7 @@ export class AcSalesChartComponent implements OnInit {
 
   setWidth() {
     if (this.acChart) { 
-      this.acChart.instance.width = this.chartContainer.nativeElement.clientWidth; 
+      this.acChart.instance.width = this.chartContainer.nativeElement.clientWidth;
     }
   }
 
