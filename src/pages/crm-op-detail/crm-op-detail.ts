@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import "rxjs/add/observable/combineLatest";
 
 import { CrmDataProvider } from '../../providers';
+import { CustomCurrencyPipe } from '../../pipes';
 
 @IonicPage()
 @Component({
@@ -39,7 +40,8 @@ export class CrmOpDetailPage {
   	public navParams: NavParams,
   	private crmData: CrmDataProvider,
   	private fb: FormBuilder,
-    public modalCtrl: ModalController,
+		public modalCtrl: ModalController,
+		private customCurrencyPipe: CustomCurrencyPipe
   ) {
   	this.months = this.crmData.buildCloseMonth();
   	this.statusOptions = this.crmData.statusOptions;
@@ -60,7 +62,8 @@ export class CrmOpDetailPage {
     	if (this.op) {
     		this.statusBis = this.op.status;
     		this.op['$key'] = this.opKey;
-				this.totalValue = this.op.total;
+				// this.totalValue = this.op.total;
+				this.totalValue = this.customCurrencyPipe.transform(this.op.total.toString(), 0);		
 				this.opName = this.op.obra;
     	}
     	this.calipsoObj = pair.calipsoObj.psp;
@@ -77,8 +80,9 @@ export class CrmOpDetailPage {
   }
 
   change(field: string, value: any) {
-    value === 'Tarruella Alberto Horacio'? value = 'Tarruella Alberto Horacio ': '';
-    field === 'total' ? value = Number(value) : '' ;
+		value === 'Tarruella Alberto Horacio'? value = 'Tarruella Alberto Horacio ': '';
+		// field === 'total' ? value = Number(value) : '' ;
+    field === 'total' ? value = Number( this.customCurrencyPipe.parse(value,0) ) : '' ;
     let form = {};
     form[field] = value;
     this.crmData.updateOp(this.op.$key, form)
@@ -169,6 +173,11 @@ export class CrmOpDetailPage {
 		console.log(psp, this.opKey);
 		this.crmData.removePspOp(psp, this.opKey);
 	}
+
+	onAmountChange(event) {
+    let parsed = this.customCurrencyPipe.parse(event,0);
+    this.totalValue = this.customCurrencyPipe.transform(parsed, 0);
+  }
 
 
 }

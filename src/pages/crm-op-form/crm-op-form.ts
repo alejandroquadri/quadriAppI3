@@ -81,7 +81,6 @@ export class CrmOpFormPage {
         salesRep: form.salesRep,
         total: form.total
       })
-      console.log(form.total, form.total.toString());
       this.onAmountChange(form.total.toString());
     }
   }

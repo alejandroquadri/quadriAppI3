@@ -32,7 +32,13 @@
 				<select class="titleItem" #sales (change)="change('salesRep', sales.value)">
 					<option *ngFor="let salesRep of salesReps" [selected]="op.salesRep===salesRep? true: false">{{salesRep}}</option>
 				</select>
-				$ <input style="border: none;" #totalValueEl type="text" size="{{ totalValue.toString().length || 1 }}" (blur)="change('total', totalValueEl.value)" [(ngModel)]="totalValue">
+				<!-- $ <input style="border: none;" #totalValueEl type="text" size="{{ totalValue.toString().length || 1 }}" (blur)="change('total', totalValueEl.value)" [(ngModel)]="totalValue"> -->
+				$ <input style="border: none;" #totalValueEl type="text" 
+				size="{{ totalValue.toString().length || 1 }}" 
+				(blur)="change('total', totalValueEl.value)" 
+				[ngModel]="totalValue"
+				(ngModelChange)="onAmountChange($event)"
+				>
 				<select class="titleItem" #closeMonth (change)="change('closeMonth', closeMonth.value)">
 					<option *ngFor="let month of months" [selected]="op.closeMonth===month? true: false">{{month}}</option>
 				</select>
