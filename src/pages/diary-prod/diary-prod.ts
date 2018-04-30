@@ -28,7 +28,7 @@ export class DiaryProdPage {
   	public navParams: NavParams,
     public platform: Platform,
     public viewCtrl: ViewController,
-    private staticData: StaticDataProvider,
+    public staticData: StaticDataProvider,
     private prodData: ProductionDataProvider,
     private fieldFilterPipe: FieldFilterPipe,
     private number: DecimalPipe

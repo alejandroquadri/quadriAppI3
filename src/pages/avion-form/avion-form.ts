@@ -5,6 +5,7 @@ import * as moment from 'moment';
 
 import { FinanceDataProvider } from '../../providers';
 import { avionStatic } from '../../assets/static-data/avion-static';
+import { CustomCurrencyPipe } from '../../pipes';
 
 
 @IonicPage()
@@ -20,13 +21,17 @@ export class AvionFormPage {
   today = moment();
   data: any;
   showSalesForm = false;
+  formChangeSubs: any;
+
+  amount: any;
 
   constructor(
     private fb: FormBuilder,
     public navParams: NavParams,
     public platform: Platform,
     public viewCtrl: ViewController,
-    private fData: FinanceDataProvider
+    private fData: FinanceDataProvider,
+    public customCurrencyPipe: CustomCurrencyPipe
   ) {
     this.data = avionStatic
     this.buildForm();
@@ -47,6 +52,11 @@ export class AvionFormPage {
       account: ['', Validators.required],
       obs: [''],
     })
+  }
+
+  onAmountChange(event) {
+    let parsed = this.customCurrencyPipe.parse(event,0);
+    this.amount = this.customCurrencyPipe.transform(parsed, 0);
   }
   
   buildFormSales(type?: string) {
@@ -71,12 +81,23 @@ export class AvionFormPage {
   }
 
   pushNew() {
-    this.fData.pushRecord(this.avionForm.value);
-    this.avionForm.reset();
+    let form = this.avionForm.value;
+    let parsedAmount = this.customCurrencyPipe.parse(this.avionForm.value.amount)
+    form.amount = parsedAmount;
+    this.fData.pushRecord(form)
+    .then( () => {
+      this.avionForm.reset();
+      this.avionForm.patchValue({
+        date: this.today.format('YYYY-MM-DD')
+      });
+    })
   }
 
   update() {
-    this.fData.updateRecord(this.avionForm.value, this.updateForm.$key)
+    let form = this.avionForm.value;
+    let parsedAmount = this.customCurrencyPipe.parse(this.avionForm.value.amount)
+    form.amount = parsedAmount;
+    this.fData.updateRecord(form, this.updateForm.$key)
     .then( () => this.viewCtrl.dismiss()); 
   }
   
@@ -112,12 +133,17 @@ export class AvionFormPage {
         salesRep: this.updateForm.salesRep,
         client: this.updateForm.client
       })
+      this.onAmountChange(this.updateForm.amount);
     }
   }
 
   toNew() {
     this.submitType = 'new';
     this.avionForm.reset();
+  }
+
+  consoleLog(value) {
+    console.log(value);
   }
 
 }

@@ -27,7 +27,7 @@ import { GooglePlus } from '@ionic-native/google-plus';
 import { ElasticModule } from 'angular2-elastic';
 
 //pipes
-import { FieldFilterPipe, SortPipe, FilterPipe } from '../pipes';
+import { FieldFilterPipe, SortPipe, FilterPipe, CustomCurrencyPipe } from '../pipes';
 import { DecimalPipe } from '@angular/common';
 
 // providers
@@ -75,6 +75,7 @@ import { FinanceDataProvider } from '../providers/finance-data/finance-data';
     SortPipe,
     FilterPipe,
     DecimalPipe,
+    CustomCurrencyPipe,
     StaticDataProvider,
     SplitShowProvider,
     ProductionDataProvider,

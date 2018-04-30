@@ -4,6 +4,7 @@ import { MomentFormatPipe } from './moment-format/moment-format';
 import { FieldFilterPipe } from './field-filter/field-filter';
 import { SortPipe } from './sort/sort';
 import { ObjNgforPipe } from './obj-ngfor/obj-ngfor';
+import { CustomCurrencyPipe } from './custom-currency/custom-currency';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { ObjNgforPipe } from './obj-ngfor/obj-ngfor';
 	  FieldFilterPipe,
 	  SortPipe,
 	  ObjNgforPipe,
+    CustomCurrencyPipe,
   ],
   exports: [
 	  FilterPipe,
@@ -19,6 +21,7 @@ import { ObjNgforPipe } from './obj-ngfor/obj-ngfor';
 	  FieldFilterPipe,
 	  SortPipe,
 	  ObjNgforPipe,
+    CustomCurrencyPipe,
   ]
 })
 export class PipesModule {} 

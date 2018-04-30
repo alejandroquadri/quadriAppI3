@@ -4,6 +4,7 @@ import { AvionFormPage } from './avion-form';
 
 import { ElasticModule } from 'angular2-elastic';
 import { PipesModule } from '../../pipes/pipes.module';
+import { DirectivesModule } from './../../directives/directives.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { PipesModule } from '../../pipes/pipes.module';
   imports: [
     IonicPageModule.forChild(AvionFormPage),
     ElasticModule,
-    PipesModule
+    PipesModule,
+    DirectivesModule
   ],
 })
 export class AvionFormPageModule {}
