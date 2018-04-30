@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
 
 import { CrmDataProvider } from '../../providers';
+import { CustomCurrencyPipe } from '../../pipes';
 
 @IonicPage()
 @Component({
@@ -29,6 +30,7 @@ export class CrmOpFormPage {
   
   months: any;
   pspData: any;
+  amount: any;
 
   constructor(
     public navCtrl: NavController,
@@ -36,7 +38,8 @@ export class CrmOpFormPage {
     private fb: FormBuilder,
     public viewCtrl: ViewController,
     public modalCtrl: ModalController,
-    private crmData: CrmDataProvider
+    private crmData: CrmDataProvider,
+    private customCurrencyPipe: CustomCurrencyPipe
   ) {
     if (this.navParams.data.state === 'addNew') {
       this.addNew = true;
@@ -78,6 +81,8 @@ export class CrmOpFormPage {
         salesRep: form.salesRep,
         total: form.total
       })
+      console.log(form.total, form.total.toString());
+      this.onAmountChange(form.total.toString());
     }
   }
 
@@ -143,6 +148,11 @@ export class CrmOpFormPage {
     this.saveNewOPPsp();  
   }
 
+  onAmountChange(event) {
+    let parsed = this.customCurrencyPipe.parse(event,0);
+    this.amount = this.customCurrencyPipe.transform(parsed, 0);
+  }
+
   saveNewOPPsp() {
     let opForm
     let clientForm;
@@ -153,14 +163,18 @@ export class CrmOpFormPage {
     if(!this.opKey) {
       console.log('viene por aca');
       opForm = this.opForm.value;
-      opForm.total = Number(this.opForm.value.total);
+      // opForm.total = Number(this.opForm.value.total);
+      opForm.total = Number(this.customCurrencyPipe.parse(this.opForm.value.total,0));      
       this.opForm.value.salesRep === 'Tarruella Alberto Horacio'? opForm.salesRep = 'Tarruella Alberto Horacio ': '';
       opForm['psps'] = {};
       opForm['status'] = 'Pendiente';
     } else {
       opForm = this.updateOpForm;
-      if (opForm.total !== Number(this.opForm.value.total)) {
-        opForm.total = Number(this.opForm.value.total);
+      // if (opForm.total !== Number( this.opForm.value.total)) {
+      //   opForm.total = Number(this.opForm.value.total);
+      // }
+      if ( opForm.total !== Number(this.customCurrencyPipe.parse(this.opForm.value.total, 0)) ) {
+        opForm.total = Number(this.customCurrencyPipe.parse(this.opForm.value.total, 0));
       }
     }
     !opForm['psps'] ? opForm['psps'] = {} : '' ;
@@ -189,5 +203,6 @@ export class CrmOpFormPage {
     this.crmData.saveNewOp(opForm, clientForm, psp, razSoc, this.opKey, this.clientKey)
     .then( () => this.viewCtrl.dismiss());
   }
+  
 
 }

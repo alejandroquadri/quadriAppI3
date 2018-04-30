@@ -86,7 +86,11 @@
 
           <ion-item>
 				    <ion-label fixed>Monto</ion-label>
-				    <ion-input formControlName="total" type="number"></ion-input>
+				    <!-- <ion-input formControlName="total" type="number"></ion-input> -->
+						<ion-input 
+						[ngModel]="amount" 
+            (ngModelChange)="onAmountChange($event)"
+						formControlName="total" type="text"></ion-input>
 				  </ion-item>
 
 				</ion-list>
