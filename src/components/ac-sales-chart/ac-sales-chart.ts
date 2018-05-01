@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit, ViewContainerRef, ComponentFactoryResolver, Input } from '@angular/core';
-import { SalesDataProvider, ChartBuilderProvider } from '../../providers';
+import { SalesDataProvider, ChartBuilderProvider, FinanceDataProvider, AuthDataProvider } from '../../providers';
 import { Observable } from 'rxjs/Observable';
 import "rxjs/add/observable/combineLatest";
 import { map } from 'rxjs/operators';
@@ -16,9 +16,11 @@ export class AcSalesChartComponent implements OnInit {
 
   salesSubs: any;
   objectiveSubs: any;
+  finSubs: any;
   obsSubs: any;
   sales: any;
   objectives: any;
+  avionList: any;
   acChart: any;
   date = moment();
 
@@ -26,9 +28,11 @@ export class AcSalesChartComponent implements OnInit {
   brand: string = '';
   eq = 1600000;
   obj = this.eq * 1.1;
+  showAvion = false;
 
   totalSales = 0;
   toCom = 0;
+
 
   @Input() showPrize: any = true;
   @ViewChild('salesAcChart', {read: ViewContainerRef}) salesAcChartEl: ViewContainerRef;
@@ -38,10 +42,13 @@ export class AcSalesChartComponent implements OnInit {
   	private chartBuilder: ChartBuilderProvider,
     private salesData: SalesDataProvider,
     private componentFactoryResolver: ComponentFactoryResolver,
+    private financeData: FinanceDataProvider,
+    private authData: AuthDataProvider
   ) {
   }
 
   ngOnInit() {
+
     let today = moment();
     let end = today.format('YYYYMMDD');
     let start = today.date(1).subtract(6, 'months').format('YYYYMMDD');
@@ -49,12 +56,14 @@ export class AcSalesChartComponent implements OnInit {
     this.objectiveSubs = this.salesData.getObjectives();
     this.salesSubs = this.salesData.getRevenue(start, end)
     .pipe( map( res => res.json()));
+    this.finSubs = this.financeData.getAvionList();
     
-    this.obsSubs = Observable.combineLatest(this.salesSubs, this.objectiveSubs, (sales: any, objectives: any) => ({sales, objectives}))
+    this.obsSubs = Observable.combineLatest(this.salesSubs, this.objectiveSubs, this.finSubs, (sales: any, objectives: any, avion: any) => ({sales, objectives, avion}))
     .subscribe( pair => {
       this.sales = pair.sales.data;
       this.eq = pair.objectives.eq;
       this.obj = pair.objectives.obj;
+      this.avionList = pair.avion;
       this.salesDataFilter();
     })
   }
@@ -101,15 +110,21 @@ export class AcSalesChartComponent implements OnInit {
       let totalObjSales = 0;
       let totalEqSales = 0;
 
-      let filtered = this.sales.filter( sale => {
+      let salesFiltered = this.sales.filter( sale => {
         let momentDate = moment(sale.fecha).format('MM/YY');
-        return (momentDate === month && 
+        return (momentDate === month &&
+          sale.transaccion !== 'Nota de Debito' && 
           this.salesManFilter(sale.vendedor) &&
           this.brandFilter(sale.marca)
         )
       });
 
-      let obj = this.buildSalesObj(filtered);
+      let avionFiltered = this.avionList.filter( avion => {
+        return avion.payload.val().type === 'Ingreso';
+      })
+      
+      let obj = this.buildSalesObj(salesFiltered);
+      let avionObj = this.buildAvionObj(avionFiltered);
 
       for (let i=1, n= monthDays ; i <= n; i++) {
         let date = this.date.date(i).format('YYYY-MM-DD');
@@ -117,6 +132,11 @@ export class AcSalesChartComponent implements OnInit {
         if (obj[date]) {
           totalSales += obj[date].total;
           totalQuantity +=obj[date].quantity;
+        }
+        if (this.showAvion) {
+          if (avionObj[date]) {
+            totalSales += avionObj[date].total;
+          }
         }
         totalObjSales += dailyObjSales;
         totalEqSales += dailyEqSales;
@@ -168,6 +188,31 @@ export class AcSalesChartComponent implements OnInit {
       } else {
         filteredObj[date].total += total;
         filteredObj[date].quantity += quantity;
+      }
+    })
+
+    return filteredObj;
+  }
+
+  buildAvionObj(filteredArray: Array<any>, monthly?: boolean) {
+    let filteredObj = {};
+
+    filteredArray.forEach( saleObj => {
+      let sale = saleObj.payload.val();
+      let total = + sale.amount
+      let date;
+
+      if (monthly) {
+        date = moment(sale.date).format('YYYY-MM');
+      } else {
+        date = moment(sale.date).format('YYYY-MM-DD');
+      }
+      if (!filteredObj[date]) {
+        filteredObj[date] = {
+          total: total,
+        }
+      } else {
+        filteredObj[date].total += total;
       }
     })
 
@@ -263,6 +308,10 @@ export class AcSalesChartComponent implements OnInit {
     if (this.acChart) { 
       this.acChart.instance.width = this.chartContainer.nativeElement.clientWidth;
     }
+  }
+
+  permission(area: string) {
+    return this.authData.checkRestriction(area);
   }
 
 }

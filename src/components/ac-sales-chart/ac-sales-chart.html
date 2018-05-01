@@ -32,6 +32,12 @@
 			</select>
 		</ion-item>
 	</ion-col>
+	<ion-col col-auto *ngIf="permission('direccion')">
+		<ion-item no-lines class="salesMan filters">
+			<ion-label> Avion</ion-label>
+			<ion-toggle [(ngModel)]="showAvion" (ngModelChange)="salesDataFilter()"></ion-toggle>
+		</ion-item>
+	</ion-col>
 </ion-row>
 
 <ion-row *ngIf="showPrize">

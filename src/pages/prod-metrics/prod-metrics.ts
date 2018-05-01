@@ -28,7 +28,7 @@ export class ProdMetricsPage {
 				if (isAvailable) {
           console.log('available');
 					const toast = this.toastCtrl.create({
-						message: 'Nueva version Disponible! Recargar para ver cambios',
+						message: 'Nueva version disponible! Recargar para instalar nueva version',
 						position: 'bottom',
 						showCloseButton: true
 					});

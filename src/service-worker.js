@@ -42,7 +42,7 @@ self.toolbox.options.cache = {
 	name: 'quadri-cache'
 };
 
-const CACHE_VERSION = 20;
+// const CACHE_VERSION = 20;
 
 // dynamically cache any other local assets
 self.toolbox.router.get('/(.*)', self.toolbox.cacheFirst, {
