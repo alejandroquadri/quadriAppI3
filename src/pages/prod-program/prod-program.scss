@@ -139,9 +139,12 @@ page-prod-program {
 		margin-bottom: 0px;
   }
 
+  .entregasContainer {
+    overflow: scroll;
+  }
+  
   .entregas {
-  	font-size: 10px;
-  	overflow: scroll;
+    font-size: 1.2rem;
   }
 
   .entregasHeader {
