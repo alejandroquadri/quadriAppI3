@@ -4,8 +4,56 @@
   	<ion-buttons left>
 	  	<split-ctrl></split-ctrl>
 	  </ion-buttons>
-    <ion-title>Tablero</ion-title>
-  </ion-navbar>
+    <ion-title>Log de actividades de venta</ion-title>
+	</ion-navbar>
+	
+	<ion-toolbar>
+		<form [formGroup]="agendaForm" class="inputForm" (ngSubmit)="submit()">
+			<ion-row align-items-center>
+				<ion-col col-auto>
+					<ion-input #inputDate [ngClass]="{label: inputDate.value === ''}" formControlName="time" placeholder="Fecha" type="date" class="input inputDate"></ion-input>
+				</ion-col>
+				<ion-col col-auto>
+					<select #selectInput formControlName="action" class="selectInput" [ngClass]="{label: selectInput.value === ''}">
+						<option value="" disabled selected>accion</option>
+				    <option *ngFor="let action of actions | sort:'':true">{{ action }}</option>
+					</select>
+				</ion-col>
+				<ion-col>
+					<ion-input #desc [ngClass]="{label: desc.value === ''}" formControlName="desc" placeholder="descripcion" type="text" class="input inputText"></ion-input>
+				</ion-col>
+				<ion-col col-auto *ngIf="opName"  >
+					<div [ngClass]="{label: opName === 'oportunidad'}" class="input inputText op">
+						{{ opName }}
+					</div>
+				</ion-col>
+				<ion-col col-auto>
+					<button ion-button outline small color="ionBlue" type="button"
+					(click)="lookOp()">
+						Buscar Op
+					</button>
+				</ion-col>
+				<ion-col col-auto>
+					<button ion-button outline small color="ionBlue" type="button"
+					(click)="addOp()">
+						Agregar Op
+					</button>
+				</ion-col>
+				<ion-col col-auto>
+					<button ion-button icon-only clear small  color="ionBlue" type="submit" [disabled]="!agendaForm.valid">
+						<ion-icon *ngIf="edit" name="create"></ion-icon>
+						<ion-icon *ngIf="!edit" name="add"></ion-icon>
+					</button>
+				</ion-col>
+				<ion-col col-auto *ngIf="edit">
+					<button ion-button icon-only clear small  color="ionBlue" type="button"
+					(click)="switchToNew()" >
+						<ion-icon name="add"></ion-icon>
+					</button>
+				</ion-col>
+			</ion-row>
+		</form>
+	</ion-toolbar>
 
 </ion-header>
 
@@ -40,45 +88,53 @@
 					</ion-row>
 
 					<ion-row *ngIf="agendaObj[date]" class="headers">
+						<ion-col text-center col-1>
+							<strong>Accion</strong>
+						</ion-col>
+						<ion-col text-center>
+							<strong>Descripcion</strong>
+						</ion-col>
 						<ion-col text-center col-3>
 							<strong>Oportunidad</strong>
 						</ion-col>
 						<ion-col text-center col-2>
 							<strong>Cliente</strong>
 						</ion-col>
-						<ion-col text-center col-2>
-							<strong>Accion</strong>
-						</ion-col>
-						<ion-col text-center>
-							<strong>Descripcion</strong>
-						</ion-col>
 						<ion-col text-center col-auto>
 						</ion-col>
-						<ion-col col-auto>
+						<ion-col col-1>
 						</ion-col>
 					</ion-row>
 
 					<ion-row *ngFor="let item of agendaObj[date] | fieldFilter:['salesRep']:[salesMan]:false" align-items-center class="data">
-						<ion-col col-3>
-							{{ item.op }}
-						</ion-col>
-						<ion-col col-2>
-							{{ item.client }}
-						</ion-col>
-						<ion-col col-2>
+						<ion-col col-1 text-center>
 							{{ item.action }}
 						</ion-col>
-						<ion-col text-center>
+						<ion-col>
 							{{ item.desc }}
 						</ion-col>
-						<ion-col class="checkButton" col-auto>
+						<ion-col col-3 text-center>
+							{{ item.op }}
+						</ion-col>
+						<ion-col col-2 text-center>
+							{{ item.client }}
+						</ion-col>
+						<ion-col class="checkButton" col-1>
 							<ion-checkbox #check align-self-center [checked]="item?.complete" 
 								(ionChange)="changeCheck(item.$key, check.value)">
 							</ion-checkbox>
-						</ion-col>
-						<ion-col col-auto>
-							<button ion-button icon-only clear color="lightGreyQ" small (click)="seeOp(item.opKey)" class="actionButtons">
+						<!-- </ion-col>
+						<ion-col col-auto> -->
+							<button  *ngIf="item.opKey"  ion-button icon-only clear color="lightGreyQ" small (click)="seeOp(item.opKey)" class="actionButtons">
 								<ion-icon name="eye"></ion-icon>
+							</button>
+							<button ion-button icon-only clear color="lightGreyQ" small 
+							(click)="switchEditAgendaItem(item)" class="actionButtons">
+								<ion-icon name="create"></ion-icon>
+							</button>
+							<button ion-button icon-only clear color="lightGreyQ" small 
+							(click)="deleteAgendaItem(item)" class="actionButtons">
+								<ion-icon name="trash"></ion-icon>
 							</button>
 						</ion-col>
 					</ion-row>
@@ -88,7 +144,7 @@
 
 		</div>
 
-		<div class="graficos">
+		<!-- <div class="graficos">
 
 			<ion-card>
 				<ion-card-content>
@@ -102,7 +158,7 @@
 				</ion-card-content>
 			</ion-card>
 			
-		</div>
+		</div> -->
 
 	</div>
 		

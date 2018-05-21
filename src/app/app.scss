@@ -23,6 +23,16 @@
   user-select: text;
 }
 
+// lo de abajo son configuraciones puntuales para el split Pane
+
 .user {
 	background-color: #f8f8f8;
+}
+
+.splitPane::-webkit-scrollbar {
+  display: none;
+}
+
+.splitPane {
+  overflow-y: scroll;
 }

@@ -200,7 +200,10 @@ export class CrmOpFormPage {
       }
     }
     this.crmData.saveNewOp(opForm, clientForm, psp, razSoc, this.opKey, this.clientKey)
-    .then( () => this.viewCtrl.dismiss());
+    .then( (ret) => {
+      console.log(ret);
+      this.viewCtrl.dismiss(ret)
+    });
   }
   
 

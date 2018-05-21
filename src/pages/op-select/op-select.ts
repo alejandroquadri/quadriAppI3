@@ -10,18 +10,24 @@ import { CrmDataProvider } from '../../providers';
 })
 export class OpSelectPage {
 
+  searchInput = '';
+  opSubs: any;
+  opList: Array<any>;
+  filteredOps;
+  newOpAdd = true;
+  
   constructor(
   	public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
     private crmData: CrmDataProvider
   ) {
+    console.log(this.navParams.data);
+    if (this.navParams.data.from === 'activity') {
+      this.newOpAdd = false;
+    }
   }
 
-  searchInput = '';
-  opSubs: any;
-  opList: Array<any>;
-  filteredOps;
 
   ionViewDidLoad() {
   	this.opSubs = this.crmData.getOpsList();

@@ -14,7 +14,6 @@ export const Users = {
     'luissantillan@quadri.com.ar'
   ],
   ventas: [
-    'alejandraarce@quadri.com.ar',
     'albertotarruella@quadri.com.ar',
     'alejandraroldan@quadri.com.ar'
   ],

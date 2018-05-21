@@ -13,6 +13,7 @@ export class ProdMetricsPage {
 	prodChart = true;
 	stockchart = true;
 	acSalesChart = true;
+	opChart = true;
 	size = 3;
 
   constructor(
@@ -45,17 +46,27 @@ export class ProdMetricsPage {
 		this.size = 2;
 		switch (chart) {
 			case 'acProd':
-					this.acProdChart = true;
-					this.prodChart = false;
-					this.stockchart = false;
-					this.acSalesChart = false;
+				this.acProdChart = true;
+				this.prodChart = false;
+				this.stockchart = false;
+				this.acSalesChart = false;
+				this.opChart = false;
 			break;
 			
 			case 'acSales':
 				this.acProdChart = false;
 				this.prodChart = false;
 				this.stockchart = false;
+				this.opChart = false;
 				this.acSalesChart = true;
+			break;
+
+			case 'op':
+				this.acProdChart = false;
+				this.prodChart = false;
+				this.stockchart = false;
+				this.acSalesChart = false;
+				this.opChart = true;
 			break;
 
 			case 'prod':
@@ -63,6 +74,7 @@ export class ProdMetricsPage {
 				this.prodChart = true;
 				this.stockchart = false;
 				this.acSalesChart = false;
+				this.opChart = false;
 				break;
 
 			case 'stock':
@@ -70,7 +82,8 @@ export class ProdMetricsPage {
 				this.prodChart = false;
 				this.stockchart = true;
 				this.acSalesChart = false;
-			break;
+				this.opChart = false;
+				break;
 		
 			default:
 				break;
@@ -83,6 +96,7 @@ export class ProdMetricsPage {
 		this.prodChart = true;
 		this.stockchart = true;
 		this.acSalesChart = true;
+		this.opChart = true;
 	}
 
 }

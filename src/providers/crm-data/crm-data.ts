@@ -13,7 +13,7 @@ export class CrmDataProvider {
   checkedPspSubs: any;
   checkedPspObj: any;
   statusOptions = ['Pendiente', 'Rechazado', 'Cerrado'];
-  actions = ['Llamada', 'Envio de muestra', 'Visita', 'Mail', 'Nota'];
+  actions = ['Llamada seguimiento', 'Llamada de presentacion', 'Atencion en salon', 'Envio de psp', 'Envio de muestra', 'Visita', 'Mail', 'Nota'];
   salesReps = ['Alejandra Roldan', 'Tarruella Alberto Horacio '];
   clientTypes = ['Constructora', 'Estudio Arq', 'Distribuidor', 'Adm Consorcio', 'Cliente Final'];
   filters = {
@@ -58,12 +58,11 @@ export class CrmDataProvider {
 
   currentSalesRepCheck() {
     this.authData.user.subscribe( (user: any) => {
-      console.log(user.email);
       if (user.email === "alejandraroldan@quadri.com.ar") {
         this.currentSalesRep = 'Alejandra Roldan';
         this.filters.salesRep.tarruella = false;
       }
-      if (user.email === "albertotarruella@quadri.com.ar") {
+      if (user.email === "alejandroquadri@quadri.com.ar") {
         this.currentSalesRep = 'Tarruella Alberto Horacio ';
         this.filters.salesRep.roldan = false;
       }
@@ -171,30 +170,38 @@ export class CrmDataProvider {
 
   saveNewOp(opForm: any, clientForm: any, psp?:any, razSoc?: string, opKey?: string, cliKey?: string) {
     // console.log('llega', opForm, clientForm, psp, razSoc, opKey, cliKey);
-    let razSocObj;
-    let checkPsp;
-    if (!opKey) { opKey = this.apiData.getNewKey() }
-    if (!cliKey) { cliKey = this.apiData.getNewKey() }
-    if (!clientForm['ops']) { clientForm['ops']= {} }
+    return new Promise((resolve, reject) => {
+      
+      let razSocObj;
+      let checkPsp;
+      if (!opKey) { opKey = this.apiData.getNewKey() }
+      if (!cliKey) { cliKey = this.apiData.getNewKey() }
+      if (!clientForm['ops']) { clientForm['ops']= {} }
+  
+      clientForm['ops'][opKey] = true;
+      opForm['clientKey'] = cliKey;
+  
+      let oportunity = this.apiData.fanOutObject(opForm, [`crm/op/${opKey}`], false);
+      let client = this.apiData.fanOutObject(clientForm, [`crm/clients/${cliKey}`], false)
+      if (psp) {
+        checkPsp = this.apiData.fanOutObject(psp, [`crm/checkPsp`], false);      
+      } else {
+        checkPsp = {};
+      }
+      if (razSoc) {
+        razSocObj = this.apiData.fanOutObject(razSoc, [`crm/razSoc`], true);
+      } else {
+        razSocObj = {};
+      }
+      let updateObj = Object.assign({}, oportunity, client, checkPsp, razSocObj);
+      // console.log(updateObj);
+      this.apiData.fanUpdate(updateObj)
+      .then( () => {
+        opForm['$key'] = opKey;
+        resolve(opForm);
+      })
 
-    clientForm['ops'][opKey] = true;
-    opForm['clientKey'] = cliKey;
-
-    let oportunity = this.apiData.fanOutObject(opForm, [`crm/op/${opKey}`], false);
-    let client = this.apiData.fanOutObject(clientForm, [`crm/clients/${cliKey}`], false)
-    if (psp) {
-      checkPsp = this.apiData.fanOutObject(psp, [`crm/checkPsp`], false);      
-    } else {
-      checkPsp = {};
-    }
-    if (razSoc) {
-      razSocObj = this.apiData.fanOutObject(razSoc, [`crm/razSoc`], true);
-    } else {
-      razSocObj = {};
-    }
-    let updateObj = Object.assign({}, oportunity, client, checkPsp, razSocObj);
-    // console.log(updateObj);
-    return this.apiData.fanUpdate(updateObj);
+    });
   }
 
   newClient(client) {
@@ -295,10 +302,10 @@ export class CrmDataProvider {
     this.filterSubject.next(this.filters)
   }
 
-  delteAgendaItem(agendaKey: string, opKey) {
+  delteAgendaItem(agendaKey: string, opKey?) {
     let deleteObj = {};
     deleteObj[`crm/agenda/${agendaKey}`] = null;
-    deleteObj[`crm/op/${opKey}/agenda/${agendaKey}`] = null;
+    opKey? deleteObj[`crm/op/${opKey}/agenda/${agendaKey}`] = null : '';
     return this.apiData.fanUpdate(deleteObj);
   }
 

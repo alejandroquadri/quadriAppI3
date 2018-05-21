@@ -35,21 +35,23 @@
 
 	<div class="container">
 
-		<div class="otherCharts" [ngClass]="{totalWidth: (acProdChart || prodChart || acSalesChart) && !stockchart, ceroWidth: !(acProdChart || prodChart || acSalesChart) && stockchart}" >
+		<div class="otherCharts" [ngClass]="{totalWidth: (acProdChart || prodChart || acSalesChart || opChart) && !stockchart, ceroWidth: !(acProdChart || prodChart || acSalesChart || opChart) && stockchart}" >
 			
-			<ion-card class="charts" *ngIf="acProdChart">
-				<div class="buttons">
-					<button ion-button small clear icon-only (click)="expandView('acProd')">
-							<ion-icon name="expand"></ion-icon>
-					</button>
-					<button ion-button small clear icon-only (click)="contractView()" >
-							<ion-icon name="contract"></ion-icon>
-					</button>
-				</div>
-				<ion-card-content>
-					<acChart></acChart>
-				</ion-card-content>
-			</ion-card>
+			<div *ngIf="!permission('ventas')">
+				<ion-card class="charts" *ngIf="acProdChart">
+					<div class="buttons">
+						<button ion-button small clear icon-only (click)="expandView('acProd')">
+								<ion-icon name="expand"></ion-icon>
+						</button>
+						<button ion-button small clear icon-only (click)="contractView()" >
+								<ion-icon name="contract"></ion-icon>
+						</button>
+					</div>
+					<ion-card-content>
+						<acChart></acChart>
+					</ion-card-content>
+				</ion-card>
+			</div>
 			
 			<div *ngIf="!permission('fabrica')">
 				<ion-card class="charts" *ngIf="acSalesChart">
@@ -65,24 +67,45 @@
 						<ac-sales-chart [showPrize]="false"></ac-sales-chart>
 					</ion-card-content>
 				</ion-card>
+				
+				<div *ngIf="!permission('fabrica')">
+					<ion-card *ngIf="opChart" class="charts">
+							<div class="buttons">
+								<button ion-button small clear icon-only (click)="expandView('op')">
+										<ion-icon name="expand"></ion-icon>
+								</button>
+								<button ion-button small clear icon-only (click)="contractView()">
+										<ion-icon name="contract"></ion-icon>
+								</button>
+							</div>
+						<ion-card-content>
+								<op-chart></op-chart>
+						</ion-card-content>
+					</ion-card>
+				</div>
+
 			</div>
 			
-			<ion-card *ngIf="prodChart" class="charts">
-				<div class="buttons">
-					<button ion-button small clear icon-only (click)="expandView('prod')">
-							<ion-icon name="expand"></ion-icon>
-					</button>
-					<button ion-button small clear icon-only (click)="contractView()">
-							<ion-icon name="contract"></ion-icon>
-					</button>
-				</div>
-				<ion-card-content>
-					<prodChart></prodChart>
-				</ion-card-content>
-			</ion-card>
+			<div *ngIf="!permission('ventas')">
+				<ion-card *ngIf="prodChart" class="charts">
+					<div class="buttons">
+						<button ion-button small clear icon-only (click)="expandView('prod')">
+								<ion-icon name="expand"></ion-icon>
+						</button>
+						<button ion-button small clear icon-only (click)="contractView()">
+								<ion-icon name="contract"></ion-icon>
+						</button>
+					</div>
+					<ion-card-content>
+						<prodChart></prodChart>
+					</ion-card-content>
+				</ion-card>
+			</div>			
+
+
 		</div>
 
-		<div class="stockChart" [ngClass]="{totalWidth: stockchart && !(acProdChart || prodChart || acSalesChart), ceroWidth: !stockchart && (acProdChart || prodChart || acSalesChart)}">
+		<div class="stockChart" [ngClass]="{totalWidth: stockchart && !(acProdChart || prodChart || acSalesChart || opChart), ceroWidth: !stockchart && (acProdChart || prodChart || acSalesChart || opChart)}">
 			<ion-card *ngIf="stockchart" class="charts">
 				<div class="buttons">
 					<button ion-button small clear icon-only (click)="expandView('stock')">

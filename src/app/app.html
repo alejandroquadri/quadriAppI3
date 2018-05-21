@@ -1,4 +1,4 @@
-<ion-split-pane [when]="shouldShow()">
+<ion-split-pane [when]="shouldShow()" class="splitPane" >
 <!-- <ion-split-pane [enabled]="shouldShow()" when="xl"> -->
 
   <ion-menu id="loggedInMenu" [content]="content" *ngIf="userProfile">
@@ -74,7 +74,7 @@
         </ion-list-header>
         <button ion-item menuClose (click)="openPage('CrmDashboardPage')">
           <ion-icon item-start name="podium"></ion-icon>
-          Tablero
+          Log Actividades
         </button>
         <button ion-item menuClose (click)="openPage('CrmPricesPage')">
           <ion-icon item-start name="logo-usd"></ion-icon>

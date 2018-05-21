@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 
 import { CrmDataProvider } from '../../providers';
@@ -17,20 +18,44 @@ export class CrmDashboardPage {
   date: string = moment().format('YYYY-MM-DD');
 
   salesMan = '';
+  currentSalesMan: any;
+
+  agendaForm: FormGroup;
+  actions: any;
+  edit = false;
+  editAgendaKey: string;
+  opName: string;
+  opObject
 
   constructor(
   	public navCtrl: NavController,
   	public navParams: NavParams,
-    private crmData: CrmDataProvider
+    private crmData: CrmDataProvider,
+    private fb: FormBuilder,
+    public modalCtrl: ModalController
   ) {
+    this.buildForm();
+    this.agendaForm.patchValue({
+      time: moment().format('YYYY-MM-DD')
+    })
+    this.actions = this.crmData.actions;
+    this.currentSalesMan = this.crmData.currentSalesRep;
   }
 
   ionViewDidLoad() {
     this.agendaObs = this.crmData.getAgendaList().subscribe( agenda => {
       this.agendaList = agenda;
-      console.log(this.agendaList);
+      // console.log(this.agendaList);
       this.buildAgendaObj();
     })
+  }
+
+  buildForm() {
+  	this.agendaForm = this.fb.group( {
+  		time: ['', Validators.required],
+  		action: ['',Validators.required],
+  		desc: ['', Validators.required]
+  	});
   }
 
   buildAgendaObj() {
@@ -48,7 +73,7 @@ export class CrmDashboardPage {
       }
     })
     this.agendaObj = agendaObj;
-    console.log(this.agendaObj);
+    // console.log(this.agendaObj);
   }
 
   back() {
@@ -72,6 +97,94 @@ export class CrmDashboardPage {
       $key: key
     };
     this.navCtrl.push('CrmOpDetailPage', op);
+  }
+
+  submit() {
+    console.log(this.agendaForm.value);
+    if (!this.edit) {
+  		this.newAgendaItem();
+  	} else {
+  		this.editAgendaItem()
+  	}
+  }
+
+  lookOp(){
+    let modal = this.modalCtrl.create('OpSelectPage', {from: 'activity'});
+    modal.onDidDismiss( data => {
+      if (data) {
+        this.opName = data.op.obra;
+        this.opObject = data.op;
+        this.opObject['$key'] = data.key;
+      }
+    })
+    modal.present();
+  }
+
+  addOp() {
+    let modal = this.modalCtrl.create('CrmOpFormPage', {state:'addNew'});
+    modal.onDidDismiss( data => {
+      if (data) {
+        this.opName = data.obra;
+        this.opObject = data;
+      }
+    })
+    modal.present();
+  }
+
+  newAgendaItem() {
+    let form = this.agendaForm.value;
+
+    if (this.opObject) {
+      form['opKey'] = this.opObject.$key
+      form['op'] = this.opObject.obra;
+      form['clientKey'] = this.opObject.clientKey;
+      form['client'] = this.opObject.client;
+      form['complete'] = false;
+      form['salesRep'] = this.opObject.salesRep;
+    } else {
+      form['salesRep'] = this.currentSalesMan || '';
+    }
+
+		this.crmData.newAgendaNote(form)
+		.then( ret =>  {
+      this.agendaForm.reset();
+      this.opName = '';
+      this.opObject = undefined;	
+		})
+  }
+
+  editAgendaItem() {
+    let updateForm = {
+  		time: this.agendaForm.value.time,
+  		desc: this.agendaForm.value.desc,
+  		action: this.agendaForm.value.action
+  	};
+  	this.crmData.updateAgendaItem(this.editAgendaKey, updateForm)
+  	.then( () => console.log('updated'));
+  }
+
+  deleteAgendaItem(agendaItem) {
+    console.log(agendaItem);
+    let opKey;
+    agendaItem.opKey? opKey = agendaItem.opKey : opKey = undefined;
+  	this.crmData.delteAgendaItem(agendaItem.$key, opKey);
+  }
+
+  switchEditAgendaItem(agendaItem,) {
+  	console.log(agendaItem);
+  	this.editAgendaKey = agendaItem.$key;
+  	this.agendaForm.patchValue( {
+  		time: agendaItem.time,
+  		action: agendaItem.action,
+  		desc: agendaItem.desc
+  	})
+  	this.edit = true;
+  }
+
+  switchToNew() {
+  	this.edit = false;
+  	this.editAgendaKey = undefined;
+  	this.agendaForm.reset();
   }
 
 }

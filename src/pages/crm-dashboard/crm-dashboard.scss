@@ -4,12 +4,16 @@ page-crm-dashboard {
 		display: flex;
 	}
 
-	.agenda {
-		width: 50%;
-	}
+	// .agenda {
+	// 	width: 50%;
+	// }
 
-	.graficos {
-		width: 50%
+	// .graficos {
+	// 	width: 50%
+	// }
+
+	.agenda {
+		width: 100%;
 	}
 
 	.date {
@@ -20,7 +24,7 @@ page-crm-dashboard {
   .text-input {
     background-color: rgba(244, 244, 244, 0.29);
     border-radius: 15px;
-    padding-left: 2rem;
+		padding-left: 2rem;
   }
 
   .item-inner {
@@ -59,6 +63,46 @@ page-crm-dashboard {
     background-color: rgba(244, 244, 244, 0.29);
     color: black;
     border: none;
-  }
+	}
+	
+	.inputDate {
+    // height: 20px;    
+  	background-color:white;
+		// width: 140px;
+		border-radius: 5px;
+	}
+	
+	.label {
+  	color: #999;
+	}
+	
+	.selectInput {
+  	background-color:white;
+    border: none;
+    height: 2.2rem;
+	}
+	
+	.input {
+  	background-color:white;
+		border-radius: 8px;
+	}
+	
+	.inputText {
+		//width: 100%;
+		line-height: 1.6;
+	}
+	
+	.inputForm .text-input {
+    background-color: white;
+    border-radius: 15px;
+		padding-left: 2rem;
+		margin-top: 0px;
+		margin-bottom: 0px;
+	}
+	
+	.op {
+		cursor: pointer;
+		padding: 0 0.5rem 0 0.5rem;
+	}
 
 }

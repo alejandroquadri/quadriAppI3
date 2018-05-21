@@ -71,7 +71,7 @@ export class CrmNewPspPage {
     })
     .forEach( psp => {
       filteredArray.push(this.pspObj[psp]);
-    })
+    });
     this.filteredPsp = filteredArray;
   }
 
