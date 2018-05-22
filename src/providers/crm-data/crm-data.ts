@@ -13,7 +13,7 @@ export class CrmDataProvider {
   checkedPspSubs: any;
   checkedPspObj: any;
   statusOptions = ['Pendiente', 'Rechazado', 'Cerrado'];
-  actions = ['Llamada seguimiento', 'Llamada de presentacion', 'Atencion en salon', 'Envio de psp', 'Envio de muestra', 'Visita', 'Mail', 'Nota'];
+  actions = ['Llamada seguimiento', 'Llamada de presentacion', 'Atencion en salon', 'Envio de psp', 'Envio de muestra', 'Visita', 'Mail'];
   salesReps = ['Alejandra Roldan', 'Tarruella Alberto Horacio '];
   clientTypes = ['Constructora', 'Estudio Arq', 'Distribuidor', 'Adm Consorcio', 'Cliente Final'];
   filters = {
@@ -210,13 +210,15 @@ export class CrmDataProvider {
 
   newAgendaNote(agenda) {
     let agendaKey = this.apiData.getNewKey();
-    let opAgenda = {};
-    opAgenda[agendaKey] = true;
-
+    let opUpdate;
     let agendaLog = this.apiData.fanOutObject(agenda, [`crm/agenda/${agendaKey}`], false);
-    let opUpdate = this.apiData.fanOutObject(opAgenda, [`crm/op/${agenda.opKey}/agenda`], false);
+
+    if (agenda.opKey) {
+      let opAgenda = {};
+      opAgenda[agendaKey] = true;
+      opUpdate = this.apiData.fanOutObject(opAgenda, [`crm/op/${agenda.opKey}/agenda`], false);
+    }
     let updateObj = Object.assign({}, agendaLog, opUpdate);
-    // console.log(updateObj);
     return this.apiData.fanUpdate(updateObj);
   }
 
@@ -292,6 +294,19 @@ export class CrmDataProvider {
 
   updateAgendaItem(key: string, form: any) {
     return this.apiData.updateList('crm/agenda', key, form);
+  }
+
+  editAgendaItem(agendaForm, agendaKey: string) {
+    let opUpdate;
+    let agendaLog = this.apiData.fanOutObject(agendaForm, [`crm/agenda/${agendaKey}`], false);
+    
+    if (agendaForm.opKey) {
+      let opAgenda = {};
+      opAgenda[agendaKey] = true;
+      opUpdate = this.apiData.fanOutObject(opAgenda, [`crm/op/${agendaForm.opKey}/agenda`], false);
+    }
+    let updateObj = Object.assign({}, agendaLog, opUpdate);
+    return this.apiData.fanUpdate(updateObj);
   }
 
   updateContact(key: string, form: any) {

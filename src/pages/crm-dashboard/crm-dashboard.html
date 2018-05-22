@@ -4,7 +4,7 @@
   	<ion-buttons left>
 	  	<split-ctrl></split-ctrl>
 	  </ion-buttons>
-    <ion-title>Log de actividades de venta</ion-title>
+    <ion-title>Registro de actividades de venta</ion-title>
 	</ion-navbar>
 	
 	<ion-toolbar>
@@ -27,18 +27,20 @@
 						{{ opName }}
 					</div>
 				</ion-col>
-				<ion-col col-auto>
-					<button ion-button outline small color="ionBlue" type="button"
-					(click)="lookOp()">
-						Buscar Op
-					</button>
-				</ion-col>
-				<ion-col col-auto>
-					<button ion-button outline small color="ionBlue" type="button"
-					(click)="addOp()">
-						Agregar Op
-					</button>
-				</ion-col>
+				<div *ngIf="showOp">
+					<ion-col col-auto>
+						<button ion-button outline small color="ionBlue" type="button"
+						(click)="lookOp()">
+							Buscar Op
+						</button>
+					</ion-col>
+					<ion-col col-auto>
+						<button ion-button outline small color="ionBlue" type="button"
+						(click)="addOp()">
+							Agregar Op
+						</button>
+					</ion-col>
+				</div>
 				<ion-col col-auto>
 					<button ion-button icon-only clear small  color="ionBlue" type="submit" [disabled]="!agendaForm.valid">
 						<ion-icon *ngIf="edit" name="create"></ion-icon>

@@ -24,8 +24,10 @@ export class CrmDashboardPage {
   actions: any;
   edit = false;
   editAgendaKey: string;
+  editAgenda: any;
   opName: string;
-  opObject
+  opObject: any;
+  showOp = true;
 
   constructor(
   	public navCtrl: NavController,
@@ -157,9 +159,16 @@ export class CrmDashboardPage {
     let updateForm = {
   		time: this.agendaForm.value.time,
   		desc: this.agendaForm.value.desc,
-  		action: this.agendaForm.value.action
-  	};
-  	this.crmData.updateAgendaItem(this.editAgendaKey, updateForm)
+      action: this.agendaForm.value.action
+    };
+    if (this.opObject) {
+      updateForm['op'] = this.opObject.obra;
+      updateForm['opKey'] = this.opObject.$key;
+    }
+
+    // this.crmData.updateAgendaItem(this.editAgendaKey, updateForm)
+    console.log(updateForm);
+    this.crmData.editAgendaItem(updateForm, this.editAgendaKey)
   	.then( () => console.log('updated'));
   }
 
@@ -172,18 +181,26 @@ export class CrmDashboardPage {
 
   switchEditAgendaItem(agendaItem,) {
   	console.log(agendaItem);
-  	this.editAgendaKey = agendaItem.$key;
+    this.editAgendaKey = agendaItem.$key;
+    this.editAgenda = agendaItem;
+    this.opName = '';
+    this.opObject = undefined;	
   	this.agendaForm.patchValue( {
   		time: agendaItem.time,
   		action: agendaItem.action,
   		desc: agendaItem.desc
   	})
-  	this.edit = true;
+    this.edit = true;
+    agendaItem.opKey? this.showOp = false : this.showOp = true;
   }
 
   switchToNew() {
-  	this.edit = false;
-  	this.editAgendaKey = undefined;
+    this.edit = false;
+    this.showOp = true;
+    this.editAgendaKey = undefined;
+    this.editAgenda = undefined;
+    this.opName = '';
+    this.opObject = undefined;	
   	this.agendaForm.reset();
   }
 
