@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -13,7 +13,8 @@ export class CrmPspDetailPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public viewCtrl: ViewController
+    public viewCtrl: ViewController,
+    public modalCtrl: ModalController
   ) {
   }
 
@@ -21,5 +22,14 @@ export class CrmPspDetailPage {
     console.log(this.navParams.data);
     this.psp = this.navParams.data;
   }
+
+  sendPsp() {
+    let profileModal = this.modalCtrl.create('CrmSendPspPage', this.psp);
+    profileModal.onDidDismiss( data => {
+      data === 'dismiss' ? this.viewCtrl.dismiss() : '' ;
+    });
+    profileModal.present();
+  }
+
 
 }

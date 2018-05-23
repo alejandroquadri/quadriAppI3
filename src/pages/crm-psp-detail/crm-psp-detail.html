@@ -3,6 +3,9 @@
   <ion-navbar>
     <ion-title *ngIf="psp" >Presupuesto {{ psp.num }}</ion-title>
     <ion-buttons end>
+      <button ion-button icon-only small (click)="sendPsp()">
+        <ion-icon name="paper-plane"></ion-icon>
+      </button>
       <button ion-button (click)="viewCtrl.dismiss()">
         Salir
       </button>

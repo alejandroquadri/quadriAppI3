@@ -1,0 +1,47 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Envio de presupuesto</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="viewCtrl.dismiss()">
+        Salir
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+
+    <form [formGroup]="emailForm" (submit)="onSubmit()">
+
+      <ion-list>
+
+        <ion-item>
+          <ion-label fixed>Destinatario</ion-label>
+          <ion-input formControlName="to" type="email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label fixed>CC</ion-label>
+          <ion-input formControlName="cc" type="email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label fixed>Comentario</ion-label>
+          <ion-textarea fz-elastic formControlName="obs"></ion-textarea>
+        </ion-item>
+
+      </ion-list>
+
+      <button ion-button outline icon-start type="submit" [disabled]="!emailForm.valid">
+        <ion-icon name="paper-plane"></ion-icon>Enviar
+      </button>
+
+    </form>
+
+
+  </ion-grid>
+</ion-content>
