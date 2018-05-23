@@ -19,8 +19,11 @@ export class CrmNewPspPage {
   checkedPspsObj: any;
   pspObj: any;
 
+  pspTypes = ['Todos', 'Pendientes', 'Ignorados']
+
   filteredPsp: any;
   salesRep = '';
+  pspType = 'Pendientes'
   searchInput = '';
   viewArray: any;
   sortTerm = 'total';
@@ -47,7 +50,6 @@ export class CrmNewPspPage {
       pair.checkedPsp? this.checkedPspsObj = pair.checkedPsp : this.checkedPspsObj = {};
       this.pspObj = pair.psps.psp;
       this.filterPsp();
-      this.filter();
     })
   }
 
@@ -60,29 +62,55 @@ export class CrmNewPspPage {
   filterPsp() {
     !this.pspObj ? this.pspObj = {} : '' ;
     let filteredArray = [];
-
     let psp = Object.keys(this.pspObj);
     psp.filter( (psp:any) => {
+      let value = this.pspObj[psp]
       return (
-                !(this.checkedPspsObj[psp]) &&
-                // !(this.checkedPspsObj[psp]=== 'ignored') &&
-                (this.pspObj[psp].flag === 'Pronostico' || this.pspObj[psp].flag ==='Pendiente')
-              )
+        this.filterTypePsp(psp) &&
+        this.filterSalesRep(value) &&
+        (value.flag === 'Pronostico' || value.flag ==='Pendiente')
+      )
     })
     .forEach( psp => {
       filteredArray.push(this.pspObj[psp]);
     });
     this.filteredPsp = filteredArray;
+    this.filter();
   }
 
   filter(event?) {
-    let salesFilter = this.fieldFilter.transform(this.filteredPsp,['salesRep'],[this.salesRep], false);
-    this.viewArray = this.searchFilter.transform(salesFilter,this.searchInput, false);
+    this.viewArray = this.searchFilter.transform(this.filteredPsp,this.searchInput, false);
     this.sort();
   }
 
   sort() {
     this.viewArray = this.sliceArray(this.sortPipe.transform(this.viewArray, this.sortTerm, this.sortDir, false));
+  }
+
+  filterTypePsp(psp) {
+    let ret
+    switch (this.pspType) {
+      case 'Todos':
+        ret = true;
+        break;
+      
+      case 'Pendientes':
+        !this.checkedPspsObj[psp] ? ret = true : ret = false ;
+        break;
+      
+      case 'Ignorados':
+        this.checkedPspsObj[psp] === 'ignored' ? ret = true : ret = false;
+        break;
+    }
+    return ret;
+  }
+
+  filterSalesRep(psp) {
+    if (this.salesRep === '') {
+      return true;
+    } else {
+      return psp.salesRep === this.salesRep;
+    }
   }
 
   changeSort(term) {
@@ -96,7 +124,6 @@ export class CrmNewPspPage {
   }
 
   doInfinite(infiniteScroll: InfiniteScroll) {
-    console.log('infinite');
     setTimeout( () => {
       this.offset += 20;
       this.filter();
@@ -105,7 +132,6 @@ export class CrmNewPspPage {
   }
 
   seePsp(psp) {
-    console.log(psp);
     let profileModal = this.modalCtrl.create('CrmPspDetailPage', psp);
     profileModal.present();
   }

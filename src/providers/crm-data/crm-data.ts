@@ -62,7 +62,7 @@ export class CrmDataProvider {
         this.currentSalesRep = 'Alejandra Roldan';
         this.filters.salesRep.tarruella = false;
       }
-      if (user.email === "alejandroquadri@quadri.com.ar") {
+      if (user.email === "albertotarruella@quadri.com.ar") {
         this.currentSalesRep = 'Tarruella Alberto Horacio ';
         this.filters.salesRep.roldan = false;
       }

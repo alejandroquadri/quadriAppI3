@@ -5,16 +5,25 @@
       <split-ctrl></split-ctrl>
     </ion-buttons>
     <ion-buttons end>
-      <div class="">
-        <label margin-horizontal>Vendedor</label>
-        <select margin-horizontal class="select" name="" [(ngModel)]="salesRep" (ngModelChange)="filter()">
-          <option value=""></option>
-          <option value="Alejandra Roldan">Roldan</option>
-          <option value="Tarruella Alberto Horacio ">Tarruella</option>
-        </select>
-      </div>
+      <ion-row no-padding>
+      <ion-col no-padding>
+        <ion-item class="menuItem" no-lines>
+          <select #selectSalesMan class="select" name="" [(ngModel)]="salesRep" (ngModelChange)="filterPsp()" [ngClass]="{label: selectSalesMan.value === ''}">
+            <option value="">Vendedor</option>
+            <option value="Alejandra Roldan">Roldan</option>
+            <option value="Tarruella Alberto Horacio ">Tarruella</option>
+          </select>
+        </ion-item>
+      </ion-col>
+      <ion-col no-padding>
+        <ion-item class="menuItem" no-lines no-padding>
+          <select class="select" name="" [(ngModel)]="pspType" (ngModelChange)="filterPsp()">
+            <option *ngFor="let type of pspTypes"> {{type}} </option> 
+          </select>
+        </ion-item>
+      </ion-col>
+      </ion-row>
     </ion-buttons>
-    <!-- <ion-title>Presupuestos nuevos</ion-title> -->
     <ion-searchbar [(ngModel)]="searchInput" (ngModelChange)="filter($event)"></ion-searchbar>
   </ion-navbar>
 
@@ -73,13 +82,10 @@
           {{ psp.total | number : '1.0-0'}}
         </ion-col>
         <ion-col col-1 text-center>
-          <!-- <button ion-button icon-only clear color="lightGreyQ" small (click)="seePsp(psp)" class="actionButtons">
-            <ion-icon name="eye"></ion-icon>
-          </button> -->
-          <button ion-button icon-only clear color="lightGreyQ" small (click)="addOp(psp)" class="actionButtons">
+          <button *ngIf="pspType !== 'Todos'" ion-button icon-only clear color="lightGreyQ" small (click)="addOp(psp)" class="actionButtons">
 						<ion-icon name="add"></ion-icon>
 					</button>
-					<button ion-button icon-only clear color="lightGreyQ" small (click)="ignore(psp.num)" class="actionButtons">
+					<button  *ngIf="pspType === 'Pendientes'"  ion-button icon-only clear color="lightGreyQ" small (click)="ignore(psp.num)" class="actionButtons">
 						<ion-icon name="remove"></ion-icon>
 					</button>
         </ion-col>

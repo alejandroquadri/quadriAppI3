@@ -89,7 +89,7 @@ export class CrmDashboardPage {
   }
 
   changeCheck(agendaKey, check) {
-    console.log(check);
+    // console.log(check);
     this.crmData.updateAgendaItem(agendaKey, { complete: check})
     .then( () => console.log('check actualizado'));
   }
@@ -102,7 +102,7 @@ export class CrmDashboardPage {
   }
 
   submit() {
-    console.log(this.agendaForm.value);
+    // console.log(this.agendaForm.value);
     if (!this.edit) {
   		this.newAgendaItem();
   	} else {
@@ -166,21 +166,20 @@ export class CrmDashboardPage {
       updateForm['opKey'] = this.opObject.$key;
     }
 
-    // this.crmData.updateAgendaItem(this.editAgendaKey, updateForm)
-    console.log(updateForm);
+    // console.log(updateForm);
     this.crmData.editAgendaItem(updateForm, this.editAgendaKey)
   	.then( () => console.log('updated'));
   }
 
   deleteAgendaItem(agendaItem) {
-    console.log(agendaItem);
+    // console.log(agendaItem);
     let opKey;
     agendaItem.opKey? opKey = agendaItem.opKey : opKey = undefined;
   	this.crmData.delteAgendaItem(agendaItem.$key, opKey);
   }
 
   switchEditAgendaItem(agendaItem,) {
-  	console.log(agendaItem);
+  	// console.log(agendaItem);
     this.editAgendaKey = agendaItem.$key;
     this.editAgenda = agendaItem;
     this.opName = '';

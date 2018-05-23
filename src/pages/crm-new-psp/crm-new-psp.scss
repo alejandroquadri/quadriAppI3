@@ -1,20 +1,35 @@
 page-crm-new-psp {
 
+  // .select {
+  //     background-color: rgba(255, 255, 255, 0.88);
+  //     border: none;
+  //     flex: 1;
+  //     // -webkit-appearance: none;
+  // }
+
+  // .labelSelect {
+  //   color: #999;
+  //   flex-grow: 0;
+  //   flex-shrink: 0;
+  //   flex-basis: 100px;
+  //   width: 100px;
+  //   min-width: 100px;
+  //   max-width: 200px;
+  // }
+
   .select {
-      background-color: rgba(255, 255, 255, 0.88);
-      border: none;
-      flex: 1;
-      // -webkit-appearance: none;
+    background-color: rgba(255, 255, 255, 0.88);
+    border: none;
+    color: black;
   }
 
-  .labelSelect {
-    color: #999;
-    flex-grow: 0;
-    flex-shrink: 0;
-    flex-basis: 100px;
-    width: 100px;
-    min-width: 100px;
-    max-width: 200px;
+  .menuItem {
+    background-color: map-get($colors, toolbarBack);
+    font-size: 1.3rem;
+  }
+
+  .label {
+  	color: #999;
   }
 
   .data {
