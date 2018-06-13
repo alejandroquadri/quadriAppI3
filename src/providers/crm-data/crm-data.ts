@@ -28,7 +28,7 @@ export class CrmDataProvider {
     },
     month: ''
   }
-  currentSalesRep: string;
+  currentSalesRep = '';
 
 	private calipsoObjSubject = new BehaviorSubject({});
 	public calipsoObj = this.calipsoObjSubject.asObservable();
@@ -209,6 +209,7 @@ export class CrmDataProvider {
   }
 
   newAgendaNote(agenda) {
+    console.log(agenda);
     let agendaKey = this.apiData.getNewKey();
     let opUpdate;
     let agendaLog = this.apiData.fanOutObject(agenda, [`crm/agenda/${agendaKey}`], false);
@@ -337,6 +338,19 @@ export class CrmDataProvider {
     updateObj[`crm/checkPsp/${pspNum}`] = null;
     console.log(updateObj);
     this.apiData.fanUpdate(updateObj);
+  }
+
+  printPsp(psp) {
+    psp['timestamp'] = this.apiData.timestamp();
+    return this.apiData.push(`crm/printPsp`, psp);
+  }
+
+  sendPsp(psp) {
+    return this.httpApi.get(`email/${psp}`);
+  }
+
+  postPsp(psp) {
+    return this.httpApi.post('email', psp);
   }
 
 }

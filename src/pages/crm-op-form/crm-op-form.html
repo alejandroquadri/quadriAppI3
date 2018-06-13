@@ -17,20 +17,6 @@
 	<ion-grid fixed #form>
 	  <form [formGroup]="opForm" (ngSubmit)="onSubmit()">
 				<ion-list>
-
-          <!-- <ion-item>
-				    <ion-label fixed>Obra</ion-label>
-				    <ion-input *ngIf="!opKey" formControlName="obra" type="text"></ion-input>
-				    <div *ngIf="opKey" item-content class="">
-							{{ opForm.value.obra}}
-				    </div>
-				    <button *ngIf="addPsp" type="button" ion-button clear color="lightGreyQ" icon-only item-end (click)="lookOp()">
-			        <ion-icon name="eye"></ion-icon>
-			      </button>
-			      <button *ngIf="addPsp" type="button" ion-button clear color="lightGreyQ" icon-only item-end (click)="addOp()">
-			        <ion-icon name="add"></ion-icon>
-			      </button>
-					</ion-item> -->
 					
 					<ion-item>
 						<ion-label fixed>Oportunidad</ion-label>
@@ -45,19 +31,12 @@
 
           <ion-item>
 				    <ion-label fixed>Cliente</ion-label>
-				    <!-- <ion-input *ngIf="!clientKey" formControlName="client" type="text"></ion-input>
-				    <div *ngIf="clientKey" item-content class="">
-							{{ opForm.value.client}}
-						</div> -->
 						<div item-content class="">
 								{{ opForm.value.client}}
 						</div>
 				    <button type="button" ion-button clear color="lightGreyQ" icon-only item-end (click)="lookClient()">
 			        <ion-icon name="add"></ion-icon>
 			      </button>
-			      <!-- <button type="button" ion-button clear color="lightGreyQ" icon-only item-end (click)="addClient()">
-			        <ion-icon name="add"></ion-icon>
-			      </button> -->
 				  </ion-item>
 
 				  <ion-item *ngIf="addPsp">
@@ -86,7 +65,6 @@
 
           <ion-item>
 				    <ion-label fixed>Monto</ion-label>
-				    <!-- <ion-input formControlName="total" type="number"></ion-input> -->
 						<ion-input 
 						[ngModel]="amount" 
             (ngModelChange)="onAmountChange($event)"

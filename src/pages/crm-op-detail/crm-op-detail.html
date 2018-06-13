@@ -151,6 +151,10 @@
 							</ion-col>
 							<ion-col col-auto align-self-center>
 								<button ion-button icon-only clear color="lightGreyQ" small 
+								(click)="sendPsp(psp)" class="actionButtons">
+									<ion-icon name="paper-plane"></ion-icon>
+								</button>
+								<button ion-button icon-only clear color="lightGreyQ" small 
 								(click)="deletePsp(psp)" class="actionButtons">
 									<ion-icon name="trash"></ion-icon>
 								</button>

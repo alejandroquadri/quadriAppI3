@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import "rxjs/add/observable/combineLatest";
 
 import { CrmDataProvider } from '../../providers';
-import { FieldFilterPipe, SortPipe, FilterPipe } from '../../pipes';
+import { SortPipe, FilterPipe } from '../../pipes';
 
 @IonicPage()
 @Component({
@@ -34,7 +34,6 @@ export class CrmNewPspPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public crmData: CrmDataProvider,
-    private fieldFilter: FieldFilterPipe,
     private searchFilter: FilterPipe,
     private sortPipe: SortPipe,
     public modalCtrl: ModalController,

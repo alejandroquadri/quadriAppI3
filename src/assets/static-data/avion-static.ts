@@ -1,7 +1,10 @@
 export const avionStatic = {
   type: ['Ingreso', 'Egreso'],
   account: {
-    Ingreso: [ 'Venta' ],
+    Ingreso: [ 
+      'Venta',
+      'Otros' 
+    ],
     Egreso: [
       'Basureros',
       'Comisiones',
@@ -11,7 +14,9 @@ export const avionStatic = {
       'Mantenimiento',
       'Premios',
       'Viaticos',
-      'Fletes'
+      'Fletes',
+      'Otros',
+      'Gastos oficina'
     ]
   }
 };

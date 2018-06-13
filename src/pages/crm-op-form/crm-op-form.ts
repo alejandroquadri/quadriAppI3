@@ -193,6 +193,8 @@ export class CrmOpFormPage {
     } else {
       clientForm = this.updateClientForm;
       if( this.addPsp ) {
+        console.log(clientForm);
+        !clientForm['razSoc'] ? clientForm['razSoc'] = [] : '' ;
         if (clientForm['razSoc'].indexOf(this.pspData.razSoc)===(-1)) {
           clientForm['razSoc'].push(this.pspData.razSoc);
           razSoc = this.pspData.razSoc;

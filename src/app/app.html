@@ -28,13 +28,19 @@
         <ion-list-header>
           Mantenimiento
         </ion-list-header>
-        <button ion-item menuClose (click)="platform.is('mobile')? openPage('SparePartsFormPage'): openPage('SparePartsPage')">
-          <ion-icon item-start name="list-box"></ion-icon>
-          Repuestos
-        </button>
         <button ion-item menuClose (click)="platform.is('mobile')? openPage('MachineLogFormPage'): openPage('MachineLogPage')">
           <ion-icon item-start name="list-box"></ion-icon>
           Registro
+        </button>
+      </ion-list>
+
+      <ion-list *ngIf="permission('fabrica') || permission('direccion')">
+        <ion-list-header>
+          Compras
+        </ion-list-header>
+        <button ion-item menuClose (click)="platform.is('mobile')? openPage('SparePartsFormPage'): openPage('SparePartsPage')">
+          <ion-icon item-start name="cart"></ion-icon>
+          Compras
         </button>
       </ion-list>
 

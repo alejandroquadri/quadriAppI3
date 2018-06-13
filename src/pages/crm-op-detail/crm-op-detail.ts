@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import "rxjs/add/observable/combineLatest";
@@ -41,6 +41,7 @@ export class CrmOpDetailPage {
   	private crmData: CrmDataProvider,
   	private fb: FormBuilder,
 		public modalCtrl: ModalController,
+		public viewCtrl: ViewController,
 		private customCurrencyPipe: CustomCurrencyPipe
   ) {
   	this.months = this.crmData.buildCloseMonth();
@@ -177,7 +178,26 @@ export class CrmOpDetailPage {
 	onAmountChange(event) {
     let parsed = this.customCurrencyPipe.parse(event,0);
     this.totalValue = this.customCurrencyPipe.transform(parsed, 0);
-  }
+	}
+	
+	sendPsp(psp) {
+		console.log(this.calipsoObj[psp]);
+		let opForm = this.agendaForm.value;
+		opForm['opKey'] = this.op.$key;
+    opForm['op'] = this.op.obra;
+		opForm['clientKey'] = this.op.clientKey;
+    opForm['client'] = this.op.client;
+		opForm['complete'] = false;
+		opForm['salesRep'] = this.op.salesRep;
+
+
+		let pspForm = this.calipsoObj[psp];
+		let profileModal = this.modalCtrl.create('CrmSendPspPage', {'psp':pspForm, 'op':opForm});
+    profileModal.onDidDismiss( data => {
+      data === 'dismiss' ? this.viewCtrl.dismiss() : '' ;
+    });
+    profileModal.present();
+	}
 
 
 }

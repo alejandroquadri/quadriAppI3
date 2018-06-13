@@ -40,17 +40,28 @@ export class AvionFormPage {
   ionViewDidLoad() {
     if (this.navParams.data.date) {
       this.updateForm = this.navParams.data;
+      console.log(this.updateForm);
       this.edit()
     }
   }
 
-  buildForm(type?: string) {
+  buildForm(account?: string) {
+    let type, obs, amount;
+    // account? type = this.avionForm.value.type : type = '';
+
+    if (account) {
+      type = this.avionForm.value.type;
+      obs = this.avionForm.value.obs;
+      amount = this.avionForm.value.amount;
+      account = this.avionForm.value.account;
+    }
+
     this.avionForm = this.fb.group({
       date: [this.today.format('YYYY-MM-DD'), Validators.required],
-      type: [type || '', Validators.required],
-      amount: ['', Validators.required],
-      account: ['', Validators.required],
-      obs: [''],
+      type: [type, Validators.required],
+      amount: [amount || '', Validators.required],
+      account: [account || '', Validators.required],
+      obs: [obs || ''],
     })
   }
 
@@ -59,16 +70,29 @@ export class AvionFormPage {
     this.amount = this.customCurrencyPipe.transform(parsed, 0);
   }
   
-  buildFormSales(type?: string) {
+  buildFormSales(account?: string) {
+    let type, obs, np, salesRep, client, amount;
+    // account? type = this.avionForm.value.type : type = '';
+
+    if (account) {
+      type = this.avionForm.value.type;
+      obs = this.avionForm.value.obs;
+      np = this.avionForm.value.np;
+      salesRep = this.avionForm.value.salesRep;
+      client = this.avionForm.value.client;
+      amount = this.avionForm.value.amount;
+      account = this.avionForm.value.account;
+    }
+
     this.avionForm = this.fb.group({
       date: [this.today.format('YYYY-MM-DD'), Validators.required],
-      type: [type || '', Validators.required],
-      amount: ['', Validators.required],
-      account: ['', Validators.required],
-      obs: [''],
-      np: ['', Validators.required],
-      salesRep: ['', Validators.required],
-      client: ['', Validators.required]
+      type: [type, Validators.required],
+      amount: [amount || '', Validators.required],
+      account: [account || '', Validators.required],
+      obs: [obs || ''],
+      np: [np || '', Validators.required],
+      salesRep: [salesRep || '', Validators.required],
+      client: [client || '', Validators.required]
     })
   }
 
@@ -101,24 +125,32 @@ export class AvionFormPage {
     .then( () => this.viewCtrl.dismiss()); 
   }
   
-  typeChange() {
-    if (this.avionForm.value.type === 'Ingreso') {
-      this.buildFormSales('Ingreso');
+  accountChange() {
+    let account = this.avionForm.value.account;
+    if (account === 'Venta') {
       this.showSalesForm = true;
+      this.buildFormSales(account);
     } else {
       this.showSalesForm = false;
-      this.buildForm('Egreso');
+      this.buildForm(account);
+    }
+  }
+
+  typeChange() {
+    if (this.avionForm.value.account !== '') {
+      this.showSalesForm = false;
+      this.buildForm(this.avionForm.value.account);
     }
   }
 
   edit() {
     this.submitType = 'edit';
 
-    if (this.updateForm.type === 'Ingreso') {
-      this.buildFormSales('Ingreso');
+    if (this.updateForm.account === 'Venta') {
+      this.buildFormSales(this.updateForm.account);
       this.showSalesForm = true;
     }
-
+    console.log(this.updateForm.account);
     this.avionForm.patchValue({
       date: this.updateForm.date,
       type: this.updateForm.type,
@@ -126,8 +158,12 @@ export class AvionFormPage {
       account: this.updateForm.account,
       obs: this.updateForm.obs,
     })
+
+    this.avionForm.patchValue({
+      account: this.updateForm.account
+    })
     
-    if(this.updateForm.type === 'Ingreso') {
+    if(this.updateForm.account === 'Venta') {
       this.avionForm.patchValue({
         np: this.updateForm.np,
         salesRep: this.updateForm.salesRep,

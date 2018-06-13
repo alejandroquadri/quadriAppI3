@@ -34,7 +34,7 @@
 					
 					<ion-item *ngIf="platform.is('mobile')">
 					  <ion-label>Tipo</ion-label>
-					  <ion-select #type formControlName="type" interface="popover">
+					  <ion-select #type formControlName="type" interface="popover" (change)="typeChange()">
 					    <ion-option *ngFor="let type of data.type | sort:'':true">{{type}}</ion-option>
 					  </ion-select>
 					</ion-item>
@@ -42,23 +42,23 @@
 					<ion-item *ngIf="!platform.is('mobile')">
 							<ion-label class="selectLabel">Tipo</ion-label>					
 							<select #type item-content formControlName="type" class="selectInput" (change)="typeChange()">
-                <option value="" disabled selected></option>
+                <option value=""></option>
                 <option *ngFor="let type of data.type | sort:'':true">{{type}}</option>
 						  </select>
 					</ion-item>
 
 					<ion-item *ngIf="platform.is('mobile')">
             <ion-label>Cuenta</ion-label>
-            <ion-select formControlName="account">
+            <ion-select formControlName="account" (change)="accountChange()">
               <ion-option *ngFor="let account of data.account[avionForm.value.type] | sort:'':true">{{account}}</ion-option>
             </ion-select>
           </ion-item>
   
           <ion-item *ngIf="!platform.is('mobile')">
             <ion-label class="selectLabel">Cuenta</ion-label>				
-            <select item-content formControlName="account" class="selectInput">
-              <option value="" disabled selected></option>
-              <option *ngFor="let account of data.account[avionForm.value.type] | sort:'':true">{{account}}</option>
+            <select item-content formControlName="account" class="selectInput" (change)="accountChange()">
+              <option value=""></option>
+              <option *ngFor="let account of data.account[avionForm.value.type] | sort:'':true">{{ account }}</option>
             </select>
           </ion-item>
 
@@ -110,6 +110,8 @@
 			  </button>
 
       </form>
+
+      {{ avionForm.value.account }}
       
   </ion-grid>
 

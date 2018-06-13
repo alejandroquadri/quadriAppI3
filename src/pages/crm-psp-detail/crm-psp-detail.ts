@@ -24,7 +24,7 @@ export class CrmPspDetailPage {
   }
 
   sendPsp() {
-    let profileModal = this.modalCtrl.create('CrmSendPspPage', this.psp);
+    let profileModal = this.modalCtrl.create('CrmSendPspPage', {'psp': this.psp});
     profileModal.onDidDismiss( data => {
       data === 'dismiss' ? this.viewCtrl.dismiss() : '' ;
     });
