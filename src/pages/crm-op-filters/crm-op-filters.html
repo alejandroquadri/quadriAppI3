@@ -1,18 +1,23 @@
 <ion-list>
 
   <ion-item>
+    <ion-label>Seguro</ion-label>
+    <ion-toggle color="ionBlue" [(ngModel)]="filters.status.seguro" (click)="updateFilters()"></ion-toggle>
+  </ion-item>
+
+  <ion-item>
     <ion-label>Pendiente</ion-label>
-    <ion-toggle value="foo" checked="true" color="primary" [(ngModel)]="filters.status.pendiente" (click)="updateFilters()"></ion-toggle>
+    <ion-toggle checked="true" color="warning" [(ngModel)]="filters.status.pendiente" (click)="updateFilters()"></ion-toggle>
   </ion-item>
 
   <ion-item>
     <ion-label>Cerrado</ion-label>
-    <ion-toggle color="primary" [(ngModel)]="filters.status.cerrado" (click)="updateFilters()"></ion-toggle>
+    <ion-toggle color="ionGreen" [(ngModel)]="filters.status.cerrado" (click)="updateFilters()"></ion-toggle>
   </ion-item>
 
   <ion-item>
     <ion-label>Rechazado</ion-label>
-    <ion-toggle color="primary" [(ngModel)]="filters.status.rechazado" (click)="updateFilters()"></ion-toggle>
+    <ion-toggle color="danger" [(ngModel)]="filters.status.rechazado" (click)="updateFilters()"></ion-toggle>
   </ion-item>
 
   <ion-item>

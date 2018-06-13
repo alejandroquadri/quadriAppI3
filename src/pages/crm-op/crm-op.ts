@@ -18,7 +18,8 @@ export class CrmOpPage {
   opObs: Observable<any>;
   subs: Observable<any>;
   months: any;
-  statusOptions = ['Pendiente', 'Rechazado', 'Cerrado'];
+  // statusOptions = ['Pendiente', 'Rechazado', 'Cerrado'];
+  statusOptions: any;
 
 	opListCrude: Array<any>;
   filters: any;	
@@ -42,6 +43,7 @@ export class CrmOpPage {
     private sortPipe: SortPipe
 	) {
     this.months = this.crmData.buildCloseMonth();
+    this.statusOptions = this.crmData.statusOptions;
   }
 
   ionViewDidLoad() {
@@ -52,6 +54,7 @@ export class CrmOpPage {
     this.subs.subscribe( (pair: any) => {
       this.opListCrude = pair.ops;
       this.filters = pair.filters;
+      console.log(this.filters);
       this.filter();
     })
   }

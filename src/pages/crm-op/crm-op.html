@@ -79,7 +79,7 @@
 			</ion-col>
 			<ion-col col-2 text-center>
 				<ion-select #status (ionChange)="changeStatus(status.value, op.key)" interface="popover"
-				[ngClass]="{'pendiente': op.payload.val().status === 'Pendiente','rechazado': op.payload.val().status === 'Rechazado','cerrado': op.payload.val().status === 'Cerrado'}">
+				[ngClass]="{'pendiente': op.payload.val().status === 'Pendiente','rechazado': op.payload.val().status === 'Rechazado','cerrado': op.payload.val().status === 'Cerrado', 'seguro': op.payload.val().status === 'Seguro'}">
 					<ion-option *ngFor="let option of statusOptions" [selected]="op.payload.val().status===option? true: false">{{option}}</ion-option>
 				</ion-select>
 			</ion-col>

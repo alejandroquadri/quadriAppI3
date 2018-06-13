@@ -34,6 +34,10 @@ page-crm-op {
 		background-color: map-get($colors, ionGreen);
 	}
 
+	.seguro {
+    background-color: map-get($colors, ionBlue);
+	}
+
 	.actionButtons {
 		margin: 0px;
 	}

@@ -21,6 +21,10 @@ page-crm-op-detail {
 		background-color: map-get($colors, ionGreen);
 	}
 
+	.seguro {
+    background-color: map-get($colors, ionBlue);
+	}
+
 	select {
     background-color:rgba(244, 244, 244, 0.29);
     border: none;

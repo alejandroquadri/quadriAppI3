@@ -12,7 +12,7 @@ export class CrmDataProvider {
 	calipsoSubs: any;
   checkedPspSubs: any;
   checkedPspObj: any;
-  statusOptions = ['Pendiente', 'Rechazado', 'Cerrado'];
+  statusOptions = ['Pendiente', 'Rechazado', 'Cerrado', 'Seguro'];
   actions = ['Llamada seguimiento', 'Llamada de presentacion', 'Atencion en salon', 'Envio de psp', 'Envio de muestra', 'Visita', 'Mail'];
   salesReps = ['Alejandra Roldan', 'Tarruella Alberto Horacio '];
   clientTypes = ['Constructora', 'Estudio Arq', 'Distribuidor', 'Adm Consorcio', 'Cliente Final'];
@@ -20,7 +20,8 @@ export class CrmDataProvider {
     status: {
       pendiente: true,
       rechazado: false,
-      cerrado: false
+      cerrado: false,
+      seguro: true
     },
     salesRep: {
       tarruella: true,

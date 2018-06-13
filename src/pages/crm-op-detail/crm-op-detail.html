@@ -43,7 +43,7 @@
 					<option *ngFor="let month of months" [selected]="op.closeMonth===month? true: false">{{month}}</option>
 				</select>
 				<select class="titleItem" #status (change)="change('status', status.value)"
-				[ngClass]="{'pendiente': statusBis === 'Pendiente','rechazado': statusBis === 'Rechazado','cerrado': statusBis === 'Cerrado'}">
+				[ngClass]="{'pendiente': statusBis === 'Pendiente','rechazado': statusBis === 'Rechazado','cerrado': statusBis === 'Cerrado', 'seguro': statusBis === 'Seguro'}">
 					<option *ngFor="let option of statusOptions" [selected]="op.status === option? true: false">{{option}}</option>
 				</select>
 			</ion-col>
