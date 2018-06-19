@@ -14,6 +14,7 @@ export class ProdSuppliesPage {
 
 sForm: any;
 today = moment();
+staticData: any;
 
 @ViewChild("dateInput") dateInput;
 @ViewChild("machInput") machInput: ElementRef;
@@ -24,11 +25,12 @@ today = moment();
     public navParams: NavParams,
     public platform: Platform,
     public fb: FormBuilder,
-    public staticData: StaticDataProvider,
+    public staticDataP: StaticDataProvider,
     public renderer: Renderer,
     private prodData: ProductionDataProvider
   ) {
     this.buildForm();
+    this.staticData = this.staticDataP.data.produccion;
   }
 
   ionViewDidLoad() {

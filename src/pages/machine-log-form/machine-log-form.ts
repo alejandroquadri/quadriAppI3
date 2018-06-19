@@ -28,7 +28,7 @@ export class MachineLogFormPage {
     ) 
   {
   	this.buildForm();
-    this.machines = this.staticData.maquinas;
+    this.machines = this.staticData.data.produccion.maquinas;
   }
 
   ionViewDidLoad() {

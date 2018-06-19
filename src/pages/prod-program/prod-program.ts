@@ -40,12 +40,6 @@ export class ProdProgramPage {
 	colors = [];
 	dims = [];
 	drawings = [];
-	units = [
-		'm2',
-		'ml',
-		'unidad',
-		'bolsa',
-	]
 
 	// entregas
 	entregasSubs: any;
@@ -61,7 +55,7 @@ export class ProdProgramPage {
   	private programData: ProdProgramDataProvider,
   	private staticData: StaticDataProvider,
   ) {
-  	this.data = this.staticData;
+  	this.data = this.staticData.data.produccion;
   	this.buildForm();
   }
 

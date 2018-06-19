@@ -16,6 +16,10 @@ export class ApiDataProvider {
 		return this.db.object(path).valueChanges();
 	}
 
+	getObjectOnce(path: string): Promise<any> {
+		return firebase.database().ref(path).once('value');
+	}
+
 	setObject(path: string, form: any): Promise<void> {
 		return this.db.object(`${path}`).set(form);
 	}

@@ -17,25 +17,25 @@ export class ProdMetricsPage {
 	size = 3;
 
   constructor(
-    private authData: AuthDataProvider,
+		private authData: AuthDataProvider,
     public toastCtrl: ToastController
   ) {}
 
   ngOnInit() {
 		// listen to the service worker promise in index.html to see if there has been a new update.
 		// condition: the service-worker.js needs to have some kind of change - e.g. increment CACHE_VERSION.
-		window['isUpdateAvailable']
-			.then(isAvailable => {
-				if (isAvailable) {
-          console.log('available');
-					const toast = this.toastCtrl.create({
-						message: 'Nueva version disponible! Recargar para instalar nueva version',
-						position: 'bottom',
-						showCloseButton: true
-					});
-					toast.present();
-				}
-			});
+		// window['isUpdateAvailable']
+		// .then(isAvailable => {
+		// 	if (isAvailable) {
+		// 		console.log('available');
+		// 		const toast = this.toastCtrl.create({
+		// 			message: 'Nueva version disponible! Recargar para instalar nueva version',
+		// 			position: 'bottom',
+		// 			showCloseButton: true
+		// 		});
+		// 		toast.present();
+		// 	}
+		// });
 	}
 
   permission(area: string) {

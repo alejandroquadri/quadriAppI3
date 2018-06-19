@@ -7,12 +7,14 @@ import Chart from 'chart.js';
 export class ChartBuilderProvider {
 
 	contentWidth: number;
-	chartsData: any = {};
+  chartsData: any = {};
+  // staticData: any
 
   constructor(
     private staticData: StaticDataProvider,
     public number: DecimalPipe
   ) {
+    // this.staticData = this.staticDataP.data.produccion;
   }
 
   buildChart(element, chartType: string, labels: Array<any>, datasets: Array<any>, options?:any) {
@@ -95,7 +97,7 @@ export class ChartBuilderProvider {
   }
 
   toSalesUnit(unit: string, dim) {
-    let eq = this.staticData.equivalences[dim];
+    let eq = this.staticData.data.produccion.equivalences[dim];
     let total: number = 0
 
     let itemN = +unit;

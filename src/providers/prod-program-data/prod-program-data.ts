@@ -8,11 +8,14 @@ import * as moment from 'moment';
 @Injectable()
 export class ProdProgramDataProvider {
 
+	staticData: any;
+
   constructor(
   	private api: ApiDataProvider,
   	private httpApi: HttpApiProvider,
-  	private staticData: StaticDataProvider
+  	private staticDataP: StaticDataProvider
   	) {
+		this.staticData = this.staticDataP.data.produccion;
   }
 
   getProgram() {

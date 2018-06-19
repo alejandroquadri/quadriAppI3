@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit, ViewContainerRef, ComponentFactoryResolver, Input } from '@angular/core';
-import { SalesDataProvider, ChartBuilderProvider, FinanceDataProvider, AuthDataProvider } from '../../providers';
+import { SalesDataProvider, ChartBuilderProvider, FinanceDataProvider, AuthDataProvider, StaticDataProvider } from '../../providers';
 import { Observable } from 'rxjs/Observable';
 import "rxjs/add/observable/combineLatest";
 import { map } from 'rxjs/operators';
@@ -26,8 +26,8 @@ export class AcSalesChartComponent implements OnInit {
 
   salesMan = '';
   brand: string = '';
-  eq = 1600000;
-  obj = this.eq * 1.1;
+  eq: number;
+  obj: number;
   showAvion = false;
 
   totalSales = 0;
@@ -43,12 +43,12 @@ export class AcSalesChartComponent implements OnInit {
     private salesData: SalesDataProvider,
     private componentFactoryResolver: ComponentFactoryResolver,
     private financeData: FinanceDataProvider,
-    private authData: AuthDataProvider
+    private authData: AuthDataProvider,
+    private staticData: StaticDataProvider
   ) {
   }
-
+  
   ngOnInit() {
-
     let today = moment();
     let end = today.format('YYYYMMDD');
     let start = today.date(1).subtract(6, 'months').format('YYYYMMDD');
@@ -60,9 +60,9 @@ export class AcSalesChartComponent implements OnInit {
     
     this.obsSubs = Observable.combineLatest(this.salesSubs, this.objectiveSubs, this.finSubs, (sales: any, objectives: any, avion: any) => ({sales, objectives, avion}))
     .subscribe( pair => {
+      this.eq = this.staticData.data.crm.objectives.precio * this.staticData.data.crm.objectives.qEq;
+      this.obj = this.staticData.data.crm.objectives.precio * this.staticData.data.crm.objectives.qObj;
       this.sales = pair.sales.data;
-      this.eq = pair.objectives.eq;
-      this.obj = pair.objectives.obj;
       this.avionList = pair.avion;
       this.salesDataFilter();
     })

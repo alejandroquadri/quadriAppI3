@@ -25,6 +25,7 @@ export class CrmNewPspPage {
   salesRep = '';
   pspType = 'Pendientes'
   searchInput = '';
+  filteredArray: any;
   viewArray: any;
   sortTerm = 'total';
   sortDir = false;
@@ -78,12 +79,13 @@ export class CrmNewPspPage {
   }
 
   filter(event?) {
-    this.viewArray = this.searchFilter.transform(this.filteredPsp,this.searchInput, false);
+    // this.viewArray = this.searchFilter.transform(this.filteredPsp,this.searchInput, false);
+    this.filteredArray = this.searchFilter.transform(this.filteredPsp,this.searchInput, false);
     this.sort();
   }
 
   sort() {
-    this.viewArray = this.sliceArray(this.sortPipe.transform(this.viewArray, this.sortTerm, this.sortDir, false));
+    this.viewArray = this.sliceArray(this.sortPipe.transform(this.filteredArray, this.sortTerm, this.sortDir, false));
   }
 
   filterTypePsp(psp) {

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import "rxjs/add/observable/combineLatest";
 import * as moment from 'moment';
 
-import { CrmDataProvider } from '../../providers';
+import { CrmDataProvider, StaticDataProvider } from '../../providers';
 import { FilterPipe, SortPipe } from '../../pipes';
 
 @IonicPage()
@@ -36,14 +36,15 @@ export class CrmOpPage {
   constructor(
   	public navCtrl: NavController,
   	public navParams: NavParams,
-  	private crmData: CrmDataProvider,
+    private crmData: CrmDataProvider,
+    private staticData: StaticDataProvider,
   	public popoverCtrl: PopoverController,
     public modalCtrl: ModalController,
     private filterPipe: FilterPipe,
     private sortPipe: SortPipe
 	) {
     this.months = this.crmData.buildCloseMonth();
-    this.statusOptions = this.crmData.statusOptions;
+    this.statusOptions = this.staticData.data.crm.statusOptions;
   }
 
   ionViewDidLoad() {
@@ -52,9 +53,10 @@ export class CrmOpPage {
 
     this.subs = Observable.combineLatest(this.opObs, this.filtersObs, (ops: any, filters:any) => ({ops, filters}));
     this.subs.subscribe( (pair: any) => {
+      console.log(pair);
       this.opListCrude = pair.ops;
       this.filters = pair.filters;
-      console.log(this.filters);
+      !this.filters ? this.filters = this.staticData.data.crm.filters: '';
       this.filter();
     })
   }

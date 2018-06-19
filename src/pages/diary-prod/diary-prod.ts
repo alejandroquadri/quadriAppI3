@@ -5,7 +5,6 @@ import { StaticDataProvider, ProductionDataProvider } from '../../providers';
 import { FieldFilterPipe } from '../../pipes';
 import { DecimalPipe } from '@angular/common';
 
-
 import * as moment from 'moment';
 
 @IonicPage()
@@ -22,17 +21,19 @@ export class DiaryProdPage {
 	production: any;
 	date: string = moment().add(-1, 'days').format('YYYY-MM-DD');
 	dailyProd: any = {};
+	staticData: any;
   prodNominal: any;
 
   constructor(
   	public navParams: NavParams,
     public platform: Platform,
     public viewCtrl: ViewController,
-    public staticData: StaticDataProvider,
-    private prodData: ProductionDataProvider,
+    public staticDataP: StaticDataProvider,
+    public prodData: ProductionDataProvider,
     private fieldFilterPipe: FieldFilterPipe,
     private number: DecimalPipe
   ) {
+		this.staticData = this.staticDataP.data.produccion;
     this.prodNominal = this.staticData.prodNominal;
   }
 

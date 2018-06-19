@@ -4,6 +4,7 @@ import { ApiDataProvider } from '../api-data/api-data';
 import { AuthDataProvider } from '../auth-data/auth-data';
 
 import * as moment from 'moment';
+import { StaticDataProvider } from '../static-data/static-data';
 
 @Injectable()
 export class ProductionDataProvider {
@@ -12,12 +13,15 @@ export class ProductionDataProvider {
   searchInput: string = '';
   field = 'date';
   asc = false;
+  // staticData: any;
 
   constructor(
   	private api: ApiDataProvider,
-  	private authData: AuthDataProvider,
+    private authData: AuthDataProvider,
+    public staticData: StaticDataProvider
   	) {
-  }
+      // this.staticData = this.staticDataP.data.produccion;
+    }
 
   pushProduction(form: any) {
   	form['timestamp'] = this.api.timestamp();
@@ -100,5 +104,18 @@ export class ProductionDataProvider {
 
   pushSupply(form) {
     this.api.push('supplies', form);
+  }
+
+  nominalCalc(mach, dim, takt, turno: number, almuerzo: number, paradas: number) {
+    let equivalences = this.staticData.data.produccion.equivalences;
+    if( takt !== 0) {
+      let prodTime = (turno * 60 - almuerzo - paradas) * 60;
+      let eq = equivalences[dim].conv
+      if (mach === 'Breton') {
+        takt = 60 / (takt / equivalences[dim].convMl);
+      }
+      let prod = prodTime / takt;
+      return prod * eq;
+    }
   }
 }

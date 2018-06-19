@@ -26,7 +26,7 @@ export class PartesFormPage implements OnInit {
     private prodData: ProductionDataProvider,
     private staticData: StaticDataProvider,
   ) { 
-    this.data = this.staticData;
+    this.data = this.staticData.data.produccion;
   }
 
 	ionViewDidLoad() {

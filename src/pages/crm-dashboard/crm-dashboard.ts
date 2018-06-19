@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 
-import { CrmDataProvider } from '../../providers';
+import { CrmDataProvider, StaticDataProvider } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -33,6 +33,7 @@ export class CrmDashboardPage {
   	public navCtrl: NavController,
   	public navParams: NavParams,
     private crmData: CrmDataProvider,
+    private staticData: StaticDataProvider,
     private fb: FormBuilder,
     public modalCtrl: ModalController
   ) {
@@ -40,8 +41,8 @@ export class CrmDashboardPage {
     this.agendaForm.patchValue({
       time: moment().format('YYYY-MM-DD')
     })
-    this.actions = this.crmData.actions;
-    this.currentSalesMan = this.crmData.currentSalesRep;
+    this.actions = this.staticData.data.crm.actions;
+    this.currentSalesMan = this.staticData.data.crm.currentSalesRep;
   }
 
   ionViewDidLoad() {

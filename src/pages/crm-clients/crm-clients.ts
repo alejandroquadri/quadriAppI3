@@ -5,7 +5,7 @@ import "rxjs/add/observable/combineLatest";
 
 import * as moment from 'moment';
 
-import { CrmDataProvider } from '../../providers';
+import { CrmDataProvider, StaticDataProvider } from '../../providers';
 import { FilterPipe } from '../../pipes';
 
 @IonicPage()
@@ -46,13 +46,14 @@ export class CrmClientsPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private crmData: CrmDataProvider,
+    private staticData: StaticDataProvider,
     private filterPipe: FilterPipe,
     public modalCtrl: ModalController,
   ) {
     this.buildPeriodArray();
-    this.clientTypes = this.crmData.clientTypes;
-    this.salesReps = this.crmData.salesReps;
-    this.statusOptions = this.crmData.statusOptions;
+    this.clientTypes = this.staticData.data.crm.clientTypes;
+    this.salesReps = this.staticData.data.crm.salesReps;
+    this.statusOptions = this.staticData.data.crm.statusOptions;
   }
 
   ionViewDidLoad() {

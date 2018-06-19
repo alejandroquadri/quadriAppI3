@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav, Content } from 'ionic-angular';
 
-import { AuthDataProvider, SplitShowProvider } from '../providers';
+import { AuthDataProvider, SplitShowProvider, StaticDataProvider } from '../providers';
 
 
 @Component({
@@ -21,28 +21,34 @@ export class MyApp {
     public platform: Platform,
     public splitShow: SplitShowProvider,
     public authData: AuthDataProvider,
+    public staticData: StaticDataProvider
   ) {
     platform.ready().then(() => {
         // Okay, so the platform is ready and our plugins are available.
         // Here you can do any higher level native things you might need.console.log('did load');
       authData.user.subscribe( user => {
         console.log(user);
-        this.userProfile = user;
-        if (user) {
-          if(!this.authData.checkIfQuadri(user.email)) { 
-            this.logOut();
+        this.staticData.getStaticData()
+        .then( ret => {
+          this.userProfile = user;
+          if (user) {
+            if(!this.authData.checkIfQuadri(user.email)) { 
+              this.logOut();
+            }
+            this.authData.uid = user.uid;
+            this.authData.current = user;
+            this.first? this.rootPage = this.setRoot() : this.nav.setRoot(this.setRoot());
+          } else {
+            this.authData.uid = null;
+            this.authData.current = null;
+            this.first? this.rootPage = 'LoginPage' : this.nav.setRoot('LoginPage');
           }
-          this.authData.uid = user.uid;
-          this.authData.current = user;
-          this.first? this.rootPage = this.setRoot() : this.nav.setRoot(this.setRoot());
-        } else {
-          this.authData.uid = null;
-          this.authData.current = null;
-          this.first? this.rootPage = 'LoginPage' : this.nav.setRoot('LoginPage');
-        }
-        this.first = false;
+          this.first = false;
+
+        })
       })
     });  
+
   }
   
   openPage (page: string, params?: any) {

@@ -26,7 +26,7 @@ export class SparePartsFormPage {
     private authData: AuthDataProvider,
     private staticData: StaticDataProvider
     ) {
-  	this.data = this.staticData;
+  	this.data = this.staticData.data.produccion;
     this.buildForm();
   }
 

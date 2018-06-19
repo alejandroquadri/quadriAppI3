@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams, ViewController, ModalController } from 'ionic-angular';
 
-import { CrmDataProvider } from '../../providers';
+import { CrmDataProvider, StaticDataProvider } from '../../providers';
 import { CustomCurrencyPipe } from '../../pipes';
 
 @IonicPage()
@@ -39,6 +39,7 @@ export class CrmOpFormPage {
     public viewCtrl: ViewController,
     public modalCtrl: ModalController,
     private crmData: CrmDataProvider,
+    private staticData: StaticDataProvider,
     private customCurrencyPipe: CustomCurrencyPipe
   ) {
     if (this.navParams.data.state === 'addNew') {
@@ -57,7 +58,7 @@ export class CrmOpFormPage {
     }
     this.buildForm(this.pspData);
     this.months = this.crmData.buildCloseMonth();
-    this.salesReps = this.crmData.salesReps;
+    this.salesReps = this.staticData.data.crm.salesReps
   }
 
   ionViewDidLoad() {

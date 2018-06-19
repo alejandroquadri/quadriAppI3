@@ -3,8 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavParams, ViewController, Platform} from 'ionic-angular';
 import * as moment from 'moment';
 
-import { FinanceDataProvider } from '../../providers';
-import { avionStatic } from '../../assets/static-data/avion-static';
+import { FinanceDataProvider, StaticDataProvider } from '../../providers';
 import { CustomCurrencyPipe } from '../../pipes';
 
 
@@ -31,16 +30,16 @@ export class AvionFormPage {
     public platform: Platform,
     public viewCtrl: ViewController,
     private fData: FinanceDataProvider,
+    private staticData: StaticDataProvider,
     public customCurrencyPipe: CustomCurrencyPipe
   ) {
-    this.data = avionStatic
+    this.data = this.staticData.data.avion;
     this.buildForm();
   }
 
   ionViewDidLoad() {
     if (this.navParams.data.date) {
       this.updateForm = this.navParams.data;
-      console.log(this.updateForm);
       this.edit()
     }
   }

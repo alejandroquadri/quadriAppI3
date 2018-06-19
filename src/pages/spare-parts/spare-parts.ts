@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, Platform, PopoverController, Toast
 import { Observable } from 'rxjs/Observable';
 import "rxjs/add/observable/combineLatest";
 
-import { SparePartsDataProvider } from '../../providers';
+import { SparePartsDataProvider, StaticDataProvider } from '../../providers';
 import { FieldFilterPipe, FilterPipe, SortPipe } from '../../pipes';
 
 @IonicPage()
@@ -20,7 +20,8 @@ export class SparePartsPage {
   sparePartsCrude: any;
   filters: any;
   searchInput: string = '';
-  statusOptions = ['Autorizacion', 'Pendiente', 'Encargado', 'Completo', 'Suspendido'];
+  // statusOptions = ['Autorizacion', 'Pendiente', 'Encargado', 'Completo', 'Suspendido'];
+  statusOptions: any;
   field = 'fecha';
   asc = false;
   offset = 50;
@@ -33,10 +34,12 @@ export class SparePartsPage {
     public toastCtrl: ToastController,
     public modalCtrl: ModalController,
     private spareData: SparePartsDataProvider,
+    private staticData: StaticDataProvider,
     private fieldFilterPipe: FieldFilterPipe,
     private filterPipe: FilterPipe,
     private sortPipe: SortPipe
 	) {
+    this.statusOptions = this.staticData.data.produccion.tipoStatus
   }
 
   ionViewDidLoad() {

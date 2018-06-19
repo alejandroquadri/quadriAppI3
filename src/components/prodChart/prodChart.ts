@@ -63,7 +63,7 @@ export class ProdChartComponent implements OnInit {
         this.addFilter(this.dimFilter, log.dim) &&
         this.addFilter(this.drawingFilter, log.drawing) &&
         this.typeFilterRet(this.typeFilter, log)  &&
-        this.staticData.equivalences[log.dim].unit === this.unit2
+        this.staticData.data.produccion.equivalences[log.dim].unit === this.unit2
       )
     });
 

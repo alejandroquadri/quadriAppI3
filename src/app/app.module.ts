@@ -33,9 +33,9 @@ import { DecimalPipe } from '@angular/common';
 // providers
 import { ApiDataProvider } from '../providers/api-data/api-data';
 import { AuthDataProvider } from '../providers/auth-data/auth-data';
+import { StaticDataProvider } from '../providers/static-data/static-data';
 import { MachineLogDataProvider } from '../providers/machine-log-data/machine-log-data';
 import { SparePartsDataProvider } from '../providers/spare-parts-data/spare-parts-data';
-import { StaticDataProvider } from '../providers/static-data/static-data';
 import { SplitShowProvider } from '../providers/split-show/split-show';
 import { ProductionDataProvider } from '../providers/production-data/production-data';
 import { ChartBuilderProvider } from '../providers/chart-builder/chart-builder';
@@ -69,6 +69,7 @@ import { FinanceDataProvider } from '../providers/finance-data/finance-data';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ApiDataProvider,
     AuthDataProvider,
+    StaticDataProvider,
     MachineLogDataProvider,
     SparePartsDataProvider,
     FieldFilterPipe,
@@ -76,7 +77,6 @@ import { FinanceDataProvider } from '../providers/finance-data/finance-data';
     FilterPipe,
     DecimalPipe,
     CustomCurrencyPipe,
-    StaticDataProvider,
     SplitShowProvider,
     ProductionDataProvider,
     ChartBuilderProvider,

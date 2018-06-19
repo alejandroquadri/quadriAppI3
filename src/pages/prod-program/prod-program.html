@@ -60,7 +60,7 @@
 						<ion-col col-auto>
 							<select #selectUnit formControlName="unit" class="selectInput" [ngClass]="{selectLabel: selectUnit.value === ''}">
 								<option value="" disabled selected>Unidad</option>
-								<option *ngFor="let unit of units | sort:'':true">{{ unit }}</option>
+								<option *ngFor="let unit of data.unidadesProd | sort:'':true">{{ unit }}</option>
 							</select>
 						</ion-col>
 						<ion-col col-auto>

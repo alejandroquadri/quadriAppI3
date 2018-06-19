@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { CrmDataProvider } from '../../providers';
+import { CrmDataProvider, StaticDataProvider } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -16,9 +16,11 @@ export class CrmOpFiltersPage {
   constructor(
   	public navCtrl: NavController, 
   	public navParams: NavParams,
-  	private crmData: CrmDataProvider
+    private crmData: CrmDataProvider,
+    private staticData: StaticDataProvider
   	) {
-  		this.filters = this.crmData.filters;
+      // this.filters = this.crmData.filters;
+      this.filters = this.staticData.data.crm.filters;
       this.months = this.crmData.buildCloseMonth();
   	}
 

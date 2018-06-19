@@ -4,7 +4,7 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import "rxjs/add/observable/combineLatest";
 
-import { CrmDataProvider } from '../../providers';
+import { CrmDataProvider, StaticDataProvider } from '../../providers';
 
 @IonicPage()
 @Component({
@@ -33,14 +33,15 @@ export class CrmClientFormPage {
   constructor(
   	public navCtrl: NavController,
   	public navParams: NavParams,
-  	private crmData: CrmDataProvider,
+		private crmData: CrmDataProvider,
+		private staticData: StaticDataProvider,
   	public viewCtrl: ViewController,
   	private fb: FormBuilder,
   	) {
   	this.clientKey = this.navParams.data.$key;
 		this.mode = this.navParams.data.mode;
-		this.salesReps = this.crmData.salesReps;
-		this.clientTypes = this.crmData.clientTypes;
+		this.salesReps = this.staticData.data.crm.salesReps;
+		this.clientTypes = this.staticData.data.crm.clientTypes;
 		this.buildForm();
   }
 

@@ -14,6 +14,8 @@ export class AcChartComponent implements OnInit {
   prodSubs: any;
   production: Array<any>;
   acChart: any;
+  staticData: any;
+  equivalences: any
 
   date = moment();
   prodMonthObj: number = 8000;
@@ -26,13 +28,14 @@ export class AcChartComponent implements OnInit {
   constructor(
   	private chartBuilder: ChartBuilderProvider,
     private prodData: ProductionDataProvider,
-    private staticData: StaticDataProvider,
+    private staticDataP: StaticDataProvider,
     private componentFactoryResolver: ComponentFactoryResolver,
   ) {
   }
-
+  
   ngOnInit() {
     this.prodSubs = this.prodData.getProduction().subscribe( (prod: Array<any>) => {
+      this.staticData = this.staticDataP.data.produccion;
       this.production = prod;
       this.acProdData();
     });

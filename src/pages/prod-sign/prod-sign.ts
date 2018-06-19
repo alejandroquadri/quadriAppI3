@@ -17,17 +17,19 @@ export class ProdSignPage {
 	date = moment();
 	prodObj: any;
 	m2total = 0;
-	mltotal = 0;
+  mltotal = 0;
+  staticData: any;
 
   constructor(
   	public navCtrl: NavController,
   	public navParams: NavParams,
     public platform: Platform,
     public viewCtrl: ViewController,
-    private staticData: StaticDataProvider,
+    private staticDataP: StaticDataProvider,
     private prodData: ProductionDataProvider,
     private sortPipe: SortPipe
   ) {
+    this.staticData = this.staticDataP.data.produccion;
   }
 
   ionViewDidLoad() {

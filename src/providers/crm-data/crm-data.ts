@@ -12,23 +12,12 @@ export class CrmDataProvider {
 	calipsoSubs: any;
   checkedPspSubs: any;
   checkedPspObj: any;
-  statusOptions = ['Pendiente', 'Rechazado', 'Cerrado', 'Seguro'];
-  actions = ['Llamada seguimiento', 'Llamada de presentacion', 'Atencion en salon', 'Envio de psp', 'Envio de muestra', 'Visita', 'Mail'];
-  salesReps = ['Alejandra Roldan', 'Tarruella Alberto Horacio '];
-  clientTypes = ['Constructora', 'Estudio Arq', 'Distribuidor', 'Adm Consorcio', 'Cliente Final'];
-  filters = {
-    status: {
-      pendiente: true,
-      rechazado: false,
-      cerrado: false,
-      seguro: true
-    },
-    salesRep: {
-      tarruella: true,
-      roldan: true
-    },
-    month: ''
-  }
+  staticData: any;
+  statusOptions: any;
+  actions:any;
+  salesReps: any;
+  clientTypes: any;
+  filters: any;
   currentSalesRep = '';
 
 	private calipsoObjSubject = new BehaviorSubject({});
@@ -40,7 +29,7 @@ export class CrmDataProvider {
   constructor(
     private httpApi: HttpApiProvider,
     private apiData: ApiDataProvider,
-    private authData: AuthDataProvider
+    private authData: AuthDataProvider,
   ) {
 			this.subscribeToCalipsoDocs();
       this.updateFilters();

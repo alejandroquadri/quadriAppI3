@@ -26,7 +26,7 @@
 			  <h1 class="machineTitle">{{ mach }}</h1>
 			  <span *ngIf="prodNominal[mach]">
 			  	<ion-note class="nominal">Nominal 
-			  		<span #nominal>{{ staticData.nominalCalc(mach, dailyProd[mach].logs[0].dim, vel.value, turno.value, almuerzo.value, paradas.value) | number : '1.0-0'}}</span> m2
+			  		<span #nominal>{{ prodData.nominalCalc(mach, dailyProd[mach].logs[0].dim, vel.value, turno.value, almuerzo.value, paradas.value) | number : '1.0-0'}}</span> m2
 			  	</ion-note>
 				  <ion-note class="nominal">Turno 
 						<input #turno class="nominalInput" text-center size="{{prodNominal[mach].turno.toString().length || 1}}" type="" name="" [(ngModel)]="prodNominal[mach].turno">

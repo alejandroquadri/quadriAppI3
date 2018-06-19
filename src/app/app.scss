@@ -29,10 +29,10 @@
 	background-color: #f8f8f8;
 }
 
-.splitPane::-webkit-scrollbar {
+ion-split-pane .scroll-content::-webkit-scrollbar {
   display: none;
 }
 
-.splitPane {
+ion-split-pane .scroll-content{
   overflow-y: scroll;
 }
