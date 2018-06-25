@@ -91,6 +91,9 @@
 
 					<ion-row *ngIf="agendaObj[date]" class="headers">
 						<ion-col text-center col-1>
+							<strong>Vendedor</strong>
+						</ion-col>
+						<ion-col text-center col-1>
 							<strong>Accion</strong>
 						</ion-col>
 						<ion-col text-center>
@@ -109,6 +112,9 @@
 					</ion-row>
 
 					<ion-row *ngFor="let item of agendaObj[date] | fieldFilter:['salesRep']:[salesMan]:false" align-items-center class="data">
+						<ion-col col-1 text-center>
+							{{ minSalesRep(item.salesRep) }}
+						</ion-col>
 						<ion-col col-1 text-center>
 							{{ item.action }}
 						</ion-col>

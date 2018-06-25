@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import "rxjs/add/observable/combineLatest";
 
-import { CrmDataProvider } from '../../providers';
+import { CrmDataProvider, StaticDataProvider } from '../../providers';
 import { CustomCurrencyPipe } from '../../pipes';
 
 @IonicPage()
@@ -38,16 +38,17 @@ export class CrmOpDetailPage {
   constructor(
   	public navCtrl: NavController, 
   	public navParams: NavParams,
-  	private crmData: CrmDataProvider,
+		private crmData: CrmDataProvider,
+		private staticData: StaticDataProvider,
   	private fb: FormBuilder,
 		public modalCtrl: ModalController,
 		public viewCtrl: ViewController,
 		private customCurrencyPipe: CustomCurrencyPipe
   ) {
   	this.months = this.crmData.buildCloseMonth();
-  	this.statusOptions = this.crmData.statusOptions;
-  	this.actions = this.crmData.actions;
-    this.salesReps = this.crmData.salesReps;
+  	this.statusOptions = this.staticData.data.crm.statusOptions;
+  	this.actions = this.staticData.data.crm.actions;
+    this.salesReps = this.staticData.data.crm.salesReps;
   	this.buildForm();
   }
 

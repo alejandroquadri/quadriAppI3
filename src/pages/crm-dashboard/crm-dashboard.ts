@@ -204,4 +204,22 @@ export class CrmDashboardPage {
   	this.agendaForm.reset();
   }
 
+  minSalesRep(salesRep: string): String{
+    let minSales;
+    switch (salesRep) {
+      case 'Tarruella Alberto Horacio ':
+        minSales = 'AT'
+        break;
+
+      case 'Alejandra Roldan':
+        minSales = 'AR'
+        break;
+    
+      default:
+        minSales = ''
+        break;
+    }
+    return minSales;
+  }
+
 }

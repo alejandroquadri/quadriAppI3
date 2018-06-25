@@ -89,7 +89,7 @@ export class CrmSendPspPage {
     })
     .then( ret =>  {
       console.log('activity log cargado', ret);
-      this.viewCtrl.dismiss();
+      this.viewCtrl.dismiss('dismiss');
     })
     .catch( reason => {
       console.log('error en envio' , reason)
