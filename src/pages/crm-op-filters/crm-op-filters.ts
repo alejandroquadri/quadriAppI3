@@ -23,14 +23,27 @@ export class CrmOpFiltersPage {
       this.filters = this.staticData.data.crm.filters;
       this.months = this.crmData.buildCloseMonth();
   	}
-
+    
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CrmOpFiltersPage');
+    this.currentSales();
   }
 
   updateFilters() {
     this.crmData.filters = this.filters;
     this.crmData.updateFilters();
+  }
+
+  currentSales() {
+    let current =  this.crmData.currentSalesRepCheck();
+    switch (current) {
+      case 'Tarruella Alberto Horacio ':
+        this.filters.salesRep.roldan = false;
+        break;
+
+      case 'Alejandra Roldan':
+      this.filters.salesRep.tarruella = false;
+        break;
+    }
   }
 
 }

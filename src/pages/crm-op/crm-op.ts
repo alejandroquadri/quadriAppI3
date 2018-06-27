@@ -18,7 +18,6 @@ export class CrmOpPage {
   opObs: Observable<any>;
   subs: Observable<any>;
   months: any;
-  // statusOptions = ['Pendiente', 'Rechazado', 'Cerrado'];
   statusOptions: any;
 
 	opListCrude: Array<any>;
@@ -43,20 +42,21 @@ export class CrmOpPage {
     private filterPipe: FilterPipe,
     private sortPipe: SortPipe
 	) {
+  }
+  
+  ionViewDidLoad() {
     this.months = this.crmData.buildCloseMonth();
     this.statusOptions = this.staticData.data.crm.statusOptions;
-  }
-
-  ionViewDidLoad() {
     this.opObs = this.crmData.getOpsList();
     this.filtersObs = this.crmData.filterObs;
 
     this.subs = Observable.combineLatest(this.opObs, this.filtersObs, (ops: any, filters:any) => ({ops, filters}));
     this.subs.subscribe( (pair: any) => {
-      console.log(pair);
+      // console.log(pair);
       this.opListCrude = pair.ops;
       this.filters = pair.filters;
       !this.filters ? this.filters = this.staticData.data.crm.filters: '';
+      console.log(this.filters);
       this.filter();
     })
   }

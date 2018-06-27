@@ -42,7 +42,7 @@ export class CrmDashboardPage {
       time: moment().format('YYYY-MM-DD')
     })
     this.actions = this.staticData.data.crm.actions;
-    this.currentSalesMan = this.staticData.data.crm.currentSalesRep;
+    this.currentSalesMan = this.crmData.currentSalesRepCheck();
   }
 
   ionViewDidLoad() {
@@ -160,7 +160,8 @@ export class CrmDashboardPage {
     let updateForm = {
   		time: this.agendaForm.value.time,
   		desc: this.agendaForm.value.desc,
-      action: this.agendaForm.value.action
+      action: this.agendaForm.value.action,
+      salesRep: this.currentSalesMan
     };
     if (this.opObject) {
       updateForm['op'] = this.opObject.obra;

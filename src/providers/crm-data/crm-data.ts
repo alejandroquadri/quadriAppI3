@@ -33,7 +33,6 @@ export class CrmDataProvider {
   ) {
 			this.subscribeToCalipsoDocs();
       this.updateFilters();
-      this.currentSalesRepCheck();
 	  }
 
   subscribeToCalipsoDocs() {
@@ -46,17 +45,23 @@ export class CrmDataProvider {
     })
   }
 
-  currentSalesRepCheck() {
-    this.authData.user.subscribe( (user: any) => {
-      if (user.email === "alejandraroldan@quadri.com.ar") {
-        this.currentSalesRep = 'Alejandra Roldan';
-        this.filters.salesRep.tarruella = false;
-      }
-      if (user.email === "albertotarruella@quadri.com.ar") {
-        this.currentSalesRep = 'Tarruella Alberto Horacio ';
-        this.filters.salesRep.roldan = false;
-      }
-    })
+  currentSalesRepCheck(): string {
+    let mail = this.authData.current.email;
+    let name: string;
+    switch (mail) {
+      case 'alejandraroldan@quadri.com.ar':
+        name = 'Alejandra Roldan';
+        break;
+
+      case 'albertotarruella@quadri.com.ar':
+        name = 'Tarruella Alberto Horacio ';
+        break;
+    
+      default:
+        name = '';
+        break;
+    }
+    return name;
   }
 
   buildCalipsoObj(array: any) {
@@ -305,6 +310,7 @@ export class CrmDataProvider {
   }
 
   updateFilters() {
+    console.log('update filters' ,this.filters);
     this.filterSubject.next(this.filters)
   }
 

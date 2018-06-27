@@ -28,24 +28,24 @@ export class MyApp {
         // Here you can do any higher level native things you might need.console.log('did load');
       authData.user.subscribe( user => {
         console.log(user);
-        this.staticData.getStaticData()
-        .then( ret => {
-          this.userProfile = user;
-          if (user) {
-            if(!this.authData.checkIfQuadri(user.email)) { 
-              this.logOut();
-            }
+        this.userProfile = user;
+        if (user) {
+          if(!this.authData.checkIfQuadri(user.email)) { 
+            this.logOut();
+          } else {
             this.authData.uid = user.uid;
             this.authData.current = user;
-            this.first? this.rootPage = this.setRoot() : this.nav.setRoot(this.setRoot());
-          } else {
-            this.authData.uid = null;
-            this.authData.current = null;
-            this.first? this.rootPage = 'LoginPage' : this.nav.setRoot('LoginPage');
+            this.staticData.getStaticData()
+            .then( ret => {
+              this.first? this.rootPage = this.setRoot() : this.nav.setRoot(this.setRoot());
+            })
           }
-          this.first = false;
-
-        })
+        } else {
+          this.authData.uid = null;
+          this.authData.current = null;
+          this.first? this.rootPage = 'LoginPage' : this.nav.setRoot('LoginPage');
+        }
+        this.first = false;
       })
     });  
 

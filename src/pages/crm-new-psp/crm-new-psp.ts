@@ -54,9 +54,7 @@ export class CrmNewPspPage {
   }
 
   checkCurrentSalesRep() {
-    if (this.crmData.currentSalesRep) {
-      this.salesRep = this.crmData.currentSalesRep;
-    }
+    this.salesRep = this.crmData.currentSalesRepCheck();
   }
 
   filterPsp() {
