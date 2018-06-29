@@ -105,8 +105,6 @@
 						<ion-col text-center col-2>
 							<strong>Cliente</strong>
 						</ion-col>
-						<ion-col text-center col-auto>
-						</ion-col>
 						<ion-col col-1>
 						</ion-col>
 					</ion-row>
@@ -127,15 +125,10 @@
 						<ion-col col-2 text-center>
 							{{ item.client }}
 						</ion-col>
-						<ion-col class="checkButton" col-1>
-							<ion-checkbox #check align-self-center [checked]="item?.complete" 
+						<ion-col class="buttons" col-1>
+							<ion-checkbox  class="ckechbox" #check align-self-center [checked]="item?.complete" 
 								(ionChange)="changeCheck(item.$key, check.value)">
 							</ion-checkbox>
-						<!-- </ion-col>
-						<ion-col col-auto> -->
-							<button  *ngIf="item.opKey"  ion-button icon-only clear color="lightGreyQ" small (click)="seeOp(item.opKey)" class="actionButtons">
-								<ion-icon name="eye"></ion-icon>
-							</button>
 							<button ion-button icon-only clear color="lightGreyQ" small 
 							(click)="switchEditAgendaItem(item)" class="actionButtons">
 								<ion-icon name="create"></ion-icon>
@@ -144,7 +137,11 @@
 							(click)="deleteAgendaItem(item)" class="actionButtons">
 								<ion-icon name="trash"></ion-icon>
 							</button>
+							<button  [disabled]="!item.opKey"  ion-button icon-only clear color="lightGreyQ" small (click)="seeOp(item.opKey)" class="actionButtons">
+								<ion-icon name="eye"></ion-icon>
+							</button>
 						</ion-col>
+
 					</ion-row>
 			  </ion-card-content>
 			

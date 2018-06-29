@@ -33,10 +33,14 @@ page-crm-dashboard {
     box-shadow: none !important; 
   }
 
-  .checkButton {
+  .buttons {
     display: flex;
     align-items: center;
     justify-content: center;
+	}
+
+	.checkbox {
+		padding: 0 0.4rem 0 0.4rem;
 	}
 
 	.headers {

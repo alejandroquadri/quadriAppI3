@@ -41,11 +41,11 @@ export class CrmDashboardPage {
     this.agendaForm.patchValue({
       time: moment().format('YYYY-MM-DD')
     })
-    this.actions = this.staticData.data.crm.actions;
-    this.currentSalesMan = this.crmData.currentSalesRepCheck();
   }
-
+  
   ionViewDidLoad() {
+    this.currentSalesMan = this.crmData.currentSalesRepCheck();
+    this.actions = this.staticData.data.crm.actions;
     this.agendaObs = this.crmData.getAgendaList().subscribe( agenda => {
       this.agendaList = agenda;
       // console.log(this.agendaList);
