@@ -19,6 +19,7 @@ export class ProdChartComponent implements OnInit {
   prodSubs: any;
   production: any;
   prodChart: any;
+  data: any;
 
   machFilter;
   colorFilter;
@@ -35,10 +36,10 @@ export class ProdChartComponent implements OnInit {
     private sortPipe: SortPipe,
   ) {
   }
-
+  
   ngOnInit() {
-		this.prodSubs = this.prodData.getProduction().subscribe( (prod: Array<any>) => {
-      this.production = prod;
+    this.data = this.staticData.data.produccion;
+    this.prodSubs = this.prodData.getProduction().subscribe( (prod: Array<any>) => {
       this.filteredProdData();
     });
 	}
@@ -48,7 +49,7 @@ export class ProdChartComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.prodSubs.unsubscribe();
+    // this.prodSubs.unsubscribe();
   }
 
   filteredProdData() {

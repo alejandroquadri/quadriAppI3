@@ -46,13 +46,14 @@ export class ProdSignPage {
   }
 
   fileterProd() {
-  	let month = this.date.format('M');
+  	let month = `${this.date.format('M')}-${this.date.format('Y')}`;
   	this.prodObj = {};
   	this.m2total = 0;
 		this.mltotal = 0;
 
   	let filtered: Array<any> = this.production.filter( log => {
-      if ( moment(log.date).format('M') === month &&
+      const date = `${moment(log.date).format('M')}-${moment(log.date).format('Y')}`;
+      if ( date === month &&
         (log.machine == 'Breton' ||
         log.machine == 'Lineal' ||
         log.machine == 'Pasado tablas' ||

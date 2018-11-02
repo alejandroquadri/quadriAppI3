@@ -6,12 +6,12 @@ import { Injectable, Pipe, PipeTransform } from '@angular/core';
 })
 export class FilterPipe implements PipeTransform {
   transform(array: any[], term: string, fb: boolean) {
-      if (array) {
-        return array.filter( object => {
-          return (this.filterSearch(object, term, fb))
-        })
-      }
+    if (array) {
+      return array.filter( object => {
+        return (this.filterSearch(object, term, fb))
+      })
     }
+  }
 
   filterSearch(object, term, fb) {
     if (term === '') {

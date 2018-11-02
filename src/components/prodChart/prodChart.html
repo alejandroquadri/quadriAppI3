@@ -1,4 +1,4 @@
-<ion-grid>
+<ion-grid *ngIf="data && prodSubs" >
 
 	<!-- <ion-row>
 		<h4>Produccion</h4>
@@ -9,22 +9,22 @@
 			<ion-item no-lines>
 				<ion-label class="labelMachineSelect">Maquina</ion-label>
 				<select item-content class="selectMachine selectArt" [(ngModel)]="machFilter" (ngModelChange)="filteredProdData()">
-			    <option *ngFor="let maquina of staticData.maquinasProd | sort:'':true">{{maquina}}</option>
+			    <option *ngFor="let maquina of data.maquinasProd | sort:'':true">{{maquina}}</option>
 			  </select>
 			  <div item-content class="labelColor">Color</div>
 			  <select item-content class="selectMachine selectArt" [(ngModel)]="colorFilter" (ngModelChange)="filteredProdData()">
 			    <option value="" selected></option>
-			    <option *ngFor="let color of staticData.color | sort:'':true">{{color}}</option>
+			    <option *ngFor="let color of data.color | sort:'':true">{{color}}</option>
 			  </select>
 			  <div item-content class="labelColor">Dimension</div>
 				<select item-content class="selectMachine selectArt" [(ngModel)]="dimFilter" (ngModelChange)="filteredProdData()">
 			    <option value="" selected></option>
-			    <option *ngFor="let dim of staticData.dim | sort:'':true">{{dim}}</option>
+			    <option *ngFor="let dim of data.dim | sort:'':true">{{dim}}</option>
 			  </select>
 			  <div item-content class="labelColor">Dibujo</div>
 			  <select item-content class="selectMachine selectArt" [(ngModel)]="drawingFilter" (ngModelChange)="filteredProdData()">
 			    <option value="" selected></option>
-			    <option *ngFor="let drawing of staticData.drawing | sort:'':true">{{drawing}}</option>
+			    <option *ngFor="let drawing of data.drawing | sort:'':true">{{drawing}}</option>
 			  </select>
 
 			</ion-item>

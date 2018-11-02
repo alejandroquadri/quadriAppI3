@@ -56,7 +56,6 @@ export class CrmOpPage {
       this.opListCrude = pair.ops;
       this.filters = pair.filters;
       !this.filters ? this.filters = this.staticData.data.crm.filters: '';
-      console.log(this.filters);
       this.filter();
     })
   }

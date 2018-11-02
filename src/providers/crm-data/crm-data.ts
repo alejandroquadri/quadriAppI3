@@ -310,7 +310,6 @@ export class CrmDataProvider {
   }
 
   updateFilters() {
-    console.log('update filters' ,this.filters);
     this.filterSubject.next(this.filters)
   }
 

@@ -77,12 +77,12 @@ export class AcSalesChartComponent implements OnInit {
   }
 
   addMonth() {
-    this.date = moment(this.date).add(1, 'months')
+    this.date = moment(this.date).add(1, 'months');
     this.salesDataFilter();
   }
 
   subMonth() {
-    this.date = moment(this.date).subtract(1, 'months')
+    this.date = moment(this.date).subtract(1, 'months');
     this.salesDataFilter();
   }
 

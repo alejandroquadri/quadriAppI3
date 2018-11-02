@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule, APP_INITIALIZER } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -45,6 +45,10 @@ import { ProdProgramDataProvider } from '../providers/prod-program-data/prod-pro
 import { CrmDataProvider } from '../providers/crm-data/crm-data';
 import { FinanceDataProvider } from '../providers/finance-data/finance-data';
 
+export function DataProviderFactory(provider: StaticDataProvider) {
+  return () => provider.getStaticData();
+}
+
 @NgModule({
   declarations: [
     MyApp,
@@ -67,6 +71,7 @@ import { FinanceDataProvider } from '../providers/finance-data/finance-data';
     SplashScreen,
     GooglePlus,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: APP_INITIALIZER, useFactory: DataProviderFactory, deps: [StaticDataProvider], multi: true },
     ApiDataProvider,
     AuthDataProvider,
     StaticDataProvider,

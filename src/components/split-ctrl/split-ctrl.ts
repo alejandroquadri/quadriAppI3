@@ -10,7 +10,7 @@ export class SplitCtrlComponent {
 	show;
 
   constructor(
-    private splitShow: SplitShowProvider
+    public splitShow: SplitShowProvider
   ) {
   	this.show = this.splitShow.show;
   }

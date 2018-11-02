@@ -54,13 +54,15 @@ export class AcChartComponent implements OnInit {
     let finishedProd: Array<any> = [];
     let second: Array<any> = [];
     let objLine: Array<any> = [];
-    let month = this.date.format('M');
+    let month = `${this.date.format('M')}-${this.date.format('Y')}`;
     let monthsDays = this.date.daysInMonth();
     let dailyProdObj = this.prodMonthObj/monthsDays;
 
     let filtered = this.production.filter( log => {
-      return (moment(log.date).format('M') === month &&
-        this.chartBuilder.isFinished(log) &&
+      const date = `${moment(log.date).format('M')}-${moment(log.date).format('Y')}`;
+      // return (moment(log.date).format('M') === month &&
+      return (date === month &&
+      this.chartBuilder.isFinished(log) &&
         this.staticData.equivalences[log.dim].unit === this.unit)
     });
 

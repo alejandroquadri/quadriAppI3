@@ -78,7 +78,7 @@ export class CrmNewPspPage {
 
   filter(event?) {
     // this.viewArray = this.searchFilter.transform(this.filteredPsp,this.searchInput, false);
-    this.filteredArray = this.searchFilter.transform(this.filteredPsp,this.searchInput, false);
+    this.filteredArray = this.searchFilter.transform(this.filteredPsp, this.searchInput, false);
     this.sort();
   }
 

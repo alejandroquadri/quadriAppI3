@@ -8,10 +8,11 @@
 	<ion-row>
 		<ion-col col-auto>
 			<ion-item no-lines class="month">
+				<ion-label>{{ date.format('MMMM') }} - {{ date.format('YY') }}</ion-label>
 				<button item-end ion-button icon-only outline small (click)= "subMonth()">
 					<ion-icon name="ios-arrow-back"></ion-icon>
 				</button>
-					{{ date.format('MMMM') }}
+					<!-- {{ date.format('MMMM') }} - {{ date.format('YY') }} -->
 				<button item-end ion-button icon-only outline small (click)= "addMonth()">
 					<ion-icon name="ios-arrow-forward"></ion-icon>
 				</button>
