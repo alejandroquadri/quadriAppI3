@@ -83,6 +83,9 @@ export class CrmDataProvider {
             razSoc: doc.nombredestinatariotr,
             salesRep: doc.nombreoriginantetr,
             total: +doc.total_importe,
+            iibb: +doc.iibbtr,
+            ivaTotal: +doc.iva,
+            totalFinal: +doc.total_transaccion,
             flag: doc.flag
           }
           filteredObj.psp[doc.numerodocumento].items = [];

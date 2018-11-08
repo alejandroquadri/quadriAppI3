@@ -59,6 +59,9 @@ export class CrmSendPspPage {
     emailForm['salesRep'] = this.psp.salesRep;
     emailForm['total'] = this.psp.total;
     emailForm['items'] = this.psp.items;
+    emailForm['iva'] = this.psp.ivaTotal;
+    emailForm['iibb'] = this.psp.iibb;
+    emailForm['final'] = this.psp.totalFinal;
     emailForm['currentEmail'] = this.currentEmail;
     console.log(emailForm);
 
