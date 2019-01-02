@@ -310,7 +310,7 @@ export class ProdProgramPage {
   	let today = moment();
 
   	for (let i=0; i < 4; i ++) {
-  		let semana = today.week()+""+today.year();
+  		let semana = today.format('wwYYYY');
   		weeks.push(semana);
   		today.add(1, 'w');
   	}
