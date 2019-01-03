@@ -68,7 +68,7 @@ export class CrmOpDetailPage {
 				this.totalValue = this.customCurrencyPipe.transform(this.op.total.toString(), 0);		
 				this.opName = this.op.obra;
     	}
-    	this.calipsoObj = pair.calipsoObj.psp;
+			this.calipsoObj = pair.calipsoObj.psp;
     	this.agendaObj = pair.agendaObj;
     })
   }
